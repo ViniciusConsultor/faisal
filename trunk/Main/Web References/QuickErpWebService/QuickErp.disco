@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://uniformers.net/quickerpwebservice/QuickErp.asmx?wsdl" docRef="http://uniformers.net/quickerpwebservice/QuickErp.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://uniformers.net/quickerpwebservice/QuickErp.asmx" xmlns:q1="http://quicktijarat.com/" binding="q1:ServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://uniformers.net/quickerpwebservice/QuickErp.asmx" xmlns:q2="http://quicktijarat.com/" binding="q2:ServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
