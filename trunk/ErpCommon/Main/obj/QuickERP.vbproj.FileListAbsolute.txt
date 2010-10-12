@@ -186,3 +186,7 @@ C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\Qui
 C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.TrustInfo.xml
 C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.exe.manifest
 C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.application
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\LiveMesh\bin\Debug\QuickErp\QuickErp.exe.config
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp.exe
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp.pdb
