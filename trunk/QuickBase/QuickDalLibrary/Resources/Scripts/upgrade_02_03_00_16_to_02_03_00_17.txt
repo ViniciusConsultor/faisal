@@ -1,0 +1,13 @@
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =602)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime])
+		VALUES (602, '&Users', '06-002', 2, 600, 0, '2009-08-08', NULL)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =603)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime])
+		VALUES (603, '&User Roles', '06-003', 3, 600, 0, '2009-08-10', NULL)

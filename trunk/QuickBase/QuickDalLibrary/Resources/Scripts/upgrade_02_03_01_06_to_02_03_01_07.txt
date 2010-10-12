@@ -1,0 +1,5 @@
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Parent_COA_ID')
+	ALTER TABLE Accounting_COA ADD Parent_COA_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Level_No')
+	ALTER TABLE Accounting_COA ADD Level_No TINYINT NULL

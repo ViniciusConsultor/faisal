@@ -1,0 +1,126 @@
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='DocumentStatus_ID')
+	ALTER TABLE Accounting_Voucher ADD DocumentStatus_ID INT NULL
+	
+go
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='spGetMenuWithAllowedStatusByCoIDRoleID')
+	DROP PROCEDURE spGetMenuWithAllowedStatusByCoIDRoleID
+go
+-- ======================================================================
+-- Author:		Faisal Saleem
+-- Create date: 13-Jun-2010
+-- Description:	This procedure returns the menu entries from menu table.
+--              Additionally it returns a column indicating the access
+--				for the role id provided.
+-- ======================================================================
+-- ------------ Modification History ------------------------------------
+-- Author	Date		Details
+-- ------   ----        -------
+-- ----------------------------------------------------------------------
+CREATE PROCEDURE spGetMenuWithAllowedStatusByCoIDRoleID
+	(@Co_ID INT
+	, @Role_ID INT
+	)
+AS
+SELECT  CASE ISNULL(smra.RecordStatus_ID, 4) WHEN 4 THEN 0 ELSE 1 END AS Allowed,  Base_Menu.Display_Order, Base_Menu.Form_Code, 
+		Base_Menu.Menu_Desc, Base_Menu.Menu_Id, Base_Menu.Parent_Menu_Id,
+        Base_Menu.RecordStatus_ID, Base_Menu.Stamp_DateTime, Base_Menu.Stamp_UserId, 
+		Base_Menu.Upload_DateTime
+
+FROM    Base_Menu
+	LEFT OUTER JOIN Sec_Menu_Role_Association smra 
+		ON	Base_Menu.Menu_Id = smra.Menu_ID AND smra.Co_ID = @Co_ID 
+			AND smra.Role_ID = @Role_ID AND smra.RecordStatus_ID <> 4
+
+WHERE	(Base_Menu.RecordStatus_ID IS NULL OR Base_Menu.RecordStatus_ID <> 4)
+
+ORDER BY Menu_ID
+
+-- RecordStatus_ID = 4  Deleted
+go
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='spGetAllowedByCoIDParentMenuIDUserID')
+	DROP PROCEDURE spGetAllowedByCoIDParentMenuIDUserID
+go
+-- ======================================================================
+-- Author:		Faisal Saleem
+-- Create date: 13-Jun-2010
+-- Description:	This procedure returns the child menu entries which are 
+--				allowed to the company id, user id for the given parent 
+--				menu id.
+--				for the role id provided.
+-- ======================================================================
+-- ------------ Modification History ------------------------------------
+-- Author	Date		Details
+-- ------   ----        -------
+-- ----------------------------------------------------------------------
+CREATE PROCEDURE spGetAllowedByCoIDParentMenuIDUserID
+	(@Co_ID INT
+	, @Parent_Menu_ID INT
+	, @User_ID INT
+	)
+AS
+SELECT     bm.Display_Order, bm.Form_Code, bm.Menu_Desc, bm.Menu_Id
+		, bm.Parent_Menu_Id, bm.RecordStatus_ID, bm.Stamp_DateTime
+		, bm.Stamp_UserId, bm.Upload_DateTime
+
+FROM	Base_Menu bm
+	INNER JOIN Sec_Menu_Role_Association smra
+		ON smra.Co_ID = @Co_ID AND bm.Menu_Id = smra.Menu_ID 
+	INNER JOIN Sec_User_Role_Association sura 
+		ON smra.Co_ID = sura.Co_ID 
+			AND smra.Role_ID = sura.Role_ID 
+	INNER JOIN Sec_User 
+		ON sura.Co_ID = @Co_ID 
+			AND sura.User_ID = @User_ID
+
+WHERE	(bm.Parent_Menu_Id = @Parent_Menu_Id) AND (Sec_User.Co_ID = @Co_ID) 
+		AND (Sec_User.User_ID = @User_ID) AND smra.RecordStatus_ID <> 4
+
+ORDER BY bm.Parent_Menu_Id, bm.Display_Order
+
+/*
+RecordStatus_ID = 4  Deleted
+*/
+go
+IF NOT EXISTS ( SELECT * FROM [Base_Setting] WHERE [Setting_Id] = 'Mask_COACode')
+	INSERT INTO [Base_Setting]
+			   ([Co_Id]
+			   ,[User_Id]
+			   ,[Setting_Id]
+			   ,[Setting_Desc]
+			   ,[Setting_Value]
+			   ,[Stamp_User_Id]
+			   ,[Stamp_DateTime]
+			   ,[Setting_Value_DataType]
+			   ,[Setting_Value_MinimumValue]
+			   ,[Setting_Value_MaximumValue]
+			   ,[Upload_DateTime]
+			   ,[RecordStatus_ID])
+		 VALUES
+			   (0
+			   ,0
+			   ,'Mask_COACode'
+			   ,'This mask will define the levels of coa code.'
+			   ,'##-##-##-####'
+			   ,0
+			   ,'2010-06-13'
+			   ,'String'
+			   ,NULL
+			   ,NULL
+			   ,NULL
+			   ,1)
+go
+UPDATE Accounting_COA SET COA_Code = '99-99-99-0001' WHERE COA_Code = '01-001'
+go
+UPDATE Accounting_COA SET COA_Code = '99-99-99-0002' WHERE COA_Code = '01-002'
+go
+UPDATE Accounting_COA SET COA_Code = '99-99-99-0003' WHERE COA_Code = '01-003'
+GO
+UPDATE Accounting_COA SET Parent_COA_ID = 0 WHERE Parent_COA_ID IS NULL
+go
+ALTER TABLE Accounting_COA
+	ALTER COLUMN Parent_COA_ID INT NOT NULL
+go
+UPDATE Accounting_VoucherType SET RecordStatus_ID = 2 WHERE RecordStatus_ID IS NULL
+go
+ALTER TABLE Accounting_VoucherType
+	ALTER COLUMN RecordStatus_ID INT NOT NULL

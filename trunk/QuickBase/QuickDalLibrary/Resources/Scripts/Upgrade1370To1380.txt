@@ -1,0 +1,318 @@
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Accounting_Voucher_Detail ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Person' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Person ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_User' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_User ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory_SalesInvoice' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inventory_SalesInvoice ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Temp_SalesInvoiceReport' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Temp_SalesInvoiceReport ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Party' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Party ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_Status' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Common_Status ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_Status_Type' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Common_Status_Type ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Party_Detail' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Party_Detail ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Module' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Module ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Role ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Address' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Base_Address ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Right' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Right ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Transfer_Pattern2' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Transfer_Pattern2 ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Company_Module_Association' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Company_Module_Association ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Transfer_Pattern1' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Transfer_Pattern1 ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Module_Role_Association' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Module_Role_Association ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Transfer' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Transfer ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_DocumentType' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Common_DocumentType ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Alert' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Base_Alert ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Stock' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inv_Stock ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory_Detail' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inventory_Detail ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item_PriceHistory' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inv_Item_PriceHistory ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role_Right_Association' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Sec_Role_Right_Association ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_EntityType' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Common_EntityType ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Setting' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Base_Setting ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Accounting_COA ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inv_Item ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Inventory ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Communication' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Base_Communication ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Accounting_Voucher ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_VoucherType' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Accounting_VoucherType ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Company' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Base_Company ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Base_Menu') 
+CREATE TABLE [dbo].[Base_Menu]([Menu_Id] [int] NOT NULL, [Menu_Desc] [varchar](200) NOT NULL, [Form_Id] [varchar](6) NOT NULL, [Display_Order] [smallint] NOT NULL, [Parent_Menu_Id] [int] NOT NULL, [Stamp_UserId] [int] NOT NULL, [Stamp_DateTime] [datetime] NOT NULL, [Upload_DateTime] [datetime] NULL, CONSTRAINT [PK_Base_Menu] PRIMARY KEY CLUSTERED ([Menu_Id] ASC), CONSTRAINT [IX_Base_Menu] UNIQUE NONCLUSTERED ([Parent_Menu_Id] ASC, [Display_Order] ASC))
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =100) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (100, '&Inventory', '01', 1, 0, 0, GetDate(), NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =101) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (101, 'I&tem', '01-001', 1, 100, 0, GetDate(), NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =102) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (102,'&Sales Invoice','01-002',2,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =103) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (103,'POS Sales &Invoice','01-003',3,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =104) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (104,'Purchase','01-004',4,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =105) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (105,'Purchase &Return','01-005',5,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =106) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (106,'Purchase &Order','01-006',6,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =107) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (107,'&Minimum Stock Level','01-007',7,100,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =200) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (200,'&Common','02',2,0,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =201) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (201,'&Party','02-001',1,200,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =300) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (300,'&Administration','03',3,0,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =301) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (301,'Import from &Excel','03-001',1,300,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =302) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (302,'&Branch','03-002',2,300,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =303) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (303,'&User','03-003',3,300,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =304) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (304,'DB Connectivity','03-004',4,300,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =305) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (305,'Transfer Data','03-005',5,300,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =400) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (400,'A&ccounts','04',4,0,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =401) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (401,'&Receipt','04-001',1,400,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =402) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (402,'&Payment','04-002',2,400,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =500) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (500,'&Report','05',5,0,0,GetDate(),NULL)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =501) 
+INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], [Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) VALUES (501,'&Report','05-001',1,500,0,GetDate(),NULL)
+
+go
+
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='trigUpdateStock')
+DROP TRIGGER trigUpdateStock
+GO
+-- =============================================
+-- Author:		Faisal
+-- Create date: 23-Nov-2008
+-- Description:	
+-- =============================================
+CREATE TRIGGER [dbo].[trigUpdateStock] 
+   ON  [dbo].[Inventory_Detail] 
+   AFTER INSERT,DELETE,UPDATE
+AS 
+DECLARE @Factor AS INT
+
+	IF (SELECT Count(*) FROM Deleted) >0
+		BEGIN
+		IF (SELECT Count(*) FROM Inv_Stock WHERE Co_Id = (Select Co_Id FROM Deleted) AND Source_First_Id = (Select Item_Id From Deleted)) > 0 
+			BEGIN
+			UPDATE Inv_Stock 
+				SET Item_Stock_Size01 = Item_Stock_Size01 - (Select Inventory_Qty_Size01 FROM Deleted)
+				, Item_Stock_Size02 = Item_Stock_Size02 - (Select Inventory_Qty_Size02 FROM Deleted)
+				, Item_Stock_Size03 = Item_Stock_Size03 - (Select Inventory_Qty_Size03 FROM Deleted)
+				, Item_Stock_Size04 = Item_Stock_Size04 - (Select Inventory_Qty_Size04 FROM Deleted)
+				, Item_Stock_Size05 = Item_Stock_Size05 - (Select Inventory_Qty_Size05 FROM Deleted)
+				, Item_Stock_Size06 = Item_Stock_Size06 - (Select Inventory_Qty_Size06 FROM Deleted)
+				, Item_Stock_Size07 = Item_Stock_Size07 - (Select Inventory_Qty_Size07 FROM Deleted)
+				, Item_Stock_Size08 = Item_Stock_Size08 - (Select Inventory_Qty_Size08 FROM Deleted)
+				, Item_Stock_Size09 = Item_Stock_Size09 - (Select Inventory_Qty_Size09 FROM Deleted)
+				, Item_Stock_Size10 = Item_Stock_Size10 - (Select Inventory_Qty_Size10 FROM Deleted)
+				, Item_Stock_Size11 = Item_Stock_Size11 - (Select Inventory_Qty_Size11 FROM Deleted)
+				, Item_Stock_Size12 = Item_Stock_Size12 - (Select Inventory_Qty_Size12 FROM Deleted)
+				, Item_Stock_Size13 = Item_Stock_Size13 - (Select Inventory_Qty_Size13 FROM Deleted)
+				, Stamp_DateTime = GetDate()
+			WHERE  Co_Id = (Select Co_Id FROM Deleted) AND Source_First_Id = (Select Item_Id From Deleted)
+			END
+		ELSE
+			BEGIN
+			INSERT INTO [Inv_Stock]
+			   ([Co_ID]
+			   ,[Source_First_ID]
+			   ,[Source_Second_ID]
+			   ,[Source_DocumentType_ID]
+			   ,[Item_Stock_Size01]
+			   ,[Item_Stock_Size02]
+			   ,[Item_Stock_Size03]
+			   ,[Item_Stock_Size04]
+			   ,[Item_Stock_Size05]
+			   ,[Item_Stock_Size06]
+			   ,[Item_Stock_Size07]
+			   ,[Item_Stock_Size08]
+			   ,[Item_Stock_Size09]
+			   ,[Item_Stock_Size10]
+			   ,[Item_Stock_Size11]
+			   ,[Item_Stock_Size12]
+			   ,[Item_Stock_Size13]
+			   ,[Stamp_UserID]
+			   ,[Stamp_DateTime]
+			   ,[Upload_DateTime])
+			SELECT Co_Id 
+				,Item_Id
+				,0
+				,5		--Item
+				,-Inventory_Qty_Size01
+				,-Inventory_Qty_Size02
+				,-Inventory_Qty_Size03
+				,-Inventory_Qty_Size04
+				,-Inventory_Qty_Size05
+				,-Inventory_Qty_Size06
+				,-Inventory_Qty_Size07
+				,-Inventory_Qty_Size08
+				,-Inventory_Qty_Size09
+				,-Inventory_Qty_Size10
+				,-Inventory_Qty_Size11
+				,-Inventory_Qty_Size12
+				,-Inventory_Qty_Size13
+				,[Stamp_UserID]
+				,[Stamp_DateTime]
+				, NULL
+				FROM Deleted
+			END
+		END
+
+-- Add the values if inserted
+
+	IF (SELECT Count(*) FROM Inserted) >0
+		BEGIN
+		IF (SELECT Count(*) FROM Inv_Stock WHERE Co_Id = (Select Co_Id FROM Inserted) AND Source_First_Id = (Select Item_Id From Inserted)) > 0 
+			BEGIN
+			UPDATE Inv_Stock 
+				SET Item_Stock_Size01 = Item_Stock_Size01 + (Select Inventory_Qty_Size01 FROM Inserted)
+				, Item_Stock_Size02 = Item_Stock_Size02 + (Select Inventory_Qty_Size02 FROM Inserted)
+				, Item_Stock_Size03 = Item_Stock_Size03 + (Select Inventory_Qty_Size03 FROM Inserted)
+				, Item_Stock_Size04 = Item_Stock_Size04 + (Select Inventory_Qty_Size04 FROM Inserted)
+				, Item_Stock_Size05 = Item_Stock_Size05 + (Select Inventory_Qty_Size05 FROM Inserted)
+				, Item_Stock_Size06 = Item_Stock_Size06 + (Select Inventory_Qty_Size06 FROM Inserted)
+				, Item_Stock_Size07 = Item_Stock_Size07 + (Select Inventory_Qty_Size07 FROM Inserted)
+				, Item_Stock_Size08 = Item_Stock_Size08 + (Select Inventory_Qty_Size08 FROM Inserted)
+				, Item_Stock_Size09 = Item_Stock_Size09 + (Select Inventory_Qty_Size09 FROM Inserted)
+				, Item_Stock_Size10 = Item_Stock_Size10 + (Select Inventory_Qty_Size10 FROM Inserted)
+				, Item_Stock_Size11 = Item_Stock_Size11 + (Select Inventory_Qty_Size11 FROM Inserted)
+				, Item_Stock_Size12 = Item_Stock_Size12 + (Select Inventory_Qty_Size12 FROM Inserted)
+				, Item_Stock_Size13 = Item_Stock_Size13 + (Select Inventory_Qty_Size13 FROM Inserted)
+				, Stamp_DateTime = GetDate()
+			WHERE  Co_Id = (Select Co_Id FROM Inserted) AND Source_First_Id = (Select Item_Id From Inserted)
+			END
+		ELSE
+			BEGIN
+			INSERT INTO [Inv_Stock]
+			   ([Co_ID]
+			   ,[Source_First_ID]
+			   ,[Source_Second_ID]
+			   ,[Source_DocumentType_ID]
+			   ,[Item_Stock_Size01]
+			   ,[Item_Stock_Size02]
+			   ,[Item_Stock_Size03]
+			   ,[Item_Stock_Size04]
+			   ,[Item_Stock_Size05]
+			   ,[Item_Stock_Size06]
+			   ,[Item_Stock_Size07]
+			   ,[Item_Stock_Size08]
+			   ,[Item_Stock_Size09]
+			   ,[Item_Stock_Size10]
+			   ,[Item_Stock_Size11]
+			   ,[Item_Stock_Size12]
+			   ,[Item_Stock_Size13]
+			   ,[Stamp_UserID]
+			   ,[Stamp_DateTime]
+			   ,[Upload_DateTime])
+			SELECT Co_Id 
+				,Item_Id
+				,0
+				,5		--Item
+				,Inventory_Qty_Size01
+				,Inventory_Qty_Size02
+				,Inventory_Qty_Size03
+				,Inventory_Qty_Size04
+				,Inventory_Qty_Size05
+				,Inventory_Qty_Size06
+				,Inventory_Qty_Size07
+				,Inventory_Qty_Size08
+				,Inventory_Qty_Size09
+				,Inventory_Qty_Size10
+				,Inventory_Qty_Size11
+				,Inventory_Qty_Size12
+				,Inventory_Qty_Size13
+				,[Stamp_UserID]
+				,[Stamp_DateTime]
+				, NULL
+				FROM Inserted
+			END
+		END

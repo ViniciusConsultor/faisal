@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CFD395A-E9C8-4886-829E-48CDB0318B4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>QuickDALLibrary</RootNamespace>
+    <AssemblyName>QuickDALLibrary</AssemblyName>
+    <MyType>Windows</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>QuickErp.snk</AssemblyOriginatorKeyFile>
+    <OptionStrict>On</OptionStrict>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/QuickDALLibrary/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\..\bin\Debug\QuickDALLibrary\</OutputPath>
+    <DocumentationFile>QuickDALLibrary.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Release\QuickDALLibrary\</OutputPath>
+    <DocumentationFile>QuickDALLibrary.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.Win.Spread, Version=4.0.3522.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrokenRules.vb" />
+    <Compile Include="Cache.vb" />
+    <Compile Include="Cast.vb" />
+    <Compile Include="DatabaseCache.vb" />
+    <Compile Include="DatabaseVersion.vb" />
+    <Compile Include="General.vb" />
+    <Compile Include="LoginInfo.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProgressWindowForm.Designer.vb">
+      <DependentUpon>ProgressWindowForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressWindowForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickAlert.vb" />
+    <Compile Include="QuickExceptionAdvanced.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QuickMessageBox.Designer.vb">
+      <DependentUpon>QuickMessageBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QuickMessageBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressWindowForm.resx">
+      <DependentUpon>ProgressWindowForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuickMessageBox.resx">
+      <DependentUpon>QuickMessageBox.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\SaveRecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\DeleteRecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\OpenFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MoveFirst.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MoveLast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MoveNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\MovePrevious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\NewRecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\PrintPreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scripts\Upgrade1370To1380.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QuickControls\QuickControls.vbproj">
+      <Project>{636D7C63-0301-476A-87AA-273728806FD6}</Project>
+      <Name>QuickControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickDAL\QuickDAL.vbproj">
+      <Project>{25F64F21-2688-45A1-B7F6-C1691437FBDD}</Project>
+      <Name>QuickDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickLibrary\QuickLibrary.vbproj">
+      <Project>{1162DFBE-C61D-4C4D-AD46-584015721F76}</Project>
+      <Name>QuickLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QuickErp.snk" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_32_to_02_03_02_33.sql" />
+    <None Include="Resources\Scripts\upgrade_02_01_00_06_to_02_01_00_07.txt" />
+    <None Include="Resources\Scripts\upgrade_02_01_00_09_to_02_02_00_00.txt" />
+    <None Include="Resources\Scripts\upgrade_02_02_00_00_to_02_02_01_00.txt" />
+    <None Include="Resources\Scripts\upgrade_02_02_01_02_to_02_03_00_00.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_00_to_02_03_00_01.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_01_to_02_03_00_02.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_02_to_02_03_00_03.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_08_to_02_03_00_09.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_12_to_02_03_00_13.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_14_to_02_03_00_15.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_15_to_02_03_00_16.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_16_to_02_03_00_17.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_19_to_02_03_00_20.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_20_to_02_03_01_00.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_01_to_02_03_01_02.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_05_to_02_03_01_06.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_06_to_02_03_01_07.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_07_to_02_03_01_08.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_08_to_02_03_01_09.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_09_to_02_03_01_10.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_10_to_02_03_01_11.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_11_to_02_03_01_12.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_12_to_02_03_01_13.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_14_to_02_03_01_15.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_20_to_02_03_02_21.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_22_to_02_03_02_23.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_23_to_02_03_02_24.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_24_to_02_03_02_25.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_25_to_02_03_02_26.txt" />
+    <Content Include="Resources\Scripts\Upgrade1380To1390.txt" />
+    <Content Include="Resources\Scripts\Upgrade1390To1391.txt" />
+    <Content Include="Resources\Scripts\Upgrade1391To1392.txt" />
+    <Content Include="Resources\Scripts\Upgrade1392To1400.txt" />
+    <Content Include="Resources\Scripts\upgrade1400To1410.txt" />
+    <Content Include="Resources\Scripts\upgrade1410to2000.txt" />
+    <Content Include="Resources\Scripts\upgrade2000to20001.txt" />
+    <Content Include="Resources\Scripts\upgrade2003to2004.txt" />
+    <Content Include="Resources\Scripts\upgrade2006to2007.txt" />
+    <Content Include="Resources\Scripts\Upgrade2007to2008.txt" />
+    <Content Include="Resources\Scripts\Upgrade2008to2009.txt" />
+    <Content Include="Resources\Scripts\upgrade_02_03_02_27_to_02_03_02_28.txt" />
+    <Content Include="Resources\Scripts\upgrade_02_03_02_28_to_02_03_02_29.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_01_04_to_02_03_01_05.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_00_13_to_02_03_00_14.txt" />
+    <None Include="Resources\Scripts\upgrade_02_00_00_12_to_02_01_00_01.txt" />
+    <None Include="Resources\Scripts\upgrade20011to20012.txt" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_30_to_02_03_02_31.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fabrication\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,219 @@
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is changed in both
+--						inventory and inventorydetail table so the joins are changed
+--						so that data shows on the report correctly.
+-- Faisal	30-Mar-2009	Primary key is changed back to co_id and Inventory_ID because
+--						there is possibility that there can be sale and sale return under sale document
+-- Faisal	16-May-2009 Incorporated WarehouseID
+-- Faisal	10-Oct-2009 Specified particular document types in where clause so that purchase order
+--						is not reflected in stock report.
+-- Faisal	18-Nov-2009 Included Purchase Warehouse with ID 18 so that it is reflected in stock report.
+-- Faisal	26-Dec-2009 Status_ID is renamed to RecordStatus_ID in the database so this
+--						sp is changed accordingly.
+-- ---------------------------------------------
+ALTER PROCEDURE [spGetInventoryDetails]
+AS 
+BEGIN 
+	SELECT inv.Co_ID, Co.Co_Desc, 
+		invdet.Item_ID, inv.Party_ID, 
+		item.Item_Code, item.Item_Desc, 
+		cat.Item_Desc AS Item_Category, inv.Inventory_Date, 
+		inv.Payment_Mode, inv.Remarks,	
+		inv.Inventory_ID, inv.Inventory_No, 
+		inv.Discount, inv.SalesTax, inv.LogisticService, 
+		invdet.DocumentType_ID, invdet.Warehouse_ID, doc.DocumentType_Desc, 
+		invdet.Inventory_Qty_Size01, invdet.Inventory_Qty_Size02, 
+		invdet.Inventory_Qty_Size03, invdet.Inventory_Qty_Size04, 
+		invdet.Inventory_Qty_Size05, invdet.Inventory_Qty_Size06, 
+		invdet.Inventory_Qty_Size07, invdet.Inventory_Qty_Size08, 
+		invdet.Inventory_Qty_Size09, invdet.Inventory_Qty_Size10, 
+		invdet.Inventory_Qty_Size11, invdet.Inventory_Qty_Size12, 
+		invdet.Inventory_Qty_Size13, invdet.Inventory_Rate_Size01, 
+		invdet.Inventory_Rate_Size02, invdet.Inventory_Rate_Size03, 
+		invdet.Inventory_Rate_Size04, invdet.Inventory_Rate_Size05, 
+		invdet.Inventory_Rate_Size06, invdet.Inventory_Rate_Size07, 
+		invdet.Inventory_Rate_Size08, invdet.Inventory_Rate_Size09, 
+		invdet.Inventory_Rate_Size10, invdet.Inventory_Rate_Size11,
+		invdet.Inventory_Rate_Size13, invdet.Inventory_Rate_Size12,
+		Party.Party_Desc, Party.COA_ID, 
+		Party.City, Party.Country, 
+		Party.Address 
+	
+	FROM Inv_Item cat 
+	RIGHT OUTER JOIN Inv_Item AS item  
+		ON cat.Co_ID = item.Co_ID 
+		AND LEFT(item.Item_Code,2) = cat.Item_Code 
+	RIGHT JOIN Inventory_Detail AS invdet  
+		ON item.Co_ID = invdet.Co_ID 
+		AND item.Item_ID = invdet.Item_ID 
+	INNER JOIN Inventory AS inv  
+		ON inv.Co_ID = invdet.Co_ID 
+		AND inv.Inventory_ID = invdet.Inventory_ID
+	LEFT OUTER JOIN Party  
+		ON inv.Co_ID = Party.Co_ID 
+		AND inv.Party_ID = Party.Party_ID 
+	LEFT OUTER JOIN Base_Company Co 
+		ON inv.Co_ID = Co.Co_ID 
+	LEFT OUTER JOIN Common_DocumentType doc 
+		ON invdet.DocumentType_ID = doc.DocumentType_ID
+	WHERE inv.RecordStatus_ID <> 4 AND (invdet.RecordStatus_ID <> 4 OR invdet.RecordStatus_ID IS NULL) -- 4 is deleted
+		AND invdet.DocumentType_ID IN (1, 2, 3, 4, 18) -- Sales, Sales Return, Purchase, Purchase Return, Purchase warehouse
+--		and invdet.item_id = 184 and invdet.co_id = 21
+END
+GO
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure calculates the values from inventory table(s)
+--				based on item and document type specified and stores in item summary table
+--				It will be called in the tigger so that if some user is now upgrading the
+--				software then his/her previous entries should be reflected in summary table.
+--				It may also be called whenever the summary table is not accorate.
+--				Pass 0 as company to calculate for all companies, pass 0 as item to calculate
+--				all items.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	17-May-2009	Incorporated WarehouseID
+-- Faisal	01-May-2010	Included Status of deleted items. Due to soft deletion we have
+--						exclude such records from calculations.
+-- ---------------------------------------------
+ALTER PROCEDURE [spRecalculateItemSummary]
+	@Co_ID AS SMALLINT,
+	@Item_Id AS INT,
+	@ItemSummary_DocumentType_ID AS SMALLINT
+	
+AS
+	DECLARE @PurchaseFactor AS INT
+		, @PurchaseReturnFactor AS INT
+		, @SalesFactor AS INT
+		, @SalesReturnFactor AS INT
+	
+	IF @ItemSummary_DocumentType_ID = 15	--Stock
+		BEGIN
+		SET @PurchaseFactor = 1
+		SET @PurchaseReturnFactor = -1
+		SET @SalesFactor = -1
+		SET @SalesReturnFactor = 1
+		END
+	IF @ItemSummary_DocumentType_ID = 16	--Purchased
+		BEGIN
+		SET @PurchaseFactor = 1
+		SET @PurchaseReturnFactor = -1
+		SET @SalesFactor = 0
+		SET @SalesReturnFactor = 0
+		END
+	IF @ItemSummary_DocumentType_ID = 17	--Sold
+		BEGIN
+		SET @PurchaseFactor = 0
+		SET @PurchaseReturnFactor = 0
+		SET @SalesFactor = 1
+		SET @SalesReturnFactor = -1
+		END
+
+	DELETE FROM Inv_ItemSummary 
+		WHERE (Co_Id = @Co_Id OR @Co_Id = 0) AND (Source_First_Id = @Item_Id OR @Item_Id = 0) AND (Source_DocumentType_ID = @ItemSummary_DocumentType_ID OR @ItemSummary_DocumentType_ID = 0)
+
+	INSERT INTO [Inv_ItemSummary]
+	   ([Co_ID], [Source_First_ID], [Source_Second_ID], [Source_DocumentType_ID], [Warehouse_ID]
+	   ,[ItemSummary_Size01], [ItemSummary_Size02], [ItemSummary_Size03]
+	   ,[ItemSummary_Size04], [ItemSummary_Size05], [ItemSummary_Size06]
+	   ,[ItemSummary_Size07], [ItemSummary_Size08], [ItemSummary_Size09]
+	   ,[ItemSummary_Size10], [ItemSummary_Size11], [ItemSummary_Size12]
+	   ,[ItemSummary_Size13], [Stamp_UserID], [Stamp_DateTime], [Upload_DateTime])
+	SELECT [Co_ID], Item_ID, [Source_Second_ID], [Source_DocumentType_ID], [Warehouse_ID]
+	   ,Sum(Inventory_Qty_Size01), Sum(Inventory_Qty_Size02), Sum(Inventory_Qty_Size03)
+	   ,Sum(Inventory_Qty_Size04), Sum(Inventory_Qty_Size05), Sum(Inventory_Qty_Size06)
+	   ,Sum(Inventory_Qty_Size07), Sum(Inventory_Qty_Size08), Sum(Inventory_Qty_Size09)
+	   ,Sum(Inventory_Qty_Size10), Sum(Inventory_Qty_Size11), Sum(Inventory_Qty_Size12)
+	   ,Sum(Inventory_Qty_Size13), 0 AS Stamp_UserID, GetDate() AS Stamp_DateTime, NULL AS Upload_DateTime
+	FROM 
+		(
+			SELECT invdet.Co_Id, invdet.Item_Id, 0 AS Source_Second_ID, @ItemSummary_DocumentType_ID AS Source_DocumentType_ID, invdet.[Warehouse_ID]
+			, invdet.Inventory_Qty_Size01 * @PurchaseFactor AS Inventory_Qty_Size01 , invdet.Inventory_Qty_Size02 * @PurchaseFactor AS Inventory_Qty_Size02 
+			, invdet.Inventory_Qty_Size03 * @PurchaseFactor AS Inventory_Qty_Size03 , invdet.Inventory_Qty_Size04 * @PurchaseFactor AS Inventory_Qty_Size04
+			, invdet.Inventory_Qty_Size05 * @PurchaseFactor AS Inventory_Qty_Size05 , invdet.Inventory_Qty_Size06 * @PurchaseFactor AS Inventory_Qty_Size06
+			, invdet.Inventory_Qty_Size07 * @PurchaseFactor AS Inventory_Qty_Size07 , invdet.Inventory_Qty_Size08 * @PurchaseFactor AS Inventory_Qty_Size08
+			, invdet.Inventory_Qty_Size09 * @PurchaseFactor AS Inventory_Qty_Size09 , invdet.Inventory_Qty_Size10 * @PurchaseFactor AS Inventory_Qty_Size10
+			, invdet.Inventory_Qty_Size11 * @PurchaseFactor AS Inventory_Qty_Size11 , invdet.Inventory_Qty_Size12 * @PurchaseFactor AS Inventory_Qty_Size12
+			, invdet.Inventory_Qty_Size13 * @PurchaseFactor AS Inventory_Qty_Size13 , 0 AS Stamp_UserID, GetDate() AS Stamp_DateTime
+			, NULL AS Upload_DateTime
+			FROM Inventory_Detail invdet 
+				INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+			WHERE (invdet.Co_Id = @Co_Id OR @Co_Id = 0) AND (invdet.Item_Id = @Item_Id OR @Item_Id = 0) 
+				AND (inv.RecordStatus_ID <> 4)
+				AND (invdet.RecordStatus_ID <> 4 OR invdet.RecordStatus_ID IS NULL) -- Status=4=Deleted
+				AND invdet.DocumentType_ID IN (3,18) AND (@ItemSummary_DocumentType_ID = 16 OR @ItemSummary_DocumentType_ID = 15)	-- 18=Purchase Warehouse 3=Purahse, 16=Purchased, 15=Stock
+			
+			UNION ALL
+
+			SELECT invdet.Co_Id, invdet.Item_Id, 0 AS Source_Second_ID, @ItemSummary_DocumentType_ID AS Source_DocumentType_ID, invdet.[Warehouse_ID]
+			, invdet.Inventory_Qty_Size01 * @PurchaseReturnFactor AS Inventory_Qty_Size01 , invdet.Inventory_Qty_Size02 * @PurchaseReturnFactor AS Inventory_Qty_Size02 
+			, invdet.Inventory_Qty_Size03 * @PurchaseReturnFactor AS Inventory_Qty_Size03 , invdet.Inventory_Qty_Size04 * @PurchaseReturnFactor AS Inventory_Qty_Size04
+			, invdet.Inventory_Qty_Size05 * @PurchaseReturnFactor AS Inventory_Qty_Size05 , invdet.Inventory_Qty_Size06 * @PurchaseReturnFactor AS Inventory_Qty_Size06
+			, invdet.Inventory_Qty_Size07 * @PurchaseReturnFactor AS Inventory_Qty_Size07 , invdet.Inventory_Qty_Size08 * @PurchaseReturnFactor AS Inventory_Qty_Size08
+			, invdet.Inventory_Qty_Size09 * @PurchaseReturnFactor AS Inventory_Qty_Size09 , invdet.Inventory_Qty_Size10 * @PurchaseReturnFactor AS Inventory_Qty_Size10
+			, invdet.Inventory_Qty_Size11 * @PurchaseReturnFactor AS Inventory_Qty_Size11 , invdet.Inventory_Qty_Size12 * @PurchaseReturnFactor AS Inventory_Qty_Size12
+			, invdet.Inventory_Qty_Size13 * @PurchaseReturnFactor AS Inventory_Qty_Size13, 0 AS Stamp_UserID, GetDate() AS Stamp_DateTime
+			, NULL AS Upload_DateTime
+			FROM Inventory_Detail invdet 
+				INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+			WHERE (invdet.Co_Id = @Co_Id OR @Co_Id = 0) AND (invdet.Item_Id = @Item_Id OR @Item_Id = 0)
+				AND (inv.RecordStatus_ID <> 4)
+				AND (invdet.RecordStatus_ID <> 4 OR invdet.RecordStatus_ID IS NULL) -- Status=4=Deleted
+				AND invdet.DocumentType_ID = 4 AND (@ItemSummary_DocumentType_ID = 16 OR @ItemSummary_DocumentType_ID = 15)	--Purchased , Stock
+
+			UNION ALL
+
+			SELECT invdet.Co_Id, invdet.Item_Id, 0 AS Source_Second_ID, @ItemSummary_DocumentType_ID AS Source_DocumentType_ID, invdet.[Warehouse_ID]
+			, invdet.Inventory_Qty_Size01 * @SalesFactor AS Inventory_Qty_Size01 , invdet.Inventory_Qty_Size02 * @SalesFactor AS Inventory_Qty_Size02 
+			, invdet.Inventory_Qty_Size03 * @SalesFactor AS Inventory_Qty_Size03 , invdet.Inventory_Qty_Size04 * @SalesFactor AS Inventory_Qty_Size04
+			, invdet.Inventory_Qty_Size05 * @SalesFactor AS Inventory_Qty_Size05 , invdet.Inventory_Qty_Size06 * @SalesFactor AS Inventory_Qty_Size06
+			, invdet.Inventory_Qty_Size07 * @SalesFactor AS Inventory_Qty_Size07 , invdet.Inventory_Qty_Size08 * @SalesFactor AS Inventory_Qty_Size08
+			, invdet.Inventory_Qty_Size09 * @SalesFactor AS Inventory_Qty_Size09 , invdet.Inventory_Qty_Size10 * @SalesFactor AS Inventory_Qty_Size10
+			, invdet.Inventory_Qty_Size11 * @SalesFactor AS Inventory_Qty_Size11 , invdet.Inventory_Qty_Size12 * @SalesFactor AS Inventory_Qty_Size12
+			, invdet.Inventory_Qty_Size13 * @SalesFactor AS Inventory_Qty_Size13, 0 AS Stamp_UserID, GetDate() AS Stamp_DateTime
+			, NULL AS Upload_DateTime
+			FROM Inventory_Detail invdet 
+				INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+			WHERE (invdet.Co_Id = @Co_Id OR @Co_Id = 0) AND (invdet.Item_Id = @Item_Id OR @Item_Id = 0)
+				AND (inv.RecordStatus_ID <> 4)
+				AND (invdet.RecordStatus_ID <> 4 OR invdet.RecordStatus_ID IS NULL) -- Status=4=Deleted
+				AND invdet.DocumentType_ID = 1 AND (@ItemSummary_DocumentType_ID = 17 OR @ItemSummary_DocumentType_ID = 15)	--Sold, Stock
+
+			UNION ALL
+
+			SELECT invdet.Co_Id, invdet.Item_Id, 0 AS Source_Second_ID, @ItemSummary_DocumentType_ID AS Source_DocumentType_ID, invdet.[Warehouse_ID]
+			, invdet.Inventory_Qty_Size01 * @SalesReturnFactor AS Inventory_Qty_Size01 , invdet.Inventory_Qty_Size02 * @SalesReturnFactor AS Inventory_Qty_Size02 
+			, invdet.Inventory_Qty_Size03 * @SalesReturnFactor AS Inventory_Qty_Size03 , invdet.Inventory_Qty_Size04 * @SalesReturnFactor AS Inventory_Qty_Size04
+			, invdet.Inventory_Qty_Size05 * @SalesReturnFactor AS Inventory_Qty_Size05 , invdet.Inventory_Qty_Size06 * @SalesReturnFactor AS Inventory_Qty_Size06
+			, invdet.Inventory_Qty_Size07 * @SalesReturnFactor AS Inventory_Qty_Size07 , invdet.Inventory_Qty_Size08 * @SalesReturnFactor AS Inventory_Qty_Size08
+			, invdet.Inventory_Qty_Size09 * @SalesReturnFactor AS Inventory_Qty_Size09 , invdet.Inventory_Qty_Size10 * @SalesReturnFactor AS Inventory_Qty_Size10
+			, invdet.Inventory_Qty_Size11 * @SalesReturnFactor AS Inventory_Qty_Size11 , invdet.Inventory_Qty_Size12 * @SalesReturnFactor AS Inventory_Qty_Size12
+			, invdet.Inventory_Qty_Size13 * @SalesReturnFactor AS Inventory_Qty_Size13, 0 AS Stamp_UserID, GetDate() AS Stamp_DateTime
+			, NULL AS Upload_DateTime
+			FROM Inventory_Detail invdet 
+				INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+			WHERE (invdet.Co_Id = @Co_Id OR @Co_Id = 0) AND (invdet.Item_Id = @Item_Id OR @Item_Id = 0)
+				AND (inv.RecordStatus_ID <> 4)
+				AND (invdet.RecordStatus_ID <> 4 OR invdet.RecordStatus_ID IS NULL) -- Status=4=Deleted
+				AND invdet.DocumentType_ID = 2 AND (@ItemSummary_DocumentType_ID = 17 OR @ItemSummary_DocumentType_ID = 15)	--Sold, Stock
+			
+		) a
+		GROUP BY Co_ID, Item_ID, Source_Second_ID, Source_DocumentType_ID, [Warehouse_ID]
+go
+[spRecalculateItemSummary] 0, 0, 15
+go
+[spRecalculateItemSummary] 0, 0, 16
+go
+[spRecalculateItemSummary] 0, 0, 17

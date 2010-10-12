@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Quick_Base">
+</Property><Property Name="Solution File" Value="D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\Quick_Base.sln">
+</Property><Property Name="Date" Value="Sunday, August 22, 2010">
+</Property><Property Name="Time" Value="12:16 PM">
+</Property></Properties><Event ErrorLevel="0" Project="QuickControls" Source="QuickControls\QuickControls.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickControls" Source="QuickControls\QuickControls.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="QuickLibrary" Source="QuickLibrary\QuickLibrary.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickLibrary" Source="QuickLibrary\QuickLibrary.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="QuickDAL" Source="QuickDAL\QuickDAL.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickDAL" Source="QuickDAL\QuickDAL.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="QuickDALLibrary" Source="QuickDalLibrary\QuickDALLibrary.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickDALLibrary" Source="QuickDalLibrary\QuickDALLibrary.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="QuickBaseForms" Source="QuickBaseForms\QuickBaseForms.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickBaseForms" Source="QuickBaseForms\QuickBaseForms.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="QuickBusinessControls" Source="QuickBusinessControls\QuickBusinessControls.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="QuickBusinessControls" Source="QuickBusinessControls\QuickBusinessControls.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="Quick_Base.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Quick_Base.sln" Description="Converted">
+</Event></UpgradeLog>
