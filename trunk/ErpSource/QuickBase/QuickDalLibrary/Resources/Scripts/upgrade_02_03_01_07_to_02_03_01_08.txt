@@ -1,1 +1,0 @@
-UPDATE Base_Setting SET Setting_Value = 'P-Y/9999' WHERE Setting_Id = 'DocumentNoFormat.SalesInvoice'
