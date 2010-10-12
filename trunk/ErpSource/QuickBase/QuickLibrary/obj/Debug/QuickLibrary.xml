@@ -1,0 +1,66 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QuickLibrary
+</name>
+</assembly>
+<members>
+<member name="P:QuickLibrary.Common.IsApplicationRunning">
+	<summary>
+ This will tell if application is runnin. Currently needed in frmMaster because
+ code is running when we load form in design mode and generates error.
+ </summary>
+</member><member name="P:QuickLibrary.Common.QtyCellType">
+	<summary>
+ This is used to set the cell type for quantity columns.
+ </summary>
+</member><member name="P:QuickLibrary.Common.QtyTotalCellType">
+	<summary>
+ This is used to set the cell type for quantity columns.
+ </summary>
+</member><member name="P:QuickLibrary.Common.TotalSizes">
+	<summary>
+ It returns maximum total number of sizes available for items
+ </summary>
+</member><member name="M:QuickLibrary.Common.CountStringOccurences(System.String,System.String)">
+	<summary>
+ It counts character occurence in the given string.
+ </summary>
+</member><member name="M:QuickLibrary.Common.IndexOfStringAtOccurence(System.String,System.String,System.Int32)">
+	<summary>
+ Searches given string and finds particular occurence of the string to search.
+ </summary>
+</member><member name="M:QuickLibrary.Common.GenerateNextDocumentNo(System.String,System.String,System.String,System.Boolean)">
+	<summary>
+ Give it the last document number (can be nothing) and the document format and
+ it will give you the next document number. ReturnLikeOperatorPattern should
+ be true if you want a string which you need to get the maximum document no
+ in the database, when getting next document no it should be false.
+ Y will give you the year, possible patterns are Y, YY, YYY, YYYY.
+ 9 will give you the increamenting digit, there any repitions 1-n.
+ P will give you the party category code.
+ p will give you the party code.
+ </summary>
+</member><member name="M:QuickLibrary.Common.GetDocumentNoSegment(QuickLibrary.Common.DocumentNoSegments,System.String,System.String)">
+	<summary>
+ Get particular segment from the Document Number. Usually it is used to check
+ if static segment is changed such as party category code then maybe document
+ number will be generated new.
+ </summary>
+</member><member name="P:QuickLibrary.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:QuickLibrary.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:QuickLibrary.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

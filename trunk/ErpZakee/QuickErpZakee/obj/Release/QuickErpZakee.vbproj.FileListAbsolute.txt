@@ -1,0 +1,12 @@
+F:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\ResolveAssemblyReference.cache
+F:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.Form1.resources
+F:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.Resources.resources
+F:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.vbproj.GenerateResource.Cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\ResolveAssemblyReference.cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.CashFlowAccount.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.FinancialAccountType.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.Form1.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.Resources.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.ReportCriteria.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.vbproj.GenerateResource.Cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Release\QuickErpZakee.dll.licenses

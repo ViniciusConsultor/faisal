@@ -1,0 +1,188 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\QuickErp\QuickErp_Test.exe.config
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.exe.config
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.DBConnectivityForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.frmAboutBox.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.frmSplashScreen.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.frmTransferData.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.LoginForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.MDIParent1.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickERP.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.exe.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\bin\Debug\QuickErp_Test.exe.config
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe.config
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.exe.manifest
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.application
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.exe
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.XmlSerializers.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickErp\QuickErp_Test.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.TrustInfo.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.exe.manifest
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.application
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.exe
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Release\QuickErp_Test.XmlSerializers.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.frmAboutBox.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.frmTransferData.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.LoginForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.MDIParent1.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.exe.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe.manifest
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.application
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickErp\QuickErp_Test.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.TrustInfo.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.exe.manifest
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.application
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.exe
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\Main\obj\Debug\QuickErp_Test.pdb
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe.config
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.exe
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.xml
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.pdb
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe.manifest
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.application
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.exe
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.pdb
+D:\zakee\QuickErp\bin\Debug\QuickErp\QuickErp_Test.xml
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.frmAboutBox.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.frmTransferData.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.LoginForm.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.MDIParent1.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.Resources.resources
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.exe.licenses
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.TrustInfo.xml
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.exe.manifest
+D:\zakee\QuickErp\ErpSource\Main\obj\Debug\QuickErp_Test.application
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.exe.config
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.xml
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.pdb
+D:\LiveMesh\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.licenses
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.exe.manifest
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.application
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.exe
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.pdb
+D:\LiveMesh\bin\Debug\QuickErp\QuickErp_Test.xml
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.TrustInfo.xml
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.manifest
+D:\LiveMesh\ErpCommon\Main\obj\Debug\QuickErp_Test.application
+D:\LiveMesh\bin\Release\QuickErp\QuickErp_Test.exe.config
+D:\LiveMesh\ErpCommon\Main\obj\Release\QuickErp_Test.exe
+D:\LiveMesh\ErpCommon\Main\obj\Release\QuickErp_Test.xml
+D:\LiveMesh\ErpCommon\Main\obj\Release\QuickErp_Test.XmlSerializers.dll
+D:\ERP-Source\bin\Debug\QuickErp\QuickErp_Test.exe.config
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickErp_Test.exe
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickErp_Test.xml
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickErp_Test.pdb
+D:\ERP-Source\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+D:\ERP-Source\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.licenses
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe.config
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.xml
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.pdb
+H:\Live Mesh\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.licenses
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.TrustInfo.xml
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.manifest
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe.manifest
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.application
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.pdb
+H:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.xml
+H:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.application
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickErp\QuickErp_Test.exe.config
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickErp_Test.exe
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickErp_Test.xml
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickErp_Test.pdb
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.licenses
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe.config
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.xml
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.pdb
+E:\Live Mesh\ErpCommon\Main\obj\Debug\ResolveAssemblyReference.cache
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.DBConnectivityForm.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmAboutBox.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmSplashScreen.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.frmTransferData.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.LoginForm.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.MDIParent1.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.Resources.resources
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickERP.vbproj.GenerateResource.Cache
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.licenses
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe.manifest
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.application
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.exe
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.pdb
+E:\Live Mesh\bin\Debug\QuickErp\QuickErp_Test.xml
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.TrustInfo.xml
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.exe.manifest
+E:\Live Mesh\ErpCommon\Main\obj\Debug\QuickErp_Test.application
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.exe.config
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.exe
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.exe.licenses
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.exe.manifest
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.application
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.exe
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErp\QuickErp.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.TrustInfo.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.exe.manifest
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpCommon\Main\obj\Debug\QuickErp.application

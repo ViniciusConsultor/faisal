@@ -1,0 +1,96 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QuickErpZakee
+</name>
+</assembly>
+<members>
+<member name="T:QuickErpZakee.AccountsDataSet.Accounting_CashFlowAccountDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet.Accounting_FinancialAccountTypeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet.Accounting_CashFlowAccountRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet.Accounting_FinancialAccountTypeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet.Accounting_CashFlowAccountRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet.Accounting_FinancialAccountTypeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSetTableAdapters.Accounting_CashFlowAccountTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QuickErpZakee.AccountsDataSetTableAdapters.Accounting_FinancialAccountTypeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="P:QuickErpZakee.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:QuickErpZakee.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:QuickErpZakee.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_MenuDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_SettingFormDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_MenuRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_SettingFormRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_MenuRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet.Base_SettingFormRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSetTableAdapters.Base_MenuTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:QuickErpZakee.QuickCommonDataSetTableAdapters.Base_SettingFormTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+</members>
+</doc>

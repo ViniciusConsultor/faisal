@@ -1,0 +1,641 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QuickDALLibrary
+</name>
+</assembly>
+<members>
+<member name="M:QuickDALLibrary.QuickMessageBox.Button_Click(System.Object,System.EventArgs)">
+	<summary>
+ Description of the method goes here ...
+ </summary>
+</member><member name="M:QuickDALLibrary.QuickMessageBox.Show(QuickDALLibrary.LoginInfo,System.String,System.Windows.Forms.MessageBoxButtons)">
+	<summary>
+ You can give message text and chose buttons for message box.
+ </summary>
+</member><member name="M:QuickDALLibrary.QuickMessageBox.Show(QuickDALLibrary.LoginInfo,System.String,System.Windows.Forms.MessageBoxButtons,QuickDALLibrary.QuickMessageBox.MessageBoxTypes,System.Windows.Forms.MessageBoxIcon)">
+	<summary>
+ Maximum options show method.
+ </summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_00_00_12_to_02_01_00_01">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Sec_Menu_Role_Association')
+	BEGIN
+	CREATE TABLE Sec_Menu_Role_Association(
+		[Co_ID] [smallint] NOT NULL,
+		[Menu_ID] [int] NOT NULL,
+		[Role_ID] [int] NOT NULL,
+		[Stamp_DateTime] [datetime] NOT NULL,
+		[Stamp_UserID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+	 CONSTRAINT PK_Sec_Menu_Role_Association PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[Menu_ID] ASC,
+		[Role_ID] ASC
+	)
+	) ON [PRIMARY]
+	END
+GO
+IF NOT EXIST [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_01_00_06_to_02_01_00_07">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate1') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate1 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate2') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate2 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_01_00_09_to_02_02_00_00">
+	<summary>
+  Looks up a localized string similar to --Primary needs to be changed so change the duplicate inventory_id to new ones
+--Updates duplicate items in detail table which was not updated by above query.
+DECLARE @Co_ID AS INT, @Inventory_ID AS INT, @DocumentType_ID AS INT, @Inventory_Detail_ID AS INT, @New_ID AS INT, @New_Detail_ID AS INT, @Count AS INT
+WHILE EXISTS (SELECT Co_ID, Inventory_ID FROM Inventory_Detail GROUP BY Co_ID, Inventory_ID, InventoryDetail_ID HAVING COUNT(*) &gt; 1)
+	BEGIN
+		SELECT @Co_ID=Co_ID, @Inventory_ID=Inventory_ID, @Do [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_02_00_00_to_02_02_01_00">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT Status_ID FROM Sec_Menu_Role_Association WHERE Status_ID IS NULL)
+	BEGIN
+		UPDATE Sec_Menu_Role_Association SET Status_ID = 10 WHERE Status_ID IS NULL
+		ALTER TABLE Sec_Menu_Role_Association ALTER COLUMN Status_ID INT NOT NULL
+	END
+go
+IF NOT EXISTS (SELECT * FROM Common_Status WHERE Status_ID = 10)
+	INSERT INTO [Common_Status]
+		([Status_Type_ID], [Status_ID], [Status_Desc], [Stamp_DateTime], [Stamp_UserID], [Upload_DateTime])
+		 VALUES (0, 10, 'Ready', GetDate(), 0, NULL).
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_02_01_02_to_02_03_00_00">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Warehouse')
+	CREATE TABLE Inv_Warehouse 
+		(Co_ID SMALLINT NOT NULL,
+		Warehouse_ID INT NOT NULL,
+		Warehouse_Name VARCHAR(100) NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+		
+		CONSTRAINT PK_Inv_Warehouse PRIMARY KEY CLUSTERED
+		(
+		Co_ID ASC, Warehouse_ID ASC
+		))
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[ [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_00_to_02_03_00_01">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT * FROM Common_Status_Type WHERE Status_Type_ID = 0)
+	INSERT INTO [Common_Status_Type]
+		([Status_Type_ID], [Status_Type_Desc], [Stamp_DateTime], [Stamp_UserID], [Upload_DateTime])
+		 VALUES (0, 'Apply to All', '2009/04/22', 0, NULL)
+GO
+IF NOT EXISTS (SELECT * FROM Common_Status_Type WHERE Status_Type_ID = 1)
+	INSERT INTO [Common_Status_Type]
+		([Status_Type_ID], [Status_Type_Desc], [Stamp_DateTime], [Stamp_UserID], [Upload_DateTime])
+		 VALUES (1, 'Transfer Data', '2009/04/22', [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_01_to_02_03_00_02">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_User' AND c.[Name]='Is_Admin')
+	ALTER TABLE Sec_User ADD Is_Admin BIT NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Party_ID')
+	ALTER TABLE Accounting_Voucher_Detail ADD Party_ID INT NULL.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_02_to_02_03_00_03">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Party_ID')
+	ALTER TABLE Accounting_Voucher_Detail ADD Party_ID INT NULL
+go
+UPDATE Sec_User Set Is_Admin = 1, Stamp_DateTime = GetDate().
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_08_to_02_03_00_09">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =108) 
+	INSERT INTO [Base_Menu] 
+		([Menu_Id], [Menu_Desc], [Form_Id], 
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId], 
+		[Stamp_DateTime], [Upload_DateTime]) 
+		VALUES (108, 'Sales Re&amp;turn', '01-008', 8, 100, 0, '2009/05/16', NULL)
+GO
+UPDATE Inv_ItemSummary SET Warehouse_ID = 0 WHERE Warehouse_ID IS NULL
+GO
+IF NOT EXISTS (SELECT * FROM Inv_ItemSummary WHERE Warehouse_ID IS NULL)
+	ALTER TABLE Inv_ItemSummary
+		ALTER COLUMN Warehouse [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_12_to_02_03_00_13">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_VoucherType' AND c.[Name]='Inactive_From')
+	ALTER TABLE Accounting_VoucherType ADD Inactive_From DATETIME NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_VoucherType' AND c.[Name]='Inactive_To')
+	ALTER TABLE Accounting_VoucherType ADD Inactive_To DATETIME NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_13_to_02_03_00_14">
+	<summary>
+  Looks up a localized string similar to -- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	20-Jun-2009	Add field of remarks to show in daily stock report.
+-- ---------------------------------------------
+ALTER PROCEDURE [spDailyStock]
+	 [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_14_to_02_03_00_15">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_ItemSize')
+	CREATE TABLE Inv_ItemSize
+		(Co_ID SMALLINT NOT NULL,
+		ItemSize_ID SMALLINT NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+		CONSTRAINT PK_Inv_ItemSize PRIMARY KEY CLUSTERED
+		(Co_ID ASC, ItemSize_ID ASC)
+		)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_ItemSize_History')
+	CREATE TABLE Inv_ItemSize_History
+		(History_ID INT [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_15_to_02_03_00_16">
+	<summary>
+  Looks up a localized string similar to -- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	20-Jun-2009	Add field of remarks to show in daily stock report.
+-- Faisal	06-Aug-2009	Inventory_ID column is added so that it can be grouped in rep [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_16_to_02_03_00_17">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =602)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime])
+		VALUES (602, '&amp;Users', '06-002', 2, 600, 0, '2009-08-08', NULL)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =603)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_Dat [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_19_to_02_03_00_20">
+	<summary>
+  Looks up a localized string similar to DELETE FROM Base_Alert WHERE Alert_DateTime &lt; '2008-08-23'
+go
+UPDATE Base_Alert SET Alert_Destination = 'quickerp@quicktijarat.com', Stamp_DateTime = '2009-09-14' 
+WHERE Alert_Type = 0 AND Status_ID = 8.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_00_20_to_02_03_01_00">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail')
+	DROP TABLE Invs_Inventory_Detail
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory')
+	DROP TABLE Invs_Inventory
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail_History')
+	DROP TABLE Invs_Inventory_Detail_History
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_History')
+	DROP TABLE Invs_Inventory_History
+go
+IF E [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_01_to_02_03_01_02">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionQty_Total')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionQty_Total'
+       ,'Qty_Total Caption'
+       ,'Total',0,'2009/11/09','String'
+       ,NULL,NULL, [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_04_to_02_03_01_05">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Status_ID')
+	ALTER TABLE Accounting_Voucher_Detail ADD Status_ID INT NULL
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Accounting_FinancialAccountType')
+	CREATE TABLE [Accounting_FinancialAccountType](
+		[FinancialAccountType_ID] SMALLINT NOT NULL,
+		[FinancialAccountType_Desc] VARCHAR(50) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_05_to_02_03_01_06">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inventory.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Common_Status')
+	exec sp_rename 'Common_Status', 'Common_RecordStatus'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_RecordStatus' AND c.[Name]='Status_ID')
+	exec sp_rename 'Common_Rec [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_06_to_02_03_01_07">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Parent_COA_ID')
+	ALTER TABLE Accounting_COA ADD Parent_COA_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Level_No')
+	ALTER TABLE Accounting_COA ADD Level_No TINYINT NULL
+.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_07_to_02_03_01_08">
+	<summary>
+  Looks up a localized string similar to UPDATE Base_Setting SET Setting_Value = 'P-Y/9999' WHERE Setting_Id = 'DocumentNoFormat.SalesInvoice'
+.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_08_to_02_03_01_09">
+	<summary>
+  Looks up a localized string similar to ALTER TABLE Inventory_Detail DISABLE TRIGGER ALL
+GO
+UPDATE Inventory_Detail SET Warehouse_ID = 0 WHERE Warehouse_ID IS NULL
+GO
+ALTER TABLE Inventory_Detail ENABLE TRIGGER ALL
+GO
+ALTER TABLE Inventory_Detail
+	ALTER COLUMN Warehouse_ID INT NOT NULL
+.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_09_to_02_03_01_10">
+	<summary>
+  Looks up a localized string similar to ALTER TABLE Base_Setting
+	ALTER COLUMN Setting_Id VARCHAR(100) NOT NULL
+GO
+IF NOT EXISTS (SELECT [Co_Id] FROM [Base_Setting] WHERE [Co_Id]=0 AND [User_Id]=0 AND [Setting_Id]='ModificationAllowedPartyCategoryComboBox.SalesInvoiceForm')
+	INSERT INTO [Base_Setting]
+			   ([Co_Id]
+			   ,[User_Id]
+			   ,[Setting_Id]
+			   ,[Setting_Desc]
+			   ,[Setting_Value]
+			   ,[Stamp_User_Id]
+			   ,[Stamp_DateTime]
+			   ,[Setting_Value_DataType]
+			   ,[Setting_Value_MinimumValue]
+			   ,[Setting_Value_M [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_10_to_02_03_01_11">
+	<summary>
+  Looks up a localized string similar to ALTER VIEW [dbo].[vwStockInquiry]
+AS
+SELECT	Co_ID, Co_Code, Item_ID, Item_Code, Item_Category, Item_Desc, SUM(Inventory_Qty_Size01) AS Inventory_Qty_Size01
+		, SUM(Inventory_Qty_Size02) AS Inventory_Qty_Size02, SUM(Inventory_Qty_Size03) AS Inventory_Qty_Size03
+		, SUM(Inventory_Qty_Size04) AS Inventory_Qty_Size04, SUM(Inventory_Qty_Size05) AS Inventory_Qty_Size05
+		, SUM(Inventory_Qty_Size06) AS Inventory_Qty_Size06, SUM(Inventory_Qty_Size07) AS Inventory_Qty_Size07
+		, SUM(Inventory_Qty_Size08) AS  [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_11_to_02_03_01_12">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Base_SearchOption')
+	CREATE TABLE [Base_SearchOption](
+		[SearchOption_ID] INT NOT NULL,
+		[SearchOption_Query] VARCHAR(8000) NOT NULL,
+		[RecordStatus_ID] INT NOT NULL,
+		[Stamp_UserID] INT NOT NULL,
+		[Stamp_DateTime] DATETIME NOT NULL,
+		[Upload_DateTime] DATETIME NULL,
+	 CONSTRAINT [PK_Base_SearchOption] PRIMARY KEY CLUSTERED 
+		(SearchOption_ID ASC)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Bas [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_12_to_02_03_01_13">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Base_SettingForm')
+	CREATE TABLE [Base_SettingForm](
+		[Form_ID] SMALLINT NOT NULL,
+		[Form_Code] VARCHAR(6) NOT NULL,
+		[Form_Name] VARCHAR(100) NOT NULL,
+		[RecordStatus_ID] INT NOT NULL,
+		[Stamp_UserID] INT NOT NULL,
+		[Stamp_DateTime] DATETIME NOT NULL,
+		[Upload_DateTime] DATETIME NULL,
+	 CONSTRAINT [PK_Base_SettingForm] PRIMARY KEY CLUSTERED 
+		(Form_ID ASC)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o. [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_01_14_to_02_03_01_15">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_SearchOption_Detail' AND c.[Name]='IsHidden')
+	ALTER TABLE Base_SearchOption_Detail ADD IsHidden BIT NULL
+go
+IF EXISTS (SELECT [SearchOption_ID] FROM [Base_SearchOption_Detail] WHERE [IsHidden] IS NULL)
+	BEGIN
+		UPDATE Base_SearchOption_Detail SET IsHidden = 0 WHERE IsHidden IS NULL
+		ALTER TABLE Base_SearchOption_Detail ALTER COLUMN IsHidden BIT NULL
+	END
+go
+IF NOT EXISTS (SELECT C.[NAME] FR [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_02_20_to_02_03_02_21">
+	<summary>
+  Looks up a localized string similar to -- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is chan [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_02_22_to_02_03_02_23">
+	<summary>
+  Looks up a localized string similar to if exists (select * from dbo.sysobjects where [name] = 'fn_Split')
+	drop function [fn_Split]
+go
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 
+-- Description:	This function returns the table for the comma seperated
+--				values provided as parameter.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+create  FUNCTION fn_Split(@text varchar(8000), @de [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_02_23_to_02_03_02_24">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='DocumentStatus_ID')
+	ALTER TABLE Accounting_Voucher ADD DocumentStatus_ID INT NULL
+	
+go
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='spGetMenuWithAllowedStatusByCoIDRoleID')
+	DROP PROCEDURE spGetMenuWithAllowedStatusByCoIDRoleID
+go
+-- ======================================================================
+-- Author:		Faisal Saleem
+-- Create date: 1 [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_02_24_to_02_03_02_25">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='Dwh_TimeDimension')
+	CREATE TABLE Dwh_TimeDimension
+		(
+		TimeDimensionID INT NULL,
+		YearNumber SMALLINT NULL,
+		MonthNumber SMALLINT NULL,
+		DayOfMonth SMALLINT NULL,
+		DayOfWeek SMALLINT NULL,
+		WeekOfYear SMALLINT NULL,
+		QuarterNumber SMALLINT NULL,
+		IsWeekend BIT NULL,
+		IsHoliday BIT NULL,
+		IsSeason BIT NULL
+		)
+go
+IF NOT EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='Dwh_COADimension')
+	CREATE TABLE Dwh_C [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade_02_03_02_25_to_02_03_02_26">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='Opening_DebitAmount')
+	ALTER TABLE Accounting_COA ADD COLUMN Opening_DebitAmount DECIMAL NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='Opening_CreditAmount')	
+	ALTER TABLE Accounting_COA ADD COLUMN Opening_CreditAmount DECIMAL NULL.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade1370To1380">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Accounting_Voucher_Detail ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Person' AND c.[Name]='Upload_DateTime') 
+ALTER TABLE Person ADD Upload_DateTime datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolum [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade1380To1390">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='trigUpdateStock')
+DROP TRIGGER trigUpdateStock
+GO
+-- =============================================
+-- Author:		Faisal
+-- Create date: 23-Nov-2008
+-- Description:	
+-- =============================================
+CREATE TRIGGER [dbo].[trigUpdateStock] 
+   ON  [dbo].[Inventory_Detail] 
+   AFTER INSERT,DELETE,UPDATE
+AS 
+DECLARE @Factor AS INT
+	IF (SELECT Count(*) FROM Deleted) &gt;0
+		BEGIN
+		IF (SELECT Count(*) FROM Inv_Stock WHERE Co [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade1390To1391">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='spGetInventoryDetails')
+	DROP PROCEDURE spGetInventoryDetails
+go
+CREATE PROCEDURE [dbo].[spGetInventoryDetails] 
+AS 
+BEGIN 
+	SELECT inv.Co_ID, Co.Co_Desc, 
+		invdet.Item_ID, inv.Party_ID, 
+		item.Item_Code, item.Item_Desc, 
+		cat.Item_Desc AS Item_Category, inv.Inventory_Date, 
+		inv.Payment_Mode, inv.Remarks,	
+		inv.Inventory_ID, inv.Inventory_No, 
+		invdet.DocumentType_ID, doc.DocumentType_Desc, 
+		invdet.Inventory_Qty_Size01, invd [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade1391To1392">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='ItemDescLevel') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'ItemDescLevel'
+       ,'When user will enter item code then description of this specified level will be shown intead of entered code [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade1392To1400">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItem_MinStock_Size0') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItem_MinStock_Size0'
+       ,'Item_MinStock_Size0 Caption'
+       ,'100',0,GetDate(),'String'
+ [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade1400To1410">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item' AND c.[Name]='Item_MinStock_Size0')
+	ALTER TABLE Inv_Item ADD Item_MinStock_Size0 int NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item' AND c.[Name]='Item_MinStock_Size1')
+	ALTER TABLE Inv_Item ADD Item_MinStock_Size1 int NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE  [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade1410to2000">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Stock')
+	exec sp_rename 'Inv_Stock', 'Inv_ItemSummary'
+go
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSummary' AND c.[Name]='Item_Stock_Size01')
+	exec sp_rename 'Inv_ItemSummary.Item_Stock_Size01', 'ItemSummary_Size01'
+go
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSummary' AND c.[Name]='Item_Stock_Size02')
+	exe [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade2000to20001">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size01') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size01'
+       ,'ItemSummary_Size01 Caption'
+       ,'100',0,GetDate(),'String'
+    [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade20011to20012">
+	<summary>
+  Looks up a localized string similar to -- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is chan [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade2003to2004">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='trigUpdateItemSummaryPurchased')
+	DROP TRIGGER [trigUpdateItemSummaryPurchased]
+GO
+-- =============================================
+-- Author:		Faisal
+-- Create date: 07-Feb-2009
+-- Description:	This trigger updates the ItemSummary table for Purchased Items info
+-- Modification Hisotry
+-- Date			Updated By		Details
+--
+-- =============================================
+CREATE TRIGGER [dbo].[trigUpdateItemSummaryPurchased]
+   ON  [dbo].[I [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.upgrade2006to2007">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory')
+	ALTER TABLE Inventory 
+		DROP CONSTRAINT PK_Inventory
+GO
+IF NOT EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory')
+	ALTER TABLE Inventory 
+		ADD CONSTRAINT PK_Inventory PRIMARY KEY CLUSTERED
+		(Co_ID, Inventory_ID, DocumentType_ID)
+GO
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory_Detail')
+	ALTER TABLE Inventory_Detail 
+		DROP CONSTRAINT PK_Inventory_Detail
+GO
+IF NOT  [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade2007to2008">
+	<summary>
+  Looks up a localized string similar to IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='spDailyStock')
+	DROP PROCEDURE spDailyStock
+GO
+-- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+CREATE PROCEDURE spDailyStock
+	-- Add the parameters for the stored procedure here
+	--@From_Date Datetime = '1900/01/01', 
+	--@To_Date Datetime = '2008 [rest of string was truncated]";.
+</summary>
+</member><member name="P:QuickDALLibrary.My.Resources.Resources.Upgrade2008to2009">
+	<summary>
+  Looks up a localized string similar to IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =307) 
+	INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Id], 
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime]) 
+	VALUES (307, 'Erp &amp;Configuration', '03-007', 7, 300, 0, GetDate(), NULL)
+GO
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='ReportFooterText.PosSalesInvoiceReport') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+ [rest of string was truncated]";.
+</summary>
+</member><member name="T:QuickDALLibrary.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:QuickDALLibrary.DatabaseVersion.GetUpgradeScripts(System.String,System.String@,System.Collections.ArrayList@)">
+	<summary>
+ This returns the target version number and arraylist of scripts in byref 
+ parameters based on the existing version of the database given to it.
+ </summary>
+</member>
+</members>
+</doc>

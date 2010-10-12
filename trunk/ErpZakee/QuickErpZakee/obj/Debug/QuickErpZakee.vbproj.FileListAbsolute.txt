@@ -1,0 +1,29 @@
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CashFlowAccount.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.FinancialAccountType.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Form1.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportCriteria.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.vbproj.GenerateResource.Cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll.licenses
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.dll.config
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.dll
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.pdb
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.xml
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CashFlowAccount.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.FinancialAccountType.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CriteriaForm.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.MenuSetting.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportCriteria.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportViewerForm.resources
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\GenerateResource.read.1.tlog
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\GenerateResource.write.1.tlog
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll.licenses
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+D:\LiveMesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb

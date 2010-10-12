@@ -1,0 +1,412 @@
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_ItemSize')
+	CREATE TABLE Inv_ItemSize
+		(Co_ID SMALLINT NOT NULL,
+		ItemSize_ID SMALLINT NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+
+		CONSTRAINT PK_Inv_ItemSize PRIMARY KEY CLUSTERED
+		(Co_ID ASC, ItemSize_ID ASC)
+		)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_ItemSize_History')
+	CREATE TABLE Inv_ItemSize_History
+		(History_ID INT NOT NULL IDENTITY,
+		Co_ID SMALLINT NOT NULL,
+		Item_ID INT NOT NULL,
+		ItemSize_ID SMALLINT NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+		CONSTRAINT PK_Inv_ItemSize_History PRIMARY KEY CLUSTERED
+		(History_ID ASC)
+		)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Item_Size_Association')
+	CREATE TABLE Inv_Item_Size_Association
+		(Co_ID SMALLINT NOT NULL,
+		Item_ID INT NOT NULL,
+		ItemSize_ID SMALLINT NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+		
+		CONSTRAINT PK_Inv_Item_Size_Association PRIMARY KEY CLUSTERED
+		(Co_ID ASC, Item_ID ASC, ItemSize_ID ASC)
+		)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Item_Size_Association_History')
+	CREATE TABLE Inv_Item_Size_Association_History
+		(History_ID INT NOT NULL IDENTITY,
+		Co_ID SMALLINT NOT NULL,
+		Item_ID INT NOT NULL,
+		ItemSize_ID SMALLINT NOT NULL,
+		Stamp_UserID INT NOT NULL,
+		Stamp_DateTime DATETIME NOT NULL,
+		Upload_DateTime DATETIME NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+		CONSTRAINT PK_Inv_Item_Size_Association_History PRIMARY KEY CLUSTERED
+		(History_ID ASC)
+		)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Item')
+	CREATE TABLE [Invs_Item](
+		[Co_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[Parent_Item_ID] INT NOT NULL CONSTRAINT [DF_Invs_Item_Parent_Item_ID] DEFAULT ((0)),
+		[Party_ID] INT NOT NULL CONSTRAINT [DF_Invs_Item_Party_ID] DEFAULT ((0)),
+		[Address_ID] INT NOT NULL CONSTRAINT [DF_Invs_Item_Address_ID] DEFAULT ((0)),
+		[Item_Code] VARCHAR(50) NOT NULL,
+		[Item_Desc] VARCHAR(50) NOT NULL,
+		[Stamp_UserID] INT NOT NULL,
+		[Stamp_DateTime] DATETIME NOT NULL,
+		[Upload_DateTime] DATETIME NULL,
+
+	 CONSTRAINT [PK_Invs_Item] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[Item_ID] ASC
+	),
+	 CONSTRAINT [IX_Invs_Item] UNIQUE NONCLUSTERED 
+	(	[Co_ID] ASC,
+		[Item_Code] ASC
+	)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail')
+	CREATE TABLE [Invs_Inventory_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[Inventory_ID] INT NOT NULL,
+		[InventoryDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Invs_Inventory_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[Inventory_ID] ASC,
+		[InventoryDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail_History')
+	CREATE TABLE [Invs_Inventory_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[Inventory_ID] INT NOT NULL,
+		[InventoryDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Invs_Inventory_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory')
+	CREATE TABLE [Invs_Inventory](
+		[Co_ID] [smallint] NOT NULL,
+		[Inventory_ID] [int] NOT NULL,
+		[Inventory_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Inventory_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+
+	 CONSTRAINT [PK_Invs_Inventory] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[Inventory_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_History')
+	CREATE TABLE [Invs_Inventory_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[Inventory_ID] [int] NOT NULL,
+		[Inventory_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Inventory_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Invs_Inventory_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_SalesInvoice')
+	CREATE TABLE [Invs_Inventory_SalesInvoice](
+		[Co_ID] [smallint] NOT NULL,
+		[Inventory_ID] [int] NOT NULL,
+		[SalesMan_ID] [int] NOT NULL,
+		[Discount] [money] NOT NULL,
+		[SalesTax] [money] NOT NULL,
+		[Stamp_DateTime] [datetime] NOT NULL,
+		[Stamp_UserID] [int] NOT NULL,
+		[TotalCashReceived] [decimal](18, 0) NULL,
+		[Upload_DateTime] [datetime] NULL,
+	 CONSTRAINT [PK_Invs_Inventory_SalesInvoice] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[Inventory_ID] ASC
+	)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_ItemSummary')
+	CREATE TABLE [Invs_ItemSummary](
+		[Co_ID] [smallint] NOT NULL,
+		[Source_First_ID] [int] NOT NULL,
+		[Source_Second_ID] [int] NOT NULL,
+		[Source_DocumentType_ID] [int] NOT NULL,
+		[Warehouse_ID] [int] NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemValue] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] [int] NOT NULL,
+		[Stamp_DateTime] [datetime] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+	 CONSTRAINT [PK_Invs_ItemSummary] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[Source_First_ID] ASC,
+		[Source_Second_ID] ASC,
+		[Source_DocumentType_ID] ASC,
+		[Warehouse_ID] ASC
+	)
+	)
+GO
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 
+-- Description:	This stored procedure returns the records from voucher_detail 
+--				table joining with inventory tables as well. It sums up the inventory document
+--				so that its quantity can be used on daily report.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+ALTER PROCEDURE [spGetAccountsDetails] 
+AS 
+BEGIN 
+	SELECT [Voucher_No],v.[VoucherType_ID],vt.[VoucherType_Code]
+		, vt.[VoucherType_Desc],[Voucher_Date],[Status_ID],[Remarks]
+		, vd.[Co_ID],vd.[Voucher_ID],[VoucherDetail_ID],vd.[COA_ID]
+		, coa.[COA_Code],coa.[COA_Desc],[Narration],[DebitAmount]
+		, [CreditAmount],vd.[Stamp_User_Id],vd.[Stamp_DateTime]
+		, ISNULL(invd.Qty_Total,0) AS Qty_Total
+		, ISNULL(Inventory_No,'') AS Inventory_No, ISNULL(Inventory_Source_Document_No,'') AS Inventory_Source_Document_No
+		, ISNULL(Category_Party_Desc,'') AS Category_Party_Desc
+	FROM Accounting_Voucher v 
+		RIGHT OUTER JOIN Accounting_Voucher_Detail vd 
+			ON v.Co_ID = vd.Co_ID AND v.Voucher_ID = vd.Voucher_ID 
+		LEFT OUTER JOIN Accounting_VoucherType vt 
+			ON v.Co_ID = vt.Co_ID AND v.VoucherType_ID = vt.VoucherType_ID 
+		LEFT OUTER JOIN Accounting_COA coa 
+			ON vd.Co_ID = coa.Co_ID AND vd.COA_ID = coa.COA_ID
+		LEFT OUTER JOIN (SELECT invdet.Co_ID, invdet.Inventory_ID, inv.DocumentType_ID
+				, inv.Inventory_No, inv.Source_Document_No AS Inventory_Source_Document_No
+				, p.Party_Desc AS Category_Party_Desc
+				, Sum((Inventory_Qty_Size01 + Inventory_Qty_Size02 + Inventory_Qty_Size03 + Inventory_Qty_Size04 
+				+ Inventory_Qty_Size05 + Inventory_Qty_Size06 + Inventory_Qty_Size07 + Inventory_Qty_Size08 
+				+ Inventory_Qty_Size09 + Inventory_Qty_Size10 + Inventory_Qty_Size11 + Inventory_Qty_Size12) 
+				* CASE invdet.DocumentType_ID WHEN 2 THEN -1 ELSE 1 END) AS Qty_Total
+				FROM Inventory_Detail invdet
+					INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+					LEFT JOIN Party p ON inv.Co_ID = p.Co_ID AND inv.Party_ID = p.Party_ID
+				GROUP BY invdet.Co_ID, invdet.Inventory_ID, inv.DocumentType_ID
+					, inv.Inventory_No, inv.Source_Document_No, p.Party_Desc) invd 
+			ON v.Co_ID = invd.Co_ID AND v.Source_ID = invd.Inventory_ID AND v.Source_DocumentType_ID = invd.DocumentType_ID
+	WHERE v.Status_ID <> 4 
+END
+GO
+-- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	20-Jun-2009	Add field of remarks to show in daily stock report.
+-- ---------------------------------------------
+ALTER PROCEDURE [spDailyStock]
+	-- Add the parameters for the stored procedure here
+	--@From_Date Datetime = '1900/01/01', 
+	--@To_Date Datetime = '2008/09/28',
+	--@Co_ID int = 1
+	@From_Date Datetime, 
+	@To_Date Datetime,
+	@Co_ID int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	
+-- Insert statements for procedure here
+-- =============================================
+-- For testing. uncomment these variables and
+-- give values.
+-- =============================================
+--declare @From_Date Datetime,@To_Date Datetime,@Co_ID int
+--set @From_Date = '2008-08-10'
+--set @To_Date = '2008-08-30'
+--set @Co_ID = 1
+--select @From_Date = '2008-08-10',@To_Date = '2008-09-30',@Co_ID = 1
+
+select 0 as DocumentType_ID, '1900-01-01' as Inventory_Date, 'Opening' AS Remarks, 
+	(sum(Inventory_Qty_Size01) + sum(Inventory_Qty_Size02) + sum(Inventory_Qty_Size03) + sum(Inventory_Qty_Size04) + 
+	sum(Inventory_Qty_Size05) + sum(Inventory_Qty_Size06) + sum(Inventory_Qty_Size07) + sum(Inventory_Qty_Size08) + 
+	sum(Inventory_Qty_Size09) + sum(Inventory_Qty_Size10) + sum(Inventory_Qty_Size11) + sum(Inventory_Qty_Size12) + 
+	sum(Inventory_Qty_Size13)) as Opening_Qty, 
+	((sum(Inventory_Qty_Size01 * Item_SaleRate_Size01)) + (sum(Inventory_Qty_Size02 * Item_SaleRate_Size02)) + 
+    (sum(Inventory_Qty_Size03 * Item_SaleRate_Size03)) + (sum(Inventory_Qty_Size04 * Item_SaleRate_Size04)) + 
+	(sum(Inventory_Qty_Size05 * Item_SaleRate_Size05)) + (sum(Inventory_Qty_Size06 * Item_SaleRate_Size06)) + 
+	(sum(Inventory_Qty_Size07 * Item_SaleRate_Size07)) + (sum(Inventory_Qty_Size08 * Item_SaleRate_Size08)) + 
+    (sum(Inventory_Qty_Size09 * Item_SaleRate_Size09)) + (sum(Inventory_Qty_Size10 * Item_SaleRate_Size10)) + 
+	(sum(Inventory_Qty_Size11 * Item_SaleRate_Size11)) + (sum(Inventory_Qty_Size12 * Item_SaleRate_Size12)) + 
+	(sum(Inventory_Qty_Size13 * Item_SaleRate_Size13))) as Opening_Amount,
+	0 as Inventory_Qty_Size01, 0 as Inventory_Qty_Size02, 
+    0 as Inventory_Qty_Size03, 0 as Inventory_Qty_Size04, 0 as Inventory_Qty_Size05, 0 as Inventory_Qty_Size06, 
+	0 as Inventory_Qty_Size07, 0 as Inventory_Qty_Size08, 0 as Inventory_Qty_Size09, 0 as Inventory_Qty_Size10, 
+	0 as Inventory_Qty_Size11, 0 as Inventory_Qty_Size12, 0 as Inventory_Qty_Size13, 
+	0 as Item_SaleRate_Size01, 0 as Item_SaleRate_Size02, 0 as Item_SaleRate_Size03, 0 as Item_SaleRate_Size04, 
+    0 as Item_SaleRate_Size05, 0 as Item_SaleRate_Size06, 0 as Item_SaleRate_Size07, 0 as Item_SaleRate_Size08, 
+	0 as Item_SaleRate_Size09, 0 as Item_SaleRate_Size10, 0 as Item_SaleRate_Size11, 0 as Item_SaleRate_Size12, 
+	0 as Item_SaleRate_Size13 
+from (
+
+    -- fetch the records, opening, of purchase and sale return which will be positive values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc,
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 3 or invdet.DocumentType_ID = 2) and inv.inventory_Date < @From_Date)
+
+UNION ALL
+
+    -- fetch the records, opening, of sales and purchase return which will be negative values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc, - invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, 
+	- invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, - invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, 
+	- invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, - invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, 
+	- invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, - invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, 
+	- invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, - invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, 
+	- invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, - invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, 
+	- invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, - invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, 
+	item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, 
+	item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, 
+	item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, 
+	item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 1 or invdet.DocumentType_ID = 4) and inv.inventory_Date < @From_Date)
+) a 
+
+union all
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Remarks, 0 as Opening_Qty, 0 as Opening_Amount, 
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 3 or invdet.DocumentType_ID = 2) and inv.inventory_Date between @From_Date and @To_Date)
+
+union all
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Remarks,  0 as Opening_Qty, 0 as Opening_Amount, 
+	- invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, - invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+	- invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, - invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	- invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, - invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	- invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, - invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	- invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, - invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	- invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, - invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	- invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 1 or invdet.DocumentType_ID = 4) AND inv.inventory_Date between @From_Date AND @To_Date)
+END

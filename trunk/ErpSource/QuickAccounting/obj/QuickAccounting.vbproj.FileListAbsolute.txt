@@ -1,0 +1,87 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.COAForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.SearchCoa.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherSingleEntry.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherTypeForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.COAForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.SearchCoa.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.VoucherForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.VoucherSingleEntry.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.VoucherTypeForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Debug\QuickAccounting.pdb
+D:\zakee\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.dll
+D:\zakee\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.pdb
+D:\zakee\QuickErp\bin\Debug\QuickAccounting\QuickAccounting.xml
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.COAForm.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.Resources.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.SearchCoa.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherForm.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherSingleEntry.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherTypeForm.resources
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll.licenses
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.xml
+D:\zakee\QuickErp\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.pdb
+D:\LiveMesh\bin\Debug\QuickAccounting\QuickAccounting.dll
+D:\LiveMesh\bin\Debug\QuickAccounting\QuickAccounting.pdb
+D:\LiveMesh\bin\Debug\QuickAccounting\QuickAccounting.xml
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.COAForm.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.Resources.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.SearchCoa.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherForm.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherSingleEntry.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherTypeForm.resources
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll.licenses
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.xml
+D:\LiveMesh\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAccounting\QuickAccounting.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAccounting\QuickAccounting.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAccounting\QuickAccounting.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.COAForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.SearchCoa.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherSingleEntry.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherTypeForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll.licenses
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.pdb
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.COAForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.SearchCoa.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherSingleEntry.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.VoucherTypeForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll.licenses
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.dll
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAccounting\obj\Debug\QuickAccounting.pdb

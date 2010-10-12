@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickControls", "QuickControls\QuickControls.vbproj", "{636D7C63-0301-476A-87AA-273728806FD6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickLibrary", "QuickLibrary\QuickLibrary.vbproj", "{1162DFBE-C61D-4C4D-AD46-584015721F76}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickDAL", "QuickDAL\QuickDAL.vbproj", "{25F64F21-2688-45A1-B7F6-C1691437FBDD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickDALLibrary", "QuickDalLibrary\QuickDALLibrary.vbproj", "{6CFD395A-E9C8-4886-829E-48CDB0318B4F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickBaseForms", "QuickBaseForms\QuickBaseForms.vbproj", "{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickBusinessControls", "QuickBusinessControls\QuickBusinessControls.vbproj", "{3DF65D11-45FB-4EAA-A160-6456E339FF50}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 7
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = QuickControls\\QuickControls.vbproj
+		SccProjectName1 = \u0022$/Projects/Uniformers/QuickErp/Source/QuickBase/QuickControls\u0022,\u0020YDAAAAAA
+		SccLocalPath1 = QuickControls
+		SccProjectUniqueName2 = QuickLibrary\\QuickLibrary.vbproj
+		SccProjectName2 = \u0022$/Projects/Uniformers/QuickErp/Source/QuickBase/QuickLibrary\u0022,\u0020CFAAAAAA
+		SccLocalPath2 = QuickLibrary
+		SccProjectUniqueName3 = QuickDAL\\QuickDAL.vbproj
+		SccProjectName3 = \u0022$/Projects/Uniformers/QuickErp/Source/QuickBase/QuickDAL\u0022,\u0020EAAAAAAA
+		SccLocalPath3 = QuickDAL
+		SccProjectUniqueName4 = QuickDalLibrary\\QuickDALLibrary.vbproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = QuickDalLibrary\\
+		SccProjectUniqueName5 = QuickBaseForms\\QuickBaseForms.vbproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = QuickBaseForms\\
+		SccProjectUniqueName6 = QuickBusinessControls\\QuickBusinessControls.vbproj
+		SccProjectName6 = \u0022$/Projects/Uniformers/QuickErp/Source/QuickBase/QuickBusinessControls\u0022,\u0020LQAAAAAA
+		SccLocalPath6 = QuickBusinessControls
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{636D7C63-0301-476A-87AA-273728806FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

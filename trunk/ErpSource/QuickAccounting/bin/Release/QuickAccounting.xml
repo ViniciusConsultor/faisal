@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QuickAccounting
+</name>
+</assembly>
+<members>
+<member name="M:QuickAccounting.COAForm.ShowParentComboCOACode">
+	<summary>
+ Nothing
+ </summary>
+</member><member name="M:QuickAccounting.COAForm.OpeningDebitNumericEditorAndOpeningCreditNumericEditor_ValueChanged(System.Object,System.EventArgs)">
+	<summary>
+ Handles TextChanged event for both OpeningDebitTextBox and OpeningCreditTextBox.
+ </summary>
+</member><member name="T:QuickAccounting.COAForm">
+	<summary>
+ COA form.
+ </summary>
+</member><member name="M:QuickAccounting.VoucherSingleEntry.SearchButtonClick(System.Object,System.EventArgs)">
+	<summary>
+ Nothing
+ </summary>
+</member><member name="M:QuickAccounting.VoucherForm.PrintPreviewButtonClick(System.Object,System.EventArgs)">
+	<summary>
+ Shows voucher print preview.
+ </summary>
+</member>
+</members>
+</doc>

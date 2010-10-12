@@ -1,0 +1,27 @@
+D:\ERP-Source\bin\Debug\QuickErpIrfan\QuickErpIrfan.dll
+D:\ERP-Source\bin\Debug\QuickErpIrfan\QuickErpIrfan.pdb
+D:\ERP-Source\bin\Debug\QuickErpIrfan\QuickErpIrfan.xml
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\ResolveAssemblyReference.cache
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.Resources.resources
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.vbproj.GenerateResource.Cache
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.dll
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.xml
+D:\ERP-Source\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpIrfan\QuickErpIrfan.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpIrfan\QuickErpIrfan.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpIrfan\QuickErpIrfan.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickErpIrfan\QuickErpIrfan.dll
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickErpIrfan\QuickErpIrfan.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickErpIrfan\QuickErpIrfan.xml
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.dll
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.xml
+C:\Users\Faisal\Documents\Zak\ErpIrfan\QuickErpIrfan\obj\Debug\QuickErpIrfan.pdb

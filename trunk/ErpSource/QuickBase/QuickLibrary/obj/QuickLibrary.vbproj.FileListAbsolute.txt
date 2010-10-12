@@ -1,0 +1,63 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickLibrary\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickLibrary\QuickLibrary.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickLibrary\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Release\QuickLibrary.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+D:\zakee\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.dll
+D:\zakee\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.pdb
+D:\zakee\QuickErp\bin\Debug\QuickLibrary\QuickLibrary.xml
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+D:\LiveMesh\bin\Debug\QuickLibrary\QuickLibrary.dll
+D:\LiveMesh\bin\Debug\QuickLibrary\QuickLibrary.pdb
+D:\LiveMesh\bin\Debug\QuickLibrary\QuickLibrary.xml
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+D:\LiveMesh\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickLibrary\QuickLibrary.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickLibrary\QuickLibrary.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickLibrary\QuickLibrary.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickLibrary\QuickLibrary.dll
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickLibrary\QuickLibrary.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickLibrary\QuickLibrary.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickLibrary\QuickLibrary.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickLibrary\QuickLibrary.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickLibrary\QuickLibrary.xml

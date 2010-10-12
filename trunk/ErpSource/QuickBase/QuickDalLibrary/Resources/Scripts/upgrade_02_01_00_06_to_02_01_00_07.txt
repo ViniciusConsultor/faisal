@@ -1,0 +1,73 @@
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate1') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate1 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate2') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate2 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate3')
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate3 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate4') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate4 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDate5') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDate5 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDecimal1') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDecimal1 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDecimal2') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDecimal2 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDecimal3') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDecimal3 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDecimal4') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDecimal4 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomDecimal5') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomDecimal5 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomText1') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomText1 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomText2') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomText2 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomText3') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomText3 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomText4') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomText4 datetime NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='CustomText5') 
+ALTER TABLE Accounting_Voucher_Detail ADD CustomText5 datetime NULL
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='spGetAccountsDetails')
+	DROP PROCEDURE [spGetAccountsDetails] 
+go
+CREATE PROCEDURE [spGetAccountsDetails]
+AS 
+BEGIN 
+	SELECT [Voucher_No],v.[VoucherType_ID],vt.[VoucherType_Code],
+		vt.[VoucherType_Desc],[Voucher_Date],[Status_ID],[Remarks],
+		vd.[Co_ID],vd.[Voucher_ID],[VoucherDetail_ID],vd.[COA_ID],
+		coa.[COA_Code],coa.[COA_Desc],[Narration],[DebitAmount],
+		[CreditAmount],vd.[Stamp_User_Id],vd.[Stamp_DateTime], ISNULL(invd.Qty_Total,0) AS Qty_Total
+	FROM Accounting_Voucher v 
+		RIGHT OUTER JOIN Accounting_Voucher_Detail vd 
+			ON v.Co_ID = vd.Co_ID AND v.Voucher_ID = vd.Voucher_ID 
+		LEFT OUTER JOIN Accounting_VoucherType vt 
+			ON v.Co_ID = vt.Co_ID AND v.VoucherType_ID = vt.VoucherType_ID 
+		LEFT OUTER JOIN Accounting_COA coa 
+			ON vd.Co_ID = coa.Co_ID AND vd.COA_ID = coa.COA_ID
+		LEFT OUTER JOIN (SELECT Co_ID, Inventory_ID, DocumentType_ID,
+				Sum(Inventory_Qty_Size01) + Sum(Inventory_Qty_Size02) +	Sum(Inventory_Qty_Size03) + 
+				Sum(Inventory_Qty_Size04) + Sum(Inventory_Qty_Size05) + Sum(Inventory_Qty_Size06) + 
+				Sum(Inventory_Qty_Size07) + Sum(Inventory_Qty_Size08) + Sum(Inventory_Qty_Size09) + 
+				Sum(Inventory_Qty_Size10) + Sum(Inventory_Qty_Size11) + Sum(Inventory_Qty_Size12) AS Qty_Total 
+				FROM Inventory_Detail invdet 
+				GROUP BY Co_ID, Inventory_ID, DocumentType_ID) invd 
+			ON v.Co_ID = invd.Co_ID AND v.Source_ID = invd.Inventory_ID AND v.Source_DocumentType_ID = invd.DocumentType_ID
+	WHERE v.Status_ID <> 4 
+END

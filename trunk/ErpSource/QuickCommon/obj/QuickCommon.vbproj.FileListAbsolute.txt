@@ -1,0 +1,78 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.BranchForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.CompanyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.PartyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.PartyRegularForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickCommon\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickCommon\QuickCommon.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickCommon\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.BranchForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.CompanyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.PartyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.PartyRegularForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Debug\QuickCommon.pdb
+D:\zakee\QuickErp\bin\Debug\QuickCommon\QuickCommon.dll
+D:\zakee\QuickErp\bin\Debug\QuickCommon\QuickCommon.pdb
+D:\zakee\QuickErp\bin\Debug\QuickCommon\QuickCommon.xml
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.BranchForm.resources
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.CompanyForm.resources
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.Resources.resources
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyForm.resources
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyRegularForm.resources
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.dll
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.xml
+D:\zakee\QuickErp\ErpSource\QuickCommon\obj\Debug\QuickCommon.pdb
+D:\LiveMesh\bin\Debug\QuickCommon\QuickCommon.dll
+D:\LiveMesh\bin\Debug\QuickCommon\QuickCommon.pdb
+D:\LiveMesh\bin\Debug\QuickCommon\QuickCommon.xml
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.BranchForm.resources
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.CompanyForm.resources
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.Resources.resources
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyForm.resources
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyRegularForm.resources
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.dll
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.xml
+D:\LiveMesh\ErpSource\QuickCommon\obj\Debug\QuickCommon.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickCommon\QuickCommon.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickCommon\QuickCommon.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickCommon\QuickCommon.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.BranchForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.CompanyForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyRegularForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickCommon\obj\Debug\QuickCommon.pdb
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.BranchForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.CompanyForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.PartyRegularForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.dll
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickCommon\obj\Debug\QuickCommon.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickCommon\QuickCommon.dll
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickCommon\QuickCommon.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickCommon\QuickCommon.xml

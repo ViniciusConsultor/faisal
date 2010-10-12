@@ -1,0 +1,20 @@
+ALTER TABLE Base_Setting
+	ALTER COLUMN Setting_Id VARCHAR(100) NOT NULL
+GO
+IF NOT EXISTS (SELECT [Co_Id] FROM [Base_Setting] WHERE [Co_Id]=0 AND [User_Id]=0 AND [Setting_Id]='ModificationAllowedPartyCategoryComboBox.SalesInvoiceForm')
+	INSERT INTO [Base_Setting]
+			   ([Co_Id]
+			   ,[User_Id]
+			   ,[Setting_Id]
+			   ,[Setting_Desc]
+			   ,[Setting_Value]
+			   ,[Stamp_User_Id]
+			   ,[Stamp_DateTime]
+			   ,[Setting_Value_DataType]
+			   ,[Setting_Value_MinimumValue]
+			   ,[Setting_Value_MaximumValue]
+			   ,[Upload_DateTime])
+		 VALUES
+			   (0, 0, 'ModificationAllowedPartyCategoryComboBox.SalesInvoiceForm', 'Determines if control of the form will be disabled when modifying record.'
+			   , 'no', 0, '2010-01-16', 'Boolean', NULL, NULL, NULL)
+			   

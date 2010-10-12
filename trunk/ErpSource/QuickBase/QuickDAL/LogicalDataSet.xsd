@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogicalDataSet" targetNamespace="http://tempuri.org/LogicalDataSet.xsd" xmlns:mstns="http://tempuri.org/LogicalDataSet.xsd" xmlns="http://tempuri.org/LogicalDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="LogicalDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="LogicalDataSet" msprop:Generator_DataSetName="LogicalDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ItemLeveling" msprop:Generator_UserTableName="ItemLeveling" msprop:Generator_RowDeletedName="ItemLevelingRowDeleted" msprop:Generator_RowChangedName="ItemLevelingRowChanged" msprop:Generator_RowClassName="ItemLevelingRow" msprop:Generator_RowChangingName="ItemLevelingRowChanging" msprop:Generator_RowEvArgName="ItemLevelingRowChangeEvent" msprop:Generator_RowEvHandlerName="ItemLevelingRowChangeEventHandler" msprop:Generator_TableClassName="ItemLevelingDataTable" msprop:Generator_TableVarName="tableItemLeveling" msprop:Generator_RowDeletingName="ItemLevelingRowDeleting" msprop:Generator_TablePropName="ItemLeveling">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LevelNo" msprop:Generator_UserColumnName="LevelNo" msprop:Generator_ColumnVarNameInTable="columnLevelNo" msprop:Generator_ColumnPropNameInRow="LevelNo" msprop:Generator_ColumnPropNameInTable="LevelNoColumn" type="xs:short" />
+              <xs:element name="Length" msprop:Generator_UserColumnName="Length" msprop:Generator_ColumnVarNameInTable="columnLength" msprop:Generator_ColumnPropNameInRow="Length" msprop:Generator_ColumnPropNameInTable="LengthColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_UserColumnName="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Configuration" msprop:Generator_UserTableName="Configuration" msprop:Generator_RowDeletedName="ConfigurationRowDeleted" msprop:Generator_RowChangedName="ConfigurationRowChanged" msprop:Generator_RowClassName="ConfigurationRow" msprop:Generator_RowChangingName="ConfigurationRowChanging" msprop:Generator_RowEvArgName="ConfigurationRowChangeEvent" msprop:Generator_RowEvHandlerName="ConfigurationRowChangeEventHandler" msprop:Generator_TableClassName="ConfigurationDataTable" msprop:Generator_TableVarName="tableConfiguration" msprop:Generator_RowDeletingName="ConfigurationRowDeleting" msprop:Generator_TablePropName="Configuration">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ConfigurationName" msprop:Generator_UserColumnName="ConfigurationName" msprop:Generator_ColumnPropNameInRow="ConfigurationName" msprop:Generator_ColumnVarNameInTable="columnConfigurationName" msprop:Generator_ColumnPropNameInTable="ConfigurationNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ConfigurationValue" msprop:Generator_UserColumnName="ConfigurationValue" msprop:Generator_ColumnPropNameInRow="ConfigurationValue" msprop:Generator_ColumnVarNameInTable="columnConfigurationValue" msprop:Generator_ColumnPropNameInTable="ConfigurationValueColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BusinessRule" msprop:Generator_UserTableName="BusinessRule" msprop:Generator_RowDeletedName="BusinessRuleRowDeleted" msprop:Generator_RowChangedName="BusinessRuleRowChanged" msprop:Generator_RowClassName="BusinessRuleRow" msprop:Generator_RowChangingName="BusinessRuleRowChanging" msprop:Generator_RowEvArgName="BusinessRuleRowChangeEvent" msprop:Generator_RowEvHandlerName="BusinessRuleRowChangeEventHandler" msprop:Generator_TableClassName="BusinessRuleDataTable" msprop:Generator_TableVarName="tableBusinessRule" msprop:Generator_RowDeletingName="BusinessRuleRowDeleting" msprop:Generator_TablePropName="BusinessRule">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ColumnName" msprop:Generator_UserColumnName="ColumnName" msprop:Generator_ColumnVarNameInTable="columnColumnName" msprop:Generator_ColumnPropNameInRow="ColumnName" msprop:Generator_ColumnPropNameInTable="ColumnNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RuleName" msprop:Generator_UserColumnName="RuleName" msprop:Generator_ColumnVarNameInTable="columnRuleName" msprop:Generator_ColumnPropNameInRow="RuleName" msprop:Generator_ColumnPropNameInTable="RuleNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RuleDescription" msprop:Generator_UserColumnName="RuleDescription" msprop:Generator_ColumnVarNameInTable="columnRuleDescription" msprop:Generator_ColumnPropNameInRow="RuleDescription" msprop:Generator_ColumnPropNameInTable="RuleDescriptionColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="_del_SearchOption" msprop:Generator_UserTableName="_del_SearchOption" msprop:Generator_RowDeletedName="_del_SearchOptionRowDeleted" msprop:Generator_RowChangedName="_del_SearchOptionRowChanged" msprop:Generator_RowClassName="_del_SearchOptionRow" msprop:Generator_RowChangingName="_del_SearchOptionRowChanging" msprop:Generator_RowEvArgName="_del_SearchOptionRowChangeEvent" msprop:Generator_RowEvHandlerName="_del_SearchOptionRowChangeEventHandler" msprop:Generator_TableClassName="_del_SearchOptionDataTable" msprop:Generator_TableVarName="table_del_SearchOption" msprop:Generator_RowDeletingName="_del_SearchOptionRowDeleting" msprop:Generator_TablePropName="_del_SearchOption">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ColumnName" msprop:Generator_UserColumnName="ColumnName" msprop:Generator_ColumnPropNameInRow="ColumnName" msprop:Generator_ColumnVarNameInTable="columnColumnName" msprop:Generator_ColumnPropNameInTable="ColumnNameColumn" type="xs:string" />
+              <xs:element name="ColumnCaption" msprop:Generator_UserColumnName="ColumnCaption" msprop:Generator_ColumnPropNameInRow="ColumnCaption" msprop:Generator_ColumnVarNameInTable="columnColumnCaption" msprop:Generator_ColumnPropNameInTable="ColumnCaptionColumn" type="xs:string" />
+              <xs:element name="ColumnType" msprop:Generator_UserColumnName="ColumnType" msprop:Generator_ColumnPropNameInRow="ColumnType" msprop:Generator_ColumnVarNameInTable="columnColumnType" msprop:Generator_ColumnPropNameInTable="ColumnTypeColumn" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SearchComparisonType" msprop:Generator_UserTableName="SearchComparisonType" msprop:Generator_RowDeletedName="SearchComparisonTypeRowDeleted" msprop:Generator_RowChangedName="SearchComparisonTypeRowChanged" msprop:Generator_RowClassName="SearchComparisonTypeRow" msprop:Generator_RowChangingName="SearchComparisonTypeRowChanging" msprop:Generator_RowEvArgName="SearchComparisonTypeRowChangeEvent" msprop:Generator_RowEvHandlerName="SearchComparisonTypeRowChangeEventHandler" msprop:Generator_TableClassName="SearchComparisonTypeDataTable" msprop:Generator_TableVarName="tableSearchComparisonType" msprop:Generator_RowDeletingName="SearchComparisonTypeRowDeleting" msprop:Generator_TablePropName="SearchComparisonType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ComparisonValue" msprop:Generator_UserColumnName="ComparisonValue" msprop:Generator_ColumnVarNameInTable="columnComparisonValue" msprop:Generator_ColumnPropNameInRow="ComparisonValue" msprop:Generator_ColumnPropNameInTable="ComparisonValueColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ComparisonCaption" msprop:Generator_UserColumnName="ComparisonCaption" msprop:Generator_ColumnVarNameInTable="columnComparisonCaption" msprop:Generator_ColumnPropNameInRow="ComparisonCaption" msprop:Generator_ColumnPropNameInTable="ComparisonCaptionColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KeyValuePair" msprop:Generator_UserTableName="KeyValuePair" msprop:Generator_RowDeletedName="KeyValuePairRowDeleted" msprop:Generator_TableClassName="KeyValuePairDataTable" msprop:Generator_RowChangedName="KeyValuePairRowChanged" msprop:Generator_RowClassName="KeyValuePairRow" msprop:Generator_RowChangingName="KeyValuePairRowChanging" msprop:Generator_RowEvArgName="KeyValuePairRowChangeEvent" msprop:Generator_RowEvHandlerName="KeyValuePairRowChangeEventHandler" msprop:Generator_TablePropName="KeyValuePair" msprop:Generator_TableVarName="tableKeyValuePair" msprop:Generator_RowDeletingName="KeyValuePairRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Key" msprop:Generator_UserColumnName="Key" msprop:Generator_ColumnPropNameInRow="Key" msprop:Generator_ColumnVarNameInTable="columnKey" msprop:Generator_ColumnPropNameInTable="KeyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Value" msprop:Generator_UserColumnName="Value" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInTable="ValueColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ItemLeveling" />
+      <xs:field xpath="mstns:LevelNo" />
+    </xs:unique>
+    <xs:unique name="BusinessRule_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:BusinessRule" />
+      <xs:field xpath="mstns:ColumnName" />
+    </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:BusinessRule" />
+      <xs:field xpath="mstns:RuleName" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

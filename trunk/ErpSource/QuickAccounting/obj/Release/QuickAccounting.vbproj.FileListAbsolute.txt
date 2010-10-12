@@ -1,0 +1,15 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAccounting\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.COAForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.SearchCoa.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherSingleEntry.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.VoucherTypeForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAccounting\obj\Release\QuickAccounting.pdb

@@ -1,0 +1,137 @@
+-- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	20-Jun-2009	Add field of remarks to show in daily stock report.
+-- Faisal	06-Aug-2009	Inventory_ID column is added so that it can be grouped in report.
+-- ---------------------------------------------
+ALTER PROCEDURE [spDailyStock]
+	-- Add the parameters for the stored procedure here
+	--@From_Date Datetime = '1900/01/01', 
+	--@To_Date Datetime = '2008/09/28',
+	--@Co_ID int = 1
+	@From_Date Datetime, 
+	@To_Date Datetime,
+	@Co_ID int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	
+-- Insert statements for procedure here
+-- =============================================
+-- For testing. uncomment these variables and
+-- give values.
+-- =============================================
+--declare @From_Date Datetime,@To_Date Datetime,@Co_ID int
+--set @From_Date = '2008-08-10'
+--set @To_Date = '2008-08-30'
+--set @Co_ID = 1
+--select @From_Date = '2008-08-10',@To_Date = '2008-09-30',@Co_ID = 1
+
+select 0 as DocumentType_ID, '1900-01-01' as Inventory_Date, 0 AS Inventory_ID, 'Opening' AS Remarks, 
+	(sum(Inventory_Qty_Size01) + sum(Inventory_Qty_Size02) + sum(Inventory_Qty_Size03) + sum(Inventory_Qty_Size04) + 
+	sum(Inventory_Qty_Size05) + sum(Inventory_Qty_Size06) + sum(Inventory_Qty_Size07) + sum(Inventory_Qty_Size08) + 
+	sum(Inventory_Qty_Size09) + sum(Inventory_Qty_Size10) + sum(Inventory_Qty_Size11) + sum(Inventory_Qty_Size12) + 
+	sum(Inventory_Qty_Size13)) as Opening_Qty, 
+	((sum(Inventory_Qty_Size01 * Item_SaleRate_Size01)) + (sum(Inventory_Qty_Size02 * Item_SaleRate_Size02)) + 
+    (sum(Inventory_Qty_Size03 * Item_SaleRate_Size03)) + (sum(Inventory_Qty_Size04 * Item_SaleRate_Size04)) + 
+	(sum(Inventory_Qty_Size05 * Item_SaleRate_Size05)) + (sum(Inventory_Qty_Size06 * Item_SaleRate_Size06)) + 
+	(sum(Inventory_Qty_Size07 * Item_SaleRate_Size07)) + (sum(Inventory_Qty_Size08 * Item_SaleRate_Size08)) + 
+    (sum(Inventory_Qty_Size09 * Item_SaleRate_Size09)) + (sum(Inventory_Qty_Size10 * Item_SaleRate_Size10)) + 
+	(sum(Inventory_Qty_Size11 * Item_SaleRate_Size11)) + (sum(Inventory_Qty_Size12 * Item_SaleRate_Size12)) + 
+	(sum(Inventory_Qty_Size13 * Item_SaleRate_Size13))) as Opening_Amount,
+	0 as Inventory_Qty_Size01, 0 as Inventory_Qty_Size02, 
+    0 as Inventory_Qty_Size03, 0 as Inventory_Qty_Size04, 0 as Inventory_Qty_Size05, 0 as Inventory_Qty_Size06, 
+	0 as Inventory_Qty_Size07, 0 as Inventory_Qty_Size08, 0 as Inventory_Qty_Size09, 0 as Inventory_Qty_Size10, 
+	0 as Inventory_Qty_Size11, 0 as Inventory_Qty_Size12, 0 as Inventory_Qty_Size13, 
+	0 as Item_SaleRate_Size01, 0 as Item_SaleRate_Size02, 0 as Item_SaleRate_Size03, 0 as Item_SaleRate_Size04, 
+    0 as Item_SaleRate_Size05, 0 as Item_SaleRate_Size06, 0 as Item_SaleRate_Size07, 0 as Item_SaleRate_Size08, 
+	0 as Item_SaleRate_Size09, 0 as Item_SaleRate_Size10, 0 as Item_SaleRate_Size11, 0 as Item_SaleRate_Size12, 
+	0 as Item_SaleRate_Size13 
+from (
+
+    -- fetch the records, opening, of purchase and sale return which will be positive values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc,
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 3 or invdet.DocumentType_ID = 2) and inv.inventory_Date < @From_Date)
+
+UNION ALL
+
+    -- fetch the records, opening, of sales and purchase return which will be negative values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc, - invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, 
+	- invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, - invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, 
+	- invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, - invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, 
+	- invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, - invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, 
+	- invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, - invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, 
+	- invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, - invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, 
+	- invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, - invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, 
+	item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, 
+	item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, 
+	item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, 
+	item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 1 or invdet.DocumentType_ID = 4) and inv.inventory_Date < @From_Date)
+) a 
+
+union all
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Inventory_ID, inv.Remarks, 0 as Opening_Qty, 0 as Opening_Amount, 
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 3 or invdet.DocumentType_ID = 2) and inv.inventory_Date between @From_Date and @To_Date)
+
+union all
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Inventory_ID, inv.Remarks,  0 as Opening_Qty, 0 as Opening_Amount, 
+	- invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, - invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+	- invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, - invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	- invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, - invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	- invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, - invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	- invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, - invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	- invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, - invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	- invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.Status_ID <> 4 and (invdet.DocumentType_ID = 1 or invdet.DocumentType_ID = 4) AND inv.inventory_Date between @From_Date AND @To_Date)
+END

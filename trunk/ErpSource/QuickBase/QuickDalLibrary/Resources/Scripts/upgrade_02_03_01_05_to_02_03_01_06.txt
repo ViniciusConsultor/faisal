@@ -1,0 +1,563 @@
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inventory.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Common_Status')
+	exec sp_rename 'Common_Status', 'Common_RecordStatus'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_RecordStatus' AND c.[Name]='Status_ID')
+	exec sp_rename 'Common_RecordStatus.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_RecordStatus' AND c.[Name]='Status_Desc')
+	exec sp_rename 'Common_RecordStatus.Status_Desc', 'RecordStatus_Desc'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='Status_ID')
+	exec sp_rename 'Accounting_Voucher_Detail.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_GrnReturn.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn_History' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_GrnReturn_History.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Menu_Role_Association' AND c.[Name]='Status_ID')
+	exec sp_rename 'Sec_Menu_Role_Association.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_Sales.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales_History' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_Sales_History.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_PosSales.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales_History' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_PosSales_History.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_SalesReturn.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn_History' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_SalesReturn_History.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='Status_ID')
+	exec sp_rename 'Accounting_Voucher.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_Grn.Status_ID', 'RecordStatus_ID'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn_History' AND c.[Name]='Status_ID')
+	exec sp_rename 'Inv_Grn_History.Status_ID', 'RecordStatus_ID'
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_CashFlowAccount' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_CashFlowAccount ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_COA' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_COA ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_FinancialAccountType' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_FinancialAccountType ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_Voucher ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_Voucher_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_Voucher_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Accounting_VoucherType' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Accounting_VoucherType ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Address' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Address ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Communication' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Communication ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Company' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Company ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Menu' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Menu ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Setting' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Setting ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_DocumentType' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Common_DocumentType ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_EntityType' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Common_EntityType ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_RecordStatus' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Common_RecordStatus ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Common_Status_Type' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Common_Status_Type ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Grn ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Grn_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn_Detail_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Grn_Detail_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Grn_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Grn_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_GrnReturn ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_GrnReturn_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn_Detail_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_GrnReturn_Detail_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_GrnReturn_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_GrnReturn_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Item ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item_PriceHistory' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Item_PriceHistory ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item_Size_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Item_Size_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Item_Size_Association_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Item_Size_Association_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSize' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_ItemSize ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSize_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_ItemSize_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSummary' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_ItemSummary ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_PosSales ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_PosSales_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales_Detail_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_PosSales_Detail_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_PosSales_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_PosSales_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Sales ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Sales_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales_Detail_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Sales_Detail_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Sales_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Sales_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_SalesReturn ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_SalesReturn_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn_Detail_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_SalesReturn_Detail_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_SalesReturn_History' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_SalesReturn_History ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_Warehouse' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inv_Warehouse ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inventory ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inventory_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inventory_SalesInvoice' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Inventory_SalesInvoice ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Invs_Item' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Invs_Item ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Invs_ItemSummary' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Invs_ItemSummary ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Party' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Party ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Party_Detail' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Party_Detail ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Person' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Person ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Company_Module_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Company_Module_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Menu_Role_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Menu_Role_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Module' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Module ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Module_Role_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Module_Role_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Right' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Right ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Role ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role_Right_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Role_Right_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_User' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_User ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_User_Role_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_User_Role_Association ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Transfer' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Transfer ADD RecordStatus_ID INT NULL
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role_Right_Association' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Sec_Role_Right_Association ADD RecordStatus_ID INT NULL
+GO
+UPDATE Base_Setting SET Setting_Value = 'ptcc-Y/9999' WHERE Setting_ID = 'DocumentNoFormat.SalesInvoice'
+GO
+IF EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Alert' AND c.[Name]='Status_ID')
+	exec sp_rename 'Base_Alert.Status_ID', 'DocumentStatus_ID'
+GO
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Alert' AND c.[Name]='RecordStatus_ID')
+	ALTER TABLE Base_Alert ADD RecordStatus_ID INT NULL
+GO
+-- =============================================
+-- Author:		Noman Latif
+-- Create date: 28 Sep 2008
+-- Description:	This stored procedure is used for
+--              to calculate the stock.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	20-Jun-2009	Add field of remarks to show in daily stock report.
+-- Faisal	06-Aug-2009	Inventory_ID column is added so that it can be grouped in report.
+-- Faisal	18-Nov-2009 Included DocumentType Purchase Warehouse with ID 18 so that 
+--						it is reflected in stock.
+-- Faisal	26-Dec-2009 Status_ID is renamed to RecordStatus_ID in the database so this
+--						sp is changed accordingly.
+-- ---------------------------------------------
+ALTER PROCEDURE [spDailyStock]
+	-- Add the parameters for the stored procedure here
+	--@From_Date Datetime = '1900/01/01', 
+	--@To_Date Datetime = '2008/09/28',
+	--@Co_ID int = 1
+	@From_Date Datetime, 
+	@To_Date Datetime,
+	@Co_ID int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	
+-- Insert statements for procedure here
+-- =============================================
+-- For testing. uncomment these variables and
+-- give values.
+-- =============================================
+--declare @From_Date Datetime,@To_Date Datetime,@Co_ID int
+--set @From_Date = '2008-08-10'
+--set @To_Date = '2008-08-30'
+--set @Co_ID = 1
+--select @From_Date = '2008-08-10',@To_Date = '2008-09-30',@Co_ID = 1
+
+select 0 as DocumentType_ID, '1900-01-01' as Inventory_Date, 0 AS Inventory_ID, 'Opening' AS Remarks, 
+	(sum(Inventory_Qty_Size01) + sum(Inventory_Qty_Size02) + sum(Inventory_Qty_Size03) + sum(Inventory_Qty_Size04) + 
+	sum(Inventory_Qty_Size05) + sum(Inventory_Qty_Size06) + sum(Inventory_Qty_Size07) + sum(Inventory_Qty_Size08) + 
+	sum(Inventory_Qty_Size09) + sum(Inventory_Qty_Size10) + sum(Inventory_Qty_Size11) + sum(Inventory_Qty_Size12) + 
+	sum(Inventory_Qty_Size13)) as Opening_Qty, 
+	((sum(Inventory_Qty_Size01 * Item_SaleRate_Size01)) + (sum(Inventory_Qty_Size02 * Item_SaleRate_Size02)) + 
+    (sum(Inventory_Qty_Size03 * Item_SaleRate_Size03)) + (sum(Inventory_Qty_Size04 * Item_SaleRate_Size04)) + 
+	(sum(Inventory_Qty_Size05 * Item_SaleRate_Size05)) + (sum(Inventory_Qty_Size06 * Item_SaleRate_Size06)) + 
+	(sum(Inventory_Qty_Size07 * Item_SaleRate_Size07)) + (sum(Inventory_Qty_Size08 * Item_SaleRate_Size08)) + 
+    (sum(Inventory_Qty_Size09 * Item_SaleRate_Size09)) + (sum(Inventory_Qty_Size10 * Item_SaleRate_Size10)) + 
+	(sum(Inventory_Qty_Size11 * Item_SaleRate_Size11)) + (sum(Inventory_Qty_Size12 * Item_SaleRate_Size12)) + 
+	(sum(Inventory_Qty_Size13 * Item_SaleRate_Size13))) as Opening_Amount,
+	0 as Inventory_Qty_Size01, 0 as Inventory_Qty_Size02, 
+    0 as Inventory_Qty_Size03, 0 as Inventory_Qty_Size04, 0 as Inventory_Qty_Size05, 0 as Inventory_Qty_Size06, 
+	0 as Inventory_Qty_Size07, 0 as Inventory_Qty_Size08, 0 as Inventory_Qty_Size09, 0 as Inventory_Qty_Size10, 
+	0 as Inventory_Qty_Size11, 0 as Inventory_Qty_Size12, 0 as Inventory_Qty_Size13, 
+	0 as Item_SaleRate_Size01, 0 as Item_SaleRate_Size02, 0 as Item_SaleRate_Size03, 0 as Item_SaleRate_Size04, 
+    0 as Item_SaleRate_Size05, 0 as Item_SaleRate_Size06, 0 as Item_SaleRate_Size07, 0 as Item_SaleRate_Size08, 
+	0 as Item_SaleRate_Size09, 0 as Item_SaleRate_Size10, 0 as Item_SaleRate_Size11, 0 as Item_SaleRate_Size12, 
+	0 as Item_SaleRate_Size13 
+from (
+
+    -- fetch the records, opening, of purchase and sale return which will be positive values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc,
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.RecordStatus_ID <> 4 and invdet.DocumentType_ID IN (3, 2, 18) and inv.inventory_Date < @From_Date)
+
+UNION ALL
+
+    -- fetch the records, opening, of sales and purchase return which will be negative values
+
+SELECT invdet.Item_ID, item.Item_Code, item.Item_Desc, cat.Item_Desc as Cat_Desc, - invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, 
+	- invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, - invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, 
+	- invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, - invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, 
+	- invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, - invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, 
+	- invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, - invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, 
+	- invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, - invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, 
+	- invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, - invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, 
+	item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, 
+	item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, 
+	item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, 
+	item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.RecordStatus_ID <> 4 AND (invdet.DocumentType_ID IN (1, 4)) and inv.inventory_Date < @From_Date)
+) a 
+
+UNION ALL
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Inventory_ID, inv.Remarks, 0 as Opening_Qty, 0 as Opening_Amount, 
+	invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+    invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.RecordStatus_ID <> 4 AND (invdet.DocumentType_ID IN (3, 2, 18)) and inv.inventory_Date between @From_Date and @To_Date)
+
+union all
+
+SELECT invdet.DocumentType_ID, inv.inventory_Date, inv.Inventory_ID, inv.Remarks,  0 as Opening_Qty, 0 as Opening_Amount, 
+	- invdet.Inventory_Qty_Size01 as Inventory_Qty_Size01, - invdet.Inventory_Qty_Size02 as Inventory_Qty_Size02, 
+	- invdet.Inventory_Qty_Size03 as Inventory_Qty_Size03, - invdet.Inventory_Qty_Size04 as Inventory_Qty_Size04, 
+	- invdet.Inventory_Qty_Size05 as Inventory_Qty_Size05, - invdet.Inventory_Qty_Size06 as Inventory_Qty_Size06, 
+	- invdet.Inventory_Qty_Size07 as Inventory_Qty_Size07, - invdet.Inventory_Qty_Size08 as Inventory_Qty_Size08, 
+	- invdet.Inventory_Qty_Size09 as Inventory_Qty_Size09, - invdet.Inventory_Qty_Size10 as Inventory_Qty_Size10, 
+	- invdet.Inventory_Qty_Size11 as Inventory_Qty_Size11, - invdet.Inventory_Qty_Size12 as Inventory_Qty_Size12, 
+	- invdet.Inventory_Qty_Size13 as Inventory_Qty_Size13, item.Item_SaleRate_Size01, item.Item_SaleRate_Size02, 
+	item.Item_SaleRate_Size03, item.Item_SaleRate_Size04, item.Item_SaleRate_Size05, item.Item_SaleRate_Size06, 
+	item.Item_SaleRate_Size07, item.Item_SaleRate_Size08, item.Item_SaleRate_Size09, item.Item_SaleRate_Size10, 
+	item.Item_SaleRate_Size11, item.Item_SaleRate_Size12, item.Item_SaleRate_Size13
+FROM   Inv_Item AS cat RIGHT OUTER JOIN
+       Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+       Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+       Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+WHERE  (item.Co_ID = @Co_ID and inv.RecordStatus_ID <> 4 and (invdet.DocumentType_ID IN (1, 4)) AND inv.inventory_Date between @From_Date AND @To_Date)
+END
+GO
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 
+-- Description:	This stored procedure returns the records from voucher_detail 
+--				table joining with inventory tables as well. It sums up the inventory document
+--				so that its quantity can be used on daily report.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	26-Dec-2009 Status_ID is renamed to RecordStatus_ID in the database so this
+--						sp is changed accordingly.
+ALTER PROCEDURE [spGetAccountsDetails] 
+AS 
+BEGIN 
+	SELECT [Voucher_No],v.[VoucherType_ID],vt.[VoucherType_Code]
+		, vt.[VoucherType_Desc],[Voucher_Date],v.[RecordStatus_ID],[Remarks]
+		, vd.[Co_ID],vd.[Voucher_ID],[VoucherDetail_ID],vd.[COA_ID]
+		, coa.[COA_Code],coa.[COA_Desc],[Narration],[DebitAmount]
+		, [CreditAmount],vd.[Stamp_User_Id],vd.[Stamp_DateTime]
+		, ISNULL(invd.Qty_Total,0) AS Qty_Total
+		, ISNULL(Inventory_No,'') AS Inventory_No, ISNULL(Inventory_Source_Document_No,'') AS Inventory_Source_Document_No
+		, ISNULL(Category_Party_Desc,'') AS Category_Party_Desc
+	FROM Accounting_Voucher v 
+		RIGHT OUTER JOIN Accounting_Voucher_Detail vd 
+			ON v.Co_ID = vd.Co_ID AND v.Voucher_ID = vd.Voucher_ID 
+		LEFT OUTER JOIN Accounting_VoucherType vt 
+			ON v.Co_ID = vt.Co_ID AND v.VoucherType_ID = vt.VoucherType_ID 
+		LEFT OUTER JOIN Accounting_COA coa 
+			ON vd.Co_ID = coa.Co_ID AND vd.COA_ID = coa.COA_ID
+		LEFT OUTER JOIN (SELECT invdet.Co_ID, invdet.Inventory_ID, inv.DocumentType_ID
+				, inv.Inventory_No, inv.Source_Document_No AS Inventory_Source_Document_No
+				, p.Party_Desc AS Category_Party_Desc
+				, Sum((Inventory_Qty_Size01 + Inventory_Qty_Size02 + Inventory_Qty_Size03 + Inventory_Qty_Size04 
+				+ Inventory_Qty_Size05 + Inventory_Qty_Size06 + Inventory_Qty_Size07 + Inventory_Qty_Size08 
+				+ Inventory_Qty_Size09 + Inventory_Qty_Size10 + Inventory_Qty_Size11 + Inventory_Qty_Size12) 
+				* CASE invdet.DocumentType_ID WHEN 2 THEN -1 ELSE 1 END) AS Qty_Total
+				FROM Inventory_Detail invdet
+					INNER JOIN Inventory inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID
+					LEFT JOIN Party p ON inv.Co_ID = p.Co_ID AND inv.Party_ID = p.Party_ID
+				GROUP BY invdet.Co_ID, invdet.Inventory_ID, inv.DocumentType_ID
+					, inv.Inventory_No, inv.Source_Document_No, p.Party_Desc) invd 
+			ON v.Co_ID = invd.Co_ID AND v.Source_ID = invd.Inventory_ID AND v.Source_DocumentType_ID = invd.DocumentType_ID
+	WHERE v.RecordStatus_ID <> 4 
+END
+GO
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is changed in both
+--						inventory and inventorydetail table so the joins are changed
+--						so that data shows on the report correctly.
+-- Faisal	30-Mar-2009	Primary key is changed back to co_id and Inventory_ID because
+--						there is possibility that there can be sale and sale return under sale document
+-- Faisal	16-May-2009 Incorporated WarehouseID
+-- Faisal	10-Oct-2009 Specified particular document types in where clause so that purchase order
+--						is not reflected in stock report.
+-- Faisal	18-Nov-2009 Included Purchase Warehouse with ID 18 so that it is reflected in stock report.
+-- Faisal	26-Dec-2009 Status_ID is renamed to RecordStatus_ID in the database so this
+--						sp is changed accordingly.
+-- ---------------------------------------------
+ALTER PROCEDURE [spGetInventoryDetails]
+AS 
+BEGIN 
+	SELECT inv.Co_ID, Co.Co_Desc, 
+		invdet.Item_ID, inv.Party_ID, 
+		item.Item_Code, item.Item_Desc, 
+		cat.Item_Desc AS Item_Category, inv.Inventory_Date, 
+		inv.Payment_Mode, inv.Remarks,	
+		inv.Inventory_ID, inv.Inventory_No, 
+		inv.Discount, inv.SalesTax, inv.LogisticService, 
+		invdet.DocumentType_ID, invdet.Warehouse_ID, doc.DocumentType_Desc, 
+		invdet.Inventory_Qty_Size01, invdet.Inventory_Qty_Size02, 
+		invdet.Inventory_Qty_Size03, invdet.Inventory_Qty_Size04, 
+		invdet.Inventory_Qty_Size05, invdet.Inventory_Qty_Size06, 
+		invdet.Inventory_Qty_Size07, invdet.Inventory_Qty_Size08, 
+		invdet.Inventory_Qty_Size09, invdet.Inventory_Qty_Size10, 
+		invdet.Inventory_Qty_Size11, invdet.Inventory_Qty_Size12, 
+		invdet.Inventory_Qty_Size13, invdet.Inventory_Rate_Size01, 
+		invdet.Inventory_Rate_Size02, invdet.Inventory_Rate_Size03, 
+		invdet.Inventory_Rate_Size04, invdet.Inventory_Rate_Size05, 
+		invdet.Inventory_Rate_Size06, invdet.Inventory_Rate_Size07, 
+		invdet.Inventory_Rate_Size08, invdet.Inventory_Rate_Size09, 
+		invdet.Inventory_Rate_Size10, invdet.Inventory_Rate_Size11, 
+		invdet.Inventory_Rate_Size13, invdet.Inventory_Rate_Size12, 
+		Party.Party_Desc, Party.COA_ID,
+		Party.City, Party.Country, 
+		Party.Address 
+	
+	FROM Inv_Item cat 
+	RIGHT OUTER JOIN Inv_Item AS item  
+		ON cat.Co_ID = item.Co_ID 
+		AND LEFT(item.Item_Code,2) = cat.Item_Code 
+	RIGHT JOIN Inventory_Detail AS invdet  
+		ON item.Co_ID = invdet.Co_ID 
+		AND item.Item_ID = invdet.Item_ID 
+	INNER JOIN Inventory AS inv  
+		ON inv.Co_ID = invdet.Co_ID 
+		AND inv.Inventory_ID = invdet.Inventory_ID
+	LEFT OUTER JOIN Party  
+		ON inv.Co_ID = Party.Co_ID 
+		AND inv.Party_ID = Party.Party_ID 
+	LEFT OUTER JOIN Base_Company Co 
+		ON inv.Co_ID = Co.Co_ID 
+	LEFT OUTER JOIN Common_DocumentType doc 
+		ON invdet.DocumentType_ID = doc.DocumentType_ID
+	WHERE inv.RecordStatus_ID <> 4 -- 4 is deleted
+		AND invdet.DocumentType_ID IN (1, 2, 3, 4, 18) -- Sales, Sales Return, Purchase, Purchase Return
+END
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =403)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (403, '&Chart of Accounts', '04-003', 3, 400, 0, '2009-12-28', NULL, 1)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =404)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (404, 'Voucher &Type', '04-004', 4, 400, 0, '2009-12-28', NULL, 1)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =405)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (405, '&Voucher Entry', '04-005', 5, 400, 0, '2009-12-28', NULL, 1)
+GO
+UPDATE Base_Menu SET [Display_Order]=7, [RecordStatus_ID]=2
+	WHERE Menu_Id=600
+GO
+UPDATE Base_Menu SET [Display_Order]=6, [RecordStatus_ID]=2
+	WHERE Menu_Id=500
+GO
+UPDATE Base_Menu SET [Display_Order]=5, [RecordStatus_ID]=2
+	WHERE Menu_Id=400
+GO
+UPDATE Base_Menu SET [Display_Order]=4, [RecordStatus_ID]=2
+	WHERE Menu_Id=300
+GO
+UPDATE Base_Menu SET [Display_Order]=3, [RecordStatus_ID]=2
+	WHERE Menu_Id=200
+GO
+UPDATE Base_Menu SET [Display_Order]=2, [RecordStatus_ID]=2
+	WHERE Menu_Id=100
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =700)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (700, '&File', '07', 1, 0, 0, '2009-12-28', NULL, 1)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =701)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (701, '&Log Off', '07-001', 1, 700, 0, '2009-12-28', NULL, 1)
+GO
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =702)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Id],
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId],
+		[Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID])
+		VALUES (702, '&Exit', '07-002', 2, 700, 0, '2009-12-28', NULL, 1)

@@ -1,0 +1,13 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickCommon\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.BranchForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.CompanyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.PartyForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.PartyRegularForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickCommon\obj\Release\QuickCommon.pdb

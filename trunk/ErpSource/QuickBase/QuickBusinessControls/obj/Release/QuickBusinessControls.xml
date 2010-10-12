@@ -1,0 +1,164 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+QuickBusinessControls
+</name>
+</assembly>
+<members>
+<member name="P:QuickBusinessControls.ItemSpread.ItemSummaryBarObject">
+	<summary>
+ If this property is set then it will update the item summary bar automatically.
+ </summary>
+</member><member name="P:QuickBusinessControls.ItemSpread.ItemQtyFirstColumnIndex">
+	<summary>
+ It gets/sets the first column index of the quantity column.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSpread.ClearControl">
+	<summary>
+ Description of the method goes here ...
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSpread.UpdateItemSummaryBar">
+	<summary>
+ This method will update the item summary bar.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSpread.ItemSpread_EnterCell(System.Object,FarPoint.Win.Spread.EnterCellEventArgs)">
+	<summary>
+ Nothing
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSpreadView.CalculateTotal(System.Int32)">
+	<summary>
+ This function will calculate the total of values in column given and will
+ show in total row and will also return the value.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSpreadView.RecalculateTotals(System.Int32)">
+	<summary>
+ It will recalculate total for all quantity columns.
+ </summary>
+</member><member name="P:QuickBusinessControls.ItemSpreadView.ShowTotalsRow">
+	<summary>
+ This property will show the row for totoals
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyControl.IsValid">
+	<summary>
+ This function will return "Yes" if the party selected or entered is valid
+ otherwise "No".
+ </summary>
+</member><member name="P:QuickBusinessControls.PartyControl.EntryMode">
+	<summary>
+ EntryMode of the PartyComboBox
+ </summary>
+</member><member name="P:QuickBusinessControls.PartyControl.CoaID">
+	<summary>
+ This will return Chart of account id associated with the selected party.
+ </summary>
+</member><member name="P:QuickBusinessControls.PartyControl.ShowAddress">
+	<summary>
+ If true then second row will be displayed for address of the party.
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyControl.Quick_UltraComboBox1_Resize(System.Object,System.EventArgs)">
+	<summary>
+ Nothing
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyControl.Quick_UltraComboBox1_RowSelected(System.Object,Infragistics.Win.UltraWinGrid.RowSelectedEventArgs)">
+	<summary>
+ It will display address in tooltip and label.
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyControl.PartyControl_Resize(System.Object,System.EventArgs)">
+	<summary>
+ Resizing address textbox.
+ </summary>
+</member><member name="T:QuickBusinessControls.PartyControl">
+	<summary>
+ It is inherited from Quick_UltraComboBoxWithLabel, further has some logic for
+ populating and validating parties.
+ </summary>
+</member><member name="M:QuickBusinessControls.CompanyCheckedListBox.LoadThisAndChildCompanies(System.Int16)">
+	<summary>
+ It will load current company and all its child companies.
+ </summary>
+</member><member name="M:QuickBusinessControls.CompanyCheckedListBox.SetLayout">
+	<summary>
+ It sets the display layout of the data and control.
+ </summary>
+</member><member name="T:QuickBusinessControls.CompanyCheckedListBox">
+	<summary>
+ It is an expandable control and it contains checked list box so that user can
+ randomly select companies. It returns comma seperated company IDs so that it
+ can be passed to queries directly or use in code however needed.
+ </summary>
+</member><member name="M:QuickBusinessControls.MultiComboBox.SetComboBoxes(System.Int32)">
+	<summary>
+ It changes the number of combo boxes in this control.
+ </summary>
+</member><member name="T:QuickBusinessControls.MultiComboBox">
+	<summary>
+ This control can have multiple comboboxes on runtime.
+ </summary>
+</member><member name="P:QuickBusinessControls.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:QuickBusinessControls.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:QuickBusinessControls.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:QuickBusinessControls.ItemSummaryBar.CompanyID">
+	<summary>
+ Company ID of current criteria being displayed.
+ </summary>
+</member><member name="P:QuickBusinessControls.ItemSummaryBar.SourceFirstID">
+	<summary>
+ Source First ID of current criteria being displayed.
+ </summary>
+</member><member name="P:QuickBusinessControls.ItemSummaryBar.SourceSecondID">
+	<summary>
+ Source Second ID of current criteria being displayed.
+ </summary>
+</member><member name="P:QuickBusinessControls.ItemSummaryBar.WarehouseID">
+	<summary>
+ Warehouse ID of current criteria being displayed.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSummaryBar.GetFormObject">
+	<summary>
+ It returns the form object which contains this control.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSummaryBar.ShowSummary(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+	<summary>
+ It will fetch the records and display, if current criteria is already showing
+ then it will not fetch again.
+ </summary>
+</member><member name="M:QuickBusinessControls.ItemSummaryBar.SetLayout">
+	<summary>
+ This will set the display layout of the grid.
+ </summary>
+</member><member name="T:QuickBusinessControls.ItemSummaryBar">
+	<summary>
+ This controls shows item summary.
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyComboBox.IsValid">
+	<summary>
+ This function will return "Yes" if the party selected or entered is valid
+ otherwise "No".
+ </summary>
+</member><member name="P:QuickBusinessControls.PartyComboBox.PartyCode">
+	<summary>
+ Returns the party code from the selected/entered party.
+ </summary>
+</member><member name="P:QuickBusinessControls.PartyComboBox.EntryMode">
+	<summary>
+ This is the overriden method in PartyComboBox which will set entry mode and
+ also set  display and value member.
+ </summary>
+</member><member name="M:QuickBusinessControls.PartyComboBox.Quick_UltraComboBox_Resize(System.Object,System.EventArgs)">
+	<summary>
+ Overriden event method of parent class.
+ </summary>
+</member>
+</members>
+</doc>

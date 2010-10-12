@@ -1,0 +1,135 @@
+--Primary needs to be changed so change the duplicate inventory_id to new ones
+--Updates duplicate items in detail table which was not updated by above query.
+DECLARE @Co_ID AS INT, @Inventory_ID AS INT, @DocumentType_ID AS INT, @Inventory_Detail_ID AS INT, @New_ID AS INT, @New_Detail_ID AS INT, @Count AS INT
+
+WHILE EXISTS (SELECT Co_ID, Inventory_ID FROM Inventory_Detail GROUP BY Co_ID, Inventory_ID, InventoryDetail_ID HAVING COUNT(*) > 1)
+	BEGIN
+		SELECT @Co_ID=Co_ID, @Inventory_ID=Inventory_ID, @DocumentType_ID=MIN(DocumentType_ID), 
+			@Inventory_Detail_ID=InventoryDetail_ID FROM Inventory_Detail 
+			GROUP BY Co_ID, Inventory_ID, InventoryDetail_ID HAVING COUNT(*) > 1
+
+		SELECT @New_Detail_ID=ISNULL(MAX(InventoryDetail_ID), 0) + 1 FROM Inventory_Detail 
+			WHERE Co_ID=@Co_ID AND Inventory_ID=@Inventory_ID
+
+
+		UPDATE Inventory_Detail SET InventoryDetail_ID=@New_Detail_ID, Stamp_DateTime=GetDate()
+			WHERE Co_ID=@Co_ID AND Inventory_ID=@Inventory_ID AND InventoryDetail_ID=@Inventory_Detail_ID AND @DocumentType_ID=DocumentType_ID
+	END
+
+WHILE EXISTS (SELECT Co_ID, Inventory_ID FROM Inventory GROUP BY Co_ID, Inventory_ID HAVING COUNT(*) > 1)
+	BEGIN
+	SELECT TOP 1 @Co_ID=Co_ID, @Inventory_ID=Inventory_ID,@DocumentType_ID=MIN(DocumentType_ID) FROM Inventory 
+		GROUP BY Co_ID, Inventory_ID HAVING COUNT(*) > 1
+
+	SELECT @New_ID=ISNULL(MAX(Inventory_ID), 0) + 1 FROM Inventory WHERE Co_ID = @Co_ID
+
+	PRINT CONVERT(VARCHAR(10), @Co_ID) + '-' + CONVERT(VARCHAR(10), @Inventory_ID) + '-' + CONVERT(VARCHAR(10), @DocumentType_ID)
+	+ ' TO ' + CONVERT(VARCHAR(10), @Co_ID) + '-' + CONVERT(VARCHAR(10), @New_ID) + '-' + CONVERT(VARCHAR(10), @DocumentType_ID)
+
+	UPDATE Inventory SET Inventory_ID=@New_ID, Stamp_DateTime = GetDate()
+		WHERE Co_ID=@Co_ID AND Inventory_ID=@Inventory_ID AND DocumentType_ID=@DocumentType_ID
+
+	SET @Count = 1
+
+	--Update the detail table for new inventory id (have to udpate row by row due to trigger).
+	WHILE (@Count <= (Select COUNT(*) FROM Inventory_Detail WHERE Co_ID=@Co_ID AND Inventory_ID=@Inventory_ID))
+		BEGIN
+			PRINT ' detail ' + CONVERT(VARCHAR(10), @Co_ID) + '-' + CONVERT(VARCHAR(10), @Inventory_ID) + '-' + CONVERT(VARCHAR(10), @Count)
+
+			UPDATE Inventory_Detail SET Inventory_ID = @New_ID, Stamp_DateTime = GetDate()
+				WHERE Co_ID=@Co_ID AND Inventory_ID=@Inventory_ID AND InventoryDetail_ID=@Count
+
+			SET @Count = @Count + 1
+		END
+	END
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role' AND c.[Name]='Inactive_From')
+	ALTER TABLE Sec_Role ADD Inactive_From DATETIME NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Role' AND c.[Name]='Inactive_To')
+	ALTER TABLE Sec_Role ADD Inactive_To DATETIME NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Sec_Menu_Role_Association' AND c.[Name]='Status_ID')
+	ALTER TABLE Sec_Menu_Role_Association ADD Status_ID INT NULL
+go
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is changed in both
+--						inventory and inventorydetail table so the joins are changed
+--						so that data shows on the report correctly.
+-- Faisal	30-Mar-2009	Primary key is changed back to co_id and Inventory_ID because
+--						there is possibility that there can be sale and sale return under sale document
+-- ---------------------------------------------
+ALTER PROCEDURE [spGetInventoryDetails]
+AS 
+BEGIN 
+	SELECT inv.Co_ID, Co.Co_Desc, 
+		invdet.Item_ID, inv.Party_ID, 
+		item.Item_Code, item.Item_Desc, 
+		cat.Item_Desc AS Item_Category, inv.Inventory_Date, 
+		inv.Payment_Mode, inv.Remarks,	
+		inv.Inventory_ID, inv.Inventory_No, 
+		inv.Discount, inv.SalesTax, inv.LogisticService, 
+		invdet.DocumentType_ID, doc.DocumentType_Desc, 
+		invdet.Inventory_Qty_Size01, invdet.Inventory_Qty_Size02, 
+		invdet.Inventory_Qty_Size03, invdet.Inventory_Qty_Size04, 
+		invdet.Inventory_Qty_Size05, invdet.Inventory_Qty_Size06, 
+		invdet.Inventory_Qty_Size07, invdet.Inventory_Qty_Size08, 
+		invdet.Inventory_Qty_Size09, invdet.Inventory_Qty_Size10, 
+		invdet.Inventory_Qty_Size11, invdet.Inventory_Qty_Size12, 
+		invdet.Inventory_Qty_Size13, invdet.Inventory_Rate_Size01, 
+		invdet.Inventory_Rate_Size02, invdet.Inventory_Rate_Size03, 
+		invdet.Inventory_Rate_Size04, invdet.Inventory_Rate_Size05, 
+		invdet.Inventory_Rate_Size06, invdet.Inventory_Rate_Size07, 
+		invdet.Inventory_Rate_Size08, invdet.Inventory_Rate_Size09, 
+		invdet.Inventory_Rate_Size10, invdet.Inventory_Rate_Size11, 
+		invdet.Inventory_Rate_Size13, invdet.Inventory_Rate_Size12, 
+		dbo.Party.Party_Desc, dbo.Party.COA_ID, 
+		dbo.Party.City, dbo.Party.Country, 
+		dbo.Party.Address 
+	
+	FROM dbo.Inv_Item cat 
+	RIGHT OUTER JOIN dbo.Inv_Item AS item  
+		ON cat.Co_ID = item.Co_ID 
+		AND LEFT(item.Item_Code,2) = cat.Item_Code 
+	RIGHT JOIN dbo.Inventory_Detail AS invdet  
+		ON item.Co_ID = invdet.Co_ID 
+		AND item.Item_ID = invdet.Item_ID 
+	INNER JOIN dbo.Inventory AS inv  
+		ON inv.Co_ID = invdet.Co_ID 
+		AND inv.Inventory_ID = invdet.Inventory_ID
+	LEFT OUTER JOIN dbo.Party  
+		ON inv.Co_ID = dbo.Party.Co_ID 
+		AND inv.Party_ID = dbo.Party.Party_ID 
+	LEFT OUTER JOIN Base_Company Co 
+		ON inv.Co_ID = Co.Co_ID 
+	LEFT OUTER JOIN Common_DocumentType doc 
+		ON invdet.DocumentType_ID = doc.DocumentType_ID
+	WHERE inv.Status_ID <> 4 
+END
+go
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory')
+	ALTER TABLE Inventory 
+		DROP CONSTRAINT PK_Inventory
+GO
+IF NOT EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory')
+	ALTER TABLE Inventory 
+		ADD CONSTRAINT PK_Inventory PRIMARY KEY CLUSTERED
+		(Co_ID, Inventory_ID)
+GO
+IF EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory_Detail')
+	ALTER TABLE Inventory_Detail 
+		DROP CONSTRAINT PK_Inventory_Detail
+GO
+IF NOT EXISTS (SELECT O.[NAME] FROM sysobjects o WHERE o.[Name] ='PK_Inventory_Detail')
+	ALTER TABLE Inventory_Detail 
+		ADD CONSTRAINT PK_Inventory_Detail PRIMARY KEY CLUSTERED
+		(Co_ID, Inventory_ID, InventoryDetail_ID)

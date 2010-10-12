@@ -1,0 +1,76 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickBusinessControls\QuickBusinessControls.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickBusinessControls\QuickBusinessControls.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickBusinessControls\QuickBusinessControls.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.CompanyCheckedListBox.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.PartyControl.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Release\QuickBusinessControls.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.CompanyCheckedListBox.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.PartyControl.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.pdb
+D:\zakee\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.dll
+D:\zakee\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.pdb
+D:\zakee\QuickErp\bin\Debug\QuickBusinessControls\QuickBusinessControls.xml
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.CompanyCheckedListBox.resources
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.Resources.resources
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.PartyControl.resources
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll.licenses
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.xml
+D:\zakee\QuickErp\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.pdb
+D:\LiveMesh\bin\Debug\QuickBusinessControls\QuickBusinessControls.dll
+D:\LiveMesh\bin\Debug\QuickBusinessControls\QuickBusinessControls.pdb
+D:\LiveMesh\bin\Debug\QuickBusinessControls\QuickBusinessControls.xml
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.CompanyCheckedListBox.resources
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.Resources.resources
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.PartyControl.resources
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll.licenses
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.xml
+D:\LiveMesh\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickBusinessControls\QuickBusinessControls.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickBusinessControls\QuickBusinessControls.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickBusinessControls\QuickBusinessControls.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.CompanyCheckedListBox.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.PartyControl.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll.licenses
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.pdb
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.CompanyCheckedListBox.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.PartyControl.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll.licenses
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.dll
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickBusinessControls\QuickBusinessControls.dll
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickBusinessControls\QuickBusinessControls.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickBusinessControls\QuickBusinessControls.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickBase\QuickBusinessControls\obj\Debug\QuickBusinessControls.MultiComboBox.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickBusinessControls\QuickBusinessControls.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickBusinessControls\QuickBusinessControls.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\QuickBusinessControls\QuickBusinessControls.xml

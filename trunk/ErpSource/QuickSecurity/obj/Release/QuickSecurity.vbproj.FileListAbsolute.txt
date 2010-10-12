@@ -1,0 +1,12 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickSecurity\QuickSecurity.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickSecurity\QuickSecurity.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickSecurity\QuickSecurity.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.MenuRoleAssociationForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.SecurityRoleForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.SecurityUserForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickSecurity\obj\Release\QuickSecurity.pdb

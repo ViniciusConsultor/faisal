@@ -1,0 +1,11 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\QuickLibrary\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\QuickLibrary\QuickLibrary.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\QuickLibrary\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll.licenses
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\QuickLibrary.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\GenerateResource.read.1.tlog
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickBase\QuickLibrary\obj\Debug\GenerateResource.write.1.tlog

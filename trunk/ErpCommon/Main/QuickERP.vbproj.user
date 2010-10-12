@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>D:\Publish\Uniformers\QuickErp_02_03_02_31\|D:\Publish\QuickTijarat\QuickErp_02_03_02_31\|D:\Publish\QuickTijarat\QuickErp_02_03_02_30\|D:\Publish\Uniformers\QuickErp_02_03_02_30\|D:\Publish\Uniformers\QuickErp_02_03_02_29\</PublishUrlHistory>
+    <InstallUrlHistory>
+    </InstallUrlHistory>
+    <SupportUrlHistory>
+    </SupportUrlHistory>
+    <UpdateUrlHistory>http://www.quicktijarat.com/quickerp/|http://www.quicktijarat.com/quickerpbeta/|http://www.uniformers.net/quickerp/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+    <ProjectView>ProjectFiles</ProjectView>
+    <ErrorReportUrlHistory />
+    <ApplicationRevision>0</ApplicationRevision>
+  </PropertyGroup>
+</Project>

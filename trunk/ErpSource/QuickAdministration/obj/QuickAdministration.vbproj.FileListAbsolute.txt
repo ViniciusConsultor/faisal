@@ -1,0 +1,66 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAdministration\QuickAdministration.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAdministration\QuickAdministration.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickAdministration\QuickAdministration.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.EmptyDatabaseForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.ErpConfigurationForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Release\QuickAdministration.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.EmptyDatabaseForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.ErpConfigurationForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickAdministration\obj\Debug\QuickAdministration.pdb
+D:\zakee\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.dll
+D:\zakee\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.pdb
+D:\zakee\QuickErp\bin\Debug\QuickAdministration\QuickAdministration.xml
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\ResolveAssemblyReference.cache
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.EmptyDatabaseForm.resources
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.ErpConfigurationForm.resources
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.Resources.resources
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.vbproj.GenerateResource.Cache
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.dll
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.xml
+D:\zakee\QuickErp\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.pdb
+D:\LiveMesh\bin\Debug\QuickAdministration\QuickAdministration.dll
+D:\LiveMesh\bin\Debug\QuickAdministration\QuickAdministration.pdb
+D:\LiveMesh\bin\Debug\QuickAdministration\QuickAdministration.xml
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\ResolveAssemblyReference.cache
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.EmptyDatabaseForm.resources
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.ErpConfigurationForm.resources
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.Resources.resources
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.vbproj.GenerateResource.Cache
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.dll
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.xml
+D:\LiveMesh\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAdministration\QuickAdministration.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAdministration\QuickAdministration.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickAdministration\QuickAdministration.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.EmptyDatabaseForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.ErpConfigurationForm.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.pdb
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.EmptyDatabaseForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.ErpConfigurationForm.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.dll
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.xml
+C:\Users\Faisal\Documents\Zak\ErpSource\QuickAdministration\obj\Debug\QuickAdministration.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickAdministration\QuickAdministration.dll
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickAdministration\QuickAdministration.pdb
+C:\Users\Faisal\Documents\Zak\bin\Debug\QuickAdministration\QuickAdministration.xml

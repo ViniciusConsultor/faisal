@@ -1,0 +1,11 @@
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickReports\QuickReports.dll
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickReports\QuickReports.pdb
+D:\Faisal\Projects\Uniformers\QuickErp\bin\Release\QuickReports\QuickReports.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\ResolveAssemblyReference.cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.CrystalReportViewerForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.ReportCriteriaForm.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.Resources.resources
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.vbproj.GenerateResource.Cache
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.dll
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.xml
+D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickReports\obj\Release\QuickReports.pdb

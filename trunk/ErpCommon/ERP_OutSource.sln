@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickERP", "Main\QuickERP.vbproj", "{6B101AF3-E5EA-43FF-9C2F-3206E176325A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickReports", "QuickReports\QuickReports.vbproj", "{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickErpIrfan", "..\ErpIrfan\QuickErpIrfan\QuickErpIrfan.vbproj", "{C7335E8A-0628-43AD-80A6-4B8C0AE02430}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickAccounting", "..\ErpSource\QuickAccounting\QuickAccounting.vbproj", "{858F6AFC-E952-4765-AFD1-4C7CBCCF442E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickAdministration", "..\ErpSource\QuickAdministration\QuickAdministration.vbproj", "{ABB8437D-AD9D-414F-9159-B243326E4E47}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickBaseForms", "..\ErpSource\QuickBase\QuickBaseForms\QuickBaseForms.vbproj", "{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickBusinessControls", "..\ErpSource\QuickBase\QuickBusinessControls\QuickBusinessControls.vbproj", "{3DF65D11-45FB-4EAA-A160-6456E339FF50}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickControls", "..\ErpSource\QuickBase\QuickControls\QuickControls.vbproj", "{636D7C63-0301-476A-87AA-273728806FD6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickDAL", "..\ErpSource\QuickBase\QuickDAL\QuickDAL.vbproj", "{25F64F21-2688-45A1-B7F6-C1691437FBDD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickDALLibrary", "..\ErpSource\QuickBase\QuickDalLibrary\QuickDALLibrary.vbproj", "{6CFD395A-E9C8-4886-829E-48CDB0318B4F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickLibrary", "..\ErpSource\QuickBase\QuickLibrary\QuickLibrary.vbproj", "{1162DFBE-C61D-4C4D-AD46-584015721F76}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickCommon", "..\ErpSource\QuickCommon\QuickCommon.vbproj", "{A3E2F454-2D23-49B8-887E-36E06E0574A0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickInventory", "..\ErpSource\QuickInventory\QuickInventory.vbproj", "{461263BE-9D16-4129-997C-778A0DD8DAD0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "QuickSecurity", "..\ErpSource\QuickSecurity\QuickSecurity.vbproj", "{D0F7D2AA-41C5-4A00-8F65-6103C013FC22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B101AF3-E5EA-43FF-9C2F-3206E176325A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B101AF3-E5EA-43FF-9C2F-3206E176325A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B101AF3-E5EA-43FF-9C2F-3206E176325A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B101AF3-E5EA-43FF-9C2F-3206E176325A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7335E8A-0628-43AD-80A6-4B8C0AE02430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7335E8A-0628-43AD-80A6-4B8C0AE02430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7335E8A-0628-43AD-80A6-4B8C0AE02430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7335E8A-0628-43AD-80A6-4B8C0AE02430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858F6AFC-E952-4765-AFD1-4C7CBCCF442E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858F6AFC-E952-4765-AFD1-4C7CBCCF442E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858F6AFC-E952-4765-AFD1-4C7CBCCF442E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858F6AFC-E952-4765-AFD1-4C7CBCCF442E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB8437D-AD9D-414F-9159-B243326E4E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB8437D-AD9D-414F-9159-B243326E4E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB8437D-AD9D-414F-9159-B243326E4E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB8437D-AD9D-414F-9159-B243326E4E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF65D11-45FB-4EAA-A160-6456E339FF50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636D7C63-0301-476A-87AA-273728806FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F64F21-2688-45A1-B7F6-C1691437FBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFD395A-E9C8-4886-829E-48CDB0318B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1162DFBE-C61D-4C4D-AD46-584015721F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E2F454-2D23-49B8-887E-36E06E0574A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E2F454-2D23-49B8-887E-36E06E0574A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E2F454-2D23-49B8-887E-36E06E0574A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E2F454-2D23-49B8-887E-36E06E0574A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461263BE-9D16-4129-997C-778A0DD8DAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461263BE-9D16-4129-997C-778A0DD8DAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461263BE-9D16-4129-997C-778A0DD8DAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461263BE-9D16-4129-997C-778A0DD8DAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F7D2AA-41C5-4A00-8F65-6103C013FC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F7D2AA-41C5-4A00-8F65-6103C013FC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F7D2AA-41C5-4A00-8F65-6103C013FC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F7D2AA-41C5-4A00-8F65-6103C013FC22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

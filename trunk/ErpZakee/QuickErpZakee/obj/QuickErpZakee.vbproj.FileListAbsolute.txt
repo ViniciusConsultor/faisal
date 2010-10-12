@@ -1,0 +1,51 @@
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpZakee\QuickErpZakee.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpZakee\QuickErpZakee.pdb
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\bin\Debug\QuickErpZakee\QuickErpZakee.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.vbproj.GenerateResource.Cache
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+C:\Documents and Settings\faisalsaleem\My Documents\Zakee\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb
+H:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.dll
+H:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.pdb
+H:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.xml
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ChartofAccount.rpt
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Form1.resources
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.vbproj.GenerateResource.Cache
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+H:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ChartofAccount.rpt
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CashFlowAccount.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.FinancialAccountType.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportCriteria.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.vbproj.GenerateResource.Cache
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll.licenses
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ChartofAccount.rpt
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CashFlowAccount.resources
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.FinancialAccountType.resources
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Form1.resources
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.Resources.resources
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportCriteria.resources
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.vbproj.GenerateResource.Cache
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll.licenses
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.dll
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.xml
+C:\Users\Faisal\Documents\Zak\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.pdb
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.dll.config
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.dll
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.pdb
+E:\Live Mesh\bin\Debug\QuickErpZakee\QuickErpZakee.xml
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.CriteriaForm.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.ReportViewerForm.resources
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.COAActivity.rpt
+E:\Live Mesh\ErpZakee\QuickErpZakee\obj\Debug\QuickErpZakee.MenuSetting.resources
