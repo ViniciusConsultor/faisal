@@ -1,0 +1,8 @@
+ALTER TABLE Inventory_Detail DISABLE TRIGGER ALL
+GO
+UPDATE Inventory_Detail SET Warehouse_ID = 0 WHERE Warehouse_ID IS NULL
+GO
+ALTER TABLE Inventory_Detail ENABLE TRIGGER ALL
+GO
+ALTER TABLE Inventory_Detail
+	ALTER COLUMN Warehouse_ID INT NOT NULL

@@ -1,0 +1,948 @@
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail')
+	DROP TABLE Invs_Inventory_Detail
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory')
+	DROP TABLE Invs_Inventory
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_Detail_History')
+	DROP TABLE Invs_Inventory_Detail_History
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_History')
+	DROP TABLE Invs_Inventory_History
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Invs_Inventory_SalesInvoice')
+	DROP TABLE Invs_Inventory_SalesInvoice
+go
+
+--<<<<<<<<<< GRN related tables >>>>>>>>>>
+
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Grn')
+	CREATE TABLE [Inv_Grn](
+		[Co_ID] [smallint] NOT NULL,
+		[Grn_ID] [int] NOT NULL,
+		[Grn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Grn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+
+	 CONSTRAINT [PK_Inv_Grn] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[Grn_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Grn_History')
+	CREATE TABLE [Inv_Grn_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[Grn_ID] [int] NOT NULL,
+		[Grn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Grn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_Grn_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Grn_Detail')
+	CREATE TABLE [Inv_Grn_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[Grn_ID] INT NOT NULL,
+		[GrnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Inv_Grn_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[Grn_ID] ASC,
+		[GrnDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Grn_Detail_History')
+	CREATE TABLE [Inv_Grn_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[Grn_ID] INT NOT NULL,
+		[GrnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_Grn_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+
+--<<<<<<<<<< GRN Return related tables >>>>>>>>>>
+
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_GrnReturn')
+	CREATE TABLE [Inv_GrnReturn](
+		[Co_ID] [smallint] NOT NULL,
+		[GrnReturn_ID] [int] NOT NULL,
+		[GrnReturn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[GrnReturn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+
+	 CONSTRAINT [PK_Inv_GrnReturn] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[GrnReturn_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_GrnReturn_History')
+	CREATE TABLE [Inv_GrnReturn_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[GrnReturn_ID] [int] NOT NULL,
+		[GrnReturn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[GrnReturn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_GrnReturn_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_GrnReturn_Detail')
+	CREATE TABLE [Inv_GrnReturn_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[GrnReturn_ID] INT NOT NULL,
+		[GrnReturnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Inv_GrnReturn_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[GrnReturn_ID] ASC,
+		[GrnReturnDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_GrnReturn_Detail_History')
+	CREATE TABLE [Inv_GrnReturn_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[GrnReturn_ID] INT NOT NULL,
+		[GrnReturnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_GrnReturn_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+
+--<<<<<<<<<< Sales Invoice related tables >>>>>>>>>>
+
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Sales')
+	CREATE TABLE [Inv_Sales](
+		[Co_ID] [smallint] NOT NULL,
+		[Sales_ID] [int] NOT NULL,
+		[Sales_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Sales_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+
+	 CONSTRAINT [PK_Inv_Sales] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[Sales_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Sales_History')
+	CREATE TABLE [Inv_Sales_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[Sales_ID] [int] NOT NULL,
+		[Sales_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[Sales_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_Sales_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Sales_Detail')
+	CREATE TABLE [Inv_Sales_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[Sales_ID] INT NOT NULL,
+		[SalesDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Inv_Sales_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[Sales_ID] ASC,
+		[SalesDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_Sales_Detail_History')
+	CREATE TABLE [Inv_Sales_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[Sales_ID] INT NOT NULL,
+		[SalesDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_Sales_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+
+--<<<<<<<<<< POS Sales Invoice related tables >>>>>>>>>>
+
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_PosSales')
+	CREATE TABLE [Inv_PosSales](
+		[Co_ID] [smallint] NOT NULL,
+		[PosSales_ID] [int] NOT NULL,
+		[PosSales_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[PosSales_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+ 		[SalesMan_ID] [int] NOT NULL,
+		[TotalCashReceived] [decimal](18, 0) NULL,
+
+	 CONSTRAINT [PK_Inv_PosSales] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[PosSales_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_PosSales_History')
+	CREATE TABLE [Inv_PosSales_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[PosSales_ID] [int] NOT NULL,
+		[PosSales_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[PosSales_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[SalesMan_ID] [int] NOT NULL,
+		[TotalCashReceived] [decimal](18, 0) NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_PosSales_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_PosSales_Detail')
+	CREATE TABLE [Inv_PosSales_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[PosSales_ID] INT NOT NULL,
+		[PosSalesDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Inv_PosSales_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[PosSales_ID] ASC,
+		[PosSalesDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_PosSales_Detail_History')
+	CREATE TABLE [Inv_PosSales_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[PosSales_ID] INT NOT NULL,
+		[PosSalesDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_PosSales_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+
+--<<<<<<<<<< Sales Return related tables >>>>>>>>>>
+
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_SalesReturn')
+	CREATE TABLE [Inv_SalesReturn](
+		[Co_ID] [smallint] NOT NULL,
+		[SalesReturn_ID] [int] NOT NULL,
+		[SalesReturn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[SalesReturn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+
+	 CONSTRAINT [PK_Inv_SalesReturn] PRIMARY KEY CLUSTERED 
+	(
+		[Co_ID] ASC,
+		[SalesReturn_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_SalesReturn_History')
+	CREATE TABLE [Inv_SalesReturn_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] [smallint] NOT NULL,
+		[SalesReturn_ID] [int] NOT NULL,
+		[SalesReturn_No] [int] NOT NULL,
+		[DocumentType_ID] [smallint] NOT NULL,
+		[SalesReturn_Date] [datetime] NOT NULL,
+		[Party_ID] [int] NULL,
+		[Payment_Mode] [smallint] NULL,
+		[Remarks] [varchar](300) NULL,
+		[Stamp_UserID] [int] NULL,
+		[Stamp_DateTime] [datetime] NULL,
+		[Status_ID] [int] NOT NULL,
+		[Upload_DateTime] [datetime] NULL,
+		[Category_Party_ID] [int] NULL,
+		[LogisticService] [varchar](50) NULL,
+		[Discount] [int] NOT NULL,
+		[SalesTax] [int] NOT NULL,
+		[Source_DocumentType_ID] [smallint] NULL,
+		[Source_Document_No] [int] NULL,
+		[Source_Document_Co_ID] [smallint] NULL,
+		[Change_Type] SMALLINT NOT NULL,
+		[Change_DateTime] DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_SalesReturn_History] PRIMARY KEY CLUSTERED 
+	([History_ID] ASC)
+	)
+GO
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_SalesReturn_Detail')
+	CREATE TABLE [Inv_SalesReturn_Detail](
+		[Co_ID] SMALLINT NOT NULL,
+		[SalesReturn_ID] INT NOT NULL,
+		[SalesReturnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+
+	 CONSTRAINT [PK_Inv_SalesReturn_Detail] PRIMARY KEY CLUSTERED 
+	(	[Co_ID] ASC,
+		[SalesReturn_ID] ASC,
+		[SalesReturnDetail_ID] ASC
+	)
+	)
+go
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='Inv_SalesReturn_Detail_History')
+	CREATE TABLE [Inv_SalesReturn_Detail_History](
+		[History_ID] INT NOT NULL IDENTITY,
+		[Co_ID] SMALLINT NOT NULL,
+		[SalesReturn_ID] INT NOT NULL,
+		[SalesReturnDetail_ID] INT NOT NULL,
+		[Warehouse_ID] INT NULL,
+		[DocumentType_ID] SMALLINT NOT NULL,
+		[Item_ID] INT NOT NULL,
+		[ItemSize_ID] SMALLINT NOT NULL,
+		[ItemQty] FLOAT NOT NULL,
+		[ItemRate] DECIMAL(18,0) NOT NULL,
+		[Stamp_UserID] INT NULL,
+		[Stamp_DateTime] DATETIME NULL,
+		[Source_DocumentType_ID] SMALLINT NULL,
+		[Source_Document_No] INT NULL,
+		[Source_Document_Co_ID] SMALLINT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[Discount] FLOAT NULL,
+		[SalesTax] FLOAT NULL,
+		Change_Type SMALLINT NOT NULL,
+		Change_DateTime DATETIME NOT NULL,
+
+	 CONSTRAINT [PK_Inv_SalesReturn_Detail_History] PRIMARY KEY CLUSTERED 
+	(History_ID ASC)
+	)
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSize' AND c.[Name]='ItemSize_Desc')
+	ALTER TABLE Inv_ItemSize ADD ItemSize_Desc VARCHAR(10) NULL
+go
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Inv_ItemSize_History' AND c.[Name]='ItemSize_Desc')
+	ALTER TABLE Inv_ItemSize_History ADD ItemSize_Desc VARCHAR(10) NULL
+go
+-- =============================================
+-- Author:		Faisal Saleem
+-- Create date: 01-Mar-2009
+-- Description:	This stored procedure returns the records from inventory and
+--				inventorydetail table to be used in report. It does not perform
+--				any calculations.
+-- =============================================
+-- ------------ Modification History -----------
+-- Author	Date		Details
+-- ------   ----        -------
+-- Faisal	01-Mar-2009	Added Comment header and because primary key is changed in both
+--						inventory and inventorydetail table so the joins are changed
+--						so that data shows on the report correctly.
+-- Faisal	30-Mar-2009	Primary key is changed back to co_id and Inventory_ID because
+--						there is possibility that there can be sale and sale return under sale document
+-- Faisal	16-May-2009 Incorporated WarehouseID
+-- Faisal	10-Oct-2009 Specified particular document types in where clause so that purchase order
+--						is not reflected in stock report.
+-- ---------------------------------------------
+ALTER PROCEDURE [spGetInventoryDetails]
+AS 
+BEGIN 
+	SELECT inv.Co_ID, Co.Co_Desc, 
+		invdet.Item_ID, inv.Party_ID, 
+		item.Item_Code, item.Item_Desc, 
+		cat.Item_Desc AS Item_Category, inv.Inventory_Date, 
+		inv.Payment_Mode, inv.Remarks,	
+		inv.Inventory_ID, inv.Inventory_No, 
+		inv.Discount, inv.SalesTax, inv.LogisticService, 
+		invdet.DocumentType_ID, invdet.Warehouse_ID, doc.DocumentType_Desc, 
+		invdet.Inventory_Qty_Size01, invdet.Inventory_Qty_Size02, 
+		invdet.Inventory_Qty_Size03, invdet.Inventory_Qty_Size04, 
+		invdet.Inventory_Qty_Size05, invdet.Inventory_Qty_Size06, 
+		invdet.Inventory_Qty_Size07, invdet.Inventory_Qty_Size08, 
+		invdet.Inventory_Qty_Size09, invdet.Inventory_Qty_Size10, 
+		invdet.Inventory_Qty_Size11, invdet.Inventory_Qty_Size12, 
+		invdet.Inventory_Qty_Size13, invdet.Inventory_Rate_Size01, 
+		invdet.Inventory_Rate_Size02, invdet.Inventory_Rate_Size03, 
+		invdet.Inventory_Rate_Size04, invdet.Inventory_Rate_Size05, 
+		invdet.Inventory_Rate_Size06, invdet.Inventory_Rate_Size07, 
+		invdet.Inventory_Rate_Size08, invdet.Inventory_Rate_Size09, 
+		invdet.Inventory_Rate_Size10, invdet.Inventory_Rate_Size11, 
+		invdet.Inventory_Rate_Size13, invdet.Inventory_Rate_Size12, 
+		Party.Party_Desc, Party.COA_ID, 
+		Party.City, Party.Country, 
+		Party.Address 
+	
+	FROM Inv_Item cat 
+	RIGHT OUTER JOIN Inv_Item AS item  
+		ON cat.Co_ID = item.Co_ID 
+		AND LEFT(item.Item_Code,2) = cat.Item_Code 
+	RIGHT JOIN Inventory_Detail AS invdet  
+		ON item.Co_ID = invdet.Co_ID 
+		AND item.Item_ID = invdet.Item_ID 
+	INNER JOIN Inventory AS inv  
+		ON inv.Co_ID = invdet.Co_ID 
+		AND inv.Inventory_ID = invdet.Inventory_ID
+	LEFT OUTER JOIN Party  
+		ON inv.Co_ID = Party.Co_ID 
+		AND inv.Party_ID = Party.Party_ID 
+	LEFT OUTER JOIN Base_Company Co 
+		ON inv.Co_ID = Co.Co_ID 
+	LEFT OUTER JOIN Common_DocumentType doc 
+		ON invdet.DocumentType_ID = doc.DocumentType_ID
+	WHERE inv.Status_ID <> 4 -- 4 is deleted
+		AND invdet.DocumentType_ID IN (1, 2, 3, 4) -- Sales, Sales Return, Purchase, Purchase Return
+END
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =109) 
+	INSERT INTO [Base_Menu] 
+		([Menu_Id], [Menu_Desc], [Form_Id], 
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId], 
+		[Stamp_DateTime], [Upload_DateTime]) 
+		VALUES (109, '&Stock In', '01-009', 9, 100, 0, '2009/10/31', NULL)
+go
+IF NOT EXISTS (SELECT DocumentType_ID FROM Common_DocumentType WHERE DocumentType_ID = 18) 
+	INSERT INTO Common_DocumentType
+			   (DocumentType_ID
+			   ,DocumentType_Desc
+			   ,Stamp_DateTime
+			   ,Stamp_UserID
+			   ,Upload_DateTime)
+		 VALUES
+			   (18, 'Purchase Warehouse', '2009-10-31', 0, NULL)
+go
+IF NOT EXISTS (SELECT EntityType_ID FROM Common_EntityType WHERE EntityType_ID = 6)
+	INSERT INTO Common_EntityType
+			   (EntityType_ID
+			   ,EntityType_Code
+			   ,EntityType_Desc
+			   ,Stamp_DateTime
+			   ,Stamp_UserID
+			   ,Upload_DateTime)
+		 VALUES
+			   (6, '6', 'Purchase Source', '2009-11-01', 0, NULL)
+go
+IF NOT EXISTS (SELECT [Co_Id] FROM [Base_Setting] WHERE [Co_Id]=0 AND [User_Id]=0 AND [Setting_Id]='DocumentNoFormat.SalesInvoice')
+	INSERT INTO [Base_Setting]
+			   ([Co_Id]
+			   ,[User_Id]
+			   ,[Setting_Id]
+			   ,[Setting_Desc]
+			   ,[Setting_Value]
+			   ,[Stamp_User_Id]
+			   ,[Stamp_DateTime]
+			   ,[Setting_Value_DataType]
+			   ,[Setting_Value_MinimumValue]
+			   ,[Setting_Value_MaximumValue]
+			   ,[Upload_DateTime])
+		 VALUES
+			   (0, 0, 'DocumentNoFormat.SalesInvoice', 'Document No format used on sales invoice form'
+			   , 'Y/9999', 0, '2009-11-01', 'String', NULL, NULL, NULL)
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='DF_Inventory_Inventory_No')
+	ALTER TABLE Inventory
+		DROP CONSTRAINT DF_Inventory_Inventory_No
+GO
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='DF_Inventory_DocumentType_ID')
+	ALTER TABLE Inventory
+		DROP CONSTRAINT DF_Inventory_DocumentType_ID
+go
+IF EXISTS (SELECT name FROM sysindexes WHERE name = 'IX_Inventory')
+	DROP INDEX Inventory.IX_Inventory
+go
+ALTER TABLE Inventory
+	ALTER COLUMN Inventory_No VARCHAR(20) NOT NULL
+GO
+IF NOT EXISTS (SELECT name FROM sysindexes WHERE name = 'IX_Inventory')
+	CREATE NONCLUSTERED INDEX IX_Inventory ON Inventory
+		(
+		Co_ID,
+		DocumentType_ID,
+		Inventory_No
+		)
+go
+IF NOT EXISTS (SELECT Menu_Id FROM Base_Menu WHERE Menu_Id =110) 
+	INSERT INTO [Base_Menu] 
+		([Menu_Id], [Menu_Desc], [Form_Id], 
+		[Display_Order], [Parent_Menu_Id], [Stamp_UserId], 
+		[Stamp_DateTime], [Upload_DateTime]) 
+		VALUES (110, 'Stock &Inquiry', '01-010', 10, 100, 0, '2009/11/08', NULL)
+go
+IF EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='vwStockInquiry')
+	DROP VIEW vwStockInquiry 
+GO
+CREATE VIEW vwStockInquiry AS
+	SELECT  a.Co_ID, Co_Code, Item_ID, Item_Code, Item_Category, Item_Desc
+		, Sum(Inventory_Qty_Size01) AS Inventory_Qty_Size01, Sum(Inventory_Qty_Size02) AS Inventory_Qty_Size02
+		, Sum(Inventory_Qty_Size03) AS Inventory_Qty_Size03, Sum(Inventory_Qty_Size04) AS Inventory_Qty_Size04
+		, SUM(Inventory_Qty_Size05) AS Inventory_Qty_Size05, SUM(Inventory_Qty_Size06) AS Inventory_Qty_Size06
+		, SUM(Inventory_Qty_Size07) AS Inventory_Qty_Size07, SUM(Inventory_Qty_Size08) AS Inventory_Qty_Size08
+		, SUM(Inventory_Qty_Size09) AS Inventory_Qty_Size09, SUM(Inventory_Qty_Size10) AS Inventory_Qty_Size10
+		, SUM(Inventory_Qty_Size11) AS Inventory_Qty_Size11, SUM(Inventory_Qty_Size12) AS Inventory_Qty_Size12, 
+		SUM(Inventory_Qty_Size13) AS Inventory_Qty_Size13
+	FROM (
+		SELECT     inv.Co_ID, Co.Co_Code, invdet.Item_ID, item.Item_Code, cat.Item_Desc AS Item_Category
+			, item.Item_Desc, invdet.Warehouse_ID
+			, - invdet.Inventory_Qty_Size01 AS Inventory_Qty_Size01, - invdet.Inventory_Qty_Size02 AS Inventory_Qty_Size02
+			, - invdet.Inventory_Qty_Size03 AS Inventory_Qty_Size03, - invdet.Inventory_Qty_Size04 AS Inventory_Qty_Size04
+			, - invdet.Inventory_Qty_Size05 AS Inventory_Qty_Size05, - invdet.Inventory_Qty_Size06 AS Inventory_Qty_Size06
+			, - invdet.Inventory_Qty_Size07 AS Inventory_Qty_Size07, - invdet.Inventory_Qty_Size08 AS Inventory_Qty_Size08
+			, - invdet.Inventory_Qty_Size09 AS Inventory_Qty_Size09, - invdet.Inventory_Qty_Size10 AS Inventory_Qty_Size10
+			, - invdet.Inventory_Qty_Size11 AS Inventory_Qty_Size11, - invdet.Inventory_Qty_Size12 AS Inventory_Qty_Size12
+			, - invdet.Inventory_Qty_Size13 AS Inventory_Qty_Size13
+		FROM         Inv_Item AS cat RIGHT OUTER JOIN
+		  Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+		  Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+		  Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID LEFT OUTER JOIN
+		  Party ON inv.Co_ID = Party.Co_ID AND inv.Party_ID = Party.Party_ID LEFT OUTER JOIN
+		  Base_Company AS Co ON inv.Co_ID = Co.Co_Id LEFT OUTER JOIN
+		  Common_DocumentType AS doc ON invdet.DocumentType_ID = doc.DocumentType_ID
+		WHERE     (inv.Status_ID <> 4) AND (invdet.DocumentType_ID IN (1, 4))
+		
+		UNION ALL
+		
+		SELECT     inv.Co_ID, Co.Co_Code, invdet.Item_ID, item.Item_Code, cat.Item_Desc AS Item_Category
+			, item.Item_Desc, invdet.Warehouse_ID
+			, invdet.Inventory_Qty_Size01, invdet.Inventory_Qty_Size02, invdet.Inventory_Qty_Size03
+			, invdet.Inventory_Qty_Size04, invdet.Inventory_Qty_Size05, invdet.Inventory_Qty_Size06
+			, invdet.Inventory_Qty_Size07, invdet.Inventory_Qty_Size08, invdet.Inventory_Qty_Size09
+			, invdet.Inventory_Qty_Size10, invdet.Inventory_Qty_Size11, invdet.Inventory_Qty_Size12, 
+			invdet.Inventory_Qty_Size13
+		FROM         Inv_Item AS cat RIGHT OUTER JOIN
+		  Inv_Item AS item ON cat.Co_ID = item.Co_ID AND LEFT(item.Item_Code, 2) = cat.Item_Code RIGHT OUTER JOIN
+		  Inventory_Detail AS invdet ON item.Co_ID = invdet.Co_ID AND item.Item_ID = invdet.Item_ID INNER JOIN
+		  Inventory AS inv ON inv.Co_ID = invdet.Co_ID AND inv.Inventory_ID = invdet.Inventory_ID LEFT OUTER JOIN
+		  Party ON inv.Co_ID = Party.Co_ID AND inv.Party_ID = Party.Party_ID LEFT OUTER JOIN
+		  Base_Company AS Co ON inv.Co_ID = Co.Co_Id LEFT OUTER JOIN
+		  Common_DocumentType AS doc ON invdet.DocumentType_ID = doc.DocumentType_ID
+		WHERE     (inv.Status_ID <> 4) AND (invdet.DocumentType_ID IN (2, 3))
+		) a
+	GROUP BY a.Co_ID, Co_Code, Item_ID, Item_Code, Item_Category, Item_Desc
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionCo_Code') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionCo_Code'
+       ,'Co_Code Caption'
+       ,'Company',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size01') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size01'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'100',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size02') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size02'
+       ,'Inventory_Qty_Size02 Caption'
+       ,'110',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size03')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size03'
+       ,'Inventory_Qty_Size03 Caption'
+       ,'120',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size04') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size04'
+       ,'Inventory_Qty_Size04 Caption'
+       ,'130',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size05') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size05'
+       ,'Inventory_Qty_Size05 Caption'
+       ,'140',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size06')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size06'
+       ,'Inventory_Qty_Size06 Caption'
+       ,'150',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size07') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size07'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'160',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size08')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size08'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'170',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size09')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size09'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'180',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size10')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size10'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'190',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionInventory_Qty_Size11')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionInventory_Qty_Size11'
+       ,'Inventory_Qty_Size01 Caption'
+       ,'CM',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItem_Category')
+	INSERT INTO [Base_Setting]
+       ([Co_Id], [User_Id], [Setting_Id]
+       , [Setting_Desc]
+       ,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime], [Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue], [Setting_Value_MaximumValue], [Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItem_Category'
+       ,'Item_Category Caption'
+       ,'Category',0,'2009/11/08','String'
+       ,NULL,NULL,NULL)

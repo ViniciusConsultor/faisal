@@ -1,0 +1,4 @@
+DELETE FROM Base_Alert WHERE Alert_DateTime < '2008-08-23'
+go
+UPDATE Base_Alert SET Alert_Destination = 'quickerp@quicktijarat.com', Stamp_DateTime = '2009-09-14' 
+WHERE Alert_Type = 0 AND Status_ID = 8

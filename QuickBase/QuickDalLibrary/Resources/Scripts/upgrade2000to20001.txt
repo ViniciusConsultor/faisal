@@ -1,0 +1,158 @@
+IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] ='Base_Setting' AND c.[Name]='Upload_DateTime') 
+	ALTER TABLE Base_Setting ADD Upload_DateTime DATETIME NULL
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size01') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size01'
+       ,'ItemSummary_Size01 Caption'
+       ,'100',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size02') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size02'
+       ,'ItemSummary_Size02 Caption'
+       ,'110',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size03') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size03'
+       ,'ItemSummary_Size03 Caption'
+       ,'120',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size04') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size04'
+       ,'ItemSummary_Size04 Caption'
+       ,'130',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size05') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size05'
+       ,'ItemSummary_Size05 Caption'
+       ,'140',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size06')
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size06'
+       ,'ItemSummary_Size06 Caption'
+       ,'150',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size07') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size07'
+       ,'ItemSummary_Size07 Caption'
+       ,'170',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size08') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size08'
+       ,'ItemSummary_Size08 Caption'
+       ,'170',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size09') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size09'
+       ,'ItemSummary_Size09 Caption'
+       ,'180',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size10') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size10'
+       ,'ItemSummary_Size01 Caption'
+       ,'190',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size11') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size11'
+       ,'ItemSummary_Size11 Caption'
+       ,'CM',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size12')
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size12'
+       ,'ItemSummary_Size12 Caption'
+       ,'200',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
+go
+IF NOT EXISTS (SELECT [Setting_Id] FROM [Base_Setting] WHERE [Setting_Id] ='DBColumnCaptionItemSummary_Size13') 
+	INSERT INTO [Base_Setting]
+       ([Co_Id],[User_Id],[Setting_Id]
+       ,[Setting_Desc]
+       ,[Setting_Value],[Stamp_User_Id],[Stamp_DateTime],[Setting_Value_DataType]
+       ,[Setting_Value_MinimumValue],[Setting_Value_MaximumValue],[Upload_DateTime])
+  VALUES
+       (0,0,'DBColumnCaptionItemSummary_Size13'
+       ,'ItemSummary_Size13 Caption'
+       ,'210',0,GetDate(),'String'
+       ,NULL,NULL,NULL)
