@@ -167,7 +167,6 @@ IF NOT EXISTS (SELECT * FROM [Base_Setting] WHERE [Setting_Id] = 'DBColumnCaptio
            ,NULL
            ,NULL)
 go
-go
 IF NOT EXISTS (SELECT * FROM [Base_Setting] WHERE [Setting_Id] = 'DBColumnCaptionQty_Size02')
 	INSERT INTO [Base_Setting]
            ([Co_Id]
