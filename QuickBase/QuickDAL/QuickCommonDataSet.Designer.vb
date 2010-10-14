@@ -17772,12 +17772,55 @@ Namespace QuickCommonDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Form_ID, Form_Code, Form_Name, RecordStatus_ID, Stamp_UserID, Stamp_Da"& _ 
                 "teTime, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingForm"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Form_ID, Form_Code, Form_Name, RecordStatus_ID, Stamp_UserID, Stamp_DateTi"& _ 
+                "me,                   Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_SettingForm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where Form_ID = @F"& _ 
+                "orm_ID"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT   Top 1 Form_ID, Form_Code, Form_Name,RecordStatus_ID,Stamp_UserID, Stamp_"& _ 
+                "DateTime,                    Upload_DateTime "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingForm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"wh"& _ 
+                "ere (RecordStatus_ID <> 4)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT   Top 1  bs.Form_ID, Form_Code, Form_Name, Form_Caption, bsca.Co_ID       "& _ 
+                "        ,bs.RecordStatus_ID,bs.Stamp_UserID, bs.Stamp_DateTime, bs.Upload_DateTi"& _ 
+                "me "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingForm as bs"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN Base_SettingForm_Company_As"& _ 
+                "sociation as bsca on bs.form_id = bsca.Form_id "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where  (Bs.RecordStatus_ID <> 4"& _ 
+                ")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Order by BS.Form_ID Desc"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT   Top 1  bs.Form_ID, Form_Code, Form_Name, Form_Caption, bsca.Co_ID ,bs.Re"& _ 
+                "cordStatus_ID,bs.Stamp_UserID, bs.Stamp_DateTime, bs.Upload_DateTime "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+                "    Base_SettingForm as bs"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN Base_SettingForm_Company_Association as b"& _ 
+                "sca on bs.form_id = bsca.Form_id "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where  (Bs.Form_ID > @Form_ID) AND  (Bs.Recor"& _ 
+                "dStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT   Top 1  bs.Form_ID, Form_Code, Form_Name, Form_Caption, bsca.Co_ID       "& _ 
+                "          ,bs.RecordStatus_ID,bs.Stamp_UserID, bs.Stamp_DateTime, bs.Upload_Date"& _ 
+                "Time "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingForm as bs"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN Base_SettingForm_Company_"& _ 
+                "Association as bsca on bs.form_id = bsca.Form_id "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (Bs.Form_ID < @Form_ID"& _ 
+                ") AND  (Bs.RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Order by BS.Form_ID Desc"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT CONVERT(INT, ISNULL(MAX(Form_ID),0) + 1) AS NewID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_SettingForm"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17785,6 +17828,59 @@ Namespace QuickCommonDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetAll() As QuickCommonDataSet.SettingFormDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByFormIDDispaly(ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Form_ID,Integer)
+            Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetFirstByFormID() As QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetLastByFormID() As QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetNextByCoIDFormID(ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Form_ID,Integer)
+            Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetPreviousByCoIDFormID(ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Form_ID,Integer)
             Dim dataTable As QuickCommonDataSet.SettingFormDataTable = New QuickCommonDataSet.SettingFormDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -17956,6 +18052,31 @@ Namespace QuickCommonDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal Form_Code As String, ByVal Form_Name As String, ByVal RecordStatus_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_Form_ID As Short, ByVal Original_Form_Code As String, ByVal Original_Form_Name As String, ByVal Original_RecordStatus_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
             Return Me.Update(Original_Form_ID, Form_Code, Form_Name, RecordStatus_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, Original_Form_ID, Original_Form_Code, Original_Form_Name, Original_RecordStatus_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetByFormID() As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
         End Function
     End Class
     
@@ -18131,7 +18252,7 @@ Namespace QuickCommonDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Co_ID, Form_ID, Form_Caption, RecordStatus_ID, Stamp_UserID, Stamp_Dat"& _ 
@@ -18139,13 +18260,22 @@ Namespace QuickCommonDataSetTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     FCA.Co_ID, FCA.Form_ID, Form_Code, Form_Name, Form_Caption, FCA.Record"& _ 
+            Me._commandCollection(1).CommandText = "SELECT   Top 1  Form_ID,  Form_Caption, Co_ID ,RecordStatus_ID,Stamp_UserID, Stam"& _ 
+                "p_DateTime,                     Upload_DateTime "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      Base_SettingForm_Com"& _ 
+                "pany_Association "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID=@Co_Id And (Form_ID =@Form_ID) AND (RecordStatus_"& _ 
+                "ID <> 4)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT     FCA.Co_ID, FCA.Form_ID, Form_Code, Form_Name, Form_Caption, FCA.Record"& _ 
                 "Status_ID, FCA.Stamp_UserID, FCA.Stamp_DateTime, FCA.Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
                 "     Base_SettingForm_Company_Association FCA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"INNER JOIN Base_SettingForm F ON"& _ 
                 " FCA.Co_ID = @Co_ID AND F.Form_ID = FCA.Form_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Form_Code = @Form_Code"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_Code", Global.System.Data.SqlDbType.VarChar, 6, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_Code", Global.System.Data.SqlDbType.VarChar, 6, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18161,8 +18291,20 @@ Namespace QuickCommonDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetByCoIDFormCode(ByVal Co_ID As Integer, ByVal Form_Code As String) As QuickCommonDataSet.SettingFormCompanyAssociationDataTable
+        Public Overloads Overridable Function GetFirstByCoIDFormID(ByVal Co_Id As Integer, ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormCompanyAssociationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_Id,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Form_ID,Integer)
+            Dim dataTable As QuickCommonDataSet.SettingFormCompanyAssociationDataTable = New QuickCommonDataSet.SettingFormCompanyAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDFormCode(ByVal Co_ID As Integer, ByVal Form_Code As String) As QuickCommonDataSet.SettingFormCompanyAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             If (Form_Code Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Form_Code")
@@ -18499,12 +18641,35 @@ Namespace QuickCommonDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Form_ID, Control_ID, Control_Name, RecordStatus_ID, Stamp_UserID, Stam"& _ 
                 "p_DateTime, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingFormControls"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Form_ID, Control_ID, Control_Name, RecordStatus_ID, Stamp_UserID, Stamp_Da"& _ 
+                "teTime,                     Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_SettingFormControls"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHER"& _ 
+                "E   Form_ID =@Form_ID and RecordStatus_ID <> 4"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT    Co_ID, bs.Form_ID, bs.Control_ID,Control_Name , Control_Caption , Reado"& _ 
+                "nlyForNewRecord "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        ,ReadonlyForExistingRecord ,Mandatory,"& _ 
+                " bs.RecordStatus_ID, bs.Stamp_UserID,                     bs.Stamp_DateTime,bs.U"& _ 
+                "pload_DateTime ,bsca.recordstatus_id as EXP1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingFormContr"& _ 
+                "ols as bs"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN Base_SettingFormControls_Company_Association as bsca"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "       ON bsca.Form_ID = bs.Form_ID and bsca.Control_ID = bs.Control_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
+                "bs.Form_ID = @Form_ID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT Max(Control_ID) FROM Base_SettingFormControls"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Form_ID =@Form_ID"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18512,6 +18677,28 @@ Namespace QuickCommonDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetAll() As QuickCommonDataSet.SettingFormControlsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickCommonDataSet.SettingFormControlsDataTable = New QuickCommonDataSet.SettingFormControlsDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetAllByFormID(ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormControlsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Form_ID,Integer)
+            Dim dataTable As QuickCommonDataSet.SettingFormControlsDataTable = New QuickCommonDataSet.SettingFormControlsDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDFormControlSetting(ByVal Form_ID As Integer) As QuickCommonDataSet.SettingFormControlsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Form_ID,Integer)
             Dim dataTable As QuickCommonDataSet.SettingFormControlsDataTable = New QuickCommonDataSet.SettingFormControlsDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -18667,6 +18854,32 @@ Namespace QuickCommonDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update(ByVal Control_Name As String, ByVal RecordStatus_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_Form_ID As Short, ByVal Original_Control_ID As Short, ByVal Original_Control_Name As String, ByVal Original_RecordStatus_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
             Return Me.Update(Original_Form_ID, Original_Control_ID, Control_Name, RecordStatus_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, Original_Form_ID, Original_Control_ID, Original_Control_Name, Original_RecordStatus_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetMaxControlID(ByVal Form_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            command.Parameters(0).Value = CType(Form_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
         End Function
     End Class
     
@@ -18875,7 +19088,7 @@ Namespace QuickCommonDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Co_ID, Form_ID, Control_ID, Control_Caption, ReadonlyForNewRecord, Rea"& _ 
@@ -18885,16 +19098,43 @@ Namespace QuickCommonDataSetTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     CA.Co_ID, CA.Form_ID, F.Form_Code, CA.Control_ID, C.Control_Name, CA.C"& _ 
+            Me._commandCollection(1).CommandText = "SELECT     Co_ID, bs.Form_ID, bs.Control_ID,Control_name , Control_Caption, Reado"& _ 
+                "nlyForNewRecord,                    ReadonlyForExistingRecord, Mandatory, bs.Rec"& _ 
+                "ordStatus_ID, bs.Stamp_UserID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    bs.Stamp_DateTime,bs. Uploa"& _ 
+                "d_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_SettingFormControls_Company_Association as bsca"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"I"& _ 
+                "NNER JOIN Base_SettingFormControls as bs ON bsca.form_id = bs.form_id and bsca.c"& _ 
+                "ontrol_id =                       bs.control_id"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE CO_ID = @COID AND bs.Form"& _ 
+                "_ID = @FormID AND bsca.RecordStatus_ID <> 4"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@COID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT     CA.Co_ID, CA.Form_ID, F.Form_Code, CA.Control_ID, C.Control_Name, CA.C"& _ 
                 "ontrol_Caption, CA.ReadonlyForNewRecord, CA.ReadonlyForExistingRecord, CA.Mandat"& _ 
                 "ory, CA.RecordStatus_ID, CA.Stamp_UserID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      CA.Stamp_DateT"& _ 
                 "ime, CA.Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      Base_SettingFormControls_Company_Associatio"& _ 
                 "n CA"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"INNER JOIN Base_SettingFormControls C ON CA.Co_ID = @Co_ID AND CA.Form_ID"& _ 
                 " = C.Form_ID AND CA.Control_ID = C.Control_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"INNER JOIN Base_SettingForm F ON"& _ 
                 " C.Form_ID = F.Form_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"&Global.Microsoft.VisualBasic.ChrW(9)&"F.Form_Code = @Form_Code"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_Code", Global.System.Data.SqlDbType.VarChar, 6, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_Code", Global.System.Data.SqlDbType.VarChar, 6, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT COUNT(*)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_SettingFormControls_Company_Association"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID=@"& _ 
+                "Co_ID AND Form_ID=@Form_ID AND Control_ID =@Control_ID"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Control_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Control_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT Max(Control_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_SettingFormControls_Company_Association"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "Co_Id=@Co_Id AND Form_ID=@Form_ID"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18910,8 +19150,20 @@ Namespace QuickCommonDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetByCoIDFormCode(ByVal Co_ID As Integer, ByVal Form_Code As String) As QuickCommonDataSet.SettingFormControlsCompanyAssociationDataTable
+        Public Overloads Overridable Function GetByCoIDFormsControlSetting(ByVal COID As Integer, ByVal FormID As Integer) As QuickCommonDataSet.SettingFormControlsCompanyAssociationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(COID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(FormID,Integer)
+            Dim dataTable As QuickCommonDataSet.SettingFormControlsCompanyAssociationDataTable = New QuickCommonDataSet.SettingFormControlsCompanyAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDFormCode(ByVal Co_ID As Integer, ByVal Form_Code As String) As QuickCommonDataSet.SettingFormControlsCompanyAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             If (Form_Code Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Form_Code")
@@ -19130,6 +19382,61 @@ Namespace QuickCommonDataSetTableAdapters
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
             Return Me.Update(Original_Co_ID, Original_Form_ID, Original_Control_ID, Control_Caption, ReadonlyForNewRecord, ReadonlyForExistingRecord, Mandatory, RecordStatus_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, Original_Co_ID, Original_Form_ID, Original_Control_ID, Original_Control_Caption, Original_ReadonlyForNewRecord, Original_ReadonlyForExistingRecord, Original_Mandatory, Original_RecordStatus_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetControlSettingCompanyRows(ByVal Co_ID As Integer, ByVal Form_ID As Integer, ByVal Control_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            command.Parameters(0).Value = CType(Co_ID,Integer)
+            command.Parameters(1).Value = CType(Form_ID,Integer)
+            command.Parameters(2).Value = CType(Control_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetMaxControlID(ByVal Co_Id As Integer, ByVal Form_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
+            command.Parameters(0).Value = CType(Co_Id,Integer)
+            command.Parameters(1).Value = CType(Form_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
         End Function
     End Class
     
