@@ -31,7 +31,7 @@
     </UpgradeBackupLocation>
     <ApplicationRevision>26</ApplicationRevision>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishUrl>D:\Publish\Uniformers\QuickErp_02_03_02_32\</PublishUrl>
+    <PublishUrl>D:\Publish\Uniformers\QuickErp_02_03_02_33\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -44,10 +44,9 @@
     <UpdateUrl>http://www.quicktijarat.com/quickerp/</UpdateUrl>
     <ProductName>Quick Erp</ProductName>
     <PublisherName>Quick Erp</PublisherName>
-    <MinimumRequiredVersion>2.3.2.32</MinimumRequiredVersion>
-    <WebPage>default.htm</WebPage>
+    <MinimumRequiredVersion>2.3.2.33</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationVersion>2.3.2.32</ApplicationVersion>
+    <ApplicationVersion>2.3.2.33</ApplicationVersion>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -374,43 +373,7 @@
       <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics.Shared.v2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics.Win.v2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Shared.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Shared.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.Misc.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -428,25 +391,7 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinDock.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinDock.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinEditors.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -464,25 +409,7 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinGrid.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinGrid.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinListBar.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -500,25 +427,7 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinListView.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinListView.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinSchedule.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -545,15 +454,6 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinTabbedMdi.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTabbedMdi.v8.2">
       <Visible>False</Visible>
       <Group>
@@ -563,25 +463,7 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinTabControl.v6.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTabControl.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.UltraWinToolbars.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -600,15 +482,6 @@
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTree.v8.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Infragistics2.Win.v6.1">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -845,6 +718,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Guidlines\ClassRegions.txt" />
+    <Content Include="Guidlines\default.htm" />
     <Content Include="Guidlines\PublishStepts.txt" />
     <None Include="app.config" />
     <None Include="QuickERP_TemporaryKey.pfx" />

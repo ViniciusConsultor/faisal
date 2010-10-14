@@ -3358,7 +3358,7 @@ SELECT Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime FROM In
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StockInquiryTableAdapter" GeneratorDataComponentClassName="StockInquiryTableAdapter" Name="StockInquiry" UserDataComponentName="StockInquiryTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.vwStockInquiry" DbObjectType="View" FillMethodModifier="Public" FillMethodName="GetByItemCode" GenerateMethods="Fill" GenerateShortCommands="False" GeneratorSourceName="GetByItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetByItemCode" UserSourceName="GetByItemCode">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.vwStockInquiry" DbObjectType="View" FillMethodModifier="Public" FillMethodName="GetByItemCode" GenerateMethods="Fill" GenerateShortCommands="False" GeneratorSourceName="GetByItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="GetByItemCode">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT Co_ID, Co_Code, Item_ID, Item_Code, left(Item_Code,2) AS Item_Code1, Item_Category, Item_Desc, Inventory_Qty_Size01, Inventory_Qty_Size02, Inventory_Qty_Size03, Inventory_Qty_Size04, Inventory_Qty_Size05, Inventory_Qty_Size06, Inventory_Qty_Size07, Inventory_Qty_Size08, Inventory_Qty_Size09, Inventory_Qty_Size10, Inventory_Qty_Size11, Inventory_Qty_Size12, Inventory_Qty_Size13, Inventory_Qty_Size01 + Inventory_Qty_Size02 + Inventory_Qty_Size03 + Inventory_Qty_Size04 + Inventory_Qty_Size05 + Inventory_Qty_Size06 + Inventory_Qty_Size07 + Inventory_Qty_Size08 + Inventory_Qty_Size09 + Inventory_Qty_Size10 + Inventory_Qty_Size11 + Inventory_Qty_Size12 + Inventory_Qty_Size13 AS Qty_Total FROM vwStockInquiry WHERE (Item_Code = @Item_Code)</CommandText>
@@ -3377,19 +3377,19 @@ SELECT Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime FROM In
               <Mapping SourceColumn="Item_Code" DataSetColumn="Item_Code" />
               <Mapping SourceColumn="Item_Category" DataSetColumn="Item_Category" />
               <Mapping SourceColumn="Item_Desc" DataSetColumn="Item_Desc" />
-              <Mapping SourceColumn="Inventory_Qty_Size01" DataSetColumn="Inventory_Qty_Size01" />
-              <Mapping SourceColumn="Inventory_Qty_Size02" DataSetColumn="Inventory_Qty_Size02" />
-              <Mapping SourceColumn="Inventory_Qty_Size03" DataSetColumn="Inventory_Qty_Size03" />
-              <Mapping SourceColumn="Inventory_Qty_Size04" DataSetColumn="Inventory_Qty_Size04" />
-              <Mapping SourceColumn="Inventory_Qty_Size05" DataSetColumn="Inventory_Qty_Size05" />
-              <Mapping SourceColumn="Inventory_Qty_Size06" DataSetColumn="Inventory_Qty_Size06" />
-              <Mapping SourceColumn="Inventory_Qty_Size07" DataSetColumn="Inventory_Qty_Size07" />
-              <Mapping SourceColumn="Inventory_Qty_Size08" DataSetColumn="Inventory_Qty_Size08" />
-              <Mapping SourceColumn="Inventory_Qty_Size09" DataSetColumn="Inventory_Qty_Size09" />
-              <Mapping SourceColumn="Inventory_Qty_Size10" DataSetColumn="Inventory_Qty_Size10" />
-              <Mapping SourceColumn="Inventory_Qty_Size11" DataSetColumn="Inventory_Qty_Size11" />
-              <Mapping SourceColumn="Inventory_Qty_Size12" DataSetColumn="Inventory_Qty_Size12" />
-              <Mapping SourceColumn="Inventory_Qty_Size13" DataSetColumn="Inventory_Qty_Size13" />
+              <Mapping SourceColumn="Inventory_Qty_Size01" DataSetColumn="Qty_Size01" />
+              <Mapping SourceColumn="Inventory_Qty_Size02" DataSetColumn="Qty_Size02" />
+              <Mapping SourceColumn="Inventory_Qty_Size03" DataSetColumn="Qty_Size03" />
+              <Mapping SourceColumn="Inventory_Qty_Size04" DataSetColumn="Qty_Size04" />
+              <Mapping SourceColumn="Inventory_Qty_Size05" DataSetColumn="Qty_Size05" />
+              <Mapping SourceColumn="Inventory_Qty_Size06" DataSetColumn="Qty_Size06" />
+              <Mapping SourceColumn="Inventory_Qty_Size07" DataSetColumn="Qty_Size07" />
+              <Mapping SourceColumn="Inventory_Qty_Size08" DataSetColumn="Qty_Size08" />
+              <Mapping SourceColumn="Inventory_Qty_Size09" DataSetColumn="Qty_Size09" />
+              <Mapping SourceColumn="Inventory_Qty_Size10" DataSetColumn="Qty_Size10" />
+              <Mapping SourceColumn="Inventory_Qty_Size11" DataSetColumn="Qty_Size11" />
+              <Mapping SourceColumn="Inventory_Qty_Size12" DataSetColumn="Qty_Size12" />
+              <Mapping SourceColumn="Inventory_Qty_Size13" DataSetColumn="Qty_Size13" />
               <Mapping SourceColumn="Qty_Total" DataSetColumn="Qty_Total" />
               <Mapping SourceColumn="Item_Code1" DataSetColumn="Item_Code1" />
             </Mappings>
@@ -3405,6 +3405,8 @@ SELECT Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime FROM In
                       </Parameter>
                       <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Companies" Precision="0" ProviderType="VarChar" Scale="0" Size="8000" SourceColumnNullMapping="False" SourceVersion="Current">
                       </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@WarehouseID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -3419,6 +3421,39 @@ SELECT Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime FROM In
                       <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ItemCode" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumnNullMapping="False" SourceVersion="Current">
                       </Parameter>
                       <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Companies" Precision="0" ProviderType="VarChar" Scale="0" Size="8000" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@WarehouseID" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InventoryFactsTableAdapter" GeneratorDataComponentClassName="InventoryFactsTableAdapter" Name="InventoryFacts" UserDataComponentName="InventoryFactsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="False" GeneratorGetMethodName="GetTestValue" GetMethodModifier="Public" GetMethodName="GetTestValue" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetTestValue" UserSourceName="GetTestValue">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT 'User Function' AS ResultValue FROM Base_Company WHERE 1=0</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ResultValue" DataSetColumn="ResultValue" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetTest" GeneratorSourceName="GetMaximumTransactionDate" Modifier="Public" Name="GetMaximumTransactionDate" QueryType="Scalar" ScalarCallRetval="System.DateTime, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetMaximumTransactionDate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT ISNULL(MAX(Inventory_Date), GetDate()) 
+FROM Inventory
+WHERE Co_ID = @CoID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Inventory" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
                       </Parameter>
                     </Parameters>
                   </DbCommand>
@@ -3900,20 +3935,33 @@ SELECT Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime FROM In
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Inventory_Qty_Size01" msprop:Generator_UserColumnName="Inventory_Qty_Size01" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size01" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size01" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size01Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size02" msprop:Generator_UserColumnName="Inventory_Qty_Size02" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size02" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size02" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size02Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size03" msprop:Generator_UserColumnName="Inventory_Qty_Size03" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size03" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size03" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size03Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size04" msprop:Generator_UserColumnName="Inventory_Qty_Size04" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size04" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size04" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size04Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size05" msprop:Generator_UserColumnName="Inventory_Qty_Size05" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size05" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size05" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size05Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size06" msprop:Generator_UserColumnName="Inventory_Qty_Size06" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size06" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size06" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size06Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size07" msprop:Generator_UserColumnName="Inventory_Qty_Size07" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size07" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size07" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size07Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size08" msprop:Generator_UserColumnName="Inventory_Qty_Size08" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size08" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size08" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size08Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size09" msprop:Generator_UserColumnName="Inventory_Qty_Size09" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size09" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size09" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size09Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size10" msprop:Generator_UserColumnName="Inventory_Qty_Size10" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size10" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size10" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size10Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size11" msprop:Generator_UserColumnName="Inventory_Qty_Size11" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size11" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size11" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size11Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size12" msprop:Generator_UserColumnName="Inventory_Qty_Size12" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size12" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size12" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size12Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Inventory_Qty_Size13" msprop:Generator_UserColumnName="Inventory_Qty_Size13" msprop:Generator_ColumnPropNameInRow="Inventory_Qty_Size13" msprop:Generator_ColumnVarNameInTable="columnInventory_Qty_Size13" msprop:Generator_ColumnPropNameInTable="Inventory_Qty_Size13Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size01" msprop:Generator_UserColumnName="Qty_Size01" msprop:Generator_ColumnPropNameInRow="Qty_Size01" msprop:Generator_ColumnVarNameInTable="columnQty_Size01" msprop:Generator_ColumnPropNameInTable="Qty_Size01Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size02" msprop:Generator_UserColumnName="Qty_Size02" msprop:Generator_ColumnPropNameInRow="Qty_Size02" msprop:Generator_ColumnVarNameInTable="columnQty_Size02" msprop:Generator_ColumnPropNameInTable="Qty_Size02Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size03" msprop:Generator_UserColumnName="Qty_Size03" msprop:Generator_ColumnPropNameInRow="Qty_Size03" msprop:Generator_ColumnVarNameInTable="columnQty_Size03" msprop:Generator_ColumnPropNameInTable="Qty_Size03Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size04" msprop:Generator_UserColumnName="Qty_Size04" msprop:Generator_ColumnPropNameInRow="Qty_Size04" msprop:Generator_ColumnVarNameInTable="columnQty_Size04" msprop:Generator_ColumnPropNameInTable="Qty_Size04Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size05" msprop:Generator_UserColumnName="Qty_Size05" msprop:Generator_ColumnPropNameInRow="Qty_Size05" msprop:Generator_ColumnVarNameInTable="columnQty_Size05" msprop:Generator_ColumnPropNameInTable="Qty_Size05Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size06" msprop:Generator_UserColumnName="Qty_Size06" msprop:Generator_ColumnPropNameInRow="Qty_Size06" msprop:Generator_ColumnVarNameInTable="columnQty_Size06" msprop:Generator_ColumnPropNameInTable="Qty_Size06Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size07" msprop:Generator_UserColumnName="Qty_Size07" msprop:Generator_ColumnPropNameInRow="Qty_Size07" msprop:Generator_ColumnVarNameInTable="columnQty_Size07" msprop:Generator_ColumnPropNameInTable="Qty_Size07Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size08" msprop:Generator_UserColumnName="Qty_Size08" msprop:Generator_ColumnPropNameInRow="Qty_Size08" msprop:Generator_ColumnVarNameInTable="columnQty_Size08" msprop:Generator_ColumnPropNameInTable="Qty_Size08Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size09" msprop:Generator_UserColumnName="Qty_Size09" msprop:Generator_ColumnPropNameInRow="Qty_Size09" msprop:Generator_ColumnVarNameInTable="columnQty_Size09" msprop:Generator_ColumnPropNameInTable="Qty_Size09Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size10" msprop:Generator_UserColumnName="Qty_Size10" msprop:Generator_ColumnPropNameInRow="Qty_Size10" msprop:Generator_ColumnVarNameInTable="columnQty_Size10" msprop:Generator_ColumnPropNameInTable="Qty_Size10Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size11" msprop:Generator_UserColumnName="Qty_Size11" msprop:Generator_ColumnPropNameInRow="Qty_Size11" msprop:Generator_ColumnVarNameInTable="columnQty_Size11" msprop:Generator_ColumnPropNameInTable="Qty_Size11Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size12" msprop:Generator_UserColumnName="Qty_Size12" msprop:Generator_ColumnPropNameInRow="Qty_Size12" msprop:Generator_ColumnVarNameInTable="columnQty_Size12" msprop:Generator_ColumnPropNameInTable="Qty_Size12Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty_Size13" msprop:Generator_UserColumnName="Qty_Size13" msprop:Generator_ColumnPropNameInRow="Qty_Size13" msprop:Generator_ColumnVarNameInTable="columnQty_Size13" msprop:Generator_ColumnPropNameInTable="Qty_Size13Column" type="xs:decimal" minOccurs="0" />
               <xs:element name="Qty_Total" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Qty_Total" msprop:Generator_ColumnVarNameInTable="columnQty_Total" msprop:Generator_ColumnPropNameInRow="Qty_Total" msprop:Generator_ColumnPropNameInTable="Qty_TotalColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InventoryFacts" msprop:Generator_UserTableName="InventoryFacts" msprop:Generator_RowDeletedName="InventoryFactsRowDeleted" msprop:Generator_RowChangedName="InventoryFactsRowChanged" msprop:Generator_RowClassName="InventoryFactsRow" msprop:Generator_RowChangingName="InventoryFactsRowChanging" msprop:Generator_RowEvArgName="InventoryFactsRowChangeEvent" msprop:Generator_RowEvHandlerName="InventoryFactsRowChangeEventHandler" msprop:Generator_TableClassName="InventoryFactsDataTable" msprop:Generator_TableVarName="tableInventoryFacts" msprop:Generator_RowDeletingName="InventoryFactsRowDeleting" msprop:Generator_TablePropName="InventoryFacts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ResultValue" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ResultValue" msprop:Generator_ColumnVarNameInTable="columnResultValue" msprop:Generator_ColumnPropNameInRow="ResultValue" msprop:Generator_ColumnPropNameInTable="ResultValueColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

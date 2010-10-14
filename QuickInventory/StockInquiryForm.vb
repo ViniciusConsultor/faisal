@@ -42,7 +42,7 @@ Public Class StockInquiryForm
       Me.StockQuickSpread_Sheet1.Reset()
       Me.StockQuickSpread_Sheet1.DataSource = Nothing
       '_StockInquiryTable = _StockInquiryTableAdapter.GetByItemID(Me.ItemComboBox.ItemCode)
-      _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys)
+      _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0)
 
       SetGridLayout(Me.StockQuickSpread_Sheet1, _StockInquiryTable)
       _StockInquiryTable.Item_Code1Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
@@ -75,7 +75,7 @@ Public Class StockInquiryForm
       Cursor = Windows.Forms.Cursors.WaitCursor
       Me.MinimumStockLevelSheet.Reset()
       Me.MinimumStockLevelSheet.DataSource = Nothing
-      _StockInquiryTable = _StockInquiryTableAdapter.GetMinimumStockLevelByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys)
+      _StockInquiryTable = _StockInquiryTableAdapter.GetMinimumStockLevelByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0)
       _StockInquiryTable.Item_Code1Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
       _StockInquiryTable.Item_Code2Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",4,2)"
 
@@ -92,19 +92,19 @@ Public Class StockInquiryForm
 
       If _ComparisonString <> String.Empty Then
         With _StockInquiryTable
-          _ComparisonString = .Inventory_Qty_Size01Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size02Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size03Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size04Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size05Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size06Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size07Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size08Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size09Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size10Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size11Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size12Column.ColumnName _
-            & _ComparisonString & " OR " & .Inventory_Qty_Size13Column.ColumnName _
+          _ComparisonString = .Qty_Size01Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size02Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size03Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size04Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size05Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size06Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size07Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size08Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size09Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size10Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size11Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size12Column.ColumnName _
+            & _ComparisonString & " OR " & .Qty_Size13Column.ColumnName _
             & _ComparisonString
         End With
       End If
@@ -163,12 +163,12 @@ Public Class StockInquiryForm
             QuickSpreadSheet.Columns(I).Width = 100
             QuickSpreadSheet.Columns(I).CellType = _TextCellLabel
 
-          Case _StockInquiryTable.Inventory_Qty_Size01Column.ColumnName, _StockInquiryTable.Inventory_Qty_Size02Column.ColumnName _
-          , _StockInquiryTable.Inventory_Qty_Size03Column.ColumnName, _StockInquiryTable.Inventory_Qty_Size04Column.ColumnName _
-          , _StockInquiryTable.Inventory_Qty_Size05Column.ColumnName, _StockInquiryTable.Inventory_Qty_Size06Column.ColumnName _
-          , _StockInquiryTable.Inventory_Qty_Size07Column.ColumnName, _StockInquiryTable.Inventory_Qty_Size08Column.ColumnName _
-          , _StockInquiryTable.Inventory_Qty_Size09Column.ColumnName, _StockInquiryTable.Inventory_Qty_Size10Column.ColumnName _
-          , _StockInquiryTable.Inventory_Qty_Size11Column.ColumnName
+          Case _StockInquiryTable.Qty_Size01Column.ColumnName, _StockInquiryTable.Qty_Size02Column.ColumnName _
+          , _StockInquiryTable.Qty_Size03Column.ColumnName, _StockInquiryTable.Qty_Size04Column.ColumnName _
+          , _StockInquiryTable.Qty_Size05Column.ColumnName, _StockInquiryTable.Qty_Size06Column.ColumnName _
+          , _StockInquiryTable.Qty_Size07Column.ColumnName, _StockInquiryTable.Qty_Size08Column.ColumnName _
+          , _StockInquiryTable.Qty_Size09Column.ColumnName, _StockInquiryTable.Qty_Size10Column.ColumnName _
+          , _StockInquiryTable.Qty_Size11Column.ColumnName
 
             Dim _QtyCellType As FarPoint.Win.Spread.CellType.NumberCellType = QuickLibrary.Common.QtyCellType
             _QtyCellType.NegativeFormat = FarPoint.Win.Spread.CellType.NegativeFormat.Parentheses
@@ -192,17 +192,17 @@ Public Class StockInquiryForm
       For R As Int32 = 0 To QuickSpreadSheet.RowCount - 1
         For C As Int32 = 0 To _StockInquiryTable.Columns.Count - 1
           Select Case _StockInquiryTable.Columns(C).ColumnName
-            Case _StockInquiryTable.Inventory_Qty_Size01Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size02Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size03Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size04Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size05Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size06Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size07Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size08Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size09Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size10Column.ColumnName _
-                , _StockInquiryTable.Inventory_Qty_Size11Column.ColumnName _
+            Case _StockInquiryTable.Qty_Size01Column.ColumnName _
+                , _StockInquiryTable.Qty_Size02Column.ColumnName _
+                , _StockInquiryTable.Qty_Size03Column.ColumnName _
+                , _StockInquiryTable.Qty_Size04Column.ColumnName _
+                , _StockInquiryTable.Qty_Size05Column.ColumnName _
+                , _StockInquiryTable.Qty_Size06Column.ColumnName _
+                , _StockInquiryTable.Qty_Size07Column.ColumnName _
+                , _StockInquiryTable.Qty_Size08Column.ColumnName _
+                , _StockInquiryTable.Qty_Size09Column.ColumnName _
+                , _StockInquiryTable.Qty_Size10Column.ColumnName _
+                , _StockInquiryTable.Qty_Size11Column.ColumnName _
                 , _StockInquiryTable.Qty_TotalColumn.ColumnName
 
               If QuickSpreadSheet.GetValue(R, C) Is Nothing OrElse Convert.ToInt32(QuickSpreadSheet.GetValue(R, C)) = 0 Then

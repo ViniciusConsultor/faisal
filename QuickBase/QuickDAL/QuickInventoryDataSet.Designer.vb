@@ -52,6 +52,8 @@ Partial Public Class QuickInventoryDataSet
     
     Private tableStockInquiry As StockInquiryDataTable
     
+    Private tableInventoryFacts As InventoryFactsDataTable
+    
     Private relationFK_Inv_SalesInvoice_Detail_Inv_Item As System.Data.DataRelation
     
     Private relationFK_Inv_SalesInvoice_Detail_Inv_Item1 As System.Data.DataRelation
@@ -126,6 +128,9 @@ Partial Public Class QuickInventoryDataSet
             End If
             If (Not (ds.Tables("StockInquiry")) Is Nothing) Then
                 MyBase.Tables.Add(New StockInquiryDataTable(ds.Tables("StockInquiry")))
+            End If
+            If (Not (ds.Tables("InventoryFacts")) Is Nothing) Then
+                MyBase.Tables.Add(New InventoryFactsDataTable(ds.Tables("InventoryFacts")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -271,6 +276,15 @@ Partial Public Class QuickInventoryDataSet
     End Property
     
     <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     System.ComponentModel.Browsable(false),  _
+     System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property InventoryFacts() As InventoryFactsDataTable
+        Get
+            Return Me.tableInventoryFacts
+        End Get
+    End Property
+    
+    <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      System.ComponentModel.BrowsableAttribute(true),  _
      System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As System.Data.SchemaSerializationMode
@@ -370,6 +384,9 @@ Partial Public Class QuickInventoryDataSet
             End If
             If (Not (ds.Tables("StockInquiry")) Is Nothing) Then
                 MyBase.Tables.Add(New StockInquiryDataTable(ds.Tables("StockInquiry")))
+            End If
+            If (Not (ds.Tables("InventoryFacts")) Is Nothing) Then
+                MyBase.Tables.Add(New InventoryFactsDataTable(ds.Tables("InventoryFacts")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -484,6 +501,12 @@ Partial Public Class QuickInventoryDataSet
                 Me.tableStockInquiry.InitVars
             End If
         End If
+        Me.tableInventoryFacts = CType(MyBase.Tables("InventoryFacts"),InventoryFactsDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableInventoryFacts) Is Nothing) Then
+                Me.tableInventoryFacts.InitVars
+            End If
+        End If
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item")
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item1 = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item1")
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item2 = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item2")
@@ -524,6 +547,8 @@ Partial Public Class QuickInventoryDataSet
         MyBase.Tables.Add(Me.tableInv_ItemSize)
         Me.tableStockInquiry = New StockInquiryDataTable
         MyBase.Tables.Add(Me.tableStockInquiry)
+        Me.tableInventoryFacts = New InventoryFactsDataTable
+        MyBase.Tables.Add(Me.tableInventoryFacts)
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item = New System.Data.DataRelation("FK_Inv_SalesInvoice_Detail_Inv_Item", New System.Data.DataColumn() {Me.tableItem.Co_IDColumn, Me.tableItem.Item_IDColumn}, New System.Data.DataColumn() {Me.tableInventoryDetail.Co_IDColumn, Me.tableInventoryDetail.Item_IDColumn}, false)
         Me.Relations.Add(Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item)
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item1 = New System.Data.DataRelation("FK_Inv_SalesInvoice_Detail_Inv_Item1", New System.Data.DataColumn() {Me.tableItem.Co_IDColumn, Me.tableItem.Item_IDColumn}, New System.Data.DataColumn() {Me.tableInvs_InventoryDetail.Co_IDColumn, Me.tableInvs_InventoryDetail.Item_IDColumn}, false)
@@ -603,6 +628,11 @@ Partial Public Class QuickInventoryDataSet
     End Function
     
     <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+    Private Function ShouldSerializeInventoryFacts() As Boolean
+        Return false
+    End Function
+    
+    <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Private Sub SchemaChanged(ByVal sender As Object, ByVal e As System.ComponentModel.CollectionChangeEventArgs)
         If (e.Action = System.ComponentModel.CollectionChangeAction.Remove) Then
             Me.InitVars
@@ -649,6 +679,8 @@ Partial Public Class QuickInventoryDataSet
     Public Delegate Sub Inv_ItemSizeRowChangeEventHandler(ByVal sender As Object, ByVal e As Inv_ItemSizeRowChangeEvent)
     
     Public Delegate Sub StockInquiryRowChangeEventHandler(ByVal sender As Object, ByVal e As StockInquiryRowChangeEvent)
+    
+    Public Delegate Sub InventoryFactsRowChangeEventHandler(ByVal sender As Object, ByVal e As InventoryFactsRowChangeEvent)
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
      System.Serializable(),  _
@@ -6319,31 +6351,31 @@ Partial Public Class QuickInventoryDataSet
         
         Private columnItem_Desc As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size01 As System.Data.DataColumn
+        Private columnQty_Size01 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size02 As System.Data.DataColumn
+        Private columnQty_Size02 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size03 As System.Data.DataColumn
+        Private columnQty_Size03 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size04 As System.Data.DataColumn
+        Private columnQty_Size04 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size05 As System.Data.DataColumn
+        Private columnQty_Size05 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size06 As System.Data.DataColumn
+        Private columnQty_Size06 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size07 As System.Data.DataColumn
+        Private columnQty_Size07 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size08 As System.Data.DataColumn
+        Private columnQty_Size08 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size09 As System.Data.DataColumn
+        Private columnQty_Size09 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size10 As System.Data.DataColumn
+        Private columnQty_Size10 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size11 As System.Data.DataColumn
+        Private columnQty_Size11 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size12 As System.Data.DataColumn
+        Private columnQty_Size12 As System.Data.DataColumn
         
-        Private columnInventory_Qty_Size13 As System.Data.DataColumn
+        Private columnQty_Size13 As System.Data.DataColumn
         
         Private columnQty_Total As System.Data.DataColumn
         
@@ -6450,93 +6482,93 @@ Partial Public Class QuickInventoryDataSet
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size01Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size01Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size01
+                Return Me.columnQty_Size01
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size02Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size02Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size02
+                Return Me.columnQty_Size02
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size03Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size03Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size03
+                Return Me.columnQty_Size03
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size04Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size04Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size04
+                Return Me.columnQty_Size04
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size05Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size05Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size05
+                Return Me.columnQty_Size05
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size06Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size06Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size06
+                Return Me.columnQty_Size06
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size07Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size07Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size07
+                Return Me.columnQty_Size07
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size08Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size08Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size08
+                Return Me.columnQty_Size08
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size09Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size09Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size09
+                Return Me.columnQty_Size09
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size10Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size10Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size10
+                Return Me.columnQty_Size10
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size11Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size11Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size11
+                Return Me.columnQty_Size11
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size12Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size12Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size12
+                Return Me.columnQty_Size12
             End Get
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Inventory_Qty_Size13Column() As System.Data.DataColumn
+        Public ReadOnly Property Qty_Size13Column() As System.Data.DataColumn
             Get
-                Return Me.columnInventory_Qty_Size13
+                Return Me.columnQty_Size13
             End Get
         End Property
         
@@ -6587,22 +6619,22 @@ Partial Public Class QuickInventoryDataSet
                     ByVal Item_Code2 As String,  _
                     ByVal Item_Category As String,  _
                     ByVal Item_Desc As String,  _
-                    ByVal Inventory_Qty_Size01 As Decimal,  _
-                    ByVal Inventory_Qty_Size02 As Decimal,  _
-                    ByVal Inventory_Qty_Size03 As Decimal,  _
-                    ByVal Inventory_Qty_Size04 As Decimal,  _
-                    ByVal Inventory_Qty_Size05 As Decimal,  _
-                    ByVal Inventory_Qty_Size06 As Decimal,  _
-                    ByVal Inventory_Qty_Size07 As Decimal,  _
-                    ByVal Inventory_Qty_Size08 As Decimal,  _
-                    ByVal Inventory_Qty_Size09 As Decimal,  _
-                    ByVal Inventory_Qty_Size10 As Decimal,  _
-                    ByVal Inventory_Qty_Size11 As Decimal,  _
-                    ByVal Inventory_Qty_Size12 As Decimal,  _
-                    ByVal Inventory_Qty_Size13 As Decimal,  _
+                    ByVal Qty_Size01 As Decimal,  _
+                    ByVal Qty_Size02 As Decimal,  _
+                    ByVal Qty_Size03 As Decimal,  _
+                    ByVal Qty_Size04 As Decimal,  _
+                    ByVal Qty_Size05 As Decimal,  _
+                    ByVal Qty_Size06 As Decimal,  _
+                    ByVal Qty_Size07 As Decimal,  _
+                    ByVal Qty_Size08 As Decimal,  _
+                    ByVal Qty_Size09 As Decimal,  _
+                    ByVal Qty_Size10 As Decimal,  _
+                    ByVal Qty_Size11 As Decimal,  _
+                    ByVal Qty_Size12 As Decimal,  _
+                    ByVal Qty_Size13 As Decimal,  _
                     ByVal Qty_Total As Decimal) As StockInquiryRow
             Dim rowStockInquiryRow As StockInquiryRow = CType(Me.NewRow,StockInquiryRow)
-            rowStockInquiryRow.ItemArray = New Object() {Co_ID, Co_Code, Warehouse_ID, Warehouse_Name, Item_ID, Item_Code, Item_Code1, Item_Code2, Item_Category, Item_Desc, Inventory_Qty_Size01, Inventory_Qty_Size02, Inventory_Qty_Size03, Inventory_Qty_Size04, Inventory_Qty_Size05, Inventory_Qty_Size06, Inventory_Qty_Size07, Inventory_Qty_Size08, Inventory_Qty_Size09, Inventory_Qty_Size10, Inventory_Qty_Size11, Inventory_Qty_Size12, Inventory_Qty_Size13, Qty_Total}
+            rowStockInquiryRow.ItemArray = New Object() {Co_ID, Co_Code, Warehouse_ID, Warehouse_Name, Item_ID, Item_Code, Item_Code1, Item_Code2, Item_Category, Item_Desc, Qty_Size01, Qty_Size02, Qty_Size03, Qty_Size04, Qty_Size05, Qty_Size06, Qty_Size07, Qty_Size08, Qty_Size09, Qty_Size10, Qty_Size11, Qty_Size12, Qty_Size13, Qty_Total}
             Me.Rows.Add(rowStockInquiryRow)
             Return rowStockInquiryRow
         End Function
@@ -6636,19 +6668,19 @@ Partial Public Class QuickInventoryDataSet
             Me.columnItem_Code2 = MyBase.Columns("Item_Code2")
             Me.columnItem_Category = MyBase.Columns("Item_Category")
             Me.columnItem_Desc = MyBase.Columns("Item_Desc")
-            Me.columnInventory_Qty_Size01 = MyBase.Columns("Inventory_Qty_Size01")
-            Me.columnInventory_Qty_Size02 = MyBase.Columns("Inventory_Qty_Size02")
-            Me.columnInventory_Qty_Size03 = MyBase.Columns("Inventory_Qty_Size03")
-            Me.columnInventory_Qty_Size04 = MyBase.Columns("Inventory_Qty_Size04")
-            Me.columnInventory_Qty_Size05 = MyBase.Columns("Inventory_Qty_Size05")
-            Me.columnInventory_Qty_Size06 = MyBase.Columns("Inventory_Qty_Size06")
-            Me.columnInventory_Qty_Size07 = MyBase.Columns("Inventory_Qty_Size07")
-            Me.columnInventory_Qty_Size08 = MyBase.Columns("Inventory_Qty_Size08")
-            Me.columnInventory_Qty_Size09 = MyBase.Columns("Inventory_Qty_Size09")
-            Me.columnInventory_Qty_Size10 = MyBase.Columns("Inventory_Qty_Size10")
-            Me.columnInventory_Qty_Size11 = MyBase.Columns("Inventory_Qty_Size11")
-            Me.columnInventory_Qty_Size12 = MyBase.Columns("Inventory_Qty_Size12")
-            Me.columnInventory_Qty_Size13 = MyBase.Columns("Inventory_Qty_Size13")
+            Me.columnQty_Size01 = MyBase.Columns("Qty_Size01")
+            Me.columnQty_Size02 = MyBase.Columns("Qty_Size02")
+            Me.columnQty_Size03 = MyBase.Columns("Qty_Size03")
+            Me.columnQty_Size04 = MyBase.Columns("Qty_Size04")
+            Me.columnQty_Size05 = MyBase.Columns("Qty_Size05")
+            Me.columnQty_Size06 = MyBase.Columns("Qty_Size06")
+            Me.columnQty_Size07 = MyBase.Columns("Qty_Size07")
+            Me.columnQty_Size08 = MyBase.Columns("Qty_Size08")
+            Me.columnQty_Size09 = MyBase.Columns("Qty_Size09")
+            Me.columnQty_Size10 = MyBase.Columns("Qty_Size10")
+            Me.columnQty_Size11 = MyBase.Columns("Qty_Size11")
+            Me.columnQty_Size12 = MyBase.Columns("Qty_Size12")
+            Me.columnQty_Size13 = MyBase.Columns("Qty_Size13")
             Me.columnQty_Total = MyBase.Columns("Qty_Total")
         End Sub
         
@@ -6674,32 +6706,32 @@ Partial Public Class QuickInventoryDataSet
             MyBase.Columns.Add(Me.columnItem_Category)
             Me.columnItem_Desc = New System.Data.DataColumn("Item_Desc", GetType(String), Nothing, System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnItem_Desc)
-            Me.columnInventory_Qty_Size01 = New System.Data.DataColumn("Inventory_Qty_Size01", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size01)
-            Me.columnInventory_Qty_Size02 = New System.Data.DataColumn("Inventory_Qty_Size02", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size02)
-            Me.columnInventory_Qty_Size03 = New System.Data.DataColumn("Inventory_Qty_Size03", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size03)
-            Me.columnInventory_Qty_Size04 = New System.Data.DataColumn("Inventory_Qty_Size04", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size04)
-            Me.columnInventory_Qty_Size05 = New System.Data.DataColumn("Inventory_Qty_Size05", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size05)
-            Me.columnInventory_Qty_Size06 = New System.Data.DataColumn("Inventory_Qty_Size06", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size06)
-            Me.columnInventory_Qty_Size07 = New System.Data.DataColumn("Inventory_Qty_Size07", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size07)
-            Me.columnInventory_Qty_Size08 = New System.Data.DataColumn("Inventory_Qty_Size08", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size08)
-            Me.columnInventory_Qty_Size09 = New System.Data.DataColumn("Inventory_Qty_Size09", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size09)
-            Me.columnInventory_Qty_Size10 = New System.Data.DataColumn("Inventory_Qty_Size10", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size10)
-            Me.columnInventory_Qty_Size11 = New System.Data.DataColumn("Inventory_Qty_Size11", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size11)
-            Me.columnInventory_Qty_Size12 = New System.Data.DataColumn("Inventory_Qty_Size12", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size12)
-            Me.columnInventory_Qty_Size13 = New System.Data.DataColumn("Inventory_Qty_Size13", GetType(Decimal), Nothing, System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInventory_Qty_Size13)
+            Me.columnQty_Size01 = New System.Data.DataColumn("Qty_Size01", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size01)
+            Me.columnQty_Size02 = New System.Data.DataColumn("Qty_Size02", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size02)
+            Me.columnQty_Size03 = New System.Data.DataColumn("Qty_Size03", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size03)
+            Me.columnQty_Size04 = New System.Data.DataColumn("Qty_Size04", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size04)
+            Me.columnQty_Size05 = New System.Data.DataColumn("Qty_Size05", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size05)
+            Me.columnQty_Size06 = New System.Data.DataColumn("Qty_Size06", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size06)
+            Me.columnQty_Size07 = New System.Data.DataColumn("Qty_Size07", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size07)
+            Me.columnQty_Size08 = New System.Data.DataColumn("Qty_Size08", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size08)
+            Me.columnQty_Size09 = New System.Data.DataColumn("Qty_Size09", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size09)
+            Me.columnQty_Size10 = New System.Data.DataColumn("Qty_Size10", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size10)
+            Me.columnQty_Size11 = New System.Data.DataColumn("Qty_Size11", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size11)
+            Me.columnQty_Size12 = New System.Data.DataColumn("Qty_Size12", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size12)
+            Me.columnQty_Size13 = New System.Data.DataColumn("Qty_Size13", GetType(Decimal), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQty_Size13)
             Me.columnQty_Total = New System.Data.DataColumn("Qty_Total", GetType(Decimal), Nothing, System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnQty_Total)
             Me.columnCo_ID.AllowDBNull = false
@@ -6792,6 +6824,202 @@ Partial Public Class QuickInventoryDataSet
             Dim attribute2 As System.Xml.Schema.XmlSchemaAttribute = New System.Xml.Schema.XmlSchemaAttribute
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "StockInquiryDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Return type
+        End Function
+    End Class
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     System.Serializable(),  _
+     System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class InventoryFactsDataTable
+        Inherits System.Data.DataTable
+        Implements System.Collections.IEnumerable
+        
+        Private columnResultValue As System.Data.DataColumn
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "InventoryFacts"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal table As System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Sub New(ByVal info As System.Runtime.Serialization.SerializationInfo, ByVal context As System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property ResultValueColumn() As System.Data.DataColumn
+            Get
+                Return Me.columnResultValue
+            End Get
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As InventoryFactsRow
+            Get
+                Return CType(Me.Rows(index),InventoryFactsRow)
+            End Get
+        End Property
+        
+        Public Event InventoryFactsRowChanging As InventoryFactsRowChangeEventHandler
+        
+        Public Event InventoryFactsRowChanged As InventoryFactsRowChangeEventHandler
+        
+        Public Event InventoryFactsRowDeleting As InventoryFactsRowChangeEventHandler
+        
+        Public Event InventoryFactsRowDeleted As InventoryFactsRowChangeEventHandler
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Sub AddInventoryFactsRow(ByVal row As InventoryFactsRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Function AddInventoryFactsRow(ByVal ResultValue As String) As InventoryFactsRow
+            Dim rowInventoryFactsRow As InventoryFactsRow = CType(Me.NewRow,InventoryFactsRow)
+            rowInventoryFactsRow.ItemArray = New Object() {ResultValue}
+            Me.Rows.Add(rowInventoryFactsRow)
+            Return rowInventoryFactsRow
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overridable Function GetEnumerator() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+            Return Me.Rows.GetEnumerator
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overrides Function Clone() As System.Data.DataTable
+            Dim cln As InventoryFactsDataTable = CType(MyBase.Clone,InventoryFactsDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function CreateInstance() As System.Data.DataTable
+            Return New InventoryFactsDataTable
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub InitVars()
+            Me.columnResultValue = MyBase.Columns("ResultValue")
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitClass()
+            Me.columnResultValue = New System.Data.DataColumn("ResultValue", GetType(String), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnResultValue)
+            Me.columnResultValue.ReadOnly = true
+            Me.columnResultValue.MaxLength = 13
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function NewInventoryFactsRow() As InventoryFactsRow
+            Return CType(Me.NewRow,InventoryFactsRow)
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As System.Data.DataRowBuilder) As System.Data.DataRow
+            Return New InventoryFactsRow(builder)
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function GetRowType() As System.Type
+            Return GetType(InventoryFactsRow)
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.InventoryFactsRowChangedEvent) Is Nothing) Then
+                RaiseEvent InventoryFactsRowChanged(Me, New InventoryFactsRowChangeEvent(CType(e.Row,InventoryFactsRow), e.Action))
+            End If
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.InventoryFactsRowChangingEvent) Is Nothing) Then
+                RaiseEvent InventoryFactsRowChanging(Me, New InventoryFactsRowChangeEvent(CType(e.Row,InventoryFactsRow), e.Action))
+            End If
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.InventoryFactsRowDeletedEvent) Is Nothing) Then
+                RaiseEvent InventoryFactsRowDeleted(Me, New InventoryFactsRowChangeEvent(CType(e.Row,InventoryFactsRow), e.Action))
+            End If
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.InventoryFactsRowDeletingEvent) Is Nothing) Then
+                RaiseEvent InventoryFactsRowDeleting(Me, New InventoryFactsRowChangeEvent(CType(e.Row,InventoryFactsRow), e.Action))
+            End If
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub RemoveInventoryFactsRow(ByVal row As InventoryFactsRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As System.Xml.Schema.XmlSchemaSet) As System.Xml.Schema.XmlSchemaComplexType
+            Dim type As System.Xml.Schema.XmlSchemaComplexType = New System.Xml.Schema.XmlSchemaComplexType
+            Dim sequence As System.Xml.Schema.XmlSchemaSequence = New System.Xml.Schema.XmlSchemaSequence
+            Dim ds As QuickInventoryDataSet = New QuickInventoryDataSet
+            xs.Add(ds.GetSchemaSerializable)
+            Dim any1 As System.Xml.Schema.XmlSchemaAny = New System.Xml.Schema.XmlSchemaAny
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As System.Xml.Schema.XmlSchemaAny = New System.Xml.Schema.XmlSchemaAny
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As System.Xml.Schema.XmlSchemaAttribute = New System.Xml.Schema.XmlSchemaAttribute
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As System.Xml.Schema.XmlSchemaAttribute = New System.Xml.Schema.XmlSchemaAttribute
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "InventoryFactsDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Return type
@@ -10687,184 +10915,184 @@ Partial Public Class QuickInventoryDataSet
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size01() As Decimal
+        Public Property Qty_Size01() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size01Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size01Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size01' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size01' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size01Column) = value
+                Me(Me.tableStockInquiry.Qty_Size01Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size02() As Decimal
+        Public Property Qty_Size02() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size02Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size02Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size02' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size02' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size02Column) = value
+                Me(Me.tableStockInquiry.Qty_Size02Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size03() As Decimal
+        Public Property Qty_Size03() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size03Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size03Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size03' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size03' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size03Column) = value
+                Me(Me.tableStockInquiry.Qty_Size03Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size04() As Decimal
+        Public Property Qty_Size04() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size04Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size04Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size04' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size04' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size04Column) = value
+                Me(Me.tableStockInquiry.Qty_Size04Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size05() As Decimal
+        Public Property Qty_Size05() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size05Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size05Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size05' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size05' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size05Column) = value
+                Me(Me.tableStockInquiry.Qty_Size05Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size06() As Decimal
+        Public Property Qty_Size06() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size06Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size06Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size06' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size06' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size06Column) = value
+                Me(Me.tableStockInquiry.Qty_Size06Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size07() As Decimal
+        Public Property Qty_Size07() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size07Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size07Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size07' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size07' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size07Column) = value
+                Me(Me.tableStockInquiry.Qty_Size07Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size08() As Decimal
+        Public Property Qty_Size08() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size08Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size08Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size08' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size08' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size08Column) = value
+                Me(Me.tableStockInquiry.Qty_Size08Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size09() As Decimal
+        Public Property Qty_Size09() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size09Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size09Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size09' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size09' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size09Column) = value
+                Me(Me.tableStockInquiry.Qty_Size09Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size10() As Decimal
+        Public Property Qty_Size10() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size10Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size10Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size10' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size10' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size10Column) = value
+                Me(Me.tableStockInquiry.Qty_Size10Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size11() As Decimal
+        Public Property Qty_Size11() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size11Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size11Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size11' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size11' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size11Column) = value
+                Me(Me.tableStockInquiry.Qty_Size11Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size12() As Decimal
+        Public Property Qty_Size12() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size12Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size12Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size12' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size12' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size12Column) = value
+                Me(Me.tableStockInquiry.Qty_Size12Column) = value
             End Set
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Inventory_Qty_Size13() As Decimal
+        Public Property Qty_Size13() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableStockInquiry.Inventory_Qty_Size13Column),Decimal)
+                    Return CType(Me(Me.tableStockInquiry.Qty_Size13Column),Decimal)
                 Catch e As System.InvalidCastException
-                    Throw New System.Data.StrongTypingException("The value for column 'Inventory_Qty_Size13' in table 'StockInquiry' is DBNull.", e)
+                    Throw New System.Data.StrongTypingException("The value for column 'Qty_Size13' in table 'StockInquiry' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableStockInquiry.Inventory_Qty_Size13Column) = value
+                Me(Me.tableStockInquiry.Qty_Size13Column) = value
             End Set
         End Property
         
@@ -10953,133 +11181,133 @@ Partial Public Class QuickInventoryDataSet
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size01Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size01Column)
+        Public Function IsQty_Size01Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size01Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size01Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size01Column) = System.Convert.DBNull
+        Public Sub SetQty_Size01Null()
+            Me(Me.tableStockInquiry.Qty_Size01Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size02Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size02Column)
+        Public Function IsQty_Size02Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size02Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size02Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size02Column) = System.Convert.DBNull
+        Public Sub SetQty_Size02Null()
+            Me(Me.tableStockInquiry.Qty_Size02Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size03Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size03Column)
+        Public Function IsQty_Size03Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size03Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size03Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size03Column) = System.Convert.DBNull
+        Public Sub SetQty_Size03Null()
+            Me(Me.tableStockInquiry.Qty_Size03Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size04Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size04Column)
+        Public Function IsQty_Size04Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size04Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size04Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size04Column) = System.Convert.DBNull
+        Public Sub SetQty_Size04Null()
+            Me(Me.tableStockInquiry.Qty_Size04Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size05Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size05Column)
+        Public Function IsQty_Size05Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size05Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size05Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size05Column) = System.Convert.DBNull
+        Public Sub SetQty_Size05Null()
+            Me(Me.tableStockInquiry.Qty_Size05Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size06Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size06Column)
+        Public Function IsQty_Size06Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size06Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size06Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size06Column) = System.Convert.DBNull
+        Public Sub SetQty_Size06Null()
+            Me(Me.tableStockInquiry.Qty_Size06Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size07Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size07Column)
+        Public Function IsQty_Size07Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size07Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size07Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size07Column) = System.Convert.DBNull
+        Public Sub SetQty_Size07Null()
+            Me(Me.tableStockInquiry.Qty_Size07Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size08Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size08Column)
+        Public Function IsQty_Size08Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size08Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size08Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size08Column) = System.Convert.DBNull
+        Public Sub SetQty_Size08Null()
+            Me(Me.tableStockInquiry.Qty_Size08Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size09Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size09Column)
+        Public Function IsQty_Size09Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size09Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size09Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size09Column) = System.Convert.DBNull
+        Public Sub SetQty_Size09Null()
+            Me(Me.tableStockInquiry.Qty_Size09Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size10Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size10Column)
+        Public Function IsQty_Size10Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size10Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size10Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size10Column) = System.Convert.DBNull
+        Public Sub SetQty_Size10Null()
+            Me(Me.tableStockInquiry.Qty_Size10Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size11Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size11Column)
+        Public Function IsQty_Size11Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size11Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size11Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size11Column) = System.Convert.DBNull
+        Public Sub SetQty_Size11Null()
+            Me(Me.tableStockInquiry.Qty_Size11Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size12Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size12Column)
+        Public Function IsQty_Size12Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size12Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size12Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size12Column) = System.Convert.DBNull
+        Public Sub SetQty_Size12Null()
+            Me(Me.tableStockInquiry.Qty_Size12Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsInventory_Qty_Size13Null() As Boolean
-            Return Me.IsNull(Me.tableStockInquiry.Inventory_Qty_Size13Column)
+        Public Function IsQty_Size13Null() As Boolean
+            Return Me.IsNull(Me.tableStockInquiry.Qty_Size13Column)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetInventory_Qty_Size13Null()
-            Me(Me.tableStockInquiry.Inventory_Qty_Size13Column) = System.Convert.DBNull
+        Public Sub SetQty_Size13Null()
+            Me(Me.tableStockInquiry.Qty_Size13Column) = System.Convert.DBNull
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -11090,6 +11318,43 @@ Partial Public Class QuickInventoryDataSet
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub SetQty_TotalNull()
             Me(Me.tableStockInquiry.Qty_TotalColumn) = System.Convert.DBNull
+        End Sub
+    End Class
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Partial Public Class InventoryFactsRow
+        Inherits System.Data.DataRow
+        
+        Private tableInventoryFacts As InventoryFactsDataTable
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal rb As System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableInventoryFacts = CType(Me.Table,InventoryFactsDataTable)
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ResultValue() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableInventoryFacts.ResultValueColumn),String)
+                Catch e As System.InvalidCastException
+                    Throw New System.Data.StrongTypingException("The value for column 'ResultValue' in table 'InventoryFacts' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableInventoryFacts.ResultValueColumn) = value
+            End Set
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsResultValueNull() As Boolean
+            Return Me.IsNull(Me.tableInventoryFacts.ResultValueColumn)
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetResultValueNull()
+            Me(Me.tableInventoryFacts.ResultValueColumn) = System.Convert.DBNull
         End Sub
     End Class
     
@@ -11500,6 +11765,36 @@ Partial Public Class QuickInventoryDataSet
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Row() As StockInquiryRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Action() As System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Public Class InventoryFactsRowChangeEvent
+        Inherits System.EventArgs
+        
+        Private eventRow As InventoryFactsRow
+        
+        Private eventAction As System.Data.DataRowAction
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New(ByVal row As InventoryFactsRow, ByVal action As System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Row() As InventoryFactsRow
             Get
                 Return Me.eventRow
             End Get
@@ -20607,19 +20902,19 @@ Namespace QuickInventoryDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Item_Code", "Item_Code")
             tableMapping.ColumnMappings.Add("Item_Category", "Item_Category")
             tableMapping.ColumnMappings.Add("Item_Desc", "Item_Desc")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size01", "Inventory_Qty_Size01")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size02", "Inventory_Qty_Size02")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size03", "Inventory_Qty_Size03")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size04", "Inventory_Qty_Size04")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size05", "Inventory_Qty_Size05")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size06", "Inventory_Qty_Size06")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size07", "Inventory_Qty_Size07")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size08", "Inventory_Qty_Size08")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size09", "Inventory_Qty_Size09")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size10", "Inventory_Qty_Size10")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size11", "Inventory_Qty_Size11")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size12", "Inventory_Qty_Size12")
-            tableMapping.ColumnMappings.Add("Inventory_Qty_Size13", "Inventory_Qty_Size13")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size01", "Qty_Size01")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size02", "Qty_Size02")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size03", "Qty_Size03")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size04", "Qty_Size04")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size05", "Qty_Size05")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size06", "Qty_Size06")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size07", "Qty_Size07")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size08", "Qty_Size08")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size09", "Qty_Size09")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size10", "Qty_Size10")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size11", "Qty_Size11")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size12", "Qty_Size12")
+            tableMapping.ColumnMappings.Add("Inventory_Qty_Size13", "Qty_Size13")
             tableMapping.ColumnMappings.Add("Qty_Total", "Qty_Total")
             tableMapping.ColumnMappings.Add("Item_Code1", "Item_Code1")
             Me._adapter.TableMappings.Add(tableMapping)
@@ -20655,6 +20950,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(1).Parameters.Add(New System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New System.Data.SqlClient.SqlParameter("@ItemCode", System.Data.SqlDbType.VarChar, 50, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Companies", System.Data.SqlDbType.VarChar, 8000, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New System.Data.SqlClient.SqlParameter("@WarehouseID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "dbo.spGetStockByItemCodeCompanies"
@@ -20662,6 +20958,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@RETURN_VALUE", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@ItemCode", System.Data.SqlDbType.VarChar, 20, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Companies", System.Data.SqlDbType.VarChar, 8000, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@WarehouseID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -20684,7 +20981,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetMinimumStockLevelByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String) As QuickInventoryDataSet.StockInquiryDataTable
+        Public Overloads Overridable Function GetMinimumStockLevelByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String, ByVal WarehouseID As System.Nullable(Of Integer)) As QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (ItemCode Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = System.DBNull.Value
@@ -20696,6 +20993,11 @@ Namespace QuickInventoryDataSetTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(Companies,String)
             End If
+            If (WarehouseID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(WarehouseID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = System.DBNull.Value
+            End If
             Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -20704,7 +21006,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetStockByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String) As QuickInventoryDataSet.StockInquiryDataTable
+        Public Overloads Overridable Function GetStockByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String, ByVal WarehouseID As System.Nullable(Of Integer)) As QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (ItemCode Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = System.DBNull.Value
@@ -20716,9 +21018,165 @@ Namespace QuickInventoryDataSetTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(Companies,String)
             End If
+            If (WarehouseID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(WarehouseID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = System.DBNull.Value
+            End If
             Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+    End Class
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.ComponentModel.ToolboxItem(true),  _
+     System.ComponentModel.DataObjectAttribute(true),  _
+     System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class InventoryFactsTableAdapter
+        Inherits System.ComponentModel.Component
+        
+        Private WithEvents _adapter As System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private ReadOnly Property Adapter() As System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Property Connection() As System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected ReadOnly Property CommandCollection() As System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitAdapter()
+            Me._adapter = New System.Data.SqlClient.SqlDataAdapter
+            Dim tableMapping As System.Data.Common.DataTableMapping = New System.Data.Common.DataTableMapping
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "InventoryFacts"
+            tableMapping.ColumnMappings.Add("ResultValue", "ResultValue")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitConnection()
+            Me._connection = New System.Data.SqlClient.SqlConnection
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New System.Data.SqlClient.SqlCommand
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT 'User Function' AS ResultValue FROM Base_Company WHERE 1=0"
+            Me._commandCollection(0).CommandType = System.Data.CommandType.Text
+            Me._commandCollection(1) = New System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT ISNULL(MAX(Inventory_Date), GetDate()) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Inventory"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @Co"& _ 
+                "ID"
+            Me._commandCollection(1).CommandType = System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New System.Data.SqlClient.SqlParameter("@CoID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetTestValue() As QuickInventoryDataSet.InventoryFactsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickInventoryDataSet.InventoryFactsDataTable = New QuickInventoryDataSet.InventoryFactsDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetMaximumTransactionDate(ByVal CoID As Integer) As System.Nullable(Of Date)
+            Dim command As System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            Dim previousConnectionState As System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And System.Data.ConnectionState.Open)  _
+                        <> System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(System.DBNull))) Then
+                Return New System.Nullable(Of Date)
+            Else
+                Return New System.Nullable(Of Date)(CType(returnValue,Date))
+            End If
         End Function
     End Class
 End Namespace

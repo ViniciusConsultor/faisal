@@ -347,109 +347,113 @@ Public Class MDIParent1
 
   Private Sub LoadForm(ByVal FormPath As String)
     Dim Form As Form = Nothing
+    Dim _LastTransactionDate As DateTime
 
     Try
+      If Not General.IsSystemDateCorrect(_LastTransactionDate) Then
+        QuickMessageBox.Show(General.LoginInfoObject, "Your system date is not correct " & _LastTransactionDate.ToString, MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
+      Else
+        Select Case FormPath
+          '>>>>>>>>>> File
+          Case QuickLibrary.Entities.FORM_ID_LOG_OFF
+            LogOff()
+            Exit Sub
+          Case QuickLibrary.Entities.FORM_ID_EXIT_APPLICATION
+            ExitApplication()
+            Exit Sub
 
-      Select Case FormPath
-        '>>>>>>>>>> File
-        Case QuickLibrary.Entities.FORM_ID_LOG_OFF
-          LogOff()
-          Exit Sub
-        Case QuickLibrary.Entities.FORM_ID_EXIT_APPLICATION
-          ExitApplication()
-          Exit Sub
+            '>>>>>>>>>> Inventory
+          Case QuickLibrary.Entities.FORM_ID_SALES_INVOICE
+            Form = New QuickInventory.SalesInvoiceForm
+          Case QuickLibrary.Entities.FORM_ID_POS_SALES_INVOICE
+            Form = New QuickInventory.SalesInvoicePosForm
+          Case QuickLibrary.Entities.FORM_ID_PURCHASE
+            Form = New QuickInventory.Purchase
+          Case QuickLibrary.Entities.FORM_ID_PURCHASE_RETURN
+            Form = New QuickInventory.PurchaseReturn
+          Case QuickLibrary.Entities.FORM_ID_ITEM
+            Form = New QuickInventory.ItemForm
+          Case QuickLibrary.Entities.FORM_ID_ITEM_BULK_ENTRY
+            Form = New QuickInventory.ItemBulkEntryForm
+          Case QuickLibrary.Entities.FORM_ID_PURCHASE_ORDER
+            Form = New QuickInventory.PurchaseOrderForm
+          Case QuickLibrary.Entities.FORM_ID_MINIMUM_ORDER_LEVEL
+            Form = New QuickInventory.MinimumStockLevel
+          Case QuickLibrary.Entities.FORM_ID_SALES_RETURN
+            Form = New QuickInventory.SalesInvoiceReturn
+          Case QuickLibrary.Entities.FORM_ID_PURCHASE_WAREHOUSE
+            Form = New QuickInventory.PurchaseWarehouseForm
+          Case QuickLibrary.Entities.FORM_ID_STOCK_INQUIRY
+            Form = New QuickInventory.StockInquiryForm
 
-          '>>>>>>>>>> Inventory
-        Case QuickLibrary.Entities.FORM_ID_SALES_INVOICE
-          Form = New QuickInventory.SalesInvoiceForm
-        Case QuickLibrary.Entities.FORM_ID_POS_SALES_INVOICE
-          Form = New QuickInventory.SalesInvoicePosForm
-        Case QuickLibrary.Entities.FORM_ID_PURCHASE
-          Form = New QuickInventory.Purchase
-        Case QuickLibrary.Entities.FORM_ID_PURCHASE_RETURN
-          Form = New QuickInventory.PurchaseReturn
-        Case QuickLibrary.Entities.FORM_ID_ITEM
-          Form = New QuickInventory.ItemForm
-        Case QuickLibrary.Entities.FORM_ID_ITEM_BULK_ENTRY
-          Form = New QuickInventory.ItemBulkEntryForm
-        Case QuickLibrary.Entities.FORM_ID_PURCHASE_ORDER
-          Form = New QuickInventory.PurchaseOrderForm
-        Case QuickLibrary.Entities.FORM_ID_MINIMUM_ORDER_LEVEL
-          Form = New QuickInventory.MinimumStockLevel
-        Case QuickLibrary.Entities.FORM_ID_SALES_RETURN
-          Form = New QuickInventory.SalesInvoiceReturn
-        Case QuickLibrary.Entities.FORM_ID_PURCHASE_WAREHOUSE
-          Form = New QuickInventory.PurchaseWarehouseForm
-        Case QuickLibrary.Entities.FORM_ID_STOCK_INQUIRY
-          Form = New QuickInventory.StockInquiryForm
+            '>>>>>>>>>> Accounts
+          Case QuickLibrary.Entities.FORM_ID_RECEIPT
+            Form = New QuickAccounting.Receipt
+          Case QuickLibrary.Entities.FORM_ID_PAYMENT
+            Form = New QuickAccounting.Payment
+          Case QuickLibrary.Entities.FORM_ID_COA
+            Form = New QuickAccounting.COAForm
+          Case QuickLibrary.Entities.FORM_ID_VOUCHER_TYPE
+            Form = New QuickAccounting.VoucherTypeForm
+          Case QuickLibrary.Entities.FORM_ID_VOUCHER_ENTRY
+            Form = New QuickAccounting.VoucherForm
 
-          '>>>>>>>>>> Accounts
-        Case QuickLibrary.Entities.FORM_ID_RECEIPT
-          Form = New QuickAccounting.Receipt
-        Case QuickLibrary.Entities.FORM_ID_PAYMENT
-          Form = New QuickAccounting.Payment
-        Case QuickLibrary.Entities.FORM_ID_COA
-          Form = New QuickAccounting.COAForm
-        Case QuickLibrary.Entities.FORM_ID_VOUCHER_TYPE
-          Form = New QuickAccounting.VoucherTypeForm
-        Case QuickLibrary.Entities.FORM_ID_VOUCHER_ENTRY
-          Form = New QuickAccounting.VoucherForm
+            '>>>>>>>>>> Common
+          Case QuickLibrary.Entities.FORM_ID_PARTY
+            Form = New QuickCommon.PartyRegularForm
+          Case QuickLibrary.Entities.FORM_ID_PARTY_GRID_ENTRY
+            Form = New QuickCommon.PartyGridEntryForm
 
-          '>>>>>>>>>> Common
-        Case QuickLibrary.Entities.FORM_ID_PARTY
-          Form = New QuickCommon.PartyRegularForm
-        Case QuickLibrary.Entities.FORM_ID_PARTY_GRID_ENTRY
-          Form = New QuickCommon.PartyGridEntryForm
+            '<<<<<<<<<< Administration
+          Case QuickLibrary.Entities.FORM_ID_COMPANY
+            Form = New QuickCommon.CompanyForm
+            'Case QuickLibrary.Entities.FORM_ID_USER
+            '  Form = New UserForm
+          Case QuickLibrary.Entities.FORM_ID_TRANSFER_DATA
+            Form = New frmTransferData
+          Case QuickLibrary.Entities.FORM_ID_IMPORT_FROM_EXCEL
+            Form = New QuickBaseForms.BulkTransferForm
+          Case QuickLibrary.Entities.FORM_ID_ERP_CONFIGURATION
+            Form = New QuickAdministration.ErpConfigurationForm
+          Case QuickLibrary.Entities.FORM_ID_EMPTY_DATABASE
+            Form = New QuickAdministration.EmptyDatabaseForm
 
-          '<<<<<<<<<< Administration
-        Case QuickLibrary.Entities.FORM_ID_COMPANY
-          Form = New QuickCommon.CompanyForm
-          'Case QuickLibrary.Entities.FORM_ID_USER
-          '  Form = New UserForm
-        Case QuickLibrary.Entities.FORM_ID_TRANSFER_DATA
-          Form = New frmTransferData
-        Case QuickLibrary.Entities.FORM_ID_IMPORT_FROM_EXCEL
-          Form = New QuickBaseForms.BulkTransferForm
-        Case QuickLibrary.Entities.FORM_ID_ERP_CONFIGURATION
-          Form = New QuickAdministration.ErpConfigurationForm
-        Case QuickLibrary.Entities.FORM_ID_EMPTY_DATABASE
-          Form = New QuickAdministration.EmptyDatabaseForm
+            '<<<<<<<<<< Security
+          Case QuickLibrary.Entities.FORM_ID_MENU_ROLE_ASSOCIATION
+            Form = New QuickSecurity.MenuRoleAssociationForm
+          Case QuickLibrary.Entities.FORM_ID_USER
+            Form = New QuickSecurity.SecurityUserForm
+          Case QuickLibrary.Entities.FORM_ID_USER_ROLE
+            Form = New QuickSecurity.SecurityRoleForm
 
-          '<<<<<<<<<< Security
-        Case QuickLibrary.Entities.FORM_ID_MENU_ROLE_ASSOCIATION
-          Form = New QuickSecurity.MenuRoleAssociationForm
-        Case QuickLibrary.Entities.FORM_ID_USER
-          Form = New QuickSecurity.SecurityUserForm
-        Case QuickLibrary.Entities.FORM_ID_USER_ROLE
-          Form = New QuickSecurity.SecurityRoleForm
+            '>>>>>>>>>> Report
+          Case QuickLibrary.Entities.FORM_ID_REPORT_CRITERIA
+            Form = New QuickReports.ReportCriteriaForm
 
-          '>>>>>>>>>> Report
-        Case QuickLibrary.Entities.FORM_ID_REPORT_CRITERIA
-          Form = New QuickReports.ReportCriteriaForm
+            '>>>>>>>>>> Fabrication
+          Case "19-001"
+            'Form = New SecurityUserForm
+          Case "19-002"
+            'Form = New SecurityRoleForm
+          Case "19-003"
+            Form = New QuickInventory.InventoryFormSizes
+          Case Else
+            'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
+        End Select
 
-          '>>>>>>>>>> Fabrication
-        Case "19-001"
-          'Form = New SecurityUserForm
-        Case "19-002"
-          'Form = New SecurityRoleForm
-        Case "19-003"
-          Form = New QuickInventory.InventoryFormSizes
-        Case Else
-          'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
-      End Select
-
-      If Form IsNot Nothing Then
-        If TypeOf Form Is QuickBaseForms.ParentBasicForm Then
-          With DirectCast(Form, QuickBaseForms.ParentBasicForm)
-            .LoginInfoObject.CompanyDesc = _LoginInfo.CompanyDesc
-            .LoginInfoObject.CompanyID = _LoginInfo.CompanyID
-            .LoginInfoObject.UserID = _LoginInfo.UserID
-            .LoginInfoObject.UserName = _LoginInfo.UserName
-          End With
+        If Form IsNot Nothing Then
+          If TypeOf Form Is QuickBaseForms.ParentBasicForm Then
+            With DirectCast(Form, QuickBaseForms.ParentBasicForm)
+              .LoginInfoObject.CompanyDesc = _LoginInfo.CompanyDesc
+              .LoginInfoObject.CompanyID = _LoginInfo.CompanyID
+              .LoginInfoObject.UserID = _LoginInfo.UserID
+              .LoginInfoObject.UserName = _LoginInfo.UserName
+            End With
+          End If
+          Form.MdiParent = Me
+          Form.Show()
+          Form = Nothing
         End If
-        Form.MdiParent = Me
-        Form.Show()
-        Form = Nothing
       End If
 
     Catch ex As Exception
