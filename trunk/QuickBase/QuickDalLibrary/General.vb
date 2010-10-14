@@ -277,4 +277,36 @@ Public Class General
       End Try
     End Set
   End Property
+
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 14-Oct-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This function checks if system date is valid by comparing it with last 
+  ''' transaction date.
+  ''' </summary>
+  Public Shared Function IsSystemDateCorrect(ByRef _LastTransactionDate As DateTime) As Boolean
+    Try
+      Dim _InventoryFacts As New QuickInventoryDataSetTableAdapters.InventoryFactsTableAdapter
+      Dim _MaximumDate As Nullable(Of DateTime)
+
+      _MaximumDate = _InventoryFacts.GetMaximumTransactionDate(Convert.ToInt32(General.LoginInfoObject.CompanyID)).Value
+      If _MaximumDate.Value > Now Then
+        _LastTransactionDate = _MaximumDate.Value
+        Return False
+      Else
+        Return True
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in IsSystemDateCorrect of General.", ex)
+      Throw _qex
+    End Try
+  End Function
+
 End Class

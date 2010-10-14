@@ -840,6 +840,7 @@ Public Class SalesInvoicePosForm
       Me.CurrentRecordDataRow = Nothing
       MyBase.CancelButtonClick(sender, e)
       SaleDate.Value = Now
+      SaleDate.Enabled = False
       Me.CashBalanceAmountLabel.Text = String.Empty
       Me.SalesManComboBox.Focus()
 
@@ -967,7 +968,7 @@ Public Class SalesInvoicePosForm
       obj = CType(Me.grdSalesInvoice.ActiveSheet.Columns(enSalesInvoiceColumns.Sale_Type + General.ItemCodeColumnsCount - 1).CellType, FarPoint.Win.Spread.CellType.ComboBoxCellType)
       obj.Editable = True
       SaleDate.Value = Now
-
+      SaleDate.Enabled = False
 
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception to load form", ex)
