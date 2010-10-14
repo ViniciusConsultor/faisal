@@ -7,17 +7,22 @@ Imports QuickLibrary
 Imports QuickERP
 Imports QuickLibrary.Constants
 Imports QuickLibrary.Common
+Imports QuickDAL.QuickSecurityDataSetTableAdapters
+Imports QuickDAL.QuickSecurityDataSet
+Imports QuickDAL.QuickCommonDataSetTableAdapters
+Imports QuickDAL.QuickCommonDataSet
+
 Public Class MenuSetting
 
 
 #Region "Declarations"
-  Private _MenuTableAdapter As New QuickCommonDataSetTableAdapters.Base_MenuTableAdapter
-  Private _MenuDataTable As New QuickCommonDataSet.Base_MenuDataTable
-  Private _CurrentMenuDataRow As QuickCommonDataSet.Base_MenuRow
-  Private _SelectedNodeMenuDataRow As QuickCommonDataSet.Base_MenuRow
+    Private _MenuTableAdapter As New MenuTableAdapter
+    Private _MenuDataTable As New MenuDataTable
+    Private _CurrentMenuDataRow As MenuRow
+    Private _SelectedNodeMenuDataRow As MenuRow
 
-  Private _FormSettingTableAdapter As New QuickCommonDataSetTableAdapters.Base_SettingFormTableAdapter
-  Private _FormSettingDataTable As New QuickCommonDataSet.Base_SettingFormDataTable
+    Private _FormSettingTableAdapter As New SettingFormTableAdapter
+    Private _FormSettingDataTable As New SettingFormDataTable
 
   Private _CurrentNodeMenuID As Integer
 
@@ -79,7 +84,7 @@ Public Class MenuSetting
   End Sub
 
 
-  Private Function PopulateFormSettingComboBox() As Boolean
+    Private Function PopulateFormSettingComboBox() As Boolean
     Try
       Me.FormCodeComboBox.DataSource = Me._FormSettingTableAdapter.GetAll
       Me.FormCodeComboBox.ValueMember = Me._FormSettingDataTable.Form_IDColumn.ColumnName
@@ -99,7 +104,7 @@ Public Class MenuSetting
     Finally
 
     End Try
-  End Function
+    End Function
 
 
 
@@ -130,7 +135,7 @@ Public Class MenuSetting
   Protected Overrides Function ShowRecord() As Boolean
     Try
       If Me._MenuDataTable.Rows.Count > 0 Then
-        Me._CurrentMenuDataRow = CType(Me._MenuDataTable.Rows(Me.CurrentRecordIndex), QuickCommonDataSet.Base_MenuRow)
+                Me._CurrentMenuDataRow = CType(Me._MenuDataTable.Rows(Me.CurrentRecordIndex), MenuRow)
         Me._SelectedNodeMenuDataRow = Nothing
         Me._SelectedNodeMenuDataRow = Me._CurrentMenuDataRow
         Me.ClearControls(Me)
@@ -153,7 +158,7 @@ Public Class MenuSetting
     Try
       If IsValid() Then
         If Me._CurrentMenuDataRow Is Nothing Then
-          Me._CurrentMenuDataRow = Me._MenuDataTable.NewBase_MenuRow
+          Me._CurrentMenuDataRow = Me._MenuDataTable.NewMenuRow
           Me.MenuIDTextBox.Text = CStr(Me._MenuTableAdapter.GetNewByMenuID)
           Me._CurrentMenuDataRow.Menu_Id = CInt(Me.MenuIDTextBox.Text)
           Me._CurrentMenuDataRow.Display_Order = CShort(Me._MenuTableAdapter.GetNewDisplayOrderByParentMenuID(Me._SelectedNodeMenuDataRow.Parent_Menu_Id))
@@ -181,8 +186,6 @@ Public Class MenuSetting
       Else
         Return False
       End If
-
-
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception to save record", ex)
       Throw QuickExceptionObject
@@ -205,7 +208,6 @@ Public Class MenuSetting
       Me.MenuDescriptionTextBox.MaxLength = Me._MenuDataTable.Menu_DescColumn.MaxLength
       PopulateFormSettingComboBox()
       LoadTreeView()
-      'MessageBox.Show(Asc(e.
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in Loading Form of Menu Form", ex)
       '   QuickExceptionObject.Show(LoginInfoObject)
@@ -239,7 +241,7 @@ Public Class MenuSetting
       Dim _LastSelectedDisplayOrder As Int32
       Dim _MenuID As Int32
       Dim _CurrentSelectedDisplayOrder As Int32
-      Dim _MenuSelectedDataTable As New QuickCommonDataSet.Base_MenuDataTable
+            Dim _MenuSelectedDataTable As New MenuDataTable
       Dim tvNode() As TreeNode
 
       _LastSelectedDisplayOrder = Me._CurrentMenuDataRow.Display_Order
@@ -291,7 +293,7 @@ Public Class MenuSetting
       Dim _LastSelectedDisplayOrder As Int32
       Dim _MenuID As Int32
       Dim _CurrentSelectedDisplayOrder As Int32
-      Dim _MenuSelectedDataTable As New QuickCommonDataSet.Base_MenuDataTable
+            Dim _MenuSelectedDataTable As New MenuDataTable
       Dim tvNode() As TreeNode
 
       If Me.MenuTreeView.SelectedNode.Index <> 0 Then
