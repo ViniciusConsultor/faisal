@@ -1093,6 +1093,8 @@ Partial Public Class QuickSecurityDataSet
         
         Private columnRecordStatus_ID As Global.System.Data.DataColumn
         
+        Private columnForm_ID As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
             MyBase.New
@@ -1188,6 +1190,13 @@ Partial Public Class QuickSecurityDataSet
             End Get
         End Property
         
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Form_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnForm_ID
+            End Get
+        End Property
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1217,9 +1226,9 @@ Partial Public Class QuickSecurityDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddMenuRow(ByVal Menu_Id As Integer, ByVal Menu_Desc As String, ByVal Display_Order As Short, ByVal Parent_Menu_Id As Integer, ByVal Stamp_UserId As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal Form_Code As String, ByVal RecordStatus_ID As Integer) As MenuRow
+        Public Overloads Function AddMenuRow(ByVal Menu_Id As Integer, ByVal Menu_Desc As String, ByVal Display_Order As Short, ByVal Parent_Menu_Id As Integer, ByVal Stamp_UserId As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal Form_Code As String, ByVal RecordStatus_ID As Integer, ByVal Form_ID As Short) As MenuRow
             Dim rowMenuRow As MenuRow = CType(Me.NewRow,MenuRow)
-            Dim columnValuesArray() As Object = New Object() {Menu_Id, Menu_Desc, Display_Order, Parent_Menu_Id, Stamp_UserId, Stamp_DateTime, Upload_DateTime, Form_Code, RecordStatus_ID}
+            Dim columnValuesArray() As Object = New Object() {Menu_Id, Menu_Desc, Display_Order, Parent_Menu_Id, Stamp_UserId, Stamp_DateTime, Upload_DateTime, Form_Code, RecordStatus_ID, Form_ID}
             rowMenuRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMenuRow)
             Return rowMenuRow
@@ -1258,6 +1267,7 @@ Partial Public Class QuickSecurityDataSet
             Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
             Me.columnForm_Code = MyBase.Columns("Form_Code")
             Me.columnRecordStatus_ID = MyBase.Columns("RecordStatus_ID")
+            Me.columnForm_ID = MyBase.Columns("Form_ID")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -1280,6 +1290,8 @@ Partial Public Class QuickSecurityDataSet
             MyBase.Columns.Add(Me.columnForm_Code)
             Me.columnRecordStatus_ID = New Global.System.Data.DataColumn("RecordStatus_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRecordStatus_ID)
+            Me.columnForm_ID = New Global.System.Data.DataColumn("Form_ID", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnForm_ID)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnMenu_Id}, true))
             Me.columnMenu_Id.AllowDBNull = false
             Me.columnMenu_Id.Unique = true
@@ -1289,7 +1301,6 @@ Partial Public Class QuickSecurityDataSet
             Me.columnParent_Menu_Id.AllowDBNull = false
             Me.columnStamp_UserId.AllowDBNull = false
             Me.columnStamp_DateTime.AllowDBNull = false
-            Me.columnForm_Code.AllowDBNull = false
             Me.columnForm_Code.MaxLength = 6
         End Sub
         
@@ -2784,7 +2795,11 @@ Partial Public Class QuickSecurityDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Property Form_Code() As String
             Get
-                Return CType(Me(Me.tableMenu.Form_CodeColumn),String)
+                Try 
+                    Return CType(Me(Me.tableMenu.Form_CodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Form_Code' in table 'Menu' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableMenu.Form_CodeColumn) = value
@@ -2806,6 +2821,20 @@ Partial Public Class QuickSecurityDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Form_ID() As Short
+            Get
+                Try 
+                    Return CType(Me(Me.tableMenu.Form_IDColumn),Short)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Form_ID' in table 'Menu' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMenu.Form_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsUpload_DateTimeNull() As Boolean
             Return Me.IsNull(Me.tableMenu.Upload_DateTimeColumn)
         End Function
@@ -2816,6 +2845,16 @@ Partial Public Class QuickSecurityDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsForm_CodeNull() As Boolean
+            Return Me.IsNull(Me.tableMenu.Form_CodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetForm_CodeNull()
+            Me(Me.tableMenu.Form_CodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsRecordStatus_IDNull() As Boolean
             Return Me.IsNull(Me.tableMenu.RecordStatus_IDColumn)
         End Function
@@ -2823,6 +2862,16 @@ Partial Public Class QuickSecurityDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub SetRecordStatus_IDNull()
             Me(Me.tableMenu.RecordStatus_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsForm_IDNull() As Boolean
+            Return Me.IsNull(Me.tableMenu.Form_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetForm_IDNull()
+            Me(Me.tableMenu.Form_IDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -4412,20 +4461,23 @@ Namespace QuickSecurityDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Form_Id", "Form_Code")
             tableMapping.ColumnMappings.Add("Form_Code", "Form_Code")
             tableMapping.ColumnMappings.Add("RecordStatus_ID", "RecordStatus_ID")
+            tableMapping.ColumnMappings.Add("Form_ID", "Form_ID")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Base_Menu] WHERE (([Menu_Id] = @Original_Menu_Id) AND ([Menu_Desc] ="& _ 
-                " @Original_Menu_Desc) AND ([Form_Code] = @Original_Form_Code) AND ([Display_Orde"& _ 
-                "r] = @Original_Display_Order) AND ([Parent_Menu_Id] = @Original_Parent_Menu_Id) "& _ 
-                "AND ([Stamp_UserId] = @Original_Stamp_UserId) AND ([Stamp_DateTime] = @Original_"& _ 
-                "Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL)"& _ 
-                " OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ((@IsNull_RecordStatus_"& _ 
-                "ID = 1 AND [RecordStatus_ID] IS NULL) OR ([RecordStatus_ID] = @Original_RecordSt"& _ 
-                "atus_ID)))"
+                " @Original_Menu_Desc) AND ((@IsNull_Form_Code = 1 AND [Form_Code] IS NULL) OR (["& _ 
+                "Form_Code] = @Original_Form_Code)) AND ([Display_Order] = @Original_Display_Orde"& _ 
+                "r) AND ([Parent_Menu_Id] = @Original_Parent_Menu_Id) AND ([Stamp_UserId] = @Orig"& _ 
+                "inal_Stamp_UserId) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNu"& _ 
+                "ll_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @O"& _ 
+                "riginal_Upload_DateTime)) AND ((@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID"& _ 
+                "] IS NULL) OR ([RecordStatus_ID] = @Original_RecordStatus_ID)) AND ((@IsNull_For"& _ 
+                "m_ID = 1 AND [Form_ID] IS NULL) OR ([Form_ID] = @Original_Form_ID)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Desc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Form_Code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Form_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Display_Order", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Display_Order", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Parent_Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4435,15 +4487,17 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Form_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Form_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Base_Menu] ([Menu_Id], [Menu_Desc], [Form_Code], [Display_Order], [P"& _ 
                 "arent_Menu_Id], [Stamp_UserId], [Stamp_DateTime], [Upload_DateTime], [RecordStat"& _ 
-                "us_ID]) VALUES (@Menu_Id, @Menu_Desc, @Form_Code, @Display_Order, @Parent_Menu_I"& _ 
-                "d, @Stamp_UserId, @Stamp_DateTime, @Upload_DateTime, @RecordStatus_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_UserId, Stam"& _ 
-                "p_DateTime, Upload_DateTime, RecordStatus_ID FROM Base_Menu WHERE (Menu_Id = @Me"& _ 
-                "nu_Id)"
+                "us_ID], [Form_ID]) VALUES (@Menu_Id, @Menu_Desc, @Form_Code, @Display_Order, @Pa"& _ 
+                "rent_Menu_Id, @Stamp_UserId, @Stamp_DateTime, @Upload_DateTime, @RecordStatus_ID"& _ 
+                ", @Form_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_I"& _ 
+                "d, Stamp_UserId, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Form_ID FROM "& _ 
+                "Base_Menu WHERE (Menu_Id = @Menu_Id)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Desc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4454,21 +4508,25 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Base_Menu] SET [Menu_Id] = @Menu_Id, [Menu_Desc] = @Menu_Desc, [Form_Code"& _ 
                 "] = @Form_Code, [Display_Order] = @Display_Order, [Parent_Menu_Id] = @Parent_Men"& _ 
                 "u_Id, [Stamp_UserId] = @Stamp_UserId, [Stamp_DateTime] = @Stamp_DateTime, [Uploa"& _ 
-                "d_DateTime] = @Upload_DateTime, [RecordStatus_ID] = @RecordStatus_ID WHERE (([Me"& _ 
-                "nu_Id] = @Original_Menu_Id) AND ([Menu_Desc] = @Original_Menu_Desc) AND ([Form_C"& _ 
-                "ode] = @Original_Form_Code) AND ([Display_Order] = @Original_Display_Order) AND "& _ 
-                "([Parent_Menu_Id] = @Original_Parent_Menu_Id) AND ([Stamp_UserId] = @Original_St"& _ 
-                "amp_UserId) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Uplo"& _ 
-                "ad_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original"& _ 
-                "_Upload_DateTime)) AND ((@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID] IS NU"& _ 
-                "LL) OR ([RecordStatus_ID] = @Original_RecordStatus_ID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Menu_Id, Menu_"& _ 
+                "d_DateTime] = @Upload_DateTime, [RecordStatus_ID] = @RecordStatus_ID, [Form_ID] "& _ 
+                "= @Form_ID WHERE (([Menu_Id] = @Original_Menu_Id) AND ([Menu_Desc] = @Original_M"& _ 
+                "enu_Desc) AND ((@IsNull_Form_Code = 1 AND [Form_Code] IS NULL) OR ([Form_Code] ="& _ 
+                " @Original_Form_Code)) AND ([Display_Order] = @Original_Display_Order) AND ([Par"& _ 
+                "ent_Menu_Id] = @Original_Parent_Menu_Id) AND ([Stamp_UserId] = @Original_Stamp_U"& _ 
+                "serId) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_Da"& _ 
+                "teTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Uplo"& _ 
+                "ad_DateTime)) AND ((@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID] IS NULL) O"& _ 
+                "R ([RecordStatus_ID] = @Original_RecordStatus_ID)) AND ((@IsNull_Form_ID = 1 AND"& _ 
+                " [Form_ID] IS NULL) OR ([Form_ID] = @Original_Form_ID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Menu_Id, Menu_"& _ 
                 "Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_UserId, Stamp_DateTime, Up"& _ 
-                "load_DateTime, RecordStatus_ID FROM Base_Menu WHERE (Menu_Id = @Menu_Id)"
+                "load_DateTime, RecordStatus_ID, Form_ID FROM Base_Menu WHERE (Menu_Id = @Menu_Id"& _ 
+                ")"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Desc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -4479,8 +4537,10 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Form_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Menu_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Desc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Form_Code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Form_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Display_Order", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Display_Order", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Parent_Menu_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -4490,38 +4550,112 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Form_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Form_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Form_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection
-            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(13) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_Us"& _ 
-                "erId, Stamp_DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_Menu"
+                "erId, Stamp_DateTime, Upload_DateTime, RecordStatus_ID ,Form_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Ba"& _ 
+                "se_Menu"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     Display_Order, Form_Code, Menu_Desc, Menu_Id, Parent_Menu_Id, RecordSt"& _ 
-                "atus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_Menu"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "WHERE     (Parent_Menu_Id = @Parent_Menu_Id)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Parent_Menu_Id, Display_O"& _ 
-                "rder"
+            Me._commandCollection(1).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(1).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
+                " (RecordStatus_ID <> 4) AND (Parent_Menu_Id = @Parent_Menu_Id) AND (Display_Orde"& _ 
+                "r > @Display_Order OR Display_Order = - 1) ORDER BY Display_Order"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Display_Order", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Display_Order", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "dbo.spGetAllowedByCoIDParentMenuIDUserID"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(2).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
+                " (RecordStatus_ID <> 4) ORDER BY Parent_Menu_Id, Display_Order"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(3).CommandText = "SELECT TOP (1) Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu"& _ 
+                "_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Me"& _ 
+                "nu WHERE (RecordStatus_ID <> 4)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(4).CommandText = "SELECT TOP (1) Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu"& _ 
+                "_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Me"& _ 
+                "nu WHERE (RecordStatus_ID <> 4) ORDER BY Menu_Id DESC"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(5).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(5).CommandText = "SELECT TOP (1) Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu"& _ 
+                "_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Me"& _ 
+                "nu WHERE (Menu_Id > @Menu_Id) AND (RecordStatus_ID <> 4)"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(6).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(6).CommandText = "SELECT TOP (1) Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu"& _ 
+                "_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Me"& _ 
+                "nu WHERE (Menu_Id < @Menu_Id) AND (RecordStatus_ID <> 4) ORDER BY Menu_Id DESC"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(7).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(7).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
+                " (Menu_Id = @Menu_Id) AND (RecordStatus_ID <> 4)"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(8).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(8).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
+                " (RecordStatus_ID <> 4) AND (Menu_Id = @Menu_ID)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Menu_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(9).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(9).CommandText = "dbo.spGetAllowedByCoIDParentMenuIDUserID"
+            Me._commandCollection(9).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(10).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(10).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
+                " (Parent_Menu_Id = @Parent_Menu_Id) ORDER BY Parent_Menu_Id, Display_Order"
+            Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(11) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(11).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(11).CommandText = "SELECT     CONVERT(INT, ISNULL(MAX(Display_Order), 0) ) AS DisplayOrder"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM    "& _ 
+                "     Base_Menu"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where (Parent_Menu_ID =@Parent_Menu_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(11).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(12) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(12).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(12).CommandText = "SELECT     CONVERT(INT, ISNULL(MAX(Menu_Id), 0) + 1) AS NewID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_"& _ 
+                "Menu"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(12).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(13) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(13).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(13).CommandText = "SELECT     CONVERT(INT, ISNULL(MAX(Display_Order), 0) + 1) AS NewID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM        "& _ 
+                " Base_Menu"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where (RecordStatus_ID <> 4) And (Parent_Menu_Id =@Parent_Menu_Id)"
+            Me._commandCollection(13).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(13).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Parent_Menu_Id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Parent_Menu_Id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4537,9 +4671,10 @@ Namespace QuickSecurityDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetByParentMenuIDForAdmin(ByVal Parent_Menu_Id As Integer) As QuickSecurityDataSet.MenuDataTable
+        Public Overloads Overridable Function GetByParentMenuID(ByVal Parent_Menu_Id As Integer, ByVal Display_Order As Integer) As QuickSecurityDataSet.MenuDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Parent_Menu_Id,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Display_Order,Integer)
             Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -4548,8 +4683,82 @@ Namespace QuickSecurityDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetAllowedByCoIDParentMenuIdUserID(ByVal Co_ID As Global.System.Nullable(Of Integer), ByVal Parent_Menu_ID As Global.System.Nullable(Of Integer), ByVal User_ID As Global.System.Nullable(Of Integer)) As QuickSecurityDataSet.MenuDataTable
+        Public Overloads Overridable Function GetByParentMenuIDByDisplayOrder() As QuickSecurityDataSet.MenuDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetFirstByMenuID() As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetLastByMenuID() As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetNextByMenuID(ByVal Menu_Id As Integer) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Menu_Id,Integer)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetPreviousByMenuID(ByVal Menu_Id As Integer) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(6)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Menu_Id,Integer)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetSelectedTreeNodeByMenuID(ByVal Menu_Id As Integer) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(7)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Menu_Id,Integer)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByMenuID(ByVal Menu_ID As Integer) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(8)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Menu_ID,Integer)
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function GetAllowedByCoIDParentMenuIdUserID1(ByVal dataTable As QuickSecurityDataSet.MenuDataTable, ByVal Co_ID As Global.System.Nullable(Of Integer), ByVal Parent_Menu_ID As Global.System.Nullable(Of Integer), ByVal User_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(9)
             If (Co_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Co_ID.Value,Integer)
             Else
@@ -4565,6 +4774,44 @@ Namespace QuickSecurityDataSetTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetAllowedByCoIDParentMenuIdUserID(ByVal Co_ID As Global.System.Nullable(Of Integer), ByVal Parent_Menu_ID As Global.System.Nullable(Of Integer), ByVal User_ID As Global.System.Nullable(Of Integer)) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(9)
+            If (Co_ID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Co_ID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Parent_Menu_ID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Parent_Menu_ID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (User_ID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(User_ID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByParentMenuIDForAdmin(ByVal Parent_Menu_Id As Integer) As QuickSecurityDataSet.MenuDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(10)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Parent_Menu_Id,Integer)
             Dim dataTable As QuickSecurityDataSet.MenuDataTable = New QuickSecurityDataSet.MenuDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -4597,7 +4844,7 @@ Namespace QuickSecurityDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Menu_Id As Integer, ByVal Original_Menu_Desc As String, ByVal Original_Form_Code As String, ByVal Original_Display_Order As Short, ByVal Original_Parent_Menu_Id As Integer, ByVal Original_Stamp_UserId As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Menu_Id As Integer, ByVal Original_Menu_Desc As String, ByVal Original_Form_Code As String, ByVal Original_Display_Order As Short, ByVal Original_Parent_Menu_Id As Integer, ByVal Original_Stamp_UserId As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer), ByVal Original_Form_ID As Global.System.Nullable(Of Short)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Menu_Id,Integer)
             If (Original_Menu_Desc Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Menu_Desc")
@@ -4605,27 +4852,36 @@ Namespace QuickSecurityDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Menu_Desc,String)
             End If
             If (Original_Form_Code Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Form_Code")
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Form_Code,String)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Form_Code,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Display_Order,Short)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Parent_Menu_Id,Integer)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Stamp_UserId,Integer)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_DateTime,Date)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Display_Order,Short)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Parent_Menu_Id,Integer)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_UserId,Integer)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Upload_DateTime.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Upload_DateTime.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             If (Original_RecordStatus_ID.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_RecordStatus_ID.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_RecordStatus_ID.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Form_ID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_Form_ID.Value,Short)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4645,7 +4901,7 @@ Namespace QuickSecurityDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Menu_Id As Integer, ByVal Menu_Desc As String, ByVal Form_Code As String, ByVal Display_Order As Short, ByVal Parent_Menu_Id As Integer, ByVal Stamp_UserId As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Menu_Id As Integer, ByVal Menu_Desc As String, ByVal Form_Code As String, ByVal Display_Order As Short, ByVal Parent_Menu_Id As Integer, ByVal Stamp_UserId As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Global.System.Nullable(Of Integer), ByVal Form_ID As Global.System.Nullable(Of Short)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Menu_Id,Integer)
             If (Menu_Desc Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Menu_Desc")
@@ -4653,7 +4909,7 @@ Namespace QuickSecurityDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Menu_Desc,String)
             End If
             If (Form_Code Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Form_Code")
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(Form_Code,String)
             End If
@@ -4670,6 +4926,11 @@ Namespace QuickSecurityDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(RecordStatus_ID.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Form_ID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Form_ID.Value,Short)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4699,6 +4960,7 @@ Namespace QuickSecurityDataSetTableAdapters
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
                     ByVal RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Form_ID As Global.System.Nullable(Of Short),  _
                     ByVal Original_Menu_Id As Integer,  _
                     ByVal Original_Menu_Desc As String,  _
                     ByVal Original_Form_Code As String,  _
@@ -4707,7 +4969,8 @@ Namespace QuickSecurityDataSetTableAdapters
                     ByVal Original_Stamp_UserId As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
-                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Form_ID As Global.System.Nullable(Of Short)) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Menu_Id,Integer)
             If (Menu_Desc Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Menu_Desc")
@@ -4715,7 +4978,7 @@ Namespace QuickSecurityDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Menu_Desc,String)
             End If
             If (Form_Code Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Form_Code")
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Form_Code,String)
             End If
@@ -4733,34 +4996,48 @@ Namespace QuickSecurityDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Menu_Id,Integer)
+            If (Form_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Form_ID.Value,Short)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Menu_Id,Integer)
             If (Original_Menu_Desc Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Menu_Desc")
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Menu_Desc,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Menu_Desc,String)
             End If
             If (Original_Form_Code Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Form_Code")
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Form_Code,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Form_Code,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Display_Order,Short)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Parent_Menu_Id,Integer)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Stamp_UserId,Integer)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_DateTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Display_Order,Short)
+            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Parent_Menu_Id,Integer)
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Stamp_UserId,Integer)
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Upload_DateTime.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            End If
-            If (Original_RecordStatus_ID.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_RecordStatus_ID.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Upload_DateTime.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (Original_RecordStatus_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_RecordStatus_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Form_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Form_ID.Value,Short)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4789,6 +5066,7 @@ Namespace QuickSecurityDataSetTableAdapters
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
                     ByVal RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Form_ID As Global.System.Nullable(Of Short),  _
                     ByVal Original_Menu_Id As Integer,  _
                     ByVal Original_Menu_Desc As String,  _
                     ByVal Original_Form_Code As String,  _
@@ -4797,8 +5075,86 @@ Namespace QuickSecurityDataSetTableAdapters
                     ByVal Original_Stamp_UserId As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
-                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
-            Return Me.Update(Original_Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_UserId, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Menu_Id, Original_Menu_Desc, Original_Form_Code, Original_Display_Order, Original_Parent_Menu_Id, Original_Stamp_UserId, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
+                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Form_ID As Global.System.Nullable(Of Short)) As Integer
+            Return Me.Update(Original_Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_UserId, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Form_ID, Original_Menu_Id, Original_Menu_Desc, Original_Form_Code, Original_Display_Order, Original_Parent_Menu_Id, Original_Stamp_UserId, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID, Original_Form_ID)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetMaxByParentMenuID(ByVal Parent_Menu_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(11)
+            command.Parameters(0).Value = CType(Parent_Menu_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetNewByMenuID() As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(12)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetNewDisplayOrderByParentMenuID(ByVal Parent_Menu_Id As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(13)
+            command.Parameters(0).Value = CType(Parent_Menu_Id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
         End Function
     End Class
     
