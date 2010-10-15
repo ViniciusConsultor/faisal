@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>QuickExceptionAdvanced</Title>
+      <Author>QuickERP</Author>
+      <Description>Inserts a Try...Catch...End Try statement for QuickExceptionAdvanced</Description>
+      <Shortcut>QTry</Shortcut>
+    </Header>
+    <Snippet>
+      <Imports>
+         <Import>
+          <Namespace>System</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>ExceptionType</ID>
+          <Type>String</Type>
+          <ToolTip>Replace with the specific exception type you want to catch.</ToolTip>
+          <Default>Exception</Default>
+        </Literal>
+        <Literal>
+          <ID>MethodName</ID>
+          <Type>String</Type>
+          <ToolTip>Replace with the method name in which this try catch is being used.</ToolTip>
+          <Default>MethodName</Default>
+        </Literal>
+        <Literal>
+          <ID>ClassName</ID>
+          <Type>String</Type>
+          <ToolTip>Replace with the class name in which this try catch is being used.</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB" Kind="method body">
+  <![CDATA[Try
+
+  Catch ex As $ExceptionType$
+	  Dim _qex AS New QuickExceptionAdvanced("Exception in $MethodName$ of $ClassName$.",ex)
+    Throw _qex
+End Try]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
