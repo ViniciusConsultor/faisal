@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Define Sub</Title>
+      <Author>QuickERP</Author>
+      <Description>Inserts a Sub defination with try catch and author comments</Description>
+      <Shortcut>QDefSub</Shortcut>
+    </Header>
+    <Snippet>
+      <Imports>
+         <Import>
+          <Namespace>System</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>SubName</ID>
+          <Type>String</Type>
+          <ToolTip>Replace with the sub name which you require.</ToolTip>
+          <Default>SubName</Default>
+        </Literal>
+        <Literal>
+          <ID>ExceptionType</ID>
+          <Type>String</Type>
+          <ToolTip>Replace it with the exception type which you require.</ToolTip>
+          <Default>Exception</Default>
+        </Literal>
+        <Literal>
+          <ID>ClassName</ID>
+          <Type>String</Type>
+          <ToolTip>Replace it with the class or form name in which this sub is defined.</ToolTip>
+          <Default>ClassName/FormName</Default>
+        </Literal>
+        <Literal>
+          <ID>Author</ID>
+          <Type>String</Type>
+          <ToolTip>Replace it with the person name who created this property.</ToolTip>
+          <Default> </Default>
+        </Literal>
+        <Literal>
+          <ID>DateCreated</ID>
+          <Type>String</Type>
+          <ToolTip>Replace it with the date when this property was created.</ToolTip>
+          <Default> </Default>
+        </Literal>
+        <Literal>
+          <ID>Description</ID>
+          <Type>String</Type>
+          <ToolTip>Put the description of the method/property.</ToolTip>
+          <Default>Nothing</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB" Kind="method body">
+        <![CDATA['Author: $Author$
+'Date Created(DD-MMM-YY): $DateCreated$
+'***** Modification History *****
+'                 Date      Description
+'Name          (DD-MMM-YY) 
+'--------------------------------------------------------------------------------
+'
+''' <summary>
+''' $Description$
+''' </summary>
+Private Sub $SubName$()
+  Try
+
+  Catch ex As $ExceptionType$
+	  Dim _qex AS New QuickExceptionAdvanced("Exception in $SubName$ of $ClassName$.",ex)
+    Throw _qex
+  End Try
+End Sub]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
