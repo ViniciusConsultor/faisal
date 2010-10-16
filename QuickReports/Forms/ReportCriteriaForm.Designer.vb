@@ -19,90 +19,92 @@ Partial Class ReportCriteriaForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-    Dim DateButton1 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton2 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton8 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton9 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton10 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton11 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton12 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton13 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton14 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton15 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim DateButton16 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton()
-    Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1357 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1358 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1359 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1360 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1361 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1362 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1363 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1364 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1365 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1366 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1367 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1368 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1345 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1346 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1347 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1348 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1349 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1350 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1351 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1352 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1353 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1354 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1355 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1356 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1333 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1334 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1335 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1336 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1337 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1338 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1339 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1340 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1341 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1342 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1343 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Dim Appearance1344 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-    Me.DateToLabel = New QuickControls.Quick_Label()
-    Me.DateFromLabel = New QuickControls.Quick_Label()
-    Me.DateToCalendarCombo = New QuickControls.Quick_UltraCalendarCombo()
-    Me.AllItemsCheckBox = New QuickControls.Quick_CheckBox()
-    Me.DateFromCalendarCombo = New QuickControls.Quick_UltraCalendarCombo()
-    Me.ItemToLabel = New QuickControls.Quick_Label()
-    Me.ItemFrom = New QuickControls.Quick_Label()
-    Me.WithoutDateCheckBox = New QuickControls.Quick_CheckBox()
-    Me.AllPartiesCheckBox = New QuickControls.Quick_CheckBox()
-    Me.PartyFrom = New QuickControls.Quick_Label()
-    Me.PartyTo = New QuickControls.Quick_Label()
-    Me.WarehouseLabel = New QuickControls.Quick_Label()
-    Me.ComaniesLabel = New QuickControls.Quick_Label()
-    Me.Quick_UltraTree1 = New QuickControls.Quick_UltraTree()
-    Me.CompanyComboBox = New QuickBusinessControls.CompanyComboBox()
-    Me.WarehouseComboBox = New QuickBusinessControls.WarehouseComboBox()
-    Me.PartyToComboBox = New QuickBusinessControls.PartyComboBox()
-    Me.PartyFromComboBox = New QuickBusinessControls.PartyComboBox()
-    Me.ItemFromMultiComboBox = New QuickBusinessControls.MultiComboBox()
-    Me.ItemToMultiComboBox = New QuickBusinessControls.MultiComboBox()
+    Dim DateButton1 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton2 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton8 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton9 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton10 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton11 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton12 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton13 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton14 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton15 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton16 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton17 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton18 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1357 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1358 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1359 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1360 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1361 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1362 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1363 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1364 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1365 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1366 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1367 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1368 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1345 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1346 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1347 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1348 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1349 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1350 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1351 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1352 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1353 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1354 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1355 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1356 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1333 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1334 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1335 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1336 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1337 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1338 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1339 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1340 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1341 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1342 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1343 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim Appearance1344 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Me.DateToLabel = New QuickControls.Quick_Label
+    Me.DateFromLabel = New QuickControls.Quick_Label
+    Me.DateToCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
+    Me.AllItemsCheckBox = New QuickControls.Quick_CheckBox
+    Me.DateFromCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
+    Me.ItemToLabel = New QuickControls.Quick_Label
+    Me.ItemFrom = New QuickControls.Quick_Label
+    Me.WithoutDateCheckBox = New QuickControls.Quick_CheckBox
+    Me.AllPartiesCheckBox = New QuickControls.Quick_CheckBox
+    Me.PartyFrom = New QuickControls.Quick_Label
+    Me.PartyTo = New QuickControls.Quick_Label
+    Me.WarehouseLabel = New QuickControls.Quick_Label
+    Me.ComaniesLabel = New QuickControls.Quick_Label
+    Me.Quick_UltraTree1 = New QuickControls.Quick_UltraTree
+    Me.CompanyComboBox = New QuickBusinessControls.CompanyComboBox
+    Me.WarehouseComboBox = New QuickBusinessControls.WarehouseComboBox
+    Me.PartyToComboBox = New QuickBusinessControls.PartyComboBox
+    Me.PartyFromComboBox = New QuickBusinessControls.PartyComboBox
+    Me.ItemFromMultiComboBox = New QuickBusinessControls.MultiComboBox
+    Me.ItemToMultiComboBox = New QuickBusinessControls.MultiComboBox
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.DateToCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.DateFromCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -149,6 +151,7 @@ Partial Class ReportCriteriaForm
     Me.DateToCalendarCombo.DateButtons.Add(DateButton6)
     Me.DateToCalendarCombo.DateButtons.Add(DateButton7)
     Me.DateToCalendarCombo.DateButtons.Add(DateButton8)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton9)
     Me.DateToCalendarCombo.DefaultValue = New Date(2010, 7, 18, 15, 50, 48, 750)
     Me.DateToCalendarCombo.Format = "dd-MM-yy"
     Me.DateToCalendarCombo.Location = New System.Drawing.Point(608, 99)
@@ -174,7 +177,6 @@ Partial Class ReportCriteriaForm
     '
     Me.DateFromCalendarCombo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.DateFromCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton9)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton10)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton11)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton12)
@@ -182,6 +184,8 @@ Partial Class ReportCriteriaForm
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton14)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton15)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton16)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton17)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton18)
     Me.DateFromCalendarCombo.DefaultValue = New Date(2010, 7, 18, 15, 50, 48, 953)
     Me.DateFromCalendarCombo.Format = "dd-MM-yy"
     Me.DateFromCalendarCombo.Location = New System.Drawing.Point(424, 99)
