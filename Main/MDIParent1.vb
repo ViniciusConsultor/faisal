@@ -350,7 +350,8 @@ Public Class MDIParent1
     Dim _LastTransactionDate As DateTime
 
     Try
-      If Not General.IsSystemDateCorrect(_LastTransactionDate) Then
+      'Disabling this check on Anjum Sb. request for 2 days.
+      If 1 = 2 AndAlso Not General.IsSystemDateCorrect(_LastTransactionDate) Then
         QuickMessageBox.Show(General.LoginInfoObject, "Your system date is not correct " & _LastTransactionDate.ToString, MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
       Else
         Select Case FormPath

@@ -20959,6 +20959,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@ItemCode", System.Data.SqlDbType.VarChar, 20, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Companies", System.Data.SqlDbType.VarChar, 8000, System.Data.ParameterDirection.Input, 0, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@WarehouseID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 10, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@AddTotalRows", System.Data.SqlDbType.Bit, 1, System.Data.ParameterDirection.Input, 1, 0, Nothing, System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -21006,7 +21007,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetStockByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String, ByVal WarehouseID As System.Nullable(Of Integer)) As QuickInventoryDataSet.StockInquiryDataTable
+        Public Overloads Overridable Function GetStockByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String, ByVal WarehouseID As System.Nullable(Of Integer), ByVal AddTotalRows As System.Nullable(Of Boolean)) As QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (ItemCode Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = System.DBNull.Value
@@ -21022,6 +21023,11 @@ Namespace QuickInventoryDataSetTableAdapters
                 Me.Adapter.SelectCommand.Parameters(3).Value = CType(WarehouseID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(3).Value = System.DBNull.Value
+            End If
+            If (AddTotalRows.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(AddTotalRows.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = System.DBNull.Value
             End If
             Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.Fill(dataTable)

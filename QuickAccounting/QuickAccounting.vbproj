@@ -81,10 +81,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\QuickBusinessControls\QuickBusinessControls.dll</HintPath>
     </Reference>
-    <Reference Include="QuickControls, Version=3.1.2.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickControls\QuickControls.dll</HintPath>
-    </Reference>
     <Reference Include="QuickDAL, Version=3.1.1.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\QuickDAL\QuickDAL.dll</HintPath>
@@ -98,9 +94,7 @@
       <HintPath>..\..\bin\QuickLibrary\QuickLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -241,6 +235,10 @@
     <None Include="QuickErp.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuickBase\QuickControls\QuickControls.vbproj">
+      <Project>{636D7C63-0301-476A-87AA-273728806FD6}</Project>
+      <Name>QuickControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuickReports\QuickReports.vbproj">
       <Project>{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}</Project>
       <Name>QuickReports</Name>

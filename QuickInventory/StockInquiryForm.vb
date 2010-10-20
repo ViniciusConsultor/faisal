@@ -42,7 +42,7 @@ Public Class StockInquiryForm
       Me.StockQuickSpread_Sheet1.Reset()
       Me.StockQuickSpread_Sheet1.DataSource = Nothing
       '_StockInquiryTable = _StockInquiryTableAdapter.GetByItemID(Me.ItemComboBox.ItemCode)
-      _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0)
+      _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0, ShowTotalRowsCheckBox.Checked)
 
       SetGridLayout(Me.StockQuickSpread_Sheet1, _StockInquiryTable)
       _StockInquiryTable.Item_Code1Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"

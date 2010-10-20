@@ -31,7 +31,7 @@
     </UpgradeBackupLocation>
     <ApplicationRevision>26</ApplicationRevision>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishUrl>D:\Publish\Uniformers\QuickErp_02_03_02_33\</PublishUrl>
+    <PublishUrl>D:\Publish\Uniformers\QuickErp_02_03_02_35\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -44,9 +44,9 @@
     <UpdateUrl>http://www.quicktijarat.com/quickerp/</UpdateUrl>
     <ProductName>Quick Erp</ProductName>
     <PublisherName>Quick Erp</PublisherName>
-    <MinimumRequiredVersion>2.3.2.33</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.3.2.35</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationVersion>2.3.2.33</ApplicationVersion>
+    <ApplicationVersion>2.3.2.35</ApplicationVersion>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -267,380 +267,380 @@
   <ItemGroup>
     <PublishFile Include="CrystalDecisions.CrystalReports.Engine">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.ReportSource">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Shared">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="CrystalDecisions.Windows.Forms">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.CalcEngine">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.Excel">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.PDF">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.PluginCalendar.WinForms">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.Win">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="FarPoint.Win.Spread">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Guidlines\ClassRegions.txt">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Guidlines\default.htm">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Guidlines\PublishStepts.txt">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Shared.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.Misc.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinDock.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinEditors.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinGrid.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinListBar.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinListView.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinSchedule.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinStatusBar.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTabbedMdi.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTabControl.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinToolbars.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.UltraWinTree.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Infragistics2.Win.v8.2">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="PublishStepts.txt">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="QuickAccounting">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickAdministration">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickBaseForms">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickBusinessControls">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickCommon">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickControls">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickDAL">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickDALLibrary">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickErp.XmlSerializers">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickInventory">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickLibrary">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickReports">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickSecurity">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Quick_POS">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A3E2F454-2D23-49B8-887E-36E06E0574A0}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -19,26 +19,9 @@
     <OptionStrict>On</OptionStrict>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <PublishUrl>http://localhost/QuickCommon/</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,9 +30,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>..\..\bin\Debug\QuickCommon\</OutputPath>
     <DocumentationFile>QuickCommon.xml</DocumentationFile>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>
+    </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,9 +41,9 @@
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\Release\QuickCommon\</OutputPath>
     <DocumentationFile>QuickCommon.xml</DocumentationFile>
-    <NoWarn>42353,42354,42355</NoWarn>
+    <NoWarn>
+    </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FarPoint.Win.Spread, Version=4.0.3522.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
@@ -68,30 +51,6 @@
     <Reference Include="Infragistics2.Win.UltraWinGrid.v8.2, Version=8.2.20082.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics2.Win.UltraWinSchedule.v8.2, Version=8.2.20082.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics2.Win.v8.2, Version=8.2.20082.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="QuickBaseForms, Version=1.1.1.2, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickBaseForms\QuickBaseForms.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickBusinessControls, Version=1.1.2.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickBusinessControls\QuickBusinessControls.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickControls, Version=3.1.2.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickControls\QuickControls.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickDAL, Version=3.1.1.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickDAL\QuickDAL.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickDALLibrary, Version=1.5.3.7, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickDALLibrary\QuickDALLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickLibrary, Version=1.8.5.2, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickLibrary\QuickLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -191,21 +150,30 @@
     <None Include="QuickErp.snk" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
+    <ProjectReference Include="..\QuickBase\QuickBaseForms\QuickBaseForms.vbproj">
+      <Project>{E45FD012-78E2-4DB2-A8E2-0681F4EA24C0}</Project>
+      <Name>QuickBaseForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickBusinessControls\QuickBusinessControls.vbproj">
+      <Project>{3DF65D11-45FB-4EAA-A160-6456E339FF50}</Project>
+      <Name>QuickBusinessControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickControls\QuickControls.vbproj">
+      <Project>{636D7C63-0301-476A-87AA-273728806FD6}</Project>
+      <Name>QuickControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickDalLibrary\QuickDALLibrary.vbproj">
+      <Project>{6CFD395A-E9C8-4886-829E-48CDB0318B4F}</Project>
+      <Name>QuickDALLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickDAL\QuickDAL.vbproj">
+      <Project>{25F64F21-2688-45A1-B7F6-C1691437FBDD}</Project>
+      <Name>QuickDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickLibrary\QuickLibrary.vbproj">
+      <Project>{1162DFBE-C61D-4C4D-AD46-584015721F76}</Project>
+      <Name>QuickLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
