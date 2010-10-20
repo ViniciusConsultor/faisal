@@ -33,6 +33,8 @@ Public Class ReportCriteriaForm
   Private Const ReportNamePartyLedgerDetailWithAging As String = "Party Ledger (Aging Detail)"
   Private Const ReportNameStockInSummary As String = "Stock In Summary"
   Private Const ReportNameStockOutSummary As String = "Stock Out Summary"
+  Private Const ReportNameStockInDetail As String = "Stock In Detail"
+  Private Const ReportNameStockOutDetail As String = "Stock Out Detail"
 
   Dim _ReportViewerForm As New CrystalReportViewerForm
   Dim _ReportDocument As ReportDocument = Nothing
@@ -261,6 +263,198 @@ Public Class ReportCriteriaForm
     End Try
   End Sub
 
+  'Author: Zakee 
+  'Date Created(DD-MMM-YY): 20-Oct-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' It calls Stock Out summary report.
+  ''' </summary>
+  Private Sub StockOutSummaryReport()
+    Try
+      _ReportDocument = New StockOutSummaryReport
+      _ReportDocument.PrintOptions.PaperSize = PaperSize.DefaultPaperSize
+
+      _SelectionFormulaForDisplay = "Date Range: "
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateFromCalendarCombo.Value Is DBNull.Value Then
+        _ParameterValues.Add("@From_Date", "#" & Format(Date.MinValue.Date, "yyyy-MM-dd") & "#")
+        ' _ParameterValues.Add("@From_Date", "#" & Date.MinValue.Date & "#")
+        _SelectionFormulaForDisplay &= "Start"
+      Else
+        '_ParameterValues.Add("@From_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "#")
+        _ParameterValues.Add("@From_Date", "#" & Format(Me.DateFromCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateToCalendarCombo.Value Is DBNull.Value Then
+        '_ParameterValues.Add("@To_Date", "#" & Date.MaxValue.Date & "#")
+        _ParameterValues.Add("@To_Date", Format(Date.MaxValue.Date, "yyyy-MM-dd"))
+        _SelectionFormulaForDisplay &= " to End"
+      Else
+        '_ParameterValues.Add("@To_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "#")
+        _ParameterValues.Add("@To_Date", "#" & Format(Me.DateToCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= " to " & Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.AllItemsCheckBox.Checked Then
+        _ParameterValues.Add("@From_Item", "")
+        _ParameterValues.Add("@To_Item", "")
+      Else
+        _ParameterValues.Add("@From_Item", Me.ItemFromMultiComboBox.Text)
+        _ParameterValues.Add("@To_Item", Me.ItemToMultiComboBox.Text)
+      End If
+
+      'If Me.AllPartiesCheckBox.Checked Then
+      '  _ParameterValues.Add("@From_Party", "")
+      '  _ParameterValues.Add("@To_Party", "")
+      'Else
+      '  _ParameterValues.Add("@From_Party", Me.PartyFromComboBox.Value.ToString)
+      '  _ParameterValues.Add("@To_Item", Me.PartyFromComboBox.Value.ToString)
+      'End If
+      _ParameterValues.Add("@From_Party", "")
+      _ParameterValues.Add("@To_Party", "")
+
+      _ParameterValues.Add("@Co_ID", CompanyComboBox.CompanyID.ToString)
+      _ParameterValues.Add("SelectionFormula", _SelectionFormulaForDisplay)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in StockOutSummaryReport of ReportCriteriaForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Zakee 
+  'Date Created(DD-MMM-YY): 20-Oct-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' It calls Stock In Detail report.
+  ''' </summary>
+  Private Sub StockInDetailReport()
+    Try
+      _ReportDocument = New StockInDetailReport
+      _ReportDocument.PrintOptions.PaperSize = PaperSize.DefaultPaperSize
+
+      _SelectionFormulaForDisplay = "Date Range: "
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateFromCalendarCombo.Value Is DBNull.Value Then
+        _ParameterValues.Add("@From_Date", "#" & Format(Date.MinValue.Date, "yyyy-MM-dd") & "#")
+        ' _ParameterValues.Add("@From_Date", "#" & Date.MinValue.Date & "#")
+        _SelectionFormulaForDisplay &= "Start"
+      Else
+        '_ParameterValues.Add("@From_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "#")
+        _ParameterValues.Add("@From_Date", "#" & Format(Me.DateFromCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateToCalendarCombo.Value Is DBNull.Value Then
+        '_ParameterValues.Add("@To_Date", "#" & Date.MaxValue.Date & "#")
+        _ParameterValues.Add("@To_Date", Format(Date.MaxValue.Date, "yyyy-MM-dd"))
+        _SelectionFormulaForDisplay &= " to End"
+      Else
+        '_ParameterValues.Add("@To_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "#")
+        _ParameterValues.Add("@To_Date", "#" & Format(Me.DateToCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= " to " & Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.AllItemsCheckBox.Checked Then
+        _ParameterValues.Add("@From_Item", "")
+        _ParameterValues.Add("@To_Item", "")
+      Else
+        _ParameterValues.Add("@From_Item", Me.ItemFromMultiComboBox.Text)
+        _ParameterValues.Add("@To_Item", Me.ItemToMultiComboBox.Text)
+      End If
+
+      'If Me.AllPartiesCheckBox.Checked Then
+      '  _ParameterValues.Add("@From_Party", "")
+      '  _ParameterValues.Add("@To_Party", "")
+      'Else
+      '  _ParameterValues.Add("@From_Party", Me.PartyFromComboBox.Value.ToString)
+      '  _ParameterValues.Add("@To_Item", Me.PartyFromComboBox.Value.ToString)
+      'End If
+      _ParameterValues.Add("@From_Party", "")
+      _ParameterValues.Add("@To_Party", "")
+
+      _ParameterValues.Add("@Co_ID", CompanyComboBox.CompanyID.ToString)
+      _ParameterValues.Add("SelectionFormula", _SelectionFormulaForDisplay)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in StockOutSummaryReport of ReportCriteriaForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Zakee 
+  'Date Created(DD-MMM-YY): 20-Oct-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' It calls Stock Out Detail report.
+  ''' </summary>
+  Private Sub StockOutDetailReport()
+    Try
+      _ReportDocument = New StockOutDetailReport
+      _ReportDocument.PrintOptions.PaperSize = PaperSize.DefaultPaperSize
+
+      _SelectionFormulaForDisplay = "Date Range: "
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateFromCalendarCombo.Value Is DBNull.Value Then
+        _ParameterValues.Add("@From_Date", "#" & Format(Date.MinValue.Date, "yyyy-MM-dd") & "#")
+        ' _ParameterValues.Add("@From_Date", "#" & Date.MinValue.Date & "#")
+        _SelectionFormulaForDisplay &= "Start"
+      Else
+        '_ParameterValues.Add("@From_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "#")
+        _ParameterValues.Add("@From_Date", "#" & Format(Me.DateFromCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.WithoutDateCheckBox.Checked OrElse Me.DateToCalendarCombo.Value Is DBNull.Value Then
+        '_ParameterValues.Add("@To_Date", "#" & Date.MaxValue.Date & "#")
+        _ParameterValues.Add("@To_Date", Format(Date.MaxValue.Date, "yyyy-MM-dd"))
+        _SelectionFormulaForDisplay &= " to End"
+      Else
+        '_ParameterValues.Add("@To_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "#")
+        _ParameterValues.Add("@To_Date", "#" & Format(Me.DateToCalendarCombo.Value, "yyyy-MM-dd") & "#")
+        _SelectionFormulaForDisplay &= " to " & Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
+      End If
+
+      If Me.AllItemsCheckBox.Checked Then
+        _ParameterValues.Add("@From_Item", "")
+        _ParameterValues.Add("@To_Item", "")
+      Else
+        _ParameterValues.Add("@From_Item", Me.ItemFromMultiComboBox.Text)
+        _ParameterValues.Add("@To_Item", Me.ItemToMultiComboBox.Text)
+      End If
+
+      'If Me.AllPartiesCheckBox.Checked Then
+      '  _ParameterValues.Add("@From_Party", "")
+      '  _ParameterValues.Add("@To_Party", "")
+      'Else
+      '  _ParameterValues.Add("@From_Party", Me.PartyFromComboBox.Value.ToString)
+      '  _ParameterValues.Add("@To_Item", Me.PartyFromComboBox.Value.ToString)
+      'End If
+      _ParameterValues.Add("@From_Party", "")
+      _ParameterValues.Add("@To_Party", "")
+
+      _ParameterValues.Add("@Co_ID", CompanyComboBox.CompanyID.ToString)
+      _ParameterValues.Add("SelectionFormula", _SelectionFormulaForDisplay)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in StockOutSummaryReport of ReportCriteriaForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 25-Sep-10
   '***** Modification History *****
@@ -481,6 +675,15 @@ Public Class ReportCriteriaForm
         Case ReportNameStockInSummary
           StockInSummaryReport()
 
+        Case ReportNameStockOutSummary
+          StockOutSummaryReport()
+
+        Case ReportNameStockInDetail
+          StockInDetailReport()
+
+        Case ReportNameStockOutDetail
+          StockOutDetailReport()
+
         Case ReportNameItemLedger, ReportNameItemLedgerWithValue
           ItemLedgerReportWithAndWithoutValue()
 
@@ -534,10 +737,12 @@ Public Class ReportCriteriaForm
       Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStock)
       Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStockWithValue)
       Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStockInSummary)
+      Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStockOutSummary)
+      Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStockInDetail)
+      Quick_UltraTree1.GetNodeByKey("StockReports").Nodes.Add(ReportNameStockOutDetail)
       Quick_UltraTree1.Nodes("Inventory").Nodes.Add("ItemLedger", "Item Ledger")
       Quick_UltraTree1.GetNodeByKey("ItemLedger").Nodes.Add(ReportNameItemLedger)
       Quick_UltraTree1.GetNodeByKey("ItemLedger").Nodes.Add(ReportNameItemLedgerWithValue)
-
       Quick_UltraTree1.Nodes.Add("Accounts", "Accounts")
       Quick_UltraTree1.GetNodeByKey("Accounts").Nodes.Add(ReportNameDailyStock)
       Quick_UltraTree1.GetNodeByKey("Accounts").Nodes.Add(ReportNameDailyReport)
