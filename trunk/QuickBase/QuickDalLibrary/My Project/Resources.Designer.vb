@@ -715,11 +715,68 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] =&apos;Accounting_CashFlowAccount&apos; AND c.[Name]=&apos;Co_ID&apos;)
+        '''	BEGIN
+        '''	TRUNCATE TABLE Accounting_CashFlowAccount
+        '''	ALTER TABLE Accounting_CashFlowAccount ADD Co_ID SMALLINT NOT NULL
+        '''	ALTER TABLE Accounting_CashFlowAccount
+        '''		DROP CONSTRAINT PK_Accounting_CashFlowAccount
+        '''	ALTER TABLE Accounting_CashFlowAccount ADD CONSTRAINT
+        '''		PK_Accounting_CashFlowAccount PRIMARY KEY CLUSTERED 
+        '''		(
+        '''		CO_ID,
+        '''		CashFlowAccount_ID [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property upgrade_02_03_02_32_to_02_03_02_33() As String
             Get
                 Return ResourceManager.GetString("upgrade_02_03_02_32_to_02_03_02_33", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to IF NOT EXISTS (SELECT * FROM [Base_SettingForm] WHERE [Form_Code] = &apos;01-001&apos;)
+        '''	INSERT INTO [Base_SettingForm]
+        '''			   ([Form_ID]
+        '''			   ,[Form_Code]
+        '''			   ,[Form_Name]
+        '''			   ,[RecordStatus_ID]
+        '''			   ,[Stamp_UserID]
+        '''			   ,[Stamp_DateTime]
+        '''			   ,[Upload_DateTime])
+        '''		 VALUES
+        '''			   (1
+        '''			   ,&apos;01-001&apos;
+        '''			   ,&apos;ItemForm&apos;
+        '''			   ,1
+        '''			   ,0
+        '''			   ,&apos;2010-10-16&apos;
+        '''			   ,NULL)
+        '''go
+        '''IF NOT EXISTS (SELECT * FROM [Base_SettingForm] WHERE [Form_Code] = &apos;01-002&apos;)
+        '''	INSERT INTO [Base_SettingForm]
+        '''			   ([Form_ [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property upgrade_02_03_02_33_to_02_03_02_34() As String
+            Get
+                Return ResourceManager.GetString("upgrade_02_03_02_33_to_02_03_02_34", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to -- ======================================================================
+        '''-- Author:		Faisal Saleem
+        '''-- Create date: 29-Aug-10
+        '''-- Description:	This procedure returns the minimum stoc level information.
+        '''-- ======================================================================
+        '''-- ------------ Modification History ------------------------------------
+        '''-- Author	Date		Details
+        '''-- -------- ---------	-------
+        '''-- Faisal	05-Sep-10	Added two columns Warehouse_ID and Warehouse_Name
+        '''-- Faisal	20-Oct-10	Added wher [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property upgrade_02_03_02_34_to_02_03_02_35() As String
+            Get
+                Return ResourceManager.GetString("upgrade_02_03_02_34_to_02_03_02_35", resourceCulture)
             End Get
         End Property
         

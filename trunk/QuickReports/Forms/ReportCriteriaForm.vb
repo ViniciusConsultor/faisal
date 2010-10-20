@@ -177,7 +177,7 @@ Public Class ReportCriteriaForm
         _ParameterValues.Add("@From_Date", "#" & Date.MinValue.ToString & "#")
         _SelectionFormulaForDisplay &= "Start"
       Else
-        _ParameterValues.Add("@From_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "#")
+        _ParameterValues.Add("@From_Date", "" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "")
         _SelectionFormulaForDisplay &= Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
       End If
 
@@ -185,11 +185,11 @@ Public Class ReportCriteriaForm
         _ParameterValues.Add("@To_Date", Date.MaxValue.ToString)
         _SelectionFormulaForDisplay &= " to End"
       Else
-        _ParameterValues.Add("@To_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "#")
+        _ParameterValues.Add("@To_Date", "" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "")
         _SelectionFormulaForDisplay &= " to " & Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
       End If
 
-      _ParameterValues.Add("Co_ID", CompanyComboBox.CompanyID.ToString)
+      _ParameterValues.Add("@Co_ID", CompanyComboBox.CompanyID.ToString)
       _ParameterValues.Add("ReportName", "Daily Stock")
       _ParameterValues.Add("SelectionFormula", _SelectionFormulaForDisplay)
 
@@ -750,17 +750,15 @@ Public Class ReportCriteriaForm
       Quick_UltraTree1.GetNodeByKey("Accounts").Nodes.Add(ReportNamePartyLedgerDetailWithAging)
       Quick_UltraTree1.ExpandAll()
 
-      'Me.PartyFromComboBox.EntityType = Constants.EntityTypes.Supplier
-      'Me.PartyFromComboBox.LoadParties(Me.LoginInfoObject.CompanyID)
-
-      'Me.PartyToComboBox.EntityType = Constants.EntityTypes.Supplier
-      'Me.PartyToComboBox.LoadParties(Me.LoginInfoObject.CompanyID)
+      Me.DateFromCalendarCombo.Value = Now
+      Me.DateToCalendarCombo.Value = Now
 
     Catch ex As Exception
       Dim _ExceptionObject As New QuickExceptionAdvanced("Exception in loading form", ex)
       _ExceptionObject.Show(Me.LoginInfoObject)
     End Try
   End Sub
+
   Private Sub SetCurrentValuesForParameterField(ByRef myReportDocument As ReportDocument, ByVal myStringDictionary As System.Collections.Specialized.NameValueCollection)
     Try
       Dim currentParameterValues As ParameterValues = New ParameterValues()
@@ -794,6 +792,12 @@ Public Class ReportCriteriaForm
           Case Else
             myParameterDiscreteValue.Value = myStringDictionary(myParameterFieldDefinition.Name)
         End Select
+
+        If myParameterDiscreteValue.Value Is DBNull.Value Then
+          Debug.WriteLine("Setting Parameter Value: " & myParameterFieldDefinition.ParameterFieldName & "NULL")
+        Else
+          Debug.WriteLine("Setting Parameter Value: " & myParameterFieldDefinition.ParameterFieldName & myParameterDiscreteValue.Value.ToString)
+        End If
 
         currentParameterValues.Add(myParameterDiscreteValue)
         myParameterFieldDefinition.ApplyCurrentValues(currentParameterValues)

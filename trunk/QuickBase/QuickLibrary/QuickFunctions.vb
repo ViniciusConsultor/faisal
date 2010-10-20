@@ -14,11 +14,11 @@ Public Class QuickFunctions
   Public Shared Function GetDateTimeForReportCriteria1(ByVal _Date As DateTime, ByVal _SetTimeToMidnight As Boolean) As String
     Try
       If Not _SetTimeToMidnight Then
-        Return Format(_Date, "MM-dd-yy hh:mm tt")
+        Return Format(_Date, "MM-dd-yyyy hh:mm tt")
       Else
         _Date = _Date.AddDays(1)
         _Date = _Date.Subtract(New TimeSpan(_Date.Hour, _Date.Minute, _Date.Second + 1))
-        Return Format(_Date, "MM-dd-yy hh:mm tt")
+        Return Format(_Date, "MM-dd-yyyy hh:mm tt")
       End If
 
     Catch ex As Exception

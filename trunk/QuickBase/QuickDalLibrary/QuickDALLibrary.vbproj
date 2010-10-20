@@ -270,6 +270,8 @@
     <None Include="Resources\Scripts\upgrade_02_00_00_12_to_02_01_00_01.txt" />
     <None Include="Resources\Scripts\upgrade20011to20012.txt" />
     <None Include="Resources\Scripts\upgrade_02_03_02_30_to_02_03_02_31.sql" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_33_to_02_03_02_34.sql" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_34_to_02_03_02_35.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

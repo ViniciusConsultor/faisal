@@ -4677,13 +4677,13 @@ Namespace QuickAccountingDataSetTableAdapters
             Me._commandCollection(13).Connection = Me.Connection
             Me._commandCollection(13).CommandText = "SELECT TOP (1) Co_ID, DocumentStatus_ID, RecordStatus_ID, Remarks, Source_Documen"& _ 
                 "tType_ID, Source_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime, VoucherType_"& _ 
-                "ID, Voucher_Date, Voucher_ID, Voucher_No FROM Accounting_Voucher WHERE (Co_ID = "& _ 
-                "@Co_ID) AND (VoucherType_ID = @VoucherType_ID) AND (Voucher_ID > @Voucher_ID) AN"& _ 
-                "D (RecordStatus_ID <> 4) ORDER BY Voucher_ID"
+                "ID, Voucher_Date, Voucher_ID, Voucher_No "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Accounting_Voucher "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Co_I"& _ 
+                "D = @Co_ID) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"AND (Voucher_ID > @Voucher_ID) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"AND (VoucherType_ID = @VoucherT"& _ 
+                "ype_ID) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"AND (RecordStatus_ID <> 4) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Voucher_ID"
             Me._commandCollection(13).CommandType = System.Data.CommandType.Text
             Me._commandCollection(13).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(13).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "VoucherType_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(13).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Voucher_ID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "Voucher_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(13).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.Int, 4, System.Data.ParameterDirection.Input, 0, 0, "VoucherType_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(14) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(14).Connection = Me.Connection
             Me._commandCollection(14).CommandText = "SELECT TOP (1) Co_ID, DocumentStatus_ID, RecordStatus_ID, Remarks, Source_Documen"& _ 
@@ -4839,11 +4839,11 @@ Namespace QuickAccountingDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetNextByCoIDVoucherIDVoucherTypeID(ByVal Co_ID As Short, ByVal VoucherType_ID As Integer, ByVal Voucher_ID As Integer) As QuickAccountingDataSet.VoucherDataTable
+        Public Overloads Overridable Function GetNextByCoIDVoucherIDVoucherTypeID(ByVal Co_ID As Integer, ByVal Voucher_ID As Integer, ByVal VoucherType_ID As Integer) As QuickAccountingDataSet.VoucherDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(13)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Short)
-            Me.Adapter.SelectCommand.Parameters(1).Value = CType(VoucherType_ID,Integer)
-            Me.Adapter.SelectCommand.Parameters(2).Value = CType(Voucher_ID,Integer)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Voucher_ID,Integer)
+            Me.Adapter.SelectCommand.Parameters(2).Value = CType(VoucherType_ID,Integer)
             Dim dataTable As QuickAccountingDataSet.VoucherDataTable = New QuickAccountingDataSet.VoucherDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -8607,30 +8607,30 @@ Namespace QuickAccountingDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT    TOP (1)  Co_ID, FinancialAccountType_ID, FinancialAccountType_Desc, Sta"& _ 
-                "mp_UserID,                                         Stamp_DateTime, Upload_DateTi"& _ 
-                "me, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_FinancialAccountType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     ("& _ 
-                "Co_ID = @Co_ID) AND (FinancialAccountType_ID > @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "     AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FinancialAccountType_ID "
+            Me._commandCollection(3).CommandText = "SELECT     ISNULL(MAX(FinancialAccountType_ID), 0) + 1 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_"& _ 
+                "FinancialAccountType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (CO_ID = @CO_ID)"
             Me._commandCollection(3).CommandType = System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "FinancialAccountType_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@CO_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT    TOP (1)  Co_ID, FinancialAccountType_ID, FinancialAccountType_Desc, Sta"& _ 
                 "mp_UserID,                                         Stamp_DateTime, Upload_DateTi"& _ 
                 "me, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_FinancialAccountType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     ("& _ 
-                "Co_ID = @Co_ID) AND (FinancialAccountType_ID < @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "     AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FinancialAccountType_ID DESC"
+                "Co_ID = @Co_ID) AND (FinancialAccountType_ID > @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "     AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FinancialAccountType_ID "
             Me._commandCollection(4).CommandType = System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "FinancialAccountType_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT     ISNULL(MAX(FinancialAccountType_ID), 0) + 1 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_"& _ 
-                "FinancialAccountType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (CO_ID = @CO_ID)"
+            Me._commandCollection(5).CommandText = "SELECT    TOP (1)  Co_ID, FinancialAccountType_ID, FinancialAccountType_Desc, Sta"& _ 
+                "mp_UserID,                                         Stamp_DateTime, Upload_DateTi"& _ 
+                "me, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_FinancialAccountType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     ("& _ 
+                "Co_ID = @Co_ID) AND (FinancialAccountType_ID < @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "     AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FinancialAccountType_ID DESC"
             Me._commandCollection(5).CommandType = System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@CO_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "FinancialAccountType_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8669,7 +8669,7 @@ Namespace QuickAccountingDataSetTableAdapters
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetNextByCoIDFinancialAccountTypeID(ByVal Co_ID As Integer, ByVal VoucherType_ID As Integer) As QuickAccountingDataSet.FinancialAccountTypeDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(VoucherType_ID,Integer)
             Dim dataTable As QuickAccountingDataSet.FinancialAccountTypeDataTable = New QuickAccountingDataSet.FinancialAccountTypeDataTable
@@ -8681,7 +8681,7 @@ Namespace QuickAccountingDataSetTableAdapters
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetPreviousByCoIDFinancialAccountTypeId(ByVal Co_ID As Integer, ByVal VoucherType_ID As Integer) As QuickAccountingDataSet.FinancialAccountTypeDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(VoucherType_ID,Integer)
             Dim dataTable As QuickAccountingDataSet.FinancialAccountTypeDataTable = New QuickAccountingDataSet.FinancialAccountTypeDataTable
@@ -8716,7 +8716,7 @@ Namespace QuickAccountingDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function GetNewFinancialAccountTypeIDByCoID(ByVal CO_ID As Integer) As Object
-            Dim command As System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            Dim command As System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             command.Parameters(0).Value = CType(CO_ID,Integer)
             Dim previousConnectionState As System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And System.Data.ConnectionState.Open)  _
@@ -8947,30 +8947,30 @@ Namespace QuickAccountingDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT    TOP (1)  Co_ID, CashFlowAccount_ID, CashFlowAccount_Desc, Stamp_UserID,"& _ 
-                "                                         Stamp_DateTime, Upload_DateTime, Record"& _ 
-                "Status_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_CashFlowAccount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID)"& _ 
-                " AND (CashFlowAccount_ID > @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    AND (RecordStat"& _ 
-                "us_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CashFlowAccount_ID "
+            Me._commandCollection(3).CommandText = "SELECT     ISNULL(MAX(CashFlowAccount_ID), 0) + 1 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_CashF"& _ 
+                "lowAccount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (CO_ID = @CO_ID)"
             Me._commandCollection(3).CommandType = System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "CashFlowAccount_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New System.Data.SqlClient.SqlParameter("@CO_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT    TOP (1)  Co_ID, CashFlowAccount_ID, CashFlowAccount_Desc, Stamp_UserID,"& _ 
                 "                                         Stamp_DateTime, Upload_DateTime, Record"& _ 
                 "Status_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_CashFlowAccount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID)"& _ 
-                " AND (CashFlowAccount_ID < @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    AND (RecordStat"& _ 
-                "us_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CashFlowAccount_ID DESC"
+                " AND (CashFlowAccount_ID > @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    AND (RecordStat"& _ 
+                "us_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CashFlowAccount_ID "
             Me._commandCollection(4).CommandType = System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "CashFlowAccount_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New System.Data.SqlClient.SqlCommand
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT     ISNULL(MAX(CashFlowAccount_ID), 0) + 1 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_CashF"& _ 
-                "lowAccount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (CO_ID = @CO_ID)"
+            Me._commandCollection(5).CommandText = "SELECT    TOP (1)  Co_ID, CashFlowAccount_ID, CashFlowAccount_Desc, Stamp_UserID,"& _ 
+                "                                         Stamp_DateTime, Upload_DateTime, Record"& _ 
+                "Status_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Accounting_CashFlowAccount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID)"& _ 
+                " AND (CashFlowAccount_ID < @VoucherType_ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    AND (RecordStat"& _ 
+                "us_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CashFlowAccount_ID DESC"
             Me._commandCollection(5).CommandType = System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@CO_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@Co_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "Co_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New System.Data.SqlClient.SqlParameter("@VoucherType_ID", System.Data.SqlDbType.SmallInt, 2, System.Data.ParameterDirection.Input, 0, 0, "CashFlowAccount_ID", System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9009,7 +9009,7 @@ Namespace QuickAccountingDataSetTableAdapters
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetNextByCoIDCashFlowAccountID(ByVal Co_ID As Integer, ByVal VoucherType_ID As Integer) As QuickAccountingDataSet.CashFlowAccountDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(VoucherType_ID,Integer)
             Dim dataTable As QuickAccountingDataSet.CashFlowAccountDataTable = New QuickAccountingDataSet.CashFlowAccountDataTable
@@ -9021,7 +9021,7 @@ Namespace QuickAccountingDataSetTableAdapters
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetPreviousByCoIDCashFlowAccountID(ByVal Co_ID As Integer, ByVal VoucherType_ID As Integer) As QuickAccountingDataSet.CashFlowAccountDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(VoucherType_ID,Integer)
             Dim dataTable As QuickAccountingDataSet.CashFlowAccountDataTable = New QuickAccountingDataSet.CashFlowAccountDataTable
@@ -9056,7 +9056,7 @@ Namespace QuickAccountingDataSetTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function GetNewCashFlowAccountIDByCoID(ByVal CO_ID As Integer) As System.Nullable(Of Integer)
-            Dim command As System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            Dim command As System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             command.Parameters(0).Value = CType(CO_ID,Integer)
             Dim previousConnectionState As System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And System.Data.ConnectionState.Open)  _

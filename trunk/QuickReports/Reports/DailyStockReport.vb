@@ -34,6 +34,24 @@ Public Class DailyStockReport
         End Set
     End Property
     
+  Public Property NewGenerator() As Boolean
+    Get
+      Return True
+    End Get
+    Set(ByVal value As Boolean)
+      'Do nothing
+    End Set
+  End Property
+    
+  Public Property FullResourceName() As String
+    Get
+      Return "QuickReports.DailyStockReport.rpt"
+    End Get
+    Set(ByVal value As String)
+      'Do nothing
+    End Set
+  End Property
+    
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section1() As CrystalDecisions.CrystalReports.Engine.Section

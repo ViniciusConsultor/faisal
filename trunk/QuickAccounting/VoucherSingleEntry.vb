@@ -271,9 +271,9 @@ Public Class VoucherSingleEntry
       Cursor = Cursors.WaitCursor
 
       If Me._CurrentVoucherDataRow IsNot Nothing Then
-        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetNextByCoIDVoucherIDVoucherTypeID(Me._CurrentVoucherDataRow.Co_ID, Me.VoucherType, Me._CurrentVoucherDataRow.Voucher_ID)
+        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetNextByCoIDVoucherIDVoucherTypeID(Me._CurrentVoucherDataRow.Co_ID, Me._CurrentVoucherDataRow.Voucher_ID, Me.VoucherType)
       Else
-        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetNextByCoIDVoucherIDVoucherTypeID(LoginInfoObject.CompanyID, Me.VoucherType, 0)
+        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetNextByCoIDVoucherIDVoucherTypeID(LoginInfoObject.CompanyID, 0, Me.VoucherType)
       End If
       MyBase.MoveNextButtonClick(sender, e)
 
@@ -290,9 +290,9 @@ Public Class VoucherSingleEntry
       Cursor = Cursors.WaitCursor
 
       If Me._CurrentVoucherDataRow IsNot Nothing Then
-        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetPreviousByCoIDVoucherIDVoucherTypeID(Me._CurrentVoucherDataRow.Co_ID, Me.VoucherType, Me._CurrentVoucherDataRow.Voucher_ID)
+        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetPreviousByCoIDVoucherIDVoucherTypeID(Me._CurrentVoucherDataRow.Co_ID, Me._CurrentVoucherDataRow.Voucher_ID, Me.VoucherType)
       Else
-        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetPreviousByCoIDVoucherIDVoucherTypeID(LoginInfoObject.CompanyID, Me.VoucherType, 0)
+        Me._VoucherDataTable = Me._VoucherTableAdapterObject.GetPreviousByCoIDVoucherIDVoucherTypeID(LoginInfoObject.CompanyID, 0, Me.VoucherType)
       End If
       MyBase.MovePreviousButtonClick(sender, e)
 
