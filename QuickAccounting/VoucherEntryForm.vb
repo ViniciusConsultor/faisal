@@ -112,6 +112,7 @@ Public Class VoucherForm
 #Region "Events"
   Private Sub AccountingVoucher_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
     Try
+      '_MaskCOACode = DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_COACode)
       Cursor = Cursors.WaitCursor
 
       PopulateVoucherTypeComboBox()
@@ -130,6 +131,14 @@ Public Class VoucherForm
       QuickExceptionObject.Show(LoginInfoObject)
     Finally
       Cursor = Cursors.Default
+    End Try
+  End Sub
+  Private Sub VoucherDateCalendarCombo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles VoucherDateCalendarCombo.LostFocus
+    Try
+      Me.VoucherDateCalendarCombo.Format = Constants.FORMAT_DATE_FOR_REPORT
+    Catch ex As Exception
+      Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in Lost Focus of VoucherDateCombo method of VoucherForm.", ex)
+      Throw QuickExceptionObject
     End Try
   End Sub
 
@@ -560,9 +569,11 @@ Public Class VoucherForm
 
       With VoucherTypeComboBox.DisplayLayout.Bands(0)
         For i As Int32 = 0 To .Columns.Count - 1
-          If .Columns(_VoucherTypeTable.VoucherType_DescColumn.ColumnName).Index <> .Columns(i).Index Then
+          If .Columns(_VoucherTypeTable.VoucherType_DescColumn.ColumnName).Index <> .Columns(i).Index And .Columns(_VoucherTypeTable.VoucherType_CodeColumn.ColumnName).Index <> .Columns(i).Index Then
             VoucherTypeComboBox.DisplayLayout.Bands(0).Columns(i).Hidden = True
           End If
+          .Columns(_VoucherTypeTable.VoucherType_CodeColumn.ColumnName).Width = Constants.ITEM_DESC_CELL_WIDTH
+
         Next
       End With
     Catch ex As Exception
@@ -698,6 +709,13 @@ Public Class VoucherForm
 
   Private Sub SetGridLayout()
     Try
+      Dim _MaskCOACode As String = Nothing
+      _MaskCOACode = DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_COACode)
+      Dim maskcell As New FarPoint.Win.Spread.CellType.MaskCellType()
+      maskcell.Mask = _MaskCOACode
+      'maskcell.MaskChar = "X"
+      Me.VoucherDetailQuickSpread.ActiveSheet.Cells(5, 0).CellType = maskcell
+
       Me.VoucherDetailQuickSpread.ShowDeleteRowButton(Me.VoucherDetailQuickSpread.ActiveSheet) = True
       Dim _visible As Boolean = False
       Dim _widthSmall As Integer = 50
@@ -811,8 +829,12 @@ Public Class VoucherForm
             SheetColumn.Label = "COA ID"
             SheetColumn.Visible = False
           Case VoucherDetailEnum.COA_Code
+            '_MaskCOACode = DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_COACode)
             SheetColumn.Label = "COA Code"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthLarge
+            'Me.VoucherDetailQuickSpread.ActiveSheet.Cells(0, 0).CellType = maskcell
+            'SheetColumn.CellType = Me.VoucherDetailQuickSpread.ActiveSheet.Cells(0, 0).CellType = maskcell
+            'SheetColumn.CellType = Me.VoucherDetailQuickSpread.ActiveSheet.Cells(0, 0).CellType = maskcell
           Case VoucherDetailEnum.COA_Desc
             SheetColumn.Label = "COA Desc"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthXLarge
@@ -1078,4 +1100,5 @@ Public Class VoucherForm
 
 
 
+ 
 End Class
