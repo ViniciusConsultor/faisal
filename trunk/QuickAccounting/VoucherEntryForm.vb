@@ -709,12 +709,12 @@ Public Class VoucherForm
 
   Private Sub SetGridLayout()
     Try
-      Dim _MaskCOACode As String = Nothing
-      _MaskCOACode = DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_COACode)
-      Dim maskcell As New FarPoint.Win.Spread.CellType.MaskCellType()
-      maskcell.Mask = _MaskCOACode
-      'maskcell.MaskChar = "X"
-      Me.VoucherDetailQuickSpread.ActiveSheet.Cells(5, 0).CellType = maskcell
+      'Dim _MaskCOACode As String = Nothing
+      ' _MaskCOACode = DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_COACode)
+      'Dim maskcell As New FarPoint.Win.Spread.CellType.MaskCellType()
+      'maskcell.Mask = _MaskCOACode
+      ''maskcell.MaskChar = "X"
+      'Me.VoucherDetailQuickSpread.ActiveSheet.Cells(5, 0).CellType = maskcell
 
       Me.VoucherDetailQuickSpread.ShowDeleteRowButton(Me.VoucherDetailQuickSpread.ActiveSheet) = True
       Dim _visible As Boolean = False
