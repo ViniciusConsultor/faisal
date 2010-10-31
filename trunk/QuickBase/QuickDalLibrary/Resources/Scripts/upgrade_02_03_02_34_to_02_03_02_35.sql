@@ -115,4 +115,4 @@ WHERE (Item_Code = @ItemCode OR @ItemCode = '')
 
 GROUP BY itsum.Warehouse_ID, Warehouse_Name, Item_Code
 
-ORDER BY Item_Code, Co_ID
+ORDER BY Item_Code, itsum.Co_ID
