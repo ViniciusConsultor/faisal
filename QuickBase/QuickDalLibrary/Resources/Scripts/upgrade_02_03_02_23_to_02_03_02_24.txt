@@ -33,7 +33,7 @@ FROM    Base_Menu
 
 WHERE	(Base_Menu.RecordStatus_ID IS NULL OR Base_Menu.RecordStatus_ID <> 4)
 
-ORDER BY Menu_ID
+ORDER BY Base_Menu.Menu_ID
 
 -- RecordStatus_ID = 4  Deleted
 go
