@@ -1,7 +1,7 @@
 SCC = This is a Source Code Control file
 
 [Main.vbproj]
-SCC_Aux_Path = "E:\VSS DB"
+SCC_Aux_Path = "D:\VSS DB"
 SCC_Project_Name = "$/Projects/Uniformers/QuickErp/Source/Main", XAAAAAAA
 
 [QuickERP.vbproj]

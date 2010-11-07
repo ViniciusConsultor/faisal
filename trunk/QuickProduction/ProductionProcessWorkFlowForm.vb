@@ -58,9 +58,8 @@ Public Class ProcessWorkFlowForm
       PopulateProcessWorkFlow()
 
       Me.SetGridLayout()
-      Me.AddRow()
+      'Me.AddRow()
       Me.PopulateComboinGrid()
-
 
       '      SetVisibilityofColumn()
     Catch ex As Exception
@@ -74,21 +73,22 @@ Public Class ProcessWorkFlowForm
 #End Region
 
 #Region "Methods"
-  Private Sub AddRow()
-    Dim _DetailRow As QuickDAL.QuickProductionDataSet.ProductionProcessWorkFlowRow
-    _DetailRow = Me._ProcessWorkFlowDataTable.NewProductionProcessWorkFlowRow
-    _DetailRow.Co_ID = Me.LoginInfoObject.CompanyID
-    _ProcessWorkFlowDetailID = _ProcessWorkFlowDetailID + 1
-    _DetailRow.ProcessWorkFlow_ID = _ProcessWorkFlowDetailID
-    _DetailRow.Source_Process_ID = 0
-    _DetailRow.Destination_Process_ID = 0
-    _DetailRow.ProcessWorkFlow_Desc = String.Empty
-    _DetailRow.Stamp_UserID = Me.LoginInfoObject.CompanyID
-    _DetailRow.Stamp_DateTime = Now.Date
-    _DetailRow.Upload_DateTime = Now.Date
-    _DetailRow.RecordStatus_ID = 0
-    _ProcessWorkFlowDataTable.Rows.Add(_DetailRow)
-  End Sub
+
+  'Private Sub AddRow()
+  '  Dim _DetailRow As QuickDAL.QuickProductionDataSet.ProductionProcessWorkFlowRow
+  '  _DetailRow = Me._ProcessWorkFlowDataTable.NewProductionProcessWorkFlowRow
+  '  _DetailRow.Co_ID = Me.LoginInfoObject.CompanyID
+  '  _ProcessWorkFlowDetailID = _ProcessWorkFlowDetailID + 1
+  '  _DetailRow.ProcessWorkFlow_ID = _ProcessWorkFlowDetailID
+  '  _DetailRow.Source_Process_ID = 0
+  '  _DetailRow.Destination_Process_ID = 0
+  '  _DetailRow.ProcessWorkFlow_Desc = String.Empty
+  '  _DetailRow.Stamp_UserID = Me.LoginInfoObject.CompanyID
+  '  _DetailRow.Stamp_DateTime = Now.Date
+  '  _DetailRow.Upload_DateTime = Now.Date
+  '  _DetailRow.RecordStatus_ID = 0
+  '  _ProcessWorkFlowDataTable.Rows.Add(_DetailRow)
+  'End Sub
 
 
   Private Sub PopulateProcessWorkFlow()
@@ -118,12 +118,12 @@ Public Class ProcessWorkFlowForm
             SheetColumn.Width = QTY_CELL_WIDTH
 
           Case ProcessWorkFlowEnum.Co_ID
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
             SheetColumn.CellType = QtyCellType
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
 
           Case ProcessWorkFlowEnum.ProcessWorkFlow_ID
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
 
           Case ProcessWorkFlowEnum.Source_Process_ID
             SheetColumn.Label = "Source Process"
@@ -138,15 +138,15 @@ Public Class ProcessWorkFlowForm
             SheetColumn.Width = QTY_CELL_WIDTH + _widthLarge
 
           Case ProcessWorkFlowEnum.Stamp_Datetime
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
             SheetColumn.Width = QTY_CELL_WIDTH
           Case ProcessWorkFlowEnum.Stamp_UserID
             SheetColumn.Visible = False
-            SheetColumn.Width = QTY_CELL_WIDTH
+            'SheetColumn.Width = QTY_CELL_WIDTH
           Case ProcessWorkFlowEnum.RecordStatus_ID
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
           Case ProcessWorkFlowEnum.Upload_Datetime
-            SheetColumn.Visible = False
+            'SheetColumn.Visible = False
             SheetColumn.Width = QTY_CELL_WIDTH
 
           Case Else
@@ -158,6 +158,7 @@ Public Class ProcessWorkFlowForm
       Throw QuickExceptionObject
     End Try
   End Sub
+
   Private Sub PopulateComboinGrid()
     Dim mcb As New FarPoint.Win.Spread.CellType.MultiColumnComboBoxCellType()
 
@@ -172,21 +173,23 @@ Public Class ProcessWorkFlowForm
     'cmbocell.Editable = True
     'cmbocell.MaxDrop = 6
     'ProcessWorkFlowQuickSpread.ActiveSheet.Cells(0, 4).CellType = cmbocell
+    mcb.ColumnEdit = 3
+    mcb.DataColumn = 1
 
-    mcb.DataColumn = 2
     'mcb.ButtonAlign = FarPoint.Win.ButtonAlign.Left
     mcb.ListWidth = 500
     mcb.ListOffset = 5
     mcb.MaxDrop = 5
 
 
-    Me.ProcessWorkFlowQuickSpread.ActiveSheet.Cells(0, 1).CellType = mcb
+    Me.ProcessWorkFlowQuickSpread.ActiveSheet.Columns(4).CellType = mcb
+    Me.ProcessWorkFlowQuickSpread.ActiveSheet.Columns(6).CellType = mcb
     '  Me.ProcessWorkFlowQuickSpread.ActiveSheet.Cells(0, 3).CellType = mcb
   End Sub
 
   Private Function IsValid() As Boolean
     Try
-     
+
       Return True
 
     Catch ex As Exception
@@ -321,7 +324,7 @@ Public Class ProcessWorkFlowForm
 
       If SaveRecord() Then
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveSuccessfulMessage)
-        Me.AddRow()
+        'Me.AddRow()
       Else
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveUnSuccessfulMessage)
       End If
