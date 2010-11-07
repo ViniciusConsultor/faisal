@@ -502,13 +502,6 @@ Public Class ReportCriteriaForm
         _ParameterValues.Add("@To_Item", Me.ItemToMultiComboBox.Text)
       End If
 
-      'If Me.AllPartiesCheckBox.Checked Then
-      '  _ParameterValues.Add("@From_Party", "")
-      '  _ParameterValues.Add("@To_Party", "")
-      'Else
-      '  _ParameterValues.Add("@From_Party", Me.PartyFromComboBox.Value.ToString)
-      '  _ParameterValues.Add("@To_Item", Me.PartyFromComboBox.Value.ToString)
-      'End If
       _ParameterValues.Add("@From_Party", "")
       _ParameterValues.Add("@To_Party", "")
 
@@ -540,20 +533,16 @@ Public Class ReportCriteriaForm
 
       If Me.WithoutDateCheckBox.Checked OrElse Me.DateFromCalendarCombo.Value Is DBNull.Value Then
         _ParameterValues.Add("@From_Date", "#" & Format(Date.MinValue.Date, "yyyy-MM-dd") & "#")
-        ' _ParameterValues.Add("@From_Date", "#" & Date.MinValue.Date & "#")
         _SelectionFormulaForDisplay &= "Start"
       Else
-        '_ParameterValues.Add("@From_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateFromCalendarCombo.Value, DateTime), False) & "#")
         _ParameterValues.Add("@From_Date", "#" & Format(Me.DateFromCalendarCombo.Value, "yyyy-MM-dd") & "#")
         _SelectionFormulaForDisplay &= Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
       End If
 
       If Me.WithoutDateCheckBox.Checked OrElse Me.DateToCalendarCombo.Value Is DBNull.Value Then
-        '_ParameterValues.Add("@To_Date", "#" & Date.MaxValue.Date & "#")
         _ParameterValues.Add("@To_Date", Format(Date.MaxValue.Date, "yyyy-MM-dd"))
         _SelectionFormulaForDisplay &= " to End"
       Else
-        '_ParameterValues.Add("@To_Date", "#" & QuickFunctions.GetDateTimeForReportCriteria1(DirectCast(Me.DateToCalendarCombo.Value, DateTime), True) & "#")
         _ParameterValues.Add("@To_Date", "#" & Format(Me.DateToCalendarCombo.Value, "yyyy-MM-dd") & "#")
         _SelectionFormulaForDisplay &= " to " & Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay)
       End If
@@ -566,13 +555,6 @@ Public Class ReportCriteriaForm
         _ParameterValues.Add("@To_Item", Me.ItemToMultiComboBox.Text)
       End If
 
-      'If Me.AllPartiesCheckBox.Checked Then
-      '  _ParameterValues.Add("@From_Party", "")
-      '  _ParameterValues.Add("@To_Party", "")
-      'Else
-      '  _ParameterValues.Add("@From_Party", Me.PartyFromComboBox.Value.ToString)
-      '  _ParameterValues.Add("@To_Item", Me.PartyFromComboBox.Value.ToString)
-      'End If
       _ParameterValues.Add("@From_Party", "")
       _ParameterValues.Add("@To_Party", "")
 
@@ -776,8 +758,6 @@ Public Class ReportCriteriaForm
       Throw _qex
     End Try
   End Sub
-
-
 
 #End Region
 
@@ -1029,6 +1009,6 @@ Public Class ReportCriteriaForm
       Dim _qex As New QuickExceptionAdvanced("Exception in MethodName of ClassName.", ex)
       _qex.Show(Me.LoginInfoObject)
     End Try
-
   End Sub
+
 End Class

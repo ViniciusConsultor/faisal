@@ -712,6 +712,10 @@
       <Project>{461263BE-9D16-4129-997C-778A0DD8DAD0}</Project>
       <Name>QuickInventory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\QuickProduction\QuickProduction.vbproj">
+      <Project>{859DF0AE-4C52-4635-AD3A-24928B3382B8}</Project>
+      <Name>QuickProduction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuickReports\QuickReports.vbproj">
       <Project>{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}</Project>
       <Name>QuickReports</Name>

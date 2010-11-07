@@ -136,6 +136,11 @@
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="QuickInventoryDataSetExtension.vb" />
+    <Compile Include="QuickProductionDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QuickSecurityDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +228,17 @@
     </None>
     <None Include="QuickInventoryDataSet.xss">
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuickProductionDataSet.xsc">
+      <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuickProductionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuickProductionDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="QuickProductionDataSet.xss">
+      <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
     </None>
     <None Include="QuickSecurityDataSet.xsc">
       <DependentUpon>QuickSecurityDataSet.xsd</DependentUpon>
