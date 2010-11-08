@@ -20,10 +20,10 @@ Partial Class ProcessWorkFlowForm
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
     Me.ProcessWorkFlowQuickSpread = New QuickControls.Quick_Spread
-    Me.PoductionProcessWorkflowSheetView = New FarPoint.Win.Spread.SheetView
+    Me.ProcessWorkflowSheetView = New FarPoint.Win.Spread.SheetView
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.ProcessWorkFlowQuickSpread, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.PoductionProcessWorkflowSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ProcessWorkflowSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
     'ProcessWorkFlowQuickSpread
@@ -37,14 +37,17 @@ Partial Class ProcessWorkFlowForm
     Me.ProcessWorkFlowQuickSpread.EditModeReplace = True
     Me.ProcessWorkFlowQuickSpread.Location = New System.Drawing.Point(4, 48)
     Me.ProcessWorkFlowQuickSpread.Name = "ProcessWorkFlowQuickSpread"
-    Me.ProcessWorkFlowQuickSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.PoductionProcessWorkflowSheetView})
+    Me.ProcessWorkFlowQuickSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ProcessWorkflowSheetView})
     Me.ProcessWorkFlowQuickSpread.Size = New System.Drawing.Size(572, 316)
     Me.ProcessWorkFlowQuickSpread.TabIndex = 8
     '
-    'PoductionProcessWorkflowSheetView
+    'ProcessWorkflowSheetView
     '
-    Me.PoductionProcessWorkflowSheetView.Reset()
-    Me.PoductionProcessWorkflowSheetView.SheetName = "Sheet1"
+    Me.ProcessWorkflowSheetView.Reset()
+    Me.ProcessWorkflowSheetView.SheetName = "Sheet1"
+    'Formulas and custom names must be loaded with R1C1 reference style
+    Me.ProcessWorkflowSheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
+    Me.ProcessWorkflowSheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
     '
     'ProcessWorkFlowForm
     '
@@ -58,11 +61,11 @@ Partial Class ProcessWorkFlowForm
     Me.Controls.SetChildIndex(Me.ProcessWorkFlowQuickSpread, 0)
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.ProcessWorkFlowQuickSpread, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.PoductionProcessWorkflowSheetView, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ProcessWorkflowSheetView, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
   End Sub
   Friend WithEvents ProcessWorkFlowQuickSpread As QuickControls.Quick_Spread
-  Friend WithEvents PoductionProcessWorkflowSheetView As FarPoint.Win.Spread.SheetView
+  Friend WithEvents ProcessWorkflowSheetView As FarPoint.Win.Spread.SheetView
 End Class
