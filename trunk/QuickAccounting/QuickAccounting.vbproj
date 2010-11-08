@@ -77,21 +77,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\QuickBaseForms\QuickBaseForms.dll</HintPath>
     </Reference>
-    <Reference Include="QuickBusinessControls, Version=1.1.2.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickBusinessControls\QuickBusinessControls.dll</HintPath>
-    </Reference>
     <Reference Include="QuickDAL, Version=3.1.1.1, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\QuickDAL\QuickDAL.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickDALLibrary, Version=1.5.3.7, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickDALLibrary\QuickDALLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickLibrary, Version=1.8.5.2, Culture=neutral, PublicKeyToken=40fbcde21ffdafc1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\QuickLibrary\QuickLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -235,9 +223,21 @@
     <None Include="QuickErp.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuickBase\QuickBusinessControls\QuickBusinessControls.vbproj">
+      <Project>{3DF65D11-45FB-4EAA-A160-6456E339FF50}</Project>
+      <Name>QuickBusinessControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuickBase\QuickControls\QuickControls.vbproj">
       <Project>{636D7C63-0301-476A-87AA-273728806FD6}</Project>
       <Name>QuickControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickDalLibrary\QuickDALLibrary.vbproj">
+      <Project>{6CFD395A-E9C8-4886-829E-48CDB0318B4F}</Project>
+      <Name>QuickDALLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuickBase\QuickLibrary\QuickLibrary.vbproj">
+      <Project>{1162DFBE-C61D-4C4D-AD46-584015721F76}</Project>
+      <Name>QuickLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuickReports\QuickReports.vbproj">
       <Project>{C1CCD22C-08D2-4ACF-81F3-FFE6D0DBC796}</Project>
