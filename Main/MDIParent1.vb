@@ -432,12 +432,12 @@ Public Class MDIParent1
             Form = New QuickReports.ReportCriteriaForm
 
             '>>>>>>>>>> Fabrication
-          Case "19-001"
+          Case "99-001"
             'Form = New SecurityUserForm
-          Case "19-002"
+          Case "99-002"
             'Form = New SecurityRoleForm
             Form = New QuickProduction.ProcessWorkFlowForm
-          Case "19-003"
+          Case "99-003"
             Form = New QuickInventory.InventoryFormSizes
           Case Else
             'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
