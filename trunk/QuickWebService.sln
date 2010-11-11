@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "D:\...\QuickWebService\", "QuickWebService", "{926CA207-09EB-47E9-BEBB-A0360ABC309A}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = ""$/Projects/Uniformers/QuickErp/Source/QuickWebService", EYCAAAAA"
+		SccAuxPath = ""
+		SccLocalPath = "."
+		SccProvider = "MSSCCI:Microsoft Visual SourceSafe"
+		Debug.AspNetCompiler.VirtualPath = "/QuickWebService"
+		Debug.AspNetCompiler.PhysicalPath = "D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickWebService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\QuickWebService\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/QuickWebService"
+		Release.AspNetCompiler.PhysicalPath = "D:\Faisal\Projects\Uniformers\QuickErp\Source\QuickWebService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\QuickWebService\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1367"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccWebProject1 = true
+		SccProjectUniqueName1 = QuickWebService
+		SccProjectName1 = \u0022$/Projects/Uniformers/QuickErp/Source/QuickWebService\u0022,\u0020EYCAAAAA
+		SccLocalPath1 = D:\\Faisal\\Projects\\Uniformers\\QuickErp\\Source\\QuickWebService
+		SccProjectEnlistmentChoice1 = 2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926CA207-09EB-47E9-BEBB-A0360ABC309A}.Debug|.NET.ActiveCfg = Debug|.NET
+		{926CA207-09EB-47E9-BEBB-A0360ABC309A}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
