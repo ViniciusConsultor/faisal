@@ -225,6 +225,9 @@ Public Class ProcessWorkFlowForm
   Protected Overrides Function SaveRecord() As Boolean
     Try
       If IsValid() Then
+        Me.ProcessWorkFlowQuickSpread.EditMode = False
+        Me.ProcessWorkflowSheetView.SetActiveCell(Me.ProcessWorkflowSheetView.RowCount - 1, 0) 'For some unknown reason new version of farpoint is not working without this line.
+
         Me._ProcessWorkFlowDataTable.Rows.RemoveAt(_ProcessWorkFlowDataTable.Rows.Count - 1)
         Me.ProcessWorkFlowQuickSpread.Update()
         For I As Int32 = 0 To _ProcessWorkFlowDataTable.Rows.Count - 1

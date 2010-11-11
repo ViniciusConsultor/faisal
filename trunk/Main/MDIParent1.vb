@@ -427,6 +427,14 @@ Public Class MDIParent1
           Case QuickLibrary.Entities.FORM_ID_USER_ROLE
             Form = New QuickSecurity.SecurityRoleForm
 
+            '<<<<<<<<<< Production
+          Case QuickLibrary.Entities.FORM_ID_PROCESS
+            Form = New QuickProduction.DefineProcessForm
+          Case QuickLibrary.Entities.FORM_ID_PROCESS_WORKFLOW
+            Form = New QuickProduction.ProcessWorkFlowForm
+          Case QuickLibrary.Entities.FORM_ID_PROCESS_PRODUCTION
+            Form = New QuickProduction.ProcessProduction
+
             '>>>>>>>>>> Report
           Case QuickLibrary.Entities.FORM_ID_REPORT_CRITERIA
             Form = New QuickReports.ReportCriteriaForm
