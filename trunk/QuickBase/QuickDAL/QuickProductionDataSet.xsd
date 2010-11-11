@@ -6,7 +6,7 @@
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString" Provider="System.Data.SqlClient">
           </Connection>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString1" Provider="System.Data.SqlClient">
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString1" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString1" Provider="System.Data.SqlClient">
           </Connection>
         </Connections>
         <Tables>
@@ -199,7 +199,7 @@ ORDER BY Process_ID
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Process" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="IsExistProcessCode" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="IsExistProcessCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="IsExistProcessCode" UserSourceName="IsExistProcessCode1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Process" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="IsExistProcessCode" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="IsExistProcessCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="IsExistProcessCode" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Co_ID, Process_ID, Process_Code, Process_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -324,49 +324,49 @@ FROM         Production_ProcessWorkFlow</CommandText>
         <xs:element name="ProductionProcess" msprop:Generator_UserTableName="ProductionProcess" msprop:Generator_RowDeletedName="ProductionProcessRowDeleted" msprop:Generator_RowChangedName="ProductionProcessRowChanged" msprop:Generator_RowClassName="ProductionProcessRow" msprop:Generator_RowChangingName="ProductionProcessRowChanging" msprop:Generator_RowEvArgName="ProductionProcessRowChangeEvent" msprop:Generator_RowEvHandlerName="ProductionProcessRowChangeEventHandler" msprop:Generator_TableClassName="ProductionProcessDataTable" msprop:Generator_TableVarName="tableProductionProcess" msprop:Generator_RowDeletingName="ProductionProcessRowDeleting" msprop:Generator_TablePropName="ProductionProcess">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="Process_ID" msprop:Generator_UserColumnName="Process_ID" msprop:Generator_ColumnPropNameInRow="Process_ID" msprop:Generator_ColumnVarNameInTable="columnProcess_ID" msprop:Generator_ColumnPropNameInTable="Process_IDColumn" type="xs:short" />
-              <xs:element name="Process_Code" msprop:Generator_UserColumnName="Process_Code" msprop:Generator_ColumnPropNameInRow="Process_Code" msprop:Generator_ColumnVarNameInTable="columnProcess_Code" msprop:Generator_ColumnPropNameInTable="Process_CodeColumn">
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="Process_ID" msprop:Generator_UserColumnName="Process_ID" msprop:Generator_ColumnVarNameInTable="columnProcess_ID" msprop:Generator_ColumnPropNameInRow="Process_ID" msprop:Generator_ColumnPropNameInTable="Process_IDColumn" type="xs:short" />
+              <xs:element name="Process_Code" msprop:Generator_UserColumnName="Process_Code" msprop:Generator_ColumnVarNameInTable="columnProcess_Code" msprop:Generator_ColumnPropNameInRow="Process_Code" msprop:Generator_ColumnPropNameInTable="Process_CodeColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Process_Desc" msprop:Generator_UserColumnName="Process_Desc" msprop:Generator_ColumnPropNameInRow="Process_Desc" msprop:Generator_ColumnVarNameInTable="columnProcess_Desc" msprop:Generator_ColumnPropNameInTable="Process_DescColumn">
+              <xs:element name="Process_Desc" msprop:Generator_UserColumnName="Process_Desc" msprop:Generator_ColumnVarNameInTable="columnProcess_Desc" msprop:Generator_ColumnPropNameInRow="Process_Desc" msprop:Generator_ColumnPropNameInTable="Process_DescColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="ProductionProcessWorkFlow" msprop:Generator_UserTableName="ProductionProcessWorkFlow" msprop:Generator_RowDeletedName="ProductionProcessWorkFlowRowDeleted" msprop:Generator_RowChangedName="ProductionProcessWorkFlowRowChanged" msprop:Generator_RowClassName="ProductionProcessWorkFlowRow" msprop:Generator_RowChangingName="ProductionProcessWorkFlowRowChanging" msprop:Generator_RowEvArgName="ProductionProcessWorkFlowRowChangeEvent" msprop:Generator_RowEvHandlerName="ProductionProcessWorkFlowRowChangeEventHandler" msprop:Generator_TableClassName="ProductionProcessWorkFlowDataTable" msprop:Generator_TableVarName="tableProductionProcessWorkFlow" msprop:Generator_RowDeletingName="ProductionProcessWorkFlowRowDeleting" msprop:Generator_TablePropName="ProductionProcessWorkFlow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="ProcessWorkFlow_ID" msprop:Generator_UserColumnName="ProcessWorkFlow_ID" msprop:Generator_ColumnPropNameInRow="ProcessWorkFlow_ID" msprop:Generator_ColumnVarNameInTable="columnProcessWorkFlow_ID" msprop:Generator_ColumnPropNameInTable="ProcessWorkFlow_IDColumn" type="xs:int" />
-              <xs:element name="Source_Process_ID" msprop:Generator_UserColumnName="Source_Process_ID" msprop:Generator_ColumnPropNameInRow="Source_Process_ID" msprop:Generator_ColumnVarNameInTable="columnSource_Process_ID" msprop:Generator_ColumnPropNameInTable="Source_Process_IDColumn" type="xs:short" minOccurs="0" />
-              <xs:element name="Source_Process_Desc" msprop:Generator_UserColumnName="Source_Process_Desc" msprop:Generator_ColumnPropNameInRow="Source_Process_Desc" msprop:Generator_ColumnVarNameInTable="columnSource_Process_Desc" msprop:Generator_ColumnPropNameInTable="Source_Process_DescColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="Destination_Process_ID" msprop:Generator_UserColumnName="Destination_Process_ID" msprop:Generator_ColumnPropNameInRow="Destination_Process_ID" msprop:Generator_ColumnVarNameInTable="columnDestination_Process_ID" msprop:Generator_ColumnPropNameInTable="Destination_Process_IDColumn" type="xs:short" minOccurs="0" />
-              <xs:element name="Destination_Process_Desc" msprop:Generator_UserColumnName="Destination_Process_Desc" msprop:Generator_ColumnPropNameInRow="Destination_Process_Desc" msprop:Generator_ColumnVarNameInTable="columnDestination_Process_Desc" msprop:Generator_ColumnPropNameInTable="Destination_Process_DescColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="ProcessWorkFlow_Desc" msprop:Generator_UserColumnName="ProcessWorkFlow_Desc" msprop:Generator_ColumnPropNameInRow="ProcessWorkFlow_Desc" msprop:Generator_ColumnVarNameInTable="columnProcessWorkFlow_Desc" msprop:Generator_ColumnPropNameInTable="ProcessWorkFlow_DescColumn">
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="ProcessWorkFlow_ID" msprop:Generator_UserColumnName="ProcessWorkFlow_ID" msprop:Generator_ColumnVarNameInTable="columnProcessWorkFlow_ID" msprop:Generator_ColumnPropNameInRow="ProcessWorkFlow_ID" msprop:Generator_ColumnPropNameInTable="ProcessWorkFlow_IDColumn" type="xs:int" />
+              <xs:element name="Source_Process_ID" msprop:Generator_UserColumnName="Source_Process_ID" msprop:Generator_ColumnVarNameInTable="columnSource_Process_ID" msprop:Generator_ColumnPropNameInRow="Source_Process_ID" msprop:Generator_ColumnPropNameInTable="Source_Process_IDColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="Source_Process_Desc" msprop:Generator_UserColumnName="Source_Process_Desc" msprop:Generator_ColumnVarNameInTable="columnSource_Process_Desc" msprop:Generator_ColumnPropNameInRow="Source_Process_Desc" msprop:Generator_ColumnPropNameInTable="Source_Process_DescColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Destination_Process_ID" msprop:Generator_UserColumnName="Destination_Process_ID" msprop:Generator_ColumnVarNameInTable="columnDestination_Process_ID" msprop:Generator_ColumnPropNameInRow="Destination_Process_ID" msprop:Generator_ColumnPropNameInTable="Destination_Process_IDColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="Destination_Process_Desc" msprop:Generator_UserColumnName="Destination_Process_Desc" msprop:Generator_ColumnVarNameInTable="columnDestination_Process_Desc" msprop:Generator_ColumnPropNameInRow="Destination_Process_Desc" msprop:Generator_ColumnPropNameInTable="Destination_Process_DescColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ProcessWorkFlow_Desc" msprop:Generator_UserColumnName="ProcessWorkFlow_Desc" msprop:Generator_ColumnVarNameInTable="columnProcessWorkFlow_Desc" msprop:Generator_ColumnPropNameInRow="ProcessWorkFlow_Desc" msprop:Generator_ColumnPropNameInTable="ProcessWorkFlow_DescColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
