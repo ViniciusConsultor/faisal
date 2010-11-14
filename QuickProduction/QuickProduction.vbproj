@@ -82,6 +82,12 @@
     <Compile Include="ProcessProduction.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ProductionOrder.Designer.vb">
+      <DependentUpon>ProductionOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProductionProcessForm.Designer.vb">
       <DependentUpon>ProductionProcessForm.vb</DependentUpon>
     </Compile>
@@ -106,6 +112,10 @@
     <EmbeddedResource Include="ProcessProduction.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ProcessProduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductionOrder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductionOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductionProcessForm.resx">
       <SubType>Designer</SubType>

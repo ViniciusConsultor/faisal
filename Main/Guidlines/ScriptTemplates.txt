@@ -1,0 +1,45 @@
+-- Add Foreign Key
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='ForeignKeyName')
+	ALTER TABLE ForeignKeyTable
+		WITH CHECK ADD  CONSTRAINT ForeignKeyName
+		FOREIGN KEY(Column1, Column2)
+		REFERENCES PrimaryKeyTable (Column1, Column2)
+		
+-- Create Table
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='TableName')
+	CREATE TABLE TableName(
+		Co_ID SMALLINT NOT NULL,
+		Column1 INT NOT NULL,
+		Column2 INT NOT NULL,
+		[Stamp_UserID] INT NOT NULL,
+		[Stamp_DateTime] DATETIME NOT NULL,
+		[Upload_DateTime] DATETIME NULL,
+		[RecordStatus_ID] INT NOT NULL,
+	 CONSTRAINT [PK_TableName] PRIMARY KEY CLUSTERED
+	(
+		Column1 ASC,
+		Column2 ASC
+	))
+	
+-- Add Menu
+IF NOT EXISTS (SELECT * FROM Base_Menu WHERE Menu_ID = ###)
+	INSERT INTO [Base_Menu]
+		([Menu_Id], [Menu_Desc], [Form_Code], [Display_Order], [Parent_Menu_Id]
+		,[Stamp_UserId], [Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID], [Form_ID])
+	VALUES
+		(###, '', '##-###', , 
+		, , '', NULL, 1, )
+		
+-- Unique Constraint
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='IX_ConstraintName')
+	ALTER TABLE TableName
+		ADD CONSTRAINT IX_ConstraintName UNIQUE
+		(
+		Column1 ASC,
+		Column2 ASC
+		)
+		
+-- Add Column
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id = c.id WHERE o.[Name] ='TableName' AND c.[Name] = 'ColumnName')
+	ALTER TABLE TableName
+		ADD ColumnName VARCHAR(50) NOT NULL

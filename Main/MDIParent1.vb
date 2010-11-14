@@ -408,8 +408,6 @@ Public Class MDIParent1
             '<<<<<<<<<< Administration
           Case QuickLibrary.Entities.FORM_ID_COMPANY
             Form = New QuickCommon.CompanyForm
-            'Case QuickLibrary.Entities.FORM_ID_USER
-            '  Form = New UserForm
           Case QuickLibrary.Entities.FORM_ID_TRANSFER_DATA
             Form = New frmTransferData
           Case QuickLibrary.Entities.FORM_ID_IMPORT_FROM_EXCEL
