@@ -1,5 +1,4 @@
 Imports System.Windows.Forms
-
 Imports System.Drawing
 Imports QuickDalLibrary
 Imports QuickDal.QuickProductiondataset
@@ -9,8 +8,6 @@ Imports QuickDAL.QuickERP
 Imports QuickLibrary
 Imports QuickLibrary.Constants
 Imports QuickLibrary.Common
-
-
 
 
 Public Class ProcessWorkFlowForm
@@ -55,6 +52,15 @@ Public Class ProcessWorkFlowForm
 #End Region
 
 #Region "Events"
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
   Private Sub ProcessWorkFlowForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
     Try
       Cursor = Cursors.WaitCursor
@@ -62,6 +68,7 @@ Public Class ProcessWorkFlowForm
       PopulateProcessWorkFlow()
 
       Me.SetGridLayout()
+      Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID)
       Me.AddRow()
       Me.PopulateComboinGrid()
 
@@ -74,31 +81,64 @@ Public Class ProcessWorkFlowForm
 
   End Sub
 
+  ' Catch ex As Exception
+  'Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in ProcessWorkFlowForm Load event method of ProcessWorkFlow", ex)
+  '    QuickExceptionObject.Show(LoginInfoObject)
+  '  Finally
+  '    Cursor = Cursors.Default
+  '  End Try
+
 
 #End Region
 
 #Region "Methods"
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
 
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
   Private Sub AddRow()
-    Dim _DetailRow As QuickDAL.QuickProductionDataSet.ProductionProcessWorkFlowRow
-    _DetailRow = Me._ProcessWorkFlowDataTable.NewProductionProcessWorkFlowRow
-    _DetailRow.Co_ID = Me.LoginInfoObject.CompanyID
-    _ProcessWorkFlowDetailID = _ProcessWorkFlowDetailID + 1
-    _DetailRow.ProcessWorkFlow_ID = _ProcessWorkFlowDetailID
-    _DetailRow.Source_Process_ID = 0
-    _DetailRow.Destination_Process_ID = 0
-    _DetailRow.ProcessWorkFlow_Desc = String.Empty
-    _DetailRow.Stamp_UserID = Me.LoginInfoObject.CompanyID
-    _DetailRow.Stamp_DateTime = Now.Date
-    _DetailRow.Upload_DateTime = Now.Date
-    _DetailRow.RecordStatus_ID = 0
-    _ProcessWorkFlowDataTable.Rows.Add(_DetailRow)
+    Try
+      Dim _DetailRow As QuickDAL.QuickProductionDataSet.ProductionProcessWorkFlowRow
+      _DetailRow = Me._ProcessWorkFlowDataTable.NewProductionProcessWorkFlowRow
+      _DetailRow.Co_ID = Me.LoginInfoObject.CompanyID
+      _ProcessWorkFlowDetailID = _ProcessWorkFlowDetailID + 1
+      _DetailRow.ProcessWorkFlow_ID = _ProcessWorkFlowDetailID
+      _DetailRow.Source_Process_ID = 0
+      _DetailRow.Destination_Process_ID = 0
+      _DetailRow.ProcessWorkFlow_Desc = String.Empty
+      _DetailRow.Stamp_UserID = Me.LoginInfoObject.CompanyID
+      _DetailRow.Stamp_DateTime = Now.Date
+      _DetailRow.Upload_DateTime = Now.Date
+      _DetailRow.RecordStatus_ID = 0
+      _ProcessWorkFlowDataTable.Rows.Add(_DetailRow)
+    Catch ex As Exception
+      Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in AddRow method of ProcessWorkFlow.", ex)
+      QuickExceptionObject.Show(LoginInfoObject)
+    Finally
+      Cursor = Cursors.Default
+    End Try
+
   End Sub
 
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
 
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
   Private Sub PopulateProcessWorkFlow()
     Try
-      Me._ProcessWorkFlowDataTable = Me._ProcessWorkFlowTableAdapter.GetAll
+      Me._ProcessWorkFlowDataTable = Me._ProcessWorkFlowTableAdapter.GetAllByCoID(Me.LoginInfoObject.CompanyID)
       Me.ProcessWorkflowSheetView.DataSource = _ProcessWorkFlowDataTable
 
     Catch ex As Exception
@@ -107,9 +147,18 @@ Public Class ProcessWorkFlowForm
       Cursor = Cursors.Default
     End Try
   End Sub
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
   Private Sub SetGridLayout()
     Try
-
       Me.ProcessWorkFlowQuickSpread.ShowDeleteRowButton(Me.ProcessWorkflowSheetView) = True
 
       Dim _widthSmall As Integer = 50
@@ -121,47 +170,39 @@ Public Class ProcessWorkFlowForm
         Select Case SheetColumn.Index
           Case ProcessWorkFlowEnum.DeleteRowButton
             SheetColumn.Width = QTY_CELL_WIDTH
-
           Case ProcessWorkFlowEnum.Co_ID
-            'SheetColumn.Visible = False
+            SheetColumn.Visible = False
             SheetColumn.CellType = QtyCellType
-            'SheetColumn.Visible = False
-
           Case ProcessWorkFlowEnum.ProcessWorkFlow_ID
-            'SheetColumn.Visible = False
-
+            SheetColumn.Visible = False
           Case ProcessWorkFlowEnum.Source_Process_ID
             SheetColumn.Label = "SourceProcess_ID"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthSmall
-
+            SheetColumn.Visible = False
           Case ProcessWorkFlowEnum.Source_Process_Desc
             SheetColumn.Label = "Source Process"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthSmall
-
           Case ProcessWorkFlowEnum.Destination_Process_ID
             SheetColumn.Label = "DescriptionProcess_ID"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthLarge
-
+            SheetColumn.Visible = False
           Case ProcessWorkFlowEnum.Destination_Process_Desc
             SheetColumn.Label = "Destination Process"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthLarge
-
           Case ProcessWorkFlowEnum.ProcessWorkFlow_Desc
             SheetColumn.Label = "Work Flow Destination"
             SheetColumn.Width = QTY_CELL_WIDTH + _widthLarge
-
           Case ProcessWorkFlowEnum.Stamp_Datetime
-            'SheetColumn.Visible = False
+            SheetColumn.Visible = False
             SheetColumn.Width = QTY_CELL_WIDTH
           Case ProcessWorkFlowEnum.Stamp_UserID
             SheetColumn.Visible = False
-            'SheetColumn.Width = QTY_CELL_WIDTH
-          Case ProcessWorkFlowEnum.RecordStatus_ID
-            'SheetColumn.Visible = False
-          Case ProcessWorkFlowEnum.Upload_Datetime
-            'SheetColumn.Visible = False
             SheetColumn.Width = QTY_CELL_WIDTH
-
+          Case ProcessWorkFlowEnum.RecordStatus_ID
+            SheetColumn.Visible = False
+          Case ProcessWorkFlowEnum.Upload_Datetime
+            SheetColumn.Visible = False
+            SheetColumn.Width = QTY_CELL_WIDTH
           Case Else
         End Select
       Next
@@ -171,40 +212,65 @@ Public Class ProcessWorkFlowForm
       Throw QuickExceptionObject
     End Try
   End Sub
-
-  Private Sub PopulateComboinGrid()
-
-    Me._DefineProcessDataTable = Me._DefineProcessTableAdapter.GetAllByCoID(Me.LoginInfoObject.CompanyID)
-    Dim _Items() As String
-
-    ReDim _Items(_DefineProcessDataTable.Rows.Count)
-    For i As Int32 = 0 To _DefineProcessDataTable.Rows.Count - 1
-      _Items(i) = _DefineProcessDataTable(i).Process_Desc
-    Next
-    ComboType.Items = _Items
-    Me.ProcessWorkflowSheetView.Columns(4).CellType = ComboType
-
-    Me.ProcessWorkflowSheetView.Columns(6).CellType = ComboType
-
-
-
-  End Sub
-
-  'Author:  
-  'Date Created(DD-MMM-YY):  
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
   '***** Modification History *****
   '                 Date      Description
   'Name          (DD-MMM-YY) 
   '--------------------------------------------------------------------------------
-  'Zakee          10-Oct-10    
+
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
+  Private Sub PopulateComboinGrid()
+    Try
+      Me._DefineProcessDataTable = Me._DefineProcessTableAdapter.GetAllByCoID(Me.LoginInfoObject.CompanyID)
+      Dim _Items() As String
+
+      ReDim _Items(_DefineProcessDataTable.Rows.Count - 1)
+      For i As Int32 = 0 To _DefineProcessDataTable.Rows.Count - 1
+        _Items(i) = _DefineProcessDataTable(i).Process_Desc
+      Next
+      ComboType.Items = _Items
+      Me.ProcessWorkflowSheetView.Columns(4).CellType = ComboType
+      Me.ProcessWorkflowSheetView.Columns(6).CellType = ComboType
+    Catch ex As Exception
+      Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in PopulateComboinGrid method of ProcessWorkFlow.", ex)
+      QuickExceptionObject.Show(LoginInfoObject)
+    Finally
+      Cursor = Cursors.Default
+    End Try
+  End Sub
+
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  14-NOV-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+
   ''' <summary>
   ''' Nothing
   ''' </summary>
   Private Function IsValid() As Boolean
     Try
+      Me.ProcessWorkFlowQuickSpread.EditMode = False
+      For i As Int32 = 0 To Me.ProcessWorkflowSheetView.Rows.Count - 2
+        If Me.ProcessWorkflowSheetView.GetText(i, ProcessWorkFlowEnum.Destination_Process_ID) = String.Empty Then
+          QuickMessageBox.Show(Me.LoginInfoObject, "Invalid Destination Process Selected to save the record.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
+          Me.ProcessWorkflowSheetView.SetActiveCell(i, ProcessWorkFlowForm.ProcessWorkFlowEnum.Destination_Process_Desc)
+          SendKeys.Send("{F4}")
+          Return False
+        ElseIf Me.ProcessWorkflowSheetView.GetText(i, ProcessWorkFlowEnum.ProcessWorkFlow_Desc) = String.Empty Then
+          MsgBox(Me.ProcessWorkflowSheetView.GetText(i, ProcessWorkFlowEnum.ProcessWorkFlow_Desc))
+          QuickMessageBox.Show(Me.LoginInfoObject, "You must entered the process work flow description to save the record.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
+          Me.ProcessWorkflowSheetView.SetActiveCell(i - 0, ProcessWorkFlowForm.ProcessWorkFlowEnum.ProcessWorkFlow_Desc)
+          SendKeys.Send("{F2}")
+          Return False
+        End If
+      Next
 
       Return True
-
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception to IsValid function", ex)
       QuickExceptionObject.Show(LoginInfoObject)
@@ -212,13 +278,13 @@ Public Class ProcessWorkFlowForm
     End Try
   End Function
 
-  'Author:  
-  'Date Created(DD-MMM-YY):  
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-NOV-10
   '***** Modification History *****
   '                 Date      Description
   'Name          (DD-MMM-YY) 
   '--------------------------------------------------------------------------------
-  'Zakee          10-Oct-10    
+
   ''' <summary>
   ''' Nothing
   ''' </summary>
@@ -226,9 +292,10 @@ Public Class ProcessWorkFlowForm
     Try
       If IsValid() Then
         Me.ProcessWorkFlowQuickSpread.EditMode = False
-        Me.ProcessWorkflowSheetView.SetActiveCell(Me.ProcessWorkflowSheetView.RowCount - 1, 0) 'For some unknown reason new version of farpoint is not working without this line.
 
+        Me.ProcessWorkflowSheetView.SetActiveCell(Me.ProcessWorkflowSheetView.RowCount - 1, 0) 'For some unknown reason new version of farpoint is not working without this line.
         Me._ProcessWorkFlowDataTable.Rows.RemoveAt(_ProcessWorkFlowDataTable.Rows.Count - 1)
+
         Me.ProcessWorkFlowQuickSpread.Update()
         For I As Int32 = 0 To _ProcessWorkFlowDataTable.Rows.Count - 1
           With _ProcessWorkFlowDataTable(I)
@@ -246,7 +313,7 @@ Public Class ProcessWorkFlowForm
             .Stamp_DateTime = Now
             .Stamp_UserID = LoginInfoObject.UserID
 
-            Debug.WriteLine(I.ToString & "/" & _ProcessWorkFlowDataTable.Rows.Count.ToString & "=" & .Co_ID.ToString & "-" & .Source_Process_ID.ToString & "-" & .Destination_Process_ID.ToString)
+            'Debug.WriteLine(I.ToString & "/" & _ProcessWorkFlowDataTable.Rows.Count.ToString & "=" & .Co_ID.ToString & "-" & .Source_Process_ID.ToString & "-" & .Destination_Process_ID.ToString)
           End With
 
           _ProcessWorkFlowTableAdapter.Update(_ProcessWorkFlowDataTable(I))
@@ -272,13 +339,24 @@ Public Class ProcessWorkFlowForm
 #End Region
 
 #Region "ToolBar Methods"
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-OCT-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+
+  ''' <summary>
+  ''' Nothing
+  ''' </summary>
   Protected Overrides Sub SaveButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
     Try
       Cursor = Cursors.WaitCursor
 
       If SaveRecord() Then
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveSuccessfulMessage)
-        'Me.AddRow()
+        Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID)
+        Me.AddRow()
       Else
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveUnSuccessfulMessage)
       End If
@@ -294,19 +372,18 @@ Public Class ProcessWorkFlowForm
 #End Region
 
 
-  'Author:  
-  'Date Created(DD-MMM-YY):  
+  'Author:  Zakee
+  'Date Created(DD-MMM-YY):  10-OCT-10
   '***** Modification History *****
   '                 Date      Description
   'Name          (DD-MMM-YY) 
   '--------------------------------------------------------------------------------
-  'Zakee          10-Oct-10    
+
   ''' <summary>
   ''' Nothing
   ''' </summary>
   Private Sub ProcessWorkFlowQuickSpread_EditModeOff(ByVal sender As Object, ByVal e As System.EventArgs) Handles ProcessWorkFlowQuickSpread.EditModeOff
     Try
-      'Me.Text = Now.ToString
       If Me.ProcessWorkFlowQuickSpread.ActiveSheet Is Nothing OrElse Me.ProcessWorkFlowQuickSpread.ActiveSheet.ActiveCell Is Nothing Then Exit Sub
 
       If Me.ProcessWorkFlowQuickSpread.ActiveSheet.ActiveColumn.Label = "Source Process" Then
@@ -329,7 +406,10 @@ Public Class ProcessWorkFlowForm
         End If
       End If
     Catch ex As Exception
-      'Throw ex
+      Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in ProcessWorkFlowForm EditMofeOff event method of ProcessWorkFlow", ex)
+      QuickExceptionObject.Show(LoginInfoObject)
+    Finally
+      Cursor = Cursors.Default
     End Try
   End Sub
 End Class
