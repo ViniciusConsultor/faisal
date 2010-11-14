@@ -27,8 +27,6 @@ Public Class DefineProcessForm
     ' Add any initialization after the InitializeComponent() call.
 
   End Sub
-
-
   Private Function IsValid() As Boolean
     Try
       Dim _IsExistProcessCode As ProductionProcessDataTable
@@ -44,16 +42,24 @@ Public Class DefineProcessForm
       End If
 
       If _IsExistProcessCode.Rows.Count = 1 Then
-
         If _IsExistProcessCode.Rows(0).Item(_IsExistProcessCode.Process_IDColumn).ToString = CStr(Me.ProcessIDTextBox.Text) And _IsExistProcessCode.Rows(0).Item(_IsExistProcessCode.Process_CodeColumn).ToString = Me.ProcessCodeTextBox.Text Then
         Else
-          QuickMessageBox.Show(Me.LoginInfoObject, "Duplicate Voucher code Entered.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
+          QuickMessageBox.Show(Me.LoginInfoObject, "Duplicate Process code Entered.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
           Me.ProcessCodeTextBox.Focus()
           Return False
         End If
       End If
 
-
+      _IsExistProcessCode.Rows.Clear()
+      _IsExistProcessCode = Me._DefineProcessTableAdapter.IsExistProcessDesc(Me.LoginInfoObject.CompanyID, Me.ProcessDescTextBox.Text)
+      If _IsExistProcessCode.Rows.Count = 1 Then
+        If _IsExistProcessCode.Rows(0).Item(_IsExistProcessCode.Process_IDColumn).ToString = CStr(Me.ProcessIDTextBox.Text) And _IsExistProcessCode.Rows(0).Item(_IsExistProcessCode.Process_DescColumn).ToString = Me.ProcessDescTextBox.Text Then
+        Else
+          QuickMessageBox.Show(Me.LoginInfoObject, "Duplicate Process Description Entered.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
+          Me.ProcessDescTextBox.Focus()
+          Return False
+        End If
+      End If
 
       Return True
     Catch ex As Exception
@@ -133,12 +139,12 @@ Public Class DefineProcessForm
     End Try
 
   End Sub
-  Private Sub ProcessDescTextBox_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles ProcessDescTextBox.KeyPress
+  'Private Sub ProcessDescTextBox_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles ProcessDescTextBox.KeyPress
+  '  If Char.IsDigit(e.KeyChar) And Not Asc(e.KeyChar) = 8 And Not Asc(e.KeyChar) = 46 Then
+  '    e.Handled = True
+  '  End If
+  'End Sub
 
-    If Char.IsDigit(e.KeyChar) And Not Asc(e.KeyChar) = 8 And Not Asc(e.KeyChar) = 46 Then
-      e.Handled = True
-    End If
-  End Sub
 #End Region
 
 #Region "ToolBar Methods"
@@ -230,6 +236,7 @@ Public Class DefineProcessForm
       Me.ProcessDescTextBox.Text = Nothing
       Me._CurrentDefineProcessDataRow = Nothing
       MyBase.CancelButtonClick(sender, e)
+      Me.ProcessCodeTextBox.Focus()
 
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in CancelButtonClick event method of DefineProcess Form.", ex)
