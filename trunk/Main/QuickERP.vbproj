@@ -733,6 +733,7 @@
     <Content Include="Guidlines\ClassRegions.txt" />
     <Content Include="Guidlines\default.htm" />
     <Content Include="Guidlines\PublishStepts.txt" />
+    <Content Include="Guidlines\ScriptTemplates.txt" />
     <None Include="app.config" />
     <None Include="QuickERP_TemporaryKey.pfx" />
     <None Include="Web References\QuickErpWebService\QuickErp.disco" />
