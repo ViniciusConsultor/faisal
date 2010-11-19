@@ -389,14 +389,14 @@ Public Class ProcessWorkFlowForm
       If Me.ProcessWorkFlowQuickSpread.ActiveSheet.ActiveColumn.Label = "Source Process" Then
         _DefineProcessDataTable.DefaultView.RowFilter = _DefineProcessDataTable.Process_DescColumn.ColumnName & "='" & Me.ProcessWorkflowSheetView.GetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 4) & "'"
         If _DefineProcessDataTable.DefaultView.Count > 0 Then
-          Me.ProcessWorkflowSheetView.SetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 3, _DefineProcessDataTable.DefaultView(0)(_DefineProcessDataTable.Process_IDColumn.ColumnName))
+          Me.ProcessWorkflowSheetView.SetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 3, _DefineProcessDataTable.DefaultView(0)(_DefineProcessDataTable.Process_IDColumn.ColumnName).ToString)
         End If
       End If
 
       If Me.ProcessWorkFlowQuickSpread.ActiveSheet.ActiveColumn.Label = "Destination Process" Then
         _DefineProcessDataTable.DefaultView.RowFilter = _DefineProcessDataTable.Process_DescColumn.ColumnName & "='" & Me.ProcessWorkflowSheetView.GetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 6) & "'"
         If _DefineProcessDataTable.DefaultView.Count > 0 Then
-          Me.ProcessWorkflowSheetView.SetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 5, _DefineProcessDataTable.DefaultView(0)(_DefineProcessDataTable.Process_IDColumn.ColumnName))
+          Me.ProcessWorkflowSheetView.SetText(Me.ProcessWorkflowSheetView.ActiveRow.Index, 5, _DefineProcessDataTable.DefaultView(0)(_DefineProcessDataTable.Process_IDColumn.ColumnName).ToString)
         End If
       End If
 

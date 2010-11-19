@@ -43,3 +43,17 @@ IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='IX_ConstraintN
 IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id = c.id WHERE o.[Name] ='TableName' AND c.[Name] = 'ColumnName')
 	ALTER TABLE TableName
 		ADD ColumnName VARCHAR(50) NOT NULL
+
+-- Insert Base_Setting		
+IF NOT EXISTS (SELECT * FROM Base_Setting WHERE Setting_ID = 'SettingID')
+	INSERT INTO [Base_Setting]
+		([Co_Id], [User_Id], [Setting_Id], [Setting_Desc]
+		,[Setting_Value], [Stamp_User_Id], [Stamp_DateTime]
+		,[Setting_Value_DataType], [Setting_Value_MinimumValue], [Setting_Value_MaximumValue]
+		,[Upload_DateTime], [RecordStatus_ID])
+	VALUES
+		(0, 0, 'SettingID'
+		, 'SettingDesc'
+		, 'Value', 0, '####-##-##'
+		, 'String', NULL, NULL
+		, NULL, 1)

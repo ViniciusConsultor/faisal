@@ -1002,8 +1002,8 @@ Public Class ReportCriteriaForm
       WarehouseComboBox.LoadWarehouses(Me.CompanyComboBox.CompanyID)
       If WarehouseComboBox.Rows.Count <= 0 Then WarehouseComboBox.Enabled = False
       _ItemForComboDataTable = _ItemForComboTA.GetByCoID(Me.CompanyComboBox.CompanyID)
-      Me.ItemFromMultiComboBox.SetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
-      Me.ItemToMultiComboBox.SetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
+      Me.ItemFromMultiComboBox.qSetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
+      Me.ItemToMultiComboBox.qSetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in MethodName of ClassName.", ex)
