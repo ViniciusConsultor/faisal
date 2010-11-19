@@ -85,7 +85,7 @@ Public Class ProductionOrderForm
         _OrderTable = New QuickProductionDataSet.OrderDataTable
         _OrderRow = _OrderTable.NewOrderRow
         _OrderRow.Co_ID = Me.LoginInfoObject.CompanyID
-        _OrderRow.Order_ID = _OrderTA.GetNewOrderID(Me.LoginInfoObject.CompanyID).Value
+        _OrderRow.Order_ID = _OrderTA.GetNewOrderIDByCoID(Me.LoginInfoObject.CompanyID).value
         _OrderRow.Order_No = NewOrderNumber()
         _OrderRow.RecordStatus_ID = Constants.RecordStatuses.Inserted
         _OrderRow.SetUpload_DateTimeNull()  'It should always be nothing when inserting records.
