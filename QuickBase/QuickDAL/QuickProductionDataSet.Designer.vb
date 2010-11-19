@@ -1313,7 +1313,7 @@ Partial Public Class QuickProductionDataSet
         
         Private columnFormula_Description As Global.System.Data.DataColumn
         
-        Private columnOutput_Item_ID As Global.System.Data.DataColumn
+        Private columnOutput_Item_Detail_ID As Global.System.Data.DataColumn
         
         Private columnStamp_UserID As Global.System.Data.DataColumn
         
@@ -1384,9 +1384,9 @@ Partial Public Class QuickProductionDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Output_Item_IDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property Output_Item_Detail_IDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnOutput_Item_ID
+                Return Me.columnOutput_Item_Detail_ID
             End Get
         End Property
         
@@ -1447,9 +1447,9 @@ Partial Public Class QuickProductionDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddFormulaRow(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Code As String, ByVal Formula_Description As String, ByVal Output_Item_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal RecordStatus_ID As Integer) As FormulaRow
+        Public Overloads Function AddFormulaRow(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Code As String, ByVal Formula_Description As String, ByVal Output_Item_Detail_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal RecordStatus_ID As Integer) As FormulaRow
             Dim rowFormulaRow As FormulaRow = CType(Me.NewRow,FormulaRow)
-            Dim columnValuesArray() As Object = New Object() {Co_ID, Formula_ID, Formula_Code, Formula_Description, Output_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID}
+            Dim columnValuesArray() As Object = New Object() {Co_ID, Formula_ID, Formula_Code, Formula_Description, Output_Item_Detail_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID}
             rowFormulaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFormulaRow)
             Return rowFormulaRow
@@ -1483,7 +1483,7 @@ Partial Public Class QuickProductionDataSet
             Me.columnFormula_ID = MyBase.Columns("Formula_ID")
             Me.columnFormula_Code = MyBase.Columns("Formula_Code")
             Me.columnFormula_Description = MyBase.Columns("Formula_Description")
-            Me.columnOutput_Item_ID = MyBase.Columns("Output_Item_ID")
+            Me.columnOutput_Item_Detail_ID = MyBase.Columns("Output_Item_Detail_ID")
             Me.columnStamp_UserID = MyBase.Columns("Stamp_UserID")
             Me.columnStamp_DateTime = MyBase.Columns("Stamp_DateTime")
             Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
@@ -1500,8 +1500,8 @@ Partial Public Class QuickProductionDataSet
             MyBase.Columns.Add(Me.columnFormula_Code)
             Me.columnFormula_Description = New Global.System.Data.DataColumn("Formula_Description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFormula_Description)
-            Me.columnOutput_Item_ID = New Global.System.Data.DataColumn("Output_Item_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOutput_Item_ID)
+            Me.columnOutput_Item_Detail_ID = New Global.System.Data.DataColumn("Output_Item_Detail_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOutput_Item_Detail_ID)
             Me.columnStamp_UserID = New Global.System.Data.DataColumn("Stamp_UserID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStamp_UserID)
             Me.columnStamp_DateTime = New Global.System.Data.DataColumn("Stamp_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -1517,7 +1517,7 @@ Partial Public Class QuickProductionDataSet
             Me.columnFormula_Code.MaxLength = 50
             Me.columnFormula_Description.AllowDBNull = false
             Me.columnFormula_Description.MaxLength = 500
-            Me.columnOutput_Item_ID.AllowDBNull = false
+            Me.columnOutput_Item_Detail_ID.AllowDBNull = false
             Me.columnStamp_UserID.AllowDBNull = false
             Me.columnStamp_DateTime.AllowDBNull = false
             Me.columnRecordStatus_ID.AllowDBNull = false
@@ -1659,8 +1659,6 @@ Partial Public Class QuickProductionDataSet
         
         Private columnRemarks As Global.System.Data.DataColumn
         
-        Private columnInput_Item_ID As Global.System.Data.DataColumn
-        
         Private columnStamp_UserID As Global.System.Data.DataColumn
         
         Private columnStamp_DateTime As Global.System.Data.DataColumn
@@ -1668,6 +1666,10 @@ Partial Public Class QuickProductionDataSet
         Private columnUpload_DateTime As Global.System.Data.DataColumn
         
         Private columnRecordStatus_ID As Global.System.Data.DataColumn
+        
+        Private columnInput_Item_Detail_ID As Global.System.Data.DataColumn
+        
+        Private columnQuantity As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
@@ -1730,13 +1732,6 @@ Partial Public Class QuickProductionDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property Input_Item_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnInput_Item_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Stamp_UserIDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnStamp_UserID
@@ -1761,6 +1756,20 @@ Partial Public Class QuickProductionDataSet
         Public ReadOnly Property RecordStatus_IDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnRecordStatus_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Input_Item_Detail_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInput_Item_Detail_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property QuantityColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQuantity
             End Get
         End Property
         
@@ -1793,9 +1802,9 @@ Partial Public Class QuickProductionDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddFormulaDetailRow(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Detail_ID As Integer, ByVal Remarks As String, ByVal Input_Item_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal RecordStatus_ID As Integer) As FormulaDetailRow
+        Public Overloads Function AddFormulaDetailRow(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Detail_ID As Integer, ByVal Remarks As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal RecordStatus_ID As Integer, ByVal Input_Item_Detail_ID As Integer, ByVal Quantity As Decimal) As FormulaDetailRow
             Dim rowFormulaDetailRow As FormulaDetailRow = CType(Me.NewRow,FormulaDetailRow)
-            Dim columnValuesArray() As Object = New Object() {Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID}
+            Dim columnValuesArray() As Object = New Object() {Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Input_Item_Detail_ID, Quantity}
             rowFormulaDetailRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFormulaDetailRow)
             Return rowFormulaDetailRow
@@ -1829,11 +1838,12 @@ Partial Public Class QuickProductionDataSet
             Me.columnFormula_ID = MyBase.Columns("Formula_ID")
             Me.columnFormula_Detail_ID = MyBase.Columns("Formula_Detail_ID")
             Me.columnRemarks = MyBase.Columns("Remarks")
-            Me.columnInput_Item_ID = MyBase.Columns("Input_Item_ID")
             Me.columnStamp_UserID = MyBase.Columns("Stamp_UserID")
             Me.columnStamp_DateTime = MyBase.Columns("Stamp_DateTime")
             Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
             Me.columnRecordStatus_ID = MyBase.Columns("RecordStatus_ID")
+            Me.columnInput_Item_Detail_ID = MyBase.Columns("Input_Item_Detail_ID")
+            Me.columnQuantity = MyBase.Columns("Quantity")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -1846,8 +1856,6 @@ Partial Public Class QuickProductionDataSet
             MyBase.Columns.Add(Me.columnFormula_Detail_ID)
             Me.columnRemarks = New Global.System.Data.DataColumn("Remarks", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRemarks)
-            Me.columnInput_Item_ID = New Global.System.Data.DataColumn("Input_Item_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnInput_Item_ID)
             Me.columnStamp_UserID = New Global.System.Data.DataColumn("Stamp_UserID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStamp_UserID)
             Me.columnStamp_DateTime = New Global.System.Data.DataColumn("Stamp_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -1856,16 +1864,21 @@ Partial Public Class QuickProductionDataSet
             MyBase.Columns.Add(Me.columnUpload_DateTime)
             Me.columnRecordStatus_ID = New Global.System.Data.DataColumn("RecordStatus_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRecordStatus_ID)
+            Me.columnInput_Item_Detail_ID = New Global.System.Data.DataColumn("Input_Item_Detail_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInput_Item_Detail_ID)
+            Me.columnQuantity = New Global.System.Data.DataColumn("Quantity", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQuantity)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCo_ID, Me.columnFormula_ID, Me.columnFormula_Detail_ID}, true))
             Me.columnCo_ID.AllowDBNull = false
             Me.columnFormula_ID.AllowDBNull = false
             Me.columnFormula_Detail_ID.AllowDBNull = false
             Me.columnRemarks.AllowDBNull = false
             Me.columnRemarks.MaxLength = 500
-            Me.columnInput_Item_ID.AllowDBNull = false
             Me.columnStamp_UserID.AllowDBNull = false
             Me.columnStamp_DateTime.AllowDBNull = false
             Me.columnRecordStatus_ID.AllowDBNull = false
+            Me.columnInput_Item_Detail_ID.AllowDBNull = false
+            Me.columnQuantity.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -4495,12 +4508,12 @@ Partial Public Class QuickProductionDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Output_Item_ID() As Integer
+        Public Property Output_Item_Detail_ID() As Integer
             Get
-                Return CType(Me(Me.tableFormula.Output_Item_IDColumn),Integer)
+                Return CType(Me(Me.tableFormula.Output_Item_Detail_IDColumn),Integer)
             End Get
             Set
-                Me(Me.tableFormula.Output_Item_IDColumn) = value
+                Me(Me.tableFormula.Output_Item_Detail_IDColumn) = value
             End Set
         End Property
         
@@ -4633,16 +4646,6 @@ Partial Public Class QuickProductionDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Input_Item_ID() As Integer
-            Get
-                Return CType(Me(Me.tableFormulaDetail.Input_Item_IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableFormulaDetail.Input_Item_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Property Stamp_UserID() As Integer
             Get
                 Return CType(Me(Me.tableFormulaDetail.Stamp_UserIDColumn),Integer)
@@ -4683,6 +4686,26 @@ Partial Public Class QuickProductionDataSet
             End Get
             Set
                 Me(Me.tableFormulaDetail.RecordStatus_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Input_Item_Detail_ID() As Integer
+            Get
+                Return CType(Me(Me.tableFormulaDetail.Input_Item_Detail_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableFormulaDetail.Input_Item_Detail_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Quantity() As Decimal
+            Get
+                Return CType(Me(Me.tableFormulaDetail.QuantityColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableFormulaDetail.QuantityColumn) = value
             End Set
         End Property
         
@@ -6919,7 +6942,7 @@ Namespace QuickProductionDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Formula_ID", "Formula_ID")
             tableMapping.ColumnMappings.Add("Formula_Code", "Formula_Code")
             tableMapping.ColumnMappings.Add("Formula_Description", "Formula_Description")
-            tableMapping.ColumnMappings.Add("Output_Item_ID", "Output_Item_ID")
+            tableMapping.ColumnMappings.Add("Output_Item_Detail_ID", "Output_Item_Detail_ID")
             tableMapping.ColumnMappings.Add("Stamp_UserID", "Stamp_UserID")
             tableMapping.ColumnMappings.Add("Stamp_DateTime", "Stamp_DateTime")
             tableMapping.ColumnMappings.Add("Upload_DateTime", "Upload_DateTime")
@@ -6929,17 +6952,17 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Production_Formula] WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula"& _ 
                 "_ID] = @Original_Formula_ID) AND ([Formula_Code] = @Original_Formula_Code) AND ("& _ 
-                "[Formula_Description] = @Original_Formula_Description) AND ([Output_Item_ID] = @"& _ 
-                "Original_Output_Item_ID) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Sta"& _ 
-                "mp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND ["& _ 
-                "Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AN"& _ 
-                "D ([RecordStatus_ID] = @Original_RecordStatus_ID))"
+                "[Formula_Description] = @Original_Formula_Description) AND ([Output_Item_Detail_"& _ 
+                "ID] = @Original_Output_Item_Detail_ID) AND ([Stamp_UserID] = @Original_Stamp_Use"& _ 
+                "rID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_Date"& _ 
+                "Time = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload"& _ 
+                "_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Description", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Description", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Output_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Output_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -6948,18 +6971,19 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Production_Formula] ([Co_ID], [Formula_ID], [Formula_Code], [Formula"& _ 
-                "_Description], [Output_Item_ID], [Stamp_UserID], [Stamp_DateTime], [Upload_DateT"& _ 
-                "ime], [RecordStatus_ID]) VALUES (@Co_ID, @Formula_ID, @Formula_Code, @Formula_De"& _ 
-                "scription, @Output_Item_ID, @Stamp_UserID, @Stamp_DateTime, @Upload_DateTime, @R"& _ 
-                "ecordStatus_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Code, Formula_Description, O"& _ 
-                "utput_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID FR"& _ 
-                "OM Production_Formula WHERE (Co_ID = @Co_ID) AND (Formula_ID = @Formula_ID)"
+                "_Description], [Output_Item_Detail_ID], [Stamp_UserID], [Stamp_DateTime], [Uploa"& _ 
+                "d_DateTime], [RecordStatus_ID]) VALUES (@Co_ID, @Formula_ID, @Formula_Code, @For"& _ 
+                "mula_Description, @Output_Item_Detail_ID, @Stamp_UserID, @Stamp_DateTime, @Uploa"& _ 
+                "d_DateTime, @RecordStatus_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Code, Formula_"& _ 
+                "Description, Output_Item_Detail_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTim"& _ 
+                "e, RecordStatus_ID FROM Production_Formula WHERE (Co_ID = @Co_ID) AND (Formula_I"& _ 
+                "D = @Formula_ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Description", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Output_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Output_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6968,24 +6992,24 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Production_Formula] SET [Co_ID] = @Co_ID, [Formula_ID] = @Formula_ID, [Fo"& _ 
                 "rmula_Code] = @Formula_Code, [Formula_Description] = @Formula_Description, [Outp"& _ 
-                "ut_Item_ID] = @Output_Item_ID, [Stamp_UserID] = @Stamp_UserID, [Stamp_DateTime] "& _ 
-                "= @Stamp_DateTime, [Upload_DateTime] = @Upload_DateTime, [RecordStatus_ID] = @Re"& _ 
-                "cordStatus_ID WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula_ID] = @Original_F"& _ 
-                "ormula_ID) AND ([Formula_Code] = @Original_Formula_Code) AND ([Formula_Descripti"& _ 
-                "on] = @Original_Formula_Description) AND ([Output_Item_ID] = @Original_Output_It"& _ 
-                "em_ID) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Or"& _ 
-                "iginal_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] I"& _ 
-                "S NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_I"& _ 
-                "D] = @Original_RecordStatus_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Code, Formu"& _ 
-                "la_Description, Output_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, R"& _ 
-                "ecordStatus_ID FROM Production_Formula WHERE (Co_ID = @Co_ID) AND (Formula_ID = "& _ 
-                "@Formula_ID)"
+                "ut_Item_Detail_ID] = @Output_Item_Detail_ID, [Stamp_UserID] = @Stamp_UserID, [St"& _ 
+                "amp_DateTime] = @Stamp_DateTime, [Upload_DateTime] = @Upload_DateTime, [RecordSt"& _ 
+                "atus_ID] = @RecordStatus_ID WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula_ID]"& _ 
+                " = @Original_Formula_ID) AND ([Formula_Code] = @Original_Formula_Code) AND ([For"& _ 
+                "mula_Description] = @Original_Formula_Description) AND ([Output_Item_Detail_ID] "& _ 
+                "= @Original_Output_Item_Detail_ID) AND ([Stamp_UserID] = @Original_Stamp_UserID)"& _ 
+                " AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime"& _ 
+                " = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_Dat"& _ 
+                "eTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, For"& _ 
+                "mula_ID, Formula_Code, Formula_Description, Output_Item_Detail_ID, Stamp_UserID,"& _ 
+                " Stamp_DateTime, Upload_DateTime, RecordStatus_ID FROM Production_Formula WHERE "& _ 
+                "(Co_ID = @Co_ID) AND (Formula_ID = @Formula_ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Description", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Output_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Output_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6994,7 +7018,7 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Description", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Description", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Output_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Output_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -7010,13 +7034,22 @@ Namespace QuickProductionDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Co_ID, Formula_ID, Formula_Code, Formula_Description, Output_Item_ID, "& _ 
-                "Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Pro"& _ 
-                "duction_Formula"
+            Me._commandCollection(0).CommandText = "SELECT     Co_ID, Formula_ID, Formula_Code, Formula_Description, Output_Item_Deta"& _ 
+                "il_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Re"& _ 
+                "cordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Production_Formula"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Co_ID, Formula_Code, Formula_Description, Formula_ID, Output_Item_Detail_I"& _ 
+                "D, RecordStatus_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Productio"& _ 
+                "n_Formula WHERE (Co_ID = @CoID) AND (Output_Item_Detail_ID = @OutputItemDetailID"& _ 
+                ")"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OutputItemDetailID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Output_Item_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7024,6 +7057,18 @@ Namespace QuickProductionDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetAll() As QuickProductionDataSet.FormulaDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickProductionDataSet.FormulaDataTable = New QuickProductionDataSet.FormulaDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDOutputItemID(ByVal CoID As Integer, ByVal OutputItemDetailID As Integer) As QuickProductionDataSet.FormulaDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(OutputItemDetailID,Integer)
             Dim dataTable As QuickProductionDataSet.FormulaDataTable = New QuickProductionDataSet.FormulaDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -7056,7 +7101,7 @@ Namespace QuickProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_Formula_ID As Integer, ByVal Original_Formula_Code As String, ByVal Original_Formula_Description As String, ByVal Original_Output_Item_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_Formula_ID As Integer, ByVal Original_Formula_Code As String, ByVal Original_Formula_Description As String, ByVal Original_Output_Item_Detail_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Co_ID,Short)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Formula_ID,Integer)
             If (Original_Formula_Code Is Nothing) Then
@@ -7069,7 +7114,7 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Formula_Description,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Output_Item_ID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Output_Item_Detail_ID,Integer)
             Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Stamp_UserID,Integer)
             Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
@@ -7098,7 +7143,7 @@ Namespace QuickProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Code As String, ByVal Formula_Description As String, ByVal Output_Item_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Code As String, ByVal Formula_Description As String, ByVal Output_Item_Detail_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Co_ID,Short)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Formula_ID,Integer)
             If (Formula_Code Is Nothing) Then
@@ -7111,7 +7156,7 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(Formula_Description,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Output_Item_ID,Integer)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Output_Item_Detail_ID,Integer)
             Me.Adapter.InsertCommand.Parameters(5).Value = CType(Stamp_UserID,Integer)
             Me.Adapter.InsertCommand.Parameters(6).Value = CType(Stamp_DateTime,Date)
             If (Upload_DateTime.HasValue = true) Then
@@ -7143,7 +7188,7 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Formula_ID As Integer,  _
                     ByVal Formula_Code As String,  _
                     ByVal Formula_Description As String,  _
-                    ByVal Output_Item_ID As Integer,  _
+                    ByVal Output_Item_Detail_ID As Integer,  _
                     ByVal Stamp_UserID As Integer,  _
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
@@ -7152,7 +7197,7 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Original_Formula_ID As Integer,  _
                     ByVal Original_Formula_Code As String,  _
                     ByVal Original_Formula_Description As String,  _
-                    ByVal Original_Output_Item_ID As Integer,  _
+                    ByVal Original_Output_Item_Detail_ID As Integer,  _
                     ByVal Original_Stamp_UserID As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
@@ -7169,7 +7214,7 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Formula_Description,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Output_Item_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Output_Item_Detail_ID,Integer)
             Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Stamp_UserID,Integer)
             Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Stamp_DateTime,Date)
             If (Upload_DateTime.HasValue = true) Then
@@ -7190,7 +7235,7 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Formula_Description,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Output_Item_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Output_Item_Detail_ID,Integer)
             Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Stamp_UserID,Integer)
             Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
@@ -7222,7 +7267,7 @@ Namespace QuickProductionDataSetTableAdapters
         Public Overloads Overridable Function Update( _
                     ByVal Formula_Code As String,  _
                     ByVal Formula_Description As String,  _
-                    ByVal Output_Item_ID As Integer,  _
+                    ByVal Output_Item_Detail_ID As Integer,  _
                     ByVal Stamp_UserID As Integer,  _
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
@@ -7231,12 +7276,12 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Original_Formula_ID As Integer,  _
                     ByVal Original_Formula_Code As String,  _
                     ByVal Original_Formula_Description As String,  _
-                    ByVal Original_Output_Item_ID As Integer,  _
+                    ByVal Original_Output_Item_Detail_ID As Integer,  _
                     ByVal Original_Stamp_UserID As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
                     ByVal Original_RecordStatus_ID As Integer) As Integer
-            Return Me.Update(Original_Co_ID, Original_Formula_ID, Formula_Code, Formula_Description, Output_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_Formula_ID, Original_Formula_Code, Original_Formula_Description, Original_Output_Item_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
+            Return Me.Update(Original_Co_ID, Original_Formula_ID, Formula_Code, Formula_Description, Output_Item_Detail_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_Formula_ID, Original_Formula_Code, Original_Formula_Description, Original_Output_Item_Detail_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
         End Function
     End Class
     
@@ -7336,27 +7381,30 @@ Namespace QuickProductionDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Formula_ID", "Formula_ID")
             tableMapping.ColumnMappings.Add("Formula_Detail_ID", "Formula_Detail_ID")
             tableMapping.ColumnMappings.Add("Remarks", "Remarks")
-            tableMapping.ColumnMappings.Add("Input_Item_ID", "Input_Item_ID")
             tableMapping.ColumnMappings.Add("Stamp_UserID", "Stamp_UserID")
             tableMapping.ColumnMappings.Add("Stamp_DateTime", "Stamp_DateTime")
             tableMapping.ColumnMappings.Add("Upload_DateTime", "Upload_DateTime")
             tableMapping.ColumnMappings.Add("RecordStatus_ID", "RecordStatus_ID")
+            tableMapping.ColumnMappings.Add("Input_Item_Detail_ID", "Input_Item_Detail_ID")
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Production_Formula_Detail] WHERE (([Co_ID] = @Original_Co_ID) AND (["& _ 
                 "Formula_ID] = @Original_Formula_ID) AND ([Formula_Detail_ID] = @Original_Formula"& _ 
-                "_Detail_ID) AND ([Remarks] = @Original_Remarks) AND ([Input_Item_ID] = @Original"& _ 
-                "_Input_Item_ID) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTi"& _ 
-                "me] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_Da"& _ 
-                "teTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([Recor"& _ 
-                "dStatus_ID] = @Original_RecordStatus_ID))"
+                "_Detail_ID) AND ([Remarks] = @Original_Remarks) AND ([Input_Item_Detail_ID] = @O"& _ 
+                "riginal_Input_Item_Detail_ID) AND ([Quantity] = @Original_Quantity) AND ([Stamp_"& _ 
+                "UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTi"& _ 
+                "me) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload"& _ 
+                "_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_Reco"& _ 
+                "rdStatus_ID))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Remarks", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Remarks", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Input_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Input_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Quantity", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Quantity", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -7365,19 +7413,21 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Production_Formula_Detail] ([Co_ID], [Formula_ID], [Formula_Detail_I"& _ 
-                "D], [Remarks], [Input_Item_ID], [Stamp_UserID], [Stamp_DateTime], [Upload_DateTi"& _ 
-                "me], [RecordStatus_ID]) VALUES (@Co_ID, @Formula_ID, @Formula_Detail_ID, @Remark"& _ 
-                "s, @Input_Item_ID, @Stamp_UserID, @Stamp_DateTime, @Upload_DateTime, @RecordStat"& _ 
-                "us_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_ID, St"& _ 
-                "amp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID FROM Production_For"& _ 
-                "mula_Detail WHERE (Co_ID = @Co_ID) AND (Formula_Detail_ID = @Formula_Detail_ID) "& _ 
-                "AND (Formula_ID = @Formula_ID)"
+                "D], [Remarks], [Input_Item_Detail_ID], [Quantity], [Stamp_UserID], [Stamp_DateTi"& _ 
+                "me], [Upload_DateTime], [RecordStatus_ID]) VALUES (@Co_ID, @Formula_ID, @Formula"& _ 
+                "_Detail_ID, @Remarks, @Input_Item_Detail_ID, @Quantity, @Stamp_UserID, @Stamp_Da"& _ 
+                "teTime, @Upload_DateTime, @RecordStatus_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_"& _ 
+                "Detail_ID, Remarks, Input_Item_Detail_ID, Quantity, Stamp_UserID, Stamp_DateTime"& _ 
+                ", Upload_DateTime, RecordStatus_ID FROM Production_Formula_Detail WHERE (Co_ID ="& _ 
+                " @Co_ID) AND (Formula_Detail_ID = @Formula_Detail_ID) AND (Formula_ID = @Formula"& _ 
+                "_ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Remarks", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Remarks", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Input_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Input_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Quantity", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Quantity", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7386,24 +7436,26 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Production_Formula_Detail] SET [Co_ID] = @Co_ID, [Formula_ID] = @Formula_"& _ 
                 "ID, [Formula_Detail_ID] = @Formula_Detail_ID, [Remarks] = @Remarks, [Input_Item_"& _ 
-                "ID] = @Input_Item_ID, [Stamp_UserID] = @Stamp_UserID, [Stamp_DateTime] = @Stamp_"& _ 
-                "DateTime, [Upload_DateTime] = @Upload_DateTime, [RecordStatus_ID] = @RecordStatu"& _ 
-                "s_ID WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula_ID] = @Original_Formula_ID"& _ 
-                ") AND ([Formula_Detail_ID] = @Original_Formula_Detail_ID) AND ([Remarks] = @Orig"& _ 
-                "inal_Remarks) AND ([Input_Item_ID] = @Original_Input_Item_ID) AND ([Stamp_UserID"& _ 
-                "] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AN"& _ 
-                "D ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateT"& _ 
-                "ime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStat"& _ 
-                "us_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_ID, S"& _ 
-                "tamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID FROM Production_Fo"& _ 
-                "rmula_Detail WHERE (Co_ID = @Co_ID) AND (Formula_Detail_ID = @Formula_Detail_ID)"& _ 
-                " AND (Formula_ID = @Formula_ID)"
+                "Detail_ID] = @Input_Item_Detail_ID, [Quantity] = @Quantity, [Stamp_UserID] = @St"& _ 
+                "amp_UserID, [Stamp_DateTime] = @Stamp_DateTime, [Upload_DateTime] = @Upload_Date"& _ 
+                "Time, [RecordStatus_ID] = @RecordStatus_ID WHERE (([Co_ID] = @Original_Co_ID) AN"& _ 
+                "D ([Formula_ID] = @Original_Formula_ID) AND ([Formula_Detail_ID] = @Original_For"& _ 
+                "mula_Detail_ID) AND ([Remarks] = @Original_Remarks) AND ([Input_Item_Detail_ID] "& _ 
+                "= @Original_Input_Item_Detail_ID) AND ([Quantity] = @Original_Quantity) AND ([St"& _ 
+                "amp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_Da"& _ 
+                "teTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Up"& _ 
+                "load_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_"& _ 
+                "RecordStatus_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_"& _ 
+                "Item_Detail_ID, Quantity, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordS"& _ 
+                "tatus_ID FROM Production_Formula_Detail WHERE (Co_ID = @Co_ID) AND (Formula_Deta"& _ 
+                "il_ID = @Formula_Detail_ID) AND (Formula_ID = @Formula_ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Formula_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Remarks", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Remarks", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Input_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Input_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_Detail_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Quantity", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Quantity", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7412,7 +7464,8 @@ Namespace QuickProductionDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Formula_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Remarks", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Remarks", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Input_Item_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Input_Item_Detail_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Input_Item_Detail_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Quantity", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "Quantity", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -7428,13 +7481,21 @@ Namespace QuickProductionDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT     Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_ID, Stamp_Us"& _ 
-                "erID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Production_"& _ 
-                "Formula_Detail"
+            Me._commandCollection(0).CommandText = "SELECT     Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_Detail_ID, Q"& _ 
+                "uantity, Stamp_UserID, Stamp_DateTime, Upload_DateTime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      "& _ 
+                "RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Production_Formula_Detail"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Co_ID, Formula_Detail_ID, Formula_ID, Input_Item_Detail_ID, Quantity, Reco"& _ 
+                "rdStatus_ID, Remarks, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Product"& _ 
+                "ion_Formula_Detail WHERE (Co_ID = @CoID) AND (Formula_ID = @FormulaID)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormulaID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Formula_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7442,6 +7503,18 @@ Namespace QuickProductionDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetAll() As QuickProductionDataSet.FormulaDetailDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickProductionDataSet.FormulaDetailDataTable = New QuickProductionDataSet.FormulaDetailDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDFormulaID(ByVal CoID As Integer, ByVal FormulaID As Integer) As QuickProductionDataSet.FormulaDetailDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(FormulaID,Integer)
             Dim dataTable As QuickProductionDataSet.FormulaDetailDataTable = New QuickProductionDataSet.FormulaDetailDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -7474,7 +7547,7 @@ Namespace QuickProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_Formula_ID As Integer, ByVal Original_Formula_Detail_ID As Integer, ByVal Original_Remarks As String, ByVal Original_Input_Item_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_Formula_ID As Integer, ByVal Original_Formula_Detail_ID As Integer, ByVal Original_Remarks As String, ByVal Original_Input_Item_Detail_ID As Integer, ByVal Original_Quantity As Decimal, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Co_ID,Short)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Formula_ID,Integer)
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Formula_Detail_ID,Integer)
@@ -7483,17 +7556,18 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Remarks,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Input_Item_ID,Integer)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Stamp_UserID,Integer)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_DateTime,Date)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Input_Item_Detail_ID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Quantity,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_UserID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Upload_DateTime.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Upload_DateTime.Value,Date)
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_RecordStatus_ID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_RecordStatus_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7512,7 +7586,7 @@ Namespace QuickProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Detail_ID As Integer, ByVal Remarks As String, ByVal Input_Item_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal Formula_ID As Integer, ByVal Formula_Detail_ID As Integer, ByVal Remarks As String, ByVal Input_Item_Detail_ID As Integer, ByVal Quantity As Decimal, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Co_ID,Short)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Formula_ID,Integer)
             Me.Adapter.InsertCommand.Parameters(2).Value = CType(Formula_Detail_ID,Integer)
@@ -7521,15 +7595,16 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(Remarks,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Input_Item_ID,Integer)
-            Me.Adapter.InsertCommand.Parameters(5).Value = CType(Stamp_UserID,Integer)
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Stamp_DateTime,Date)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Input_Item_Detail_ID,Integer)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(Quantity,Decimal)
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Stamp_UserID,Integer)
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(Stamp_DateTime,Date)
             If (Upload_DateTime.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Upload_DateTime.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Upload_DateTime.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.InsertCommand.Parameters(8).Value = CType(RecordStatus_ID,Integer)
+            Me.Adapter.InsertCommand.Parameters(9).Value = CType(RecordStatus_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7553,7 +7628,8 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Formula_ID As Integer,  _
                     ByVal Formula_Detail_ID As Integer,  _
                     ByVal Remarks As String,  _
-                    ByVal Input_Item_ID As Integer,  _
+                    ByVal Input_Item_Detail_ID As Integer,  _
+                    ByVal Quantity As Decimal,  _
                     ByVal Stamp_UserID As Integer,  _
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
@@ -7562,7 +7638,8 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Original_Formula_ID As Integer,  _
                     ByVal Original_Formula_Detail_ID As Integer,  _
                     ByVal Original_Remarks As String,  _
-                    ByVal Original_Input_Item_ID As Integer,  _
+                    ByVal Original_Input_Item_Detail_ID As Integer,  _
+                    ByVal Original_Quantity As Decimal,  _
                     ByVal Original_Stamp_UserID As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
@@ -7575,34 +7652,36 @@ Namespace QuickProductionDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Remarks,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Input_Item_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Stamp_UserID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Stamp_DateTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Input_Item_Detail_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Quantity,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Stamp_UserID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Stamp_DateTime,Date)
             If (Upload_DateTime.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Upload_DateTime.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Upload_DateTime.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(RecordStatus_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Co_ID,Short)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Formula_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Formula_Detail_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(RecordStatus_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Formula_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Formula_Detail_ID,Integer)
             If (Original_Remarks Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Remarks")
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Remarks,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Remarks,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Input_Item_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Stamp_UserID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_DateTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Input_Item_Detail_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Quantity,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Stamp_UserID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Upload_DateTime.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Upload_DateTime.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_RecordStatus_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_RecordStatus_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7621,8 +7700,25 @@ Namespace QuickProductionDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Remarks As String, ByVal Input_Item_ID As Integer, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer, ByVal Original_Co_ID As Short, ByVal Original_Formula_ID As Integer, ByVal Original_Formula_Detail_ID As Integer, ByVal Original_Remarks As String, ByVal Original_Input_Item_ID As Integer, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer) As Integer
-            Return Me.Update(Original_Co_ID, Original_Formula_ID, Original_Formula_Detail_ID, Remarks, Input_Item_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_Formula_ID, Original_Formula_Detail_ID, Original_Remarks, Original_Input_Item_ID, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
+        Public Overloads Overridable Function Update( _
+                    ByVal Remarks As String,  _
+                    ByVal Input_Item_Detail_ID As Integer,  _
+                    ByVal Quantity As Decimal,  _
+                    ByVal Stamp_UserID As Integer,  _
+                    ByVal Stamp_DateTime As Date,  _
+                    ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal RecordStatus_ID As Integer,  _
+                    ByVal Original_Co_ID As Short,  _
+                    ByVal Original_Formula_ID As Integer,  _
+                    ByVal Original_Formula_Detail_ID As Integer,  _
+                    ByVal Original_Remarks As String,  _
+                    ByVal Original_Input_Item_Detail_ID As Integer,  _
+                    ByVal Original_Quantity As Decimal,  _
+                    ByVal Original_Stamp_UserID As Integer,  _
+                    ByVal Original_Stamp_DateTime As Date,  _
+                    ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RecordStatus_ID As Integer) As Integer
+            Return Me.Update(Original_Co_ID, Original_Formula_ID, Original_Formula_Detail_ID, Remarks, Input_Item_Detail_ID, Quantity, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_Formula_ID, Original_Formula_Detail_ID, Original_Remarks, Original_Input_Item_Detail_ID, Original_Quantity, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
         End Function
     End Class
     
@@ -7814,12 +7910,25 @@ Namespace QuickProductionDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_Da"& _ 
                 "teTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Production_Order"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT MAX(Order_No) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Production_Order"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @CoID AND Order_No LI"& _ 
+                "KE @OrderNo"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OrderNo", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT CONVERT(INT, ISNULL(MAX(Order_ID), 0) + 1) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Production_Order"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "Co_ID = @CoID"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8044,6 +8153,63 @@ Namespace QuickProductionDataSetTableAdapters
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
                     ByVal Original_RecordStatus_ID As Integer) As Integer
             Return Me.Update(Original_Co_ID, Original_Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_Order_ID, Original_Order_No, Original_Order_Date, Original_Remarks, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetMaxOrderNoByCoID(ByVal CoID As Integer, ByVal OrderNo As String) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            If (OrderNo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("OrderNo")
+            Else
+                command.Parameters(1).Value = CType(OrderNo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetNewOrderIDByCoID(ByVal CoID As Integer) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
         End Function
     End Class
     

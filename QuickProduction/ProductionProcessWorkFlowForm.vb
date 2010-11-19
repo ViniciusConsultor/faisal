@@ -68,7 +68,7 @@ Public Class ProcessWorkFlowForm
       PopulateProcessWorkFlow()
 
       Me.SetGridLayout()
-      Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID)
+      Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID).Value
       Me.AddRow()
       Me.PopulateComboinGrid()
 
@@ -355,7 +355,7 @@ Public Class ProcessWorkFlowForm
 
       If SaveRecord() Then
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveSuccessfulMessage)
-        Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID)
+        Me._ProcessWorkFlowDetailID = Me._ProcessWorkFlowTableAdapter.IsMaxByProcessWorkFlowID(Me.LoginInfoObject.CompanyID).Value
         Me.AddRow()
       Else
         QuickMessageBox.Show(LoginInfoObject, QuickMessageBox.PredefinedMessages.SaveUnSuccessfulMessage)
@@ -367,7 +367,6 @@ Public Class ProcessWorkFlowForm
       Cursor = Cursors.Default
     End Try
   End Sub
-
 
 #End Region
 
