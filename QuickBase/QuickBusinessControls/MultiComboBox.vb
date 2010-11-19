@@ -13,7 +13,7 @@ Public Class MultiComboBox
 #Region "Declarations"
   Private Const COMBOBOX_NAME As String = "QuickUltraComboBox"
   Private ComboBoxCollection As New Generic.List(Of QuickControls.Quick_UltraComboBox)
-  Public Event ValueChanged()
+  Public Event qValueChanged(ByVal sender As Object, ByVal e As EventArgs)
   Dim _DataTable As DataTable
   Dim _MaskForCode As String
   Dim _SeperatorInValue As String
@@ -71,7 +71,7 @@ Public Class MultiComboBox
   ''' <summary>
   ''' It changes the number of combo boxes in this control.
   ''' </summary>
-  Public Sub SetComboBoxes(ByVal NumberOfCombBoxes As Int32)
+  Public Sub qSetComboBoxes(ByVal NumberOfCombBoxes As Int32)
     Try
       For I As Int32 = 1 To NumberOfCombBoxes
         Me.ComboBoxCollection.Add(New QuickControls.Quick_UltraComboBox)
@@ -125,7 +125,7 @@ Public Class MultiComboBox
   ''' <summary>
   ''' This will set number of columns and populate values in combo boxes.
   ''' </summary>
-  Public Sub SetComboBoxesOnDataTable(ByVal _DataTablepara As DataTable, ByVal _MaskForCodepara As String, ByVal _SeperatorInValuepara As String, ByVal _ColumnNameForComboBoxespara As String, ByVal _ColumnNameForReturnValuepara As String)
+  Public Sub qSetComboBoxesOnDataTable(ByVal _DataTablepara As DataTable, ByVal _MaskForCodepara As String, ByVal _SeperatorInValuepara As String, ByVal _ColumnNameForComboBoxespara As String, ByVal _ColumnNameForReturnValuepara As String)
     Try
       Dim _Collection As New Collection
 
@@ -145,7 +145,7 @@ Public Class MultiComboBox
         End With
       Next
 
-      SetComboBoxes(QuickLibrary.Common.CountStringOccurences(_SeperatorInValuepara, _MaskForCodepara) + 1)
+      qSetComboBoxes(QuickLibrary.Common.CountStringOccurences(_SeperatorInValuepara, _MaskForCodepara) + 1)
       Me.ComboBoxCollection(0).DataSource = _Collection
 
     Catch ex As Exception
@@ -216,7 +216,7 @@ Public Class MultiComboBox
         End If
       End If
 
-      RaiseEvent ValueChanged()
+      RaiseEvent qValueChanged(sender, e)
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in Quick_UltraCombo_ValueChanged of MultiCombBox.", ex)

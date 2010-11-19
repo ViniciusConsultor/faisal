@@ -430,6 +430,8 @@ Public Class MDIParent1
             Form = New QuickProduction.DefineProcessForm
           Case QuickLibrary.Entities.FORM_ID_PROCESS_WORKFLOW
             Form = New QuickProduction.ProcessWorkFlowForm
+          Case QuickLibrary.Entities.FORM_ID_PRODUCTION_ORDER
+            Form = New QuickProduction.ProductionOrderForm
           Case QuickLibrary.Entities.FORM_ID_PROCESS_PRODUCTION
             Form = New QuickProduction.ProcessProduction
 

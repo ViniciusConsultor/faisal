@@ -16,6 +16,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +25,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>QuickProduction.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,7 +36,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>QuickProduction.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FarPoint.Win.Spread, Version=4.0.3522.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
@@ -82,10 +87,10 @@
     <Compile Include="ProcessProduction.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductionOrder.Designer.vb">
-      <DependentUpon>ProductionOrder.vb</DependentUpon>
+    <Compile Include="ProductionOrderForm.Designer.vb">
+      <DependentUpon>ProductionOrderForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProductionOrder.vb">
+    <Compile Include="ProductionOrderForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductionProcessForm.Designer.vb">
@@ -113,9 +118,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>ProcessProduction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductionOrder.resx">
+    <EmbeddedResource Include="ProductionOrderForm.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>ProductionOrder.vb</DependentUpon>
+      <DependentUpon>ProductionOrderForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductionProcessForm.resx">
       <SubType>Designer</SubType>

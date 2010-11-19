@@ -76,7 +76,7 @@ Public Class DefineProcessForm
         Me._CurrentDefineProcessDataRow = Me._DefineProcessDataTable(Me.CurrentRecordIndex)
         Me.ClearControls(Me)
 
-        Me.ProcessIDTextBox.Text = Me._CurrentDefineProcessDataRow.Process_ID
+        Me.ProcessIDTextBox.Text = Me._CurrentDefineProcessDataRow.Process_ID.ToString
         Me.ProcessCodeTextBox.Text = Me._CurrentDefineProcessDataRow.Process_Code
         Me.ProcessDescTextBox.Text = Me._CurrentDefineProcessDataRow.Process_Desc
       End If
@@ -87,12 +87,12 @@ Public Class DefineProcessForm
     End Try
   End Function
 
-  Private Function SaveRecord() As Boolean
+  Protected Overrides Function SaveRecord() As Boolean
     Try
       If IsValid() Then
         If Me._CurrentDefineProcessDataRow Is Nothing Then
           Me._CurrentDefineProcessDataRow = Me._DefineProcessDataTable.NewProductionProcessRow
-          Me.ProcessIDTextBox.Text = Me._DefineProcessTableAdapter.GetNewProcessIDByCoID(Me.LoginInfoObject.CompanyID)
+          Me.ProcessIDTextBox.Text = Me._DefineProcessTableAdapter.GetNewProcessIDByCoID(Me.LoginInfoObject.CompanyID).Value.ToString
           Me._CurrentDefineProcessDataRow.RecordStatus_ID = 1
         Else
           If Me._CurrentDefineProcessDataRow.RecordStatus_ID <> Constants.RecordStatuses.Deleted Then
@@ -100,7 +100,7 @@ Public Class DefineProcessForm
           End If
         End If
         Me._CurrentDefineProcessDataRow.Co_ID = Me.LoginInfoObject.CompanyID
-        Me._CurrentDefineProcessDataRow.Process_ID = Me.ProcessIDTextBox.Text
+        Me._CurrentDefineProcessDataRow.Process_ID = Int16.Parse(Me.ProcessIDTextBox.Text)
         Me._CurrentDefineProcessDataRow.Process_Code = Me.ProcessCodeTextBox.Text
         Me._CurrentDefineProcessDataRow.Process_Desc = Me.ProcessDescTextBox.Text
         Me._CurrentDefineProcessDataRow.Stamp_UserID = Convert.ToInt16(Me.LoginInfoObject.UserID)

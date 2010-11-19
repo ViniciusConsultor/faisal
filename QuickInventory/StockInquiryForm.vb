@@ -248,7 +248,7 @@ Public Class StockInquiryForm
       _TextCellLabel.ReadOnly = True
 
       _ItemForComboDataTable = _ItemForComboTA.GetByCoID(Me.LoginInfoObject.CompanyID)
-      Me.ItemComboBox.SetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
+      Me.ItemComboBox.qSetComboBoxesOnDataTable(_ItemForComboDataTable, QuickDALLibrary.DatabaseCache.GetSettingValue(QuickLibrary.Constants.SETTING_ID_Mask_ItemCode), QuickLibrary.Constants.ITEM_LEVELING_SEPERATOR, _ItemForComboDataTable.Item_CodeColumn.ColumnName, _ItemForComboDataTable.Item_IDColumn.ColumnName)
       Me.StockQuickSpread_Sheet1.Columns(0).CellType = _TextCellLabel
       Me.CompanyCheckedListBox1.UltraExpandableGroupBox1.Expanded = False
       Me.CompanyCheckedListBox1.LoadThisAndChildCompanies(Me.LoginInfoObject.CompanyID)
