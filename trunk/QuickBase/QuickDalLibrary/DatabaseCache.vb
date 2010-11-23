@@ -8,7 +8,7 @@ Public Class DatabaseCache
   Private Shared _ItemLeveling As LogicalDataSet.ItemLevelingDataTable
   Private Shared _SettingDataTable As QuickCommonDataSet.SettingDataTable
   Private Shared _SettingTA As New QuickCommonDataSetTableAdapters.SettingTableAdapter
-  Private Shared _ItemSize As QuickInventoryDataSet.Inv_ItemSizeDataTable
+  Private Shared _ItemSize As QuickInventoryDataSet.ItemSizeDataTable
     Public Shared _LoginInfo As New LoginInfo
 
   Shared Function GetItemLeveling() As LogicalDataSet.ItemLevelingDataTable
@@ -91,10 +91,10 @@ Public Class DatabaseCache
     End Try
   End Function
 
-  Public Shared Function GetItemSizes() As QuickInventoryDataSet.Inv_ItemSizeDataTable
+  Public Shared Function GetItemSizes() As QuickInventoryDataSet.ItemSizeDataTable
     Try
       If _ItemSize Is Nothing Then
-        _ItemSize = (New Inv_ItemSizeTableAdapter).GetAll
+        _ItemSize = (New ItemSizeTableAdapter).GetAll
       End If
 
       Return _ItemSize

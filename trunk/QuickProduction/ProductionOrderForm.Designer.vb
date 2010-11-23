@@ -24,6 +24,8 @@ Partial Class ProductionOrderForm
     Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Me.OrderNoLabel = New QuickControls.Quick_Label
     Me.OrderNoTextBox = New QuickControls.Quick_TextBox
     Me.OrderDateCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
@@ -35,19 +37,19 @@ Partial Class ProductionOrderForm
     Me.RemarksTextBox = New QuickControls.Quick_TextBox
     Me.RemarksLabel = New QuickControls.Quick_Label
     Me.SummarySpread = New QuickControls.Quick_Spread
-    Me.Quick_Spread_Sheet1 = New FarPoint.Win.Spread.SheetView
+    Me.SummarySheetView = New FarPoint.Win.Spread.SheetView
     Me.FormulaDetailSpread = New QuickControls.Quick_Spread
-    Me.SheetView1 = New FarPoint.Win.Spread.SheetView
+    Me.FormulaDetailSheetView = New FarPoint.Win.Spread.SheetView
     Me.ProductionOrderSpread = New QuickControls.Quick_Spread
-    Me.SheetView3 = New FarPoint.Win.Spread.SheetView
+    Me.ProductionOrderSheetView = New FarPoint.Win.Spread.SheetView
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.OrderDateCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.SummarySpread, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_Spread_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.SummarySheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.FormulaDetailSpread, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SheetView1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.FormulaDetailSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.ProductionOrderSpread, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SheetView3, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ProductionOrderSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
     'OrderNoLabel
@@ -55,7 +57,7 @@ Partial Class ProductionOrderForm
     Me.OrderNoLabel.AllowClearValue = False
     Me.OrderNoLabel.AutoSize = True
     Me.OrderNoLabel.DefaultValue = ""
-    Me.OrderNoLabel.Location = New System.Drawing.Point(8, 40)
+    Me.OrderNoLabel.Location = New System.Drawing.Point(8, 52)
     Me.OrderNoLabel.Name = "OrderNoLabel"
     Me.OrderNoLabel.Size = New System.Drawing.Size(56, 13)
     Me.OrderNoLabel.TabIndex = 0
@@ -68,7 +70,7 @@ Partial Class ProductionOrderForm
     Me.OrderNoTextBox.IsMandatory = False
     Me.OrderNoTextBox.IsReadonlyForExistingRecord = False
     Me.OrderNoTextBox.IsReadonlyForNewRecord = False
-    Me.OrderNoTextBox.Location = New System.Drawing.Point(84, 36)
+    Me.OrderNoTextBox.Location = New System.Drawing.Point(84, 48)
     Me.OrderNoTextBox.Name = "OrderNoTextBox"
     Me.OrderNoTextBox.PercentNumber = 0
     Me.OrderNoTextBox.ReadOnly = True
@@ -85,9 +87,11 @@ Partial Class ProductionOrderForm
     Me.OrderDateCalendarCombo.DateButtons.Add(DateButton3)
     Me.OrderDateCalendarCombo.DateButtons.Add(DateButton4)
     Me.OrderDateCalendarCombo.DateButtons.Add(DateButton5)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton6)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton7)
     Me.OrderDateCalendarCombo.DefaultValue = New Date(2010, 11, 13, 17, 1, 2, 484)
     Me.OrderDateCalendarCombo.Format = "dd-MM-yy"
-    Me.OrderDateCalendarCombo.Location = New System.Drawing.Point(248, 36)
+    Me.OrderDateCalendarCombo.Location = New System.Drawing.Point(248, 48)
     Me.OrderDateCalendarCombo.Name = "OrderDateCalendarCombo"
     Me.OrderDateCalendarCombo.NonAutoSizeHeight = 21
     Me.OrderDateCalendarCombo.Size = New System.Drawing.Size(121, 21)
@@ -99,7 +103,7 @@ Partial Class ProductionOrderForm
     Me.OrderDateLabel.AllowClearValue = False
     Me.OrderDateLabel.AutoSize = True
     Me.OrderDateLabel.DefaultValue = ""
-    Me.OrderDateLabel.Location = New System.Drawing.Point(192, 40)
+    Me.OrderDateLabel.Location = New System.Drawing.Point(192, 52)
     Me.OrderDateLabel.Name = "OrderDateLabel"
     Me.OrderDateLabel.Size = New System.Drawing.Size(33, 13)
     Me.OrderDateLabel.TabIndex = 3
@@ -107,7 +111,7 @@ Partial Class ProductionOrderForm
     '
     'ItemMultiComboBox
     '
-    Me.ItemMultiComboBox.Location = New System.Drawing.Point(84, 60)
+    Me.ItemMultiComboBox.Location = New System.Drawing.Point(84, 72)
     Me.ItemMultiComboBox.Name = "ItemMultiComboBox"
     Me.ItemMultiComboBox.Size = New System.Drawing.Size(284, 20)
     Me.ItemMultiComboBox.TabIndex = 4
@@ -117,7 +121,7 @@ Partial Class ProductionOrderForm
     Me.ItemLabel.AllowClearValue = False
     Me.ItemLabel.AutoSize = True
     Me.ItemLabel.DefaultValue = ""
-    Me.ItemLabel.Location = New System.Drawing.Point(8, 64)
+    Me.ItemLabel.Location = New System.Drawing.Point(8, 76)
     Me.ItemLabel.Name = "ItemLabel"
     Me.ItemLabel.Size = New System.Drawing.Size(30, 13)
     Me.ItemLabel.TabIndex = 5
@@ -128,7 +132,7 @@ Partial Class ProductionOrderForm
     Me.FormulaDescriptionLabel.AllowClearValue = False
     Me.FormulaDescriptionLabel.AutoSize = True
     Me.FormulaDescriptionLabel.DefaultValue = ""
-    Me.FormulaDescriptionLabel.Location = New System.Drawing.Point(8, 88)
+    Me.FormulaDescriptionLabel.Location = New System.Drawing.Point(8, 100)
     Me.FormulaDescriptionLabel.Name = "FormulaDescriptionLabel"
     Me.FormulaDescriptionLabel.Size = New System.Drawing.Size(63, 13)
     Me.FormulaDescriptionLabel.TabIndex = 6
@@ -143,7 +147,7 @@ Partial Class ProductionOrderForm
     Me.FormulaDescriptionTextBox.IsMandatory = False
     Me.FormulaDescriptionTextBox.IsReadonlyForExistingRecord = False
     Me.FormulaDescriptionTextBox.IsReadonlyForNewRecord = False
-    Me.FormulaDescriptionTextBox.Location = New System.Drawing.Point(84, 84)
+    Me.FormulaDescriptionTextBox.Location = New System.Drawing.Point(84, 96)
     Me.FormulaDescriptionTextBox.Name = "FormulaDescriptionTextBox"
     Me.FormulaDescriptionTextBox.PercentNumber = 0
     Me.FormulaDescriptionTextBox.Size = New System.Drawing.Size(502, 20)
@@ -160,7 +164,7 @@ Partial Class ProductionOrderForm
     Me.RemarksTextBox.IsMandatory = False
     Me.RemarksTextBox.IsReadonlyForExistingRecord = False
     Me.RemarksTextBox.IsReadonlyForNewRecord = False
-    Me.RemarksTextBox.Location = New System.Drawing.Point(84, 108)
+    Me.RemarksTextBox.Location = New System.Drawing.Point(84, 120)
     Me.RemarksTextBox.Name = "RemarksTextBox"
     Me.RemarksTextBox.PercentNumber = 0
     Me.RemarksTextBox.Size = New System.Drawing.Size(502, 20)
@@ -173,7 +177,7 @@ Partial Class ProductionOrderForm
     Me.RemarksLabel.AllowClearValue = False
     Me.RemarksLabel.AutoSize = True
     Me.RemarksLabel.DefaultValue = ""
-    Me.RemarksLabel.Location = New System.Drawing.Point(8, 112)
+    Me.RemarksLabel.Location = New System.Drawing.Point(8, 124)
     Me.RemarksLabel.Name = "RemarksLabel"
     Me.RemarksLabel.Size = New System.Drawing.Size(52, 13)
     Me.RemarksLabel.TabIndex = 8
@@ -188,22 +192,22 @@ Partial Class ProductionOrderForm
     Me.SummarySpread.EditModePermanent = True
     Me.SummarySpread.EditModeReplace = True
     Me.SummarySpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.SummarySpread.Location = New System.Drawing.Point(4, 132)
+    Me.SummarySpread.Location = New System.Drawing.Point(4, 144)
     Me.SummarySpread.Name = "SummarySpread"
-    Me.SummarySpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.Quick_Spread_Sheet1})
+    Me.SummarySpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SummarySheetView})
     Me.SummarySpread.Size = New System.Drawing.Size(584, 64)
     Me.SummarySpread.TabIndex = 10
     Me.SummarySpread.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
     '
-    'Quick_Spread_Sheet1
+    'SummarySheetView
     '
-    Me.Quick_Spread_Sheet1.Reset()
-    Me.Quick_Spread_Sheet1.SheetName = "Sheet1"
+    Me.SummarySheetView.Reset()
+    Me.SummarySheetView.SheetName = "Sheet1"
     'Formulas and custom names must be loaded with R1C1 reference style
-    Me.Quick_Spread_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
-    Me.Quick_Spread_Sheet1.ColumnHeader.Visible = False
-    Me.Quick_Spread_Sheet1.RowHeader.Visible = False
-    Me.Quick_Spread_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
+    Me.SummarySheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
+    Me.SummarySheetView.ColumnHeader.Visible = False
+    Me.SummarySheetView.RowHeader.Visible = False
+    Me.SummarySheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
     '
     'FormulaDetailSpread
     '
@@ -214,16 +218,16 @@ Partial Class ProductionOrderForm
     Me.FormulaDetailSpread.AutoNewRow = True
     Me.FormulaDetailSpread.EditModePermanent = True
     Me.FormulaDetailSpread.EditModeReplace = True
-    Me.FormulaDetailSpread.Location = New System.Drawing.Point(4, 248)
+    Me.FormulaDetailSpread.Location = New System.Drawing.Point(4, 260)
     Me.FormulaDetailSpread.Name = "FormulaDetailSpread"
-    Me.FormulaDetailSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SheetView1})
-    Me.FormulaDetailSpread.Size = New System.Drawing.Size(584, 146)
+    Me.FormulaDetailSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.FormulaDetailSheetView})
+    Me.FormulaDetailSpread.Size = New System.Drawing.Size(584, 112)
     Me.FormulaDetailSpread.TabIndex = 11
     '
-    'SheetView1
+    'FormulaDetailSheetView
     '
-    Me.SheetView1.Reset()
-    Me.SheetView1.SheetName = "Sheet1"
+    Me.FormulaDetailSheetView.Reset()
+    Me.FormulaDetailSheetView.SheetName = "Sheet1"
     '
     'ProductionOrderSpread
     '
@@ -234,23 +238,23 @@ Partial Class ProductionOrderForm
     Me.ProductionOrderSpread.EditModePermanent = True
     Me.ProductionOrderSpread.EditModeReplace = True
     Me.ProductionOrderSpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.ProductionOrderSpread.Location = New System.Drawing.Point(3, 200)
+    Me.ProductionOrderSpread.Location = New System.Drawing.Point(3, 212)
     Me.ProductionOrderSpread.Name = "ProductionOrderSpread"
-    Me.ProductionOrderSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SheetView3})
+    Me.ProductionOrderSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ProductionOrderSheetView})
     Me.ProductionOrderSpread.Size = New System.Drawing.Size(584, 44)
     Me.ProductionOrderSpread.TabIndex = 12
     Me.ProductionOrderSpread.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
     '
-    'SheetView3
+    'ProductionOrderSheetView
     '
-    Me.SheetView3.Reset()
-    Me.SheetView3.SheetName = "Sheet1"
+    Me.ProductionOrderSheetView.Reset()
+    Me.ProductionOrderSheetView.SheetName = "Sheet1"
     'Formulas and custom names must be loaded with R1C1 reference style
-    Me.SheetView3.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
-    Me.SheetView3.RowHeader.Visible = False
-    Me.SheetView3.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
+    Me.ProductionOrderSheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
+    Me.ProductionOrderSheetView.RowHeader.Visible = False
+    Me.ProductionOrderSheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
     '
-    'ProductionOrder
+    'ProductionOrderForm
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -268,7 +272,7 @@ Partial Class ProductionOrderForm
     Me.Controls.Add(Me.OrderDateCalendarCombo)
     Me.Controls.Add(Me.OrderNoTextBox)
     Me.Controls.Add(Me.OrderNoLabel)
-    Me.Name = "ProductionOrder"
+    Me.Name = "ProductionOrderForm"
     Me.Text = "Production Order"
     Me.Controls.SetChildIndex(Me.OrderNoLabel, 0)
     Me.Controls.SetChildIndex(Me.OrderNoTextBox, 0)
@@ -286,11 +290,11 @@ Partial Class ProductionOrderForm
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.OrderDateCalendarCombo, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.SummarySpread, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_Spread_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.SummarySheetView, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.FormulaDetailSpread, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SheetView1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.FormulaDetailSheetView, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.ProductionOrderSpread, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SheetView3, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ProductionOrderSheetView, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
@@ -306,9 +310,9 @@ Partial Class ProductionOrderForm
   Friend WithEvents RemarksTextBox As QuickControls.Quick_TextBox
   Friend WithEvents RemarksLabel As QuickControls.Quick_Label
   Friend WithEvents SummarySpread As QuickControls.Quick_Spread
-  Friend WithEvents Quick_Spread_Sheet1 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents SummarySheetView As FarPoint.Win.Spread.SheetView
   Friend WithEvents FormulaDetailSpread As QuickControls.Quick_Spread
-  Friend WithEvents SheetView1 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents FormulaDetailSheetView As FarPoint.Win.Spread.SheetView
   Friend WithEvents ProductionOrderSpread As QuickControls.Quick_Spread
-  Friend WithEvents SheetView3 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents ProductionOrderSheetView As FarPoint.Win.Spread.SheetView
 End Class

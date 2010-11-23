@@ -57,3 +57,4 @@ IF NOT EXISTS (SELECT * FROM Base_Setting WHERE Setting_ID = 'SettingID')
 		, 'Value', 0, '####-##-##'
 		, 'String', NULL, NULL
 		, NULL, 1)
+		

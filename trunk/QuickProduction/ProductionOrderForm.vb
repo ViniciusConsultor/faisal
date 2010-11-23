@@ -21,11 +21,18 @@ Public Class ProductionOrderForm
   Dim _OrderDetailTA As New QuickProductionDataSetTableAdapters.OrderDetailTableAdapter
   Dim _FormulaTA As New FormulaTableAdapter
   Dim _FormulaDetailTA As New FormulaDetailTableAdapter
+  Dim _ItemTA As New QuickInventoryDataSetTableAdapters.Invs_ItemTableAdapter
+  Dim _ItemSizeTA As New QuickInventoryDataSetTableAdapters.ItemSizeTableAdapter
+  Dim _ItemDetailTA As New QuickInventoryDataSetTableAdapters.ItemDetailTableAdapter
 
   Dim _OrderTable As New QuickProductionDataSet.OrderDataTable
   Dim _OrderDetailTable As New QuickProductionDataSet.OrderDetailDataTable
   Dim _FormulaTable As New FormulaDataTable
   Dim _FormulaDetailTable As New FormulaDetailDataTable
+  Dim _FormulaDetailToDisplay As New FormulaDetailDataTable
+  Dim _ItemTable As QuickInventoryDataSet.Invs_ItemDataTable
+  Dim _ItemSizeTable As QuickInventoryDataSet.ItemSizeDataTable
+  Dim _ItemDetailTable As New QuickInventoryDataSet.ItemDetailDataTable
 
   Dim _OrderRow As QuickProductionDataSet.OrderRow
 
@@ -81,27 +88,78 @@ Public Class ProductionOrderForm
   ''' </summary>
   Protected Overrides Function SaveRecord() As Boolean
     Try
+      Dim _OrderDetailRow As OrderDetailRow
+
+      Me.ProductionOrderSpread.EditMode = False
+      Me.ProductionOrderSheetView.SetActiveCell(0, 0)
+
       If Me.CurrentRecordDataRow Is Nothing Then
         _OrderTable = New QuickProductionDataSet.OrderDataTable
         _OrderRow = _OrderTable.NewOrderRow
         _OrderRow.Co_ID = Me.LoginInfoObject.CompanyID
-        _OrderRow.Order_ID = _OrderTA.GetNewOrderIDByCoID(Me.LoginInfoObject.CompanyID).value
+        _OrderRow.Order_ID = _OrderTA.GetNewOrderIDByCoID(Me.LoginInfoObject.CompanyID).Value
         _OrderRow.Order_No = NewOrderNumber()
         _OrderRow.RecordStatus_ID = Constants.RecordStatuses.Inserted
-        _OrderRow.SetUpload_DateTimeNull()  'It should always be nothing when inserting records.
+        _OrderRow.SetUpload_DateTimeNull()  'It should always be null when inserting records.
 
-        _OrderTable.Rows.Add(_OrderRow)
-        Me.CurrentRecordDataRow = _OrderRow
-
-        'Set Order Detail properties
-        Dim _OrderDetailRow As QuickProductionDataSet.OrderDetailRow = _OrderDetailTable.NewOrderDetailRow
-        _OrderDetailRow.Co_ID = Me.LoginInfoObject.CompanyID
-        '_OrderDetailRow.Formula_ID
-        '_OrderDetailRow.Item_Detail_ID = 
-
+        _OrderDetailTable = New OrderDetailDataTable
       Else
         _OrderRow.RecordStatus_ID = Constants.RecordStatuses.Updated
       End If
+
+      For I As Int32 = 0 To _ItemSizeTable.Count - 1
+        '_ItemDetailTable = _ItemDetailTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(I).ItemSize_ID)
+        'If _ItemDetailTable.Rows.Count > 0 Then
+        'Get item detail id for selected item and size.
+        _ItemDetailTable = _ItemDetailTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(I).ItemSize_ID)
+        If _ItemDetailTable.Rows.Count = 0 Then
+          If (Me.ProductionOrderSheetView.GetText(0, I) <> String.Empty AndAlso Me.ProductionOrderSheetView.GetText(0, I) <> "0") Then
+            'This condition should be true only if it is new entry and size doesn't exist for which user given quantity.
+            QuickMessageBox.Show(Me.LoginInfoObject, "Size " & _ItemSizeTable(I).ItemSize_Desc & " is not defined for selected item", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
+            Return False
+          End If
+        Else
+          _OrderDetailTable.DefaultView.RowFilter = _OrderDetailTable.Item_Detail_IDColumn.ColumnName & "=" & _ItemDetailTable(0).Item_Detail_ID.ToString
+          If _OrderDetailTable.DefaultView.Count > 0 Then
+            'Updating record
+            _OrderDetailRow = DirectCast(_OrderDetailTable.DefaultView(0).Row, OrderDetailRow)
+            _OrderDetailRow.RecordStatus_ID = Constants.RecordStatuses.Updated
+          Else
+            'Inserting record
+            If Me.ProductionOrderSheetView.GetText(0, I) = String.Empty OrElse Me.ProductionOrderSheetView.GetText(0, I) = "0" Then
+              'When new record and quantity is 0 then don't create record
+              _OrderDetailRow = Nothing
+            Else
+              _OrderDetailRow = _OrderDetailTable.NewOrderDetailRow
+              With _OrderDetailRow
+                .Order_Detail_ID = -(I + 1)
+                .Co_ID = Me.LoginInfoObject.CompanyID
+                .Order_ID = _OrderRow.Order_ID
+                .RecordStatus_ID = Constants.RecordStatuses.Inserted
+              End With
+            End If
+          End If
+
+          If _OrderDetailRow IsNot Nothing Then    'It is nothing when quantity is 0 for new record.
+            'Get the formula for selected item and size
+            _FormulaTable = _FormulaTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(I).ItemSize_ID)
+            If _FormulaTable.Rows.Count = 0 Then
+              QuickMessageBox.Show(Me.LoginInfoObject, "Production formula is not found for this item and size " & _ItemSizeTable(I).ItemSize_Desc, MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
+              Return False
+            End If
+
+            'Setting common properties for insert and update
+            _OrderDetailRow.Formula_ID = _FormulaTable(0).Formula_ID
+            _OrderDetailRow.Item_Detail_ID = _ItemDetailTable(0).Item_Detail_ID
+            _OrderDetailRow.Quantity = 0
+            Decimal.TryParse(Me.ProductionOrderSheetView.GetText(0, I), _OrderDetailRow.Quantity)
+            _OrderDetailRow.Stamp_DateTime = Date.UtcNow
+            _OrderDetailRow.Stamp_UserID = Me.LoginInfoObject.UserID
+
+            If _OrderDetailRow.RowState = DataRowState.Detached Then _OrderDetailTable.Rows.Add(_OrderDetailRow)
+          End If
+        End If
+      Next I
 
       'Set common values for modify and insert
       _OrderRow.Order_Date = Convert.ToDateTime(Me.OrderDateCalendarCombo.Value).ToUniversalTime
@@ -109,10 +167,17 @@ Public Class ProductionOrderForm
       _OrderRow.Stamp_DateTime = Date.UtcNow
       _OrderRow.Stamp_UserID = Me.LoginInfoObject.UserID
 
-
+      If _OrderRow.RowState = DataRowState.Detached Then _OrderTable.Rows.Add(_OrderRow)
 
       'Save data in database
       _OrderTA.Update(_OrderRow)
+      For I As Int32 = 0 To _OrderDetailTable.Rows.Count - 1
+        If _OrderDetailTable(I).Order_Detail_ID < 0 Then
+          _OrderDetailTable(I).Order_Detail_ID = _OrderDetailTA.GetNewOrderDetailIDByCoIDOrderID(Me.LoginInfoObject.CompanyID, _OrderRow.Order_ID).Value
+        End If
+        _OrderDetailTA.Update(_OrderDetailTable(I))
+      Next I
+      Me.CurrentRecordDataRow = _OrderRow
       Me.OrderNoTextBox.Text = _OrderRow.Order_No
 
       Return True
@@ -142,14 +207,180 @@ Public Class ProductionOrderForm
     End Try
   End Function
 
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Move to first record load it and show it on the form.
+  ''' </summary>
+  Protected Overrides Sub MoveFirstButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      _OrderTable = _OrderTA.GetFirstByCoID(Me.LoginInfoObject.CompanyID)
+      If _OrderTable.Rows.Count > 0 Then
+        _OrderRow = _OrderTable(0)
+        Me.CurrentRecordDataRow = _OrderRow
+
+        MyBase.MoveFirstButtonClick(sender, e)
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in MoveFirstButtonClick of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Moves to last record, load it and show it on the form.
+  ''' </summary>
+  Protected Overrides Sub MoveLastButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      _OrderTable = _OrderTA.GetLastByCoID(Me.LoginInfoObject.CompanyID)
+      If _OrderTable.Rows.Count > 0 Then
+        _OrderRow = _OrderTable(0)
+        Me.CurrentRecordDataRow = _OrderRow
+
+        MyBase.MoveLastButtonClick(sender, e)
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in MoveLastButtonClick of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Moves to next record, load it and show it on the form.
+  ''' </summary>
+  Protected Overrides Sub MoveNextButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      If Me.CurrentRecordDataRow IsNot Nothing Then
+        _OrderTable = _OrderTA.GetNextByCoIDOrderID(Me.LoginInfoObject.CompanyID, _OrderRow.Order_ID)
+      Else
+        _OrderTable = _OrderTA.GetNextByCoIDOrderID(Me.LoginInfoObject.CompanyID, 0)
+      End If
+
+      If _OrderTable.Rows.Count > 0 Then
+        _OrderRow = _OrderTable(0)
+        Me.CurrentRecordDataRow = _OrderRow
+
+        MyBase.MoveNextButtonClick(sender, e)
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in MoveNextButtonClick of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Moves to previous record, load it and show it on the form.
+  ''' </summary>
+  Protected Overrides Sub MovePreviousButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      If Me.CurrentRecordDataRow IsNot Nothing Then
+        _OrderTable = _OrderTA.GetPreviousByCoIDOrderID(Me.LoginInfoObject.CompanyID, _OrderRow.Order_ID)
+      Else
+        _OrderTable = _OrderTA.GetPreviousByCoIDOrderID(Me.LoginInfoObject.CompanyID, 0)
+      End If
+
+      If _OrderTable.Rows.Count > 0 Then
+        _OrderRow = _OrderTable(0)
+        Me.CurrentRecordDataRow = _OrderRow
+
+        MyBase.MovePreviousButtonClick(sender, e)
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in MovePreviousButtonClick of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This method will show the loaded record on form.
+  ''' </summary>
+  Protected Overrides Function ShowRecord() As Boolean
+    Try
+      Me.OrderDateCalendarCombo.Value = _OrderRow.Order_Date
+      Me.RemarksTextBox.Text = _OrderRow.Remarks
+      Me.OrderNoTextBox.Text = _OrderRow.Order_No
+
+      _OrderDetailTable = _OrderDetailTA.GetByCoIDOrderID(Me.LoginInfoObject.CompanyID, _OrderRow.Order_ID)
+      For I As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
+        If I = 0 Then Me.ItemMultiComboBox.Text = _OrderDetailTable(I).Item_Code
+        _OrderDetailTable.DefaultView.RowFilter = _ItemDetailTable.ItemSize_IDColumn.ColumnName & "=" & _ItemSizeTable(I).ItemSize_ID
+        If _OrderDetailTable.DefaultView.Count > 0 Then
+          Me.ProductionOrderSpread.ActiveSheet.Cells(0, I).Value = DirectCast(_OrderDetailTable.DefaultView(0).Row, OrderDetailRow).Quantity
+        Else
+          Me.ProductionOrderSpread.ActiveSheet.Cells(0, I).Value = 0
+        End If
+      Next
+
+      Return MyBase.ShowRecord()
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in Show of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Function
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' It clears the form and make it ready for new entry.
+  ''' </summary>
+  Protected Overrides Sub CancelButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      MyBase.CancelButtonClick(sender, e)
+
+      Me.ProductionOrderSpread.ActiveSheet.RowCount = 1
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in CancelButtonClick of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
 
 #End Region
 
 #Region "Event Methods"
-  Dim _ItemTA As New QuickInventoryDataSetTableAdapters.Invs_ItemTableAdapter
-  Dim _ItemSizeTA As New QuickInventoryDataSetTableAdapters.Inv_ItemSizeTableAdapter
-  Dim _ItemTable As QuickInventoryDataSet.Invs_ItemDataTable
-  Dim _ItemSizeTable As QuickInventoryDataSet.Inv_ItemSizeDataTable
 
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 18-Nov-10
@@ -190,7 +421,6 @@ Public Class ProductionOrderForm
 
 #End Region
 
-
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 19-Nov-10
   '***** Modification History *****
@@ -203,23 +433,105 @@ Public Class ProductionOrderForm
   ''' </summary>
   Private Sub ItemMultiComboBox_qValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ItemMultiComboBox.qValueChanged
     Try
-      Dim _ItemTA As New QuickInventoryDataSetTableAdapters.Invs_ItemTableAdapter
-      Dim _ItemTable As New QuickInventoryDataSet.Invs_ItemDataTable
 
-      _ItemTable = _ItemTA.GetByCoIDItemCode(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text)
-      If _ItemTable.Rows.Count > 0 Then
-        'Item codes are unique so there will be only one item.
-        _FormulaTable = _FormulaTA.GetByCoIDOutputItemID(Me.LoginInfoObject.CompanyID, _ItemTable(0).Item_ID)
-        If _FormulaTable.Rows.Count > 0 Then
-          _FormulaDetailTable = _FormulaDetailTA.GetByCoIDFormulaID(Me.LoginInfoObject.CompanyID, _FormulaTable(0).Formula_ID)
-          Me.FormulaDetailSpread.ActiveSheet.DataSource = _FormulaDetailTable
-        End If
-      End If
+      _FormulaDetailToDisplay = Nothing
+      _FormulaDetailToDisplay = New FormulaDetailDataTable
+
+      _ItemDetailTable = _ItemDetailTA.GetByCoIDItemCode(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text)
+      For id As Int32 = 0 To _ItemDetailTable.Rows.Count - 1
+        _FormulaTable = _FormulaTA.GetByCoIDOutputItemID(Me.LoginInfoObject.CompanyID, _ItemDetailTable(id).Item_Detail_ID)
+        For f As Int32 = 0 To _FormulaTable.Rows.Count - 1
+          LoadFormulaDetails(_FormulaTable(f).Formula_ID)
+        Next f
+      Next id
+
+      SetFormulaDetailGridLayout()
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in ItemMultiComboBox_qValueChanged event method of ProductionOrderForm.", ex)
       Throw _qex
     End Try
   End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Display formula details.
+  ''' </summary>
+  Private Sub LoadFormulaDetails(ByVal _FormulaIDpara As Int32)
+    Try
+      Dim _FormulaDetailRow As FormulaDetailRow
+
+      _FormulaDetailToDisplay.PrimaryKey = Nothing
+
+      _FormulaDetailTable = _FormulaDetailTA.GetByCoIDFormulaID(Me.LoginInfoObject.CompanyID, _FormulaIDpara)
+      For fd As Int32 = 0 To _FormulaDetailTable.Rows.Count - 1
+        _FormulaDetailToDisplay.DefaultView.RowFilter = _FormulaDetailToDisplay.Input_Item_Detail_IDColumn.ColumnName & "=" & _FormulaDetailTable(fd).Input_Item_Detail_ID
+        If _FormulaDetailToDisplay.DefaultView.Count > 0 Then
+          _FormulaDetailToDisplay(0).Quantity += _FormulaDetailTable(0).Quantity
+        Else
+          _FormulaDetailRow = _FormulaDetailToDisplay.NewFormulaDetailRow
+
+          _FormulaDetailRow.Co_ID = _FormulaDetailTable(0).Co_ID
+          _FormulaDetailRow.Formula_Detail_ID = _FormulaDetailTable(0).Formula_Detail_ID
+          _FormulaDetailRow.Formula_ID = _FormulaDetailTable(0).Formula_ID
+          _FormulaDetailRow.Input_Item_Detail_ID = _FormulaDetailTable(0).Input_Item_Detail_ID
+          _FormulaDetailRow.Item_Desc = _FormulaDetailTable(0).Item_Desc
+          _FormulaDetailRow.Quantity = _FormulaDetailTable(0).Quantity
+          _FormulaDetailRow.RecordStatus_ID = _FormulaDetailTable(0).RecordStatus_ID
+          _FormulaDetailRow.Remarks = _FormulaDetailTable(0).Remarks
+          _FormulaDetailRow.Stamp_DateTime = _FormulaDetailTable(0).Stamp_DateTime
+          _FormulaDetailRow.Stamp_UserID = _FormulaDetailTable(0).Stamp_UserID
+
+          _FormulaDetailToDisplay.Rows.Add(_FormulaDetailRow)
+        End If
+      Next fd
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in LoadFormulaDetails of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 20-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Set the layout of the forumula detail grid.
+  ''' </summary>
+  Private Sub SetFormulaDetailGridLayout()
+    Try
+      Me.FormulaDetailSpread.ActiveSheet.DataSource = _FormulaDetailToDisplay
+      For I As Int32 = 0 To _FormulaDetailToDisplay.Columns.Count - 1
+        Select Case I
+          Case _FormulaDetailToDisplay.RemarksColumn.Ordinal
+            _FormulaDetailToDisplay.RemarksColumn.Caption = "Remarks"
+          Case _FormulaDetailToDisplay.Item_DescColumn.Ordinal
+            _FormulaDetailToDisplay.Columns(I).Caption = "Description"
+          Case _FormulaDetailToDisplay.QuantityColumn.Ordinal
+            _FormulaDetailToDisplay.Columns(I).Caption = "Quantity"
+            Me.FormulaDetailSpread.ActiveSheet.Columns(I).CellType = Common.QtyCellType
+          Case Else
+            Me.FormulaDetailSpread.ActiveSheet.Columns(I).Visible = False
+        End Select
+      Next
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in SetFormulaDetailGridLayout of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
+
+
+
 End Class
 
