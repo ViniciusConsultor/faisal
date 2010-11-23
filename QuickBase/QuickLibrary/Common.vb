@@ -132,6 +132,31 @@ Public Class Common
     End Set
   End Property
 
+  Private _SystemDateTime As DateTime
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 21-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Returns current system date & time, it is centralized so that when we want 
+  ''' to change time zone we can change it easily. UTC datetime should be stored.
+  ''' </summary>
+  Public Shared ReadOnly Property SystemDateTime() As DateTime
+    Get
+      Try
+
+        Return Date.Now
+
+      Catch ex As Exception
+        Dim _qex As New QuickException("Exception in SystemDateTime of Common.", ex)
+        Throw _qex
+      End Try
+    End Get
+  End Property
+
 #End Region
 
   Public Shared Sub Wait(ByVal Second As Int32)

@@ -48,7 +48,10 @@ Public Class MultiComboBox
     Set(ByVal value As String)
       Try
 
-        MsgBox("You cannot set value for now")
+        '        MsgBox("You cannot set value for now")
+        'Hard coding the code temporarily
+        Me.ComboBoxCollection(0).Text = value.Substring(0, 2)
+        Me.ComboBoxCollection(1).Text = value.Substring(3, 2)
 
       Catch ex As Exception
         Dim _qex As New QuickExceptionAdvanced("Exception in Text of MultiComboBox.", ex)

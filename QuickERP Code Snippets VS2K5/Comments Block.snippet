@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Comments Block</Title>
+      <Author>QuickERP</Author>
+      <Description>Comments block for enclosing code section</Description>
+      <Shortcut>qcomblk</Shortcut>
+    </Header>
+    <Snippet>
+      <Imports>
+         <Import>
+          <Namespace>System</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>CommentsSectionName</ID>
+          <Type>String</Type>
+          <ToolTip>Replace with the code block logical name.</ToolTip>
+          <Default>Section Name</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB" Kind="method body">
+        <![CDATA['<<<<<<<<<< Start $CommentsSectionName$
+'>>>>>>>>>> End $CommentsSectionName$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
