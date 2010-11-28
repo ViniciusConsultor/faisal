@@ -90,6 +90,7 @@ Public Class Constants
     CustomerAndSupplier
     CustomerCategory
     PurchaseSource
+    Vender
   End Enum
 
   Public Enum MethodResult
@@ -142,6 +143,7 @@ Public Class Constants
     Purchased = 16
     Sold = 17
     PurchaseWarehouse = 18
+    ProductionOrder = 19
   End Enum
 
   Public Enum enuCommuncationTypes As Short
