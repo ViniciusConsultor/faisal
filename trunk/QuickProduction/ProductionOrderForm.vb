@@ -24,6 +24,8 @@ Public Class ProductionOrderForm
   Dim _ItemTA As New QuickInventoryDataSetTableAdapters.Invs_ItemTableAdapter
   Dim _ItemSizeTA As New QuickInventoryDataSetTableAdapters.ItemSizeTableAdapter
   Dim _ItemDetailTA As New QuickInventoryDataSetTableAdapters.ItemDetailTableAdapter
+  Dim _ProcessProductionTA As New ProcessProductionTableAdapter
+  Dim _ProcessProductionDetailTA As New ProcessProductionDetailTableAdapter
 
   Dim _OrderTable As New QuickProductionDataSet.OrderDataTable
   Dim _OrderDetailTable As New QuickProductionDataSet.OrderDetailDataTable
@@ -33,8 +35,12 @@ Public Class ProductionOrderForm
   Dim _ItemTable As QuickInventoryDataSet.Invs_ItemDataTable
   Dim _ItemSizeTable As QuickInventoryDataSet.ItemSizeDataTable
   Dim _ItemDetailTable As New QuickInventoryDataSet.ItemDetailDataTable
+  Dim _ProcessProductionTable As New ProcessProductionDataTable
+  Dim _ProcessProductionDetailTable As New ProcessProductionDetailDataTable
 
   Dim _OrderRow As QuickProductionDataSet.OrderRow
+  Dim _ProcessProductionRow As ProcessProductionRow
+  Dim _ProcessProductionDetailRow As ProcessProductionDetailRow
 
 #End Region
 
@@ -76,6 +82,7 @@ Public Class ProductionOrderForm
     End Try
   End Function
 
+
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 18-Nov-10
   '***** Modification History *****
@@ -106,6 +113,32 @@ Public Class ProductionOrderForm
       Else
         _OrderRow.RecordStatus_ID = Constants.RecordStatuses.Updated
       End If
+
+      _ProcessProductionTable = _ProcessProductionTA.GetByCoIDDocumentTypeIDDocumentID(Me.LoginInfoObject.CompanyID, Constants.enuDocumentType.ProductionOrder, _OrderRow.Order_ID)
+      If _ProcessProductionTable.Rows.Count = 0 Then
+        _ProcessProductionRow = _ProcessProductionTable.NewProcessProductionRow
+
+        With _ProcessProductionRow
+          .Co_ID = Me.LoginInfoObject.CompanyID
+          .Order_ID = _OrderRow.Order_ID
+          .SetOrderBatch_IDNull()
+          .Production_ID = _ProcessProductionTA.GetNewProductionIDByCoID(Me.LoginInfoObject.CompanyID).Value
+          .Production_No = _ProcessProductionTA.GetNewProductionNoByCoID(Me.LoginInfoObject.CompanyID)
+          .RecordStatus_ID = Constants.RecordStatuses.Inserted
+          .Source_Document_ID = _OrderRow.Order_ID
+          .Source_DocumentType_ID = Constants.enuDocumentType.ProductionOrder
+        End With
+      Else
+        _ProcessProductionRow = _ProcessProductionTable(0)
+        _ProcessProductionRow.RecordStatus_ID = Constants.RecordStatuses.Updated
+      End If
+      With _ProcessProductionRow
+        .Production_Date = Convert.ToDateTime(Me.OrderDateCalendarCombo.Value)
+        .Stamp_DateTime = Common.SystemDateTime
+        .Stamp_UserID = Me.LoginInfoObject.UserID
+      End With
+
+      _ProcessProductionDetailTable = _ProcessProductionDetailTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, _ProcessProductionRow.Production_ID)
 
       For I As Int32 = 0 To _ItemSizeTable.Count - 1
         '_ItemDetailTable = _ItemDetailTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(I).ItemSize_ID)
@@ -158,11 +191,44 @@ Public Class ProductionOrderForm
 
             If _OrderDetailRow.RowState = DataRowState.Detached Then _OrderDetailTable.Rows.Add(_OrderDetailRow)
           End If
-        End If
+
+          '<<<<<<<<<< Start Update Process Production Records
+          If _OrderDetailRow IsNot Nothing Then
+            _ProcessProductionDetailTable.DefaultView.RowFilter = _ProcessProductionDetailTable.Item_Detail_IDColumn.ColumnName & "=" & _ItemDetailTable(0).Item_Detail_ID.ToString
+            If _ProcessProductionDetailTable.DefaultView.Count > 0 Then
+              'Updating record
+              _ProcessProductionDetailRow = DirectCast(_ProcessProductionDetailTable.DefaultView(0).Row, ProcessProductionDetailRow)
+              _ProcessProductionDetailRow.RecordStatus_ID = Constants.RecordStatuses.Updated
+            Else
+              'Insert record
+              _ProcessProductionDetailRow = _ProcessProductionDetailTable.NewProcessProductionDetailRow
+
+              With _ProcessProductionDetailRow
+                .Co_ID = Me.LoginInfoObject.CompanyID
+                .SetConsumption_Process_IDNull()
+                .Item_Detail_ID = _ItemDetailTable(0).Item_Detail_ID
+                .Production_Detail_ID = -(I + 1)
+                .Production_ID = _ProcessProductionRow.Production_ID
+                .Production_Process_ID = 2     'There should be a column indication order in process table
+                .RecordStatus_ID = Constants.RecordStatuses.Inserted
+              End With
+            End If
+
+            With _ProcessProductionDetailRow
+              .Quantity = _OrderDetailRow.Quantity
+              .Stamp_DateTime = Common.SystemDateTime
+              .Stamp_UserID = Me.LoginInfoObject.UserID
+            End With
+
+            If _ProcessProductionDetailRow.RowState = DataRowState.Detached Then _ProcessProductionDetailTable.Rows.Add(_ProcessProductionDetailRow)
+          End If
+          '>>>>>>>>>> End Update Process Production Records
+
+          End If
       Next I
 
       'Set common values for modify and insert
-      _OrderRow.Order_Date = Convert.ToDateTime(Me.OrderDateCalendarCombo.Value).ToUniversalTime
+      _OrderRow.Order_Date = Convert.ToDateTime(Me.OrderDateCalendarCombo.Value)
       _OrderRow.Remarks = Me.RemarksTextBox.Text
       _OrderRow.Stamp_DateTime = Date.UtcNow
       _OrderRow.Stamp_UserID = Me.LoginInfoObject.UserID
@@ -171,6 +237,7 @@ Public Class ProductionOrderForm
 
       'Save data in database
       _OrderTA.Update(_OrderRow)
+
       For I As Int32 = 0 To _OrderDetailTable.Rows.Count - 1
         If _OrderDetailTable(I).Order_Detail_ID < 0 Then
           _OrderDetailTable(I).Order_Detail_ID = _OrderDetailTA.GetNewOrderDetailIDByCoIDOrderID(Me.LoginInfoObject.CompanyID, _OrderRow.Order_ID).Value
@@ -179,6 +246,17 @@ Public Class ProductionOrderForm
       Next I
       Me.CurrentRecordDataRow = _OrderRow
       Me.OrderNoTextBox.Text = _OrderRow.Order_No
+
+      '<<<<<<<<<< Start Update Process Production Records
+      If _ProcessProductionRow.RowState = DataRowState.Detached Then _ProcessProductionTable.Rows.Add(_ProcessProductionRow)
+      _ProcessProductionTA.Update(_ProcessProductionRow)
+      For I As Int32 = 0 To _ProcessProductionDetailTable.Rows.Count - 1
+        If _ProcessProductionDetailTable(I).RowState = DataRowState.Added Then
+          _ProcessProductionDetailTable(I).Production_Detail_ID = _ProcessProductionDetailTA.GetNewProductionDetailID(Me.LoginInfoObject.CompanyID, _ProcessProductionRow.Production_ID).Value
+        End If
+        _ProcessProductionDetailTA.Update(_ProcessProductionDetailTable(I))
+      Next
+      '>>>>>>>>>> End Update Process Production Records
 
       Return True
     Catch ex As Exception
@@ -394,13 +472,14 @@ Public Class ProductionOrderForm
   ''' </summary>
   Private Sub ProductionOrder_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
     Try
-      _ItemSizeTable = _ItemSizeTA.GetByCoID(21)
+      _ItemSizeTable = _ItemSizeTA.GetByCoID(Me.LoginInfoObject.CompanyID)
       _ItemTable = _ItemTA.GetByCoID(Me.LoginInfoObject.CompanyID)
 
-      Me.ProductionOrderSpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count
+      Me.ProductionOrderSpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count + 1
       Me.ProductionOrderSpread.ActiveSheet.Rows.Count = 1
+      Me.ProductionOrderSpread.ActiveSheet.Columns(_ItemSizeTable.Count).Locked = True
       Me.ProductionOrderSpread.AutoNewRow = False
-      Me.SummarySpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count
+      Me.SummarySpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count + 1
       Me.SummarySpread.ActiveSheet.RowCount = 3
 
       'Me.FormulaDetailSpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count
@@ -410,7 +489,9 @@ Public Class ProductionOrderForm
         Me.SummarySpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
         'Me.FormulaDetailSpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
       Next
-
+      Me.SummarySpread.ActiveSheet.Columns(_ItemSizeTable.Count).Label = "Total"
+      Me.FormulaDetailSpread.ActiveSheet.ColumnCount = 0
+      Me.FormulaDetailSpread.ActiveSheet.RowCount = 0
       Me.ItemMultiComboBox.qSetComboBoxesOnDataTable(_ItemTable, DatabaseCache.GetSettingValue(Constants.SETTING_ID_Mask_ItemCode), Constants.ITEM_LEVELING_SEPERATOR, _ItemTable.Item_CodeColumn.ColumnName, _ItemTable.Item_IDColumn.ColumnName)
 
     Catch ex As Exception
@@ -446,6 +527,7 @@ Public Class ProductionOrderForm
       Next id
 
       SetFormulaDetailGridLayout()
+      CalculateTotalUpdateFromulaDetail()
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in ItemMultiComboBox_qValueChanged event method of ProductionOrderForm.", ex)
@@ -472,21 +554,25 @@ Public Class ProductionOrderForm
       _FormulaDetailTable = _FormulaDetailTA.GetByCoIDFormulaID(Me.LoginInfoObject.CompanyID, _FormulaIDpara)
       For fd As Int32 = 0 To _FormulaDetailTable.Rows.Count - 1
         _FormulaDetailToDisplay.DefaultView.RowFilter = _FormulaDetailToDisplay.Input_Item_Detail_IDColumn.ColumnName & "=" & _FormulaDetailTable(fd).Input_Item_Detail_ID
+        'For I As Int32 = 0 To _FormulaDetailTable.Rows.Count - 1
+
+        'Next I
+
         If _FormulaDetailToDisplay.DefaultView.Count > 0 Then
-          _FormulaDetailToDisplay(0).Quantity += _FormulaDetailTable(0).Quantity
+          DirectCast(_FormulaDetailToDisplay.DefaultView(0).Row, QuickProductionDataSet.FormulaDetailRow).Quantity += _FormulaDetailTable(fd).Quantity
         Else
           _FormulaDetailRow = _FormulaDetailToDisplay.NewFormulaDetailRow
 
-          _FormulaDetailRow.Co_ID = _FormulaDetailTable(0).Co_ID
-          _FormulaDetailRow.Formula_Detail_ID = _FormulaDetailTable(0).Formula_Detail_ID
-          _FormulaDetailRow.Formula_ID = _FormulaDetailTable(0).Formula_ID
-          _FormulaDetailRow.Input_Item_Detail_ID = _FormulaDetailTable(0).Input_Item_Detail_ID
-          _FormulaDetailRow.Item_Desc = _FormulaDetailTable(0).Item_Desc
-          _FormulaDetailRow.Quantity = _FormulaDetailTable(0).Quantity
-          _FormulaDetailRow.RecordStatus_ID = _FormulaDetailTable(0).RecordStatus_ID
-          _FormulaDetailRow.Remarks = _FormulaDetailTable(0).Remarks
-          _FormulaDetailRow.Stamp_DateTime = _FormulaDetailTable(0).Stamp_DateTime
-          _FormulaDetailRow.Stamp_UserID = _FormulaDetailTable(0).Stamp_UserID
+          _FormulaDetailRow.Co_ID = _FormulaDetailTable(fd).Co_ID
+          _FormulaDetailRow.Formula_Detail_ID = _FormulaDetailTable(fd).Formula_Detail_ID
+          _FormulaDetailRow.Formula_ID = _FormulaDetailTable(fd).Formula_ID
+          _FormulaDetailRow.Input_Item_Detail_ID = _FormulaDetailTable(fd).Input_Item_Detail_ID
+          _FormulaDetailRow.Item_Desc = _FormulaDetailTable(fd).Item_Desc
+          _FormulaDetailRow.Quantity = _FormulaDetailTable(fd).Quantity
+          _FormulaDetailRow.RecordStatus_ID = _FormulaDetailTable(fd).RecordStatus_ID
+          _FormulaDetailRow.Remarks = _FormulaDetailTable(fd).Remarks
+          _FormulaDetailRow.Stamp_DateTime = _FormulaDetailTable(fd).Stamp_DateTime
+          _FormulaDetailRow.Stamp_UserID = _FormulaDetailTable(fd).Stamp_UserID
 
           _FormulaDetailToDisplay.Rows.Add(_FormulaDetailRow)
         End If
@@ -512,6 +598,8 @@ Public Class ProductionOrderForm
     Try
       Me.FormulaDetailSpread.ActiveSheet.DataSource = _FormulaDetailToDisplay
       For I As Int32 = 0 To _FormulaDetailToDisplay.Columns.Count - 1
+        FormulaDetailSheetView.Columns(I).Locked = True
+
         Select Case I
           Case _FormulaDetailToDisplay.RemarksColumn.Ordinal
             _FormulaDetailToDisplay.RemarksColumn.Caption = "Remarks"
@@ -525,12 +613,67 @@ Public Class ProductionOrderForm
         End Select
       Next
 
+      _FormulaDetailToDisplay.AcceptChanges() 'This is to create original row so that calculate total can use it.
+
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in SetFormulaDetailGridLayout of ProductionOrderForm.", ex)
       Throw _qex
     End Try
   End Sub
 
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 27-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This will update total.
+  ''' </summary>
+  Private Sub ProductionOrderSpread_EditModeOff(ByVal sender As Object, ByVal e As System.EventArgs) Handles ProductionOrderSpread.EditModeOff
+    Try
+      CalculateTotalUpdateFromulaDetail()
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in ProductionOrderSpread_EditModeOff event method of ProductionOrderForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    End Try
+  End Sub
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 27-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Calculates total and add to raw material quantity
+  ''' </summary>
+  Private Sub CalculateTotalUpdateFromulaDetail()
+    Try
+      Dim _Quantity As Decimal
+      Dim _TotalQuantity As Decimal
+
+      For I As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
+        _Quantity = 0
+        If Decimal.TryParse(ProductionOrderSheetView.Cells(0, I).Text, _Quantity) Then
+          _TotalQuantity += _Quantity
+        End If
+      Next
+
+      ProductionOrderSheetView.SetText(0, _ItemSizeTable.Rows.Count, _TotalQuantity.ToString)
+
+      For I As Int32 = 0 To _FormulaDetailToDisplay.Rows.Count - 1
+        _FormulaDetailToDisplay(I).Quantity = Convert.ToDecimal(_FormulaDetailToDisplay(I).Item(_FormulaDetailToDisplay.QuantityColumn.ColumnName, DataRowVersion.Original)) * _TotalQuantity    'Use original quantity so that it does not keep on adding on user change.
+      Next
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in CalculateTotalUpdateFromulaDetail of ProductionOrderForm.", ex)
+      Throw _qex
+    End Try
+  End Sub
 
 
 End Class
