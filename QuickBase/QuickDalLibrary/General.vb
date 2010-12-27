@@ -296,7 +296,7 @@ Public Class General
       Dim _MaximumDate As Nullable(Of DateTime)
 
       _MaximumDate = _InventoryFacts.GetMaximumTransactionDate(Convert.ToInt32(General.LoginInfoObject.CompanyID)).Value
-      If _MaximumDate.Value > Now Then
+      If _MaximumDate.Value > Common.SystemDateTime Then
         _LastTransactionDate = _MaximumDate.Value
         Return False
       Else

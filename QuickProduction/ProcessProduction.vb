@@ -85,6 +85,9 @@ Public Class ProcessProduction
     Try
       _ProductionTable = _ProductionTA.GetByCoID(Me.LoginInfoObject.CompanyID)
       Me.ProductionIDComboBox.DataSource = _ProductionTable
+      Me.ProductionIDComboBox.DisplayMember = _ProductionTable.Production_IDColumn.ColumnName
+      Me.ProductionIDComboBox.ValueMember = _ProductionTable.Production_IDColumn.ColumnName
+
       For I As Int32 = 0 To _ProductionTable.Columns.Count - 1
         Select Case I
           Case Me._ProductionTable.Production_IDColumn.Ordinal
@@ -112,6 +115,11 @@ Public Class ProcessProduction
   ''' </summary>
   Protected Overrides Function SaveRecord() As Boolean
     Try
+
+      Me.ProcessProductionQuantitySpread.Update()
+      Me.ProcessProductionQuantitySpread.EditMode = False
+      Me.ProcessProductionQuantitySpread.ActiveSheet.SetActiveCell(0, 0)
+
       If Me.CurrentRecordDataRow Is Nothing Then
         _ProductionRow = _ProductionTable.NewProcessProductionRow
         With _ProductionRow
@@ -165,11 +173,12 @@ Public Class ProcessProduction
       If _ProductionRow.RowState = DataRowState.Detached Then _ProductionTable.Rows.Add(_ProductionRow)
 
       For c As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
-        _ItemDetailTable = _ItemDetailTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(0).ItemSize_ID)
+        _ItemDetailTable = _ItemDetailTA.GetByCoIDItemCodeItemSizeID(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text, _ItemSizeTable(c).ItemSize_ID)
 
         If _ItemDetailTable.Rows.Count = 0 AndAlso Me.ProcessProductionSheetView.GetText(0, c) <> String.Empty AndAlso Me.ProcessProductionSheetView.GetText(0, c) <> "0" Then
           QuickMessageBox.Show(Me.LoginInfoObject, "Item Size " & _ItemSizeTable(c).ItemSize_Desc & "is not defined", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
-        ElseIf _ItemDetailTable.Rows.Count = 0 Then
+          Return False
+        ElseIf _ItemDetailTable.Rows.Count > 0 Then
           _ProductionDetailTable.DefaultView.RowFilter = _ProductionDetailTable.Item_Detail_IDColumn.ColumnName & "=" & _ItemDetailTable(0).Item_Detail_ID.ToString
 
           If _ProductionDetailTable.DefaultView.Count = 0 Then
@@ -191,17 +200,20 @@ Public Class ProcessProduction
             End If
             .Production_Process_ID = Convert.ToInt32(Me.DestinationProcessComboBox.SelectedRow.Cells(_ProcessWorkflowTable.Destination_Process_IDColumn.ColumnName).Value)
             .Item_Detail_ID = _ItemDetailTable(0).Item_Detail_ID
-            .Quantity = 0
-            Decimal.TryParse(Me.ProcessProductionSheetView.GetValue(0, c).ToString, .Quantity)
+            If Me.ProcessProductionSheetView.GetValue(0, c) IsNot Nothing Then
+              .Quantity = Convert.ToDecimal(Me.ProcessProductionSheetView.GetText(0, c))
+            Else
+              .Quantity = 0
+            End If
             .Stamp_DateTime = Common.SystemDateTime
             .Stamp_UserID = Me.LoginInfoObject.UserID
           End With
         End If
-        If _ProductionDetailRow.RowState = DataRowState.Detached Then _ProductionTable.Rows.Add(_ProductionDetailRow)
+        If _ProductionDetailRow.RowState = DataRowState.Detached Then _ProductionDetailTable.Rows.Add(_ProductionDetailRow)
 
       Next c
 
-      _OrderBatchTA.Update(_OrderBatchTable)
+      If _OrderBatchTable IsNot Nothing Then _OrderBatchTA.Update(_OrderBatchTable)
       _ProductionTA.Update(_ProductionTable)
       For I As Int32 = 0 To _ProductionDetailTable.Rows.Count - 1
         If _ProductionDetailTable(I).RowState = DataRowState.Added Then
@@ -211,7 +223,9 @@ Public Class ProcessProduction
       Next
 
       LoadProductionIDs()
-      Return MyBase.SaveRecord()
+
+      Return True
+
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in SaveRecord of ProcessProduction.", ex)

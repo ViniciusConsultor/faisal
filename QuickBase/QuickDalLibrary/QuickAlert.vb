@@ -3,6 +3,7 @@ Imports QuickDAL.QuickERP
 Imports QuickDAL.QuickCommonDataSet
 Imports QuickDAL.QuickCommonDataSetTableAdapters
 Imports QuickLibrary.Constants
+Imports QuickLibrary
 
 Public Class QuickAlert
 
@@ -29,7 +30,7 @@ Public Class QuickAlert
       'Prepare login information to be sent in email.
       If _LoginInfo IsNot Nothing Then
         _LoginInfoString = "Above is body of the email generated, following is the user information" & vbCrLf
-        _LoginInfoString &= vbCrLf & "Email created on " & Now.DayOfWeek.ToString & " " & Now.ToLongDateString & " " & Now.ToLongTimeString
+        _LoginInfoString &= vbCrLf & "Email created on " & Common.systemDateTime.DayOfWeek.ToString & " " & Common.systemDateTime.ToLongDateString & " " & Common.systemDateTime.ToLongTimeString
         _LoginInfoString &= vbCrLf & "User Name is " & _LoginInfo.UserName
         _LoginInfoString &= vbCrLf & "Company user logged in is " & _LoginInfo.CompanyDesc & vbCrLf
         _LoginInfoString &= vbCrLf & "Following is the computer information" & vbCrLf
@@ -57,7 +58,7 @@ Public Class QuickAlert
         If .Alert_Body.Length > _AlertDataTable.Alert_BodyColumn.MaxLength Then
           .Alert_Body = .Alert_Body.Substring(0, _AlertDataTable.Alert_BodyColumn.MaxLength - 1)
         End If
-        .Alert_DateTime = Now
+        .Alert_DateTime = Common.systemDateTime
         Select Case _AlertType
           Case AlertTypes.Email
             Select Case _EmailReceipient
@@ -87,7 +88,7 @@ Public Class QuickAlert
         .Alert_Source = _LoginInfo.UserName & "(" & _LoginInfo.CompanyDesc & ")"
         .Alert_Subject = _Subject
         .Alert_Type = Convert.ToInt16(_AlertType)
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.systemDateTime
         .Stamp_UserID = _LoginInfo.UserID
         .DocumentStatus_ID = DocumentStatuses.Alert_NotSent
         .NoOfTries = 0
@@ -125,7 +126,7 @@ Public Class QuickAlert
           If _AlertDataTable(I).Alert_Type = AlertTypes.Email Then
             Try
               _AlertDataTable(I).NoOfTries += 1S
-              _AlertDataTable(I).Stamp_DateTime = Now
+            _AlertDataTable(I).Stamp_DateTime = Common.systemDateTime
 
               _Message = New System.Net.Mail.MailMessage
               _Message.From = New System.Net.Mail.MailAddress(VENDER_EMAIL_ADDRESS, _AlertDataTable(I).Alert_Source)

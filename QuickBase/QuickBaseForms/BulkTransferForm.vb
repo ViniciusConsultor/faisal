@@ -216,7 +216,7 @@ Public Class BulkTransferForm
           _ItemRow.Party_ID = 0
           _ItemRow.Address_ID = 0
           _ItemRow.Stamp_UserID = LoginInfoObject.UserID
-          _ItemRow.Stamp_DateTime = Now
+          _ItemRow.Stamp_DateTime = Common.SystemDateTime
 
           '<<<<<<<<<< Start New Item table
           _NewItemTable = _NewItemTA.GetByCoIDItemCode(Me.LoginInfoObject.CompanyID, _ItemCode)
@@ -241,7 +241,7 @@ Public Class BulkTransferForm
             .Party_ID = 0
             .Address_ID = 0
             .Stamp_UserID = LoginInfoObject.UserID
-            .Stamp_DateTime = Now
+            .Stamp_DateTime = Common.SystemDateTime
           End With
           '>>>>>>>>>> End New Item table
 
@@ -505,6 +505,7 @@ Public Class BulkTransferForm
       Next r
 
       Me.Quick_UltraProgressBar1.Value = Me.Quick_UltraProgressBar1.Maximum
+      Return Constants.MethodResult.Success
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in SaveRawMaterialAndFormula of BulkTransferForm.", ex)
@@ -561,7 +562,7 @@ Public Class BulkTransferForm
             .Email = spread.ActiveSheet.GetText(I, 9)
             .URL = spread.ActiveSheet.GetText(I, 10)
             .Stamp_UserID = LoginInfoObject.UserID
-            .Stamp_DateTime = Now
+            .Stamp_DateTime = Common.SystemDateTime
           End With
 
           'Update database

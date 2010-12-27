@@ -75,7 +75,7 @@ Public Class StockInquiryForm
       Cursor = Windows.Forms.Cursors.WaitCursor
       Me.MinimumStockLevelSheet.Reset()
       Me.MinimumStockLevelSheet.DataSource = Nothing
-      _StockInquiryTable = _StockInquiryTableAdapter.GetMinimumStockLevelByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0)
+      _StockInquiryTable = _StockInquiryTableAdapter.GetMinimumStockLevelByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0, ReverseSignCheckBox.Checked)
       _StockInquiryTable.Item_Code1Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
       _StockInquiryTable.Item_Code2Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",4,2)"
 
@@ -148,9 +148,6 @@ Public Class StockInquiryForm
           Case _StockInquiryTable.Item_CategoryColumn.ColumnName
             QuickSpreadSheet.Columns(I).Width = QuickLibrary.Constants.ITEM_DESC_CELL_WIDTH
             QuickSpreadSheet.Columns(I).CellType = _TextCellLabel
-            'Case _StockInquiryTable.Item_CodeColumn.ColumnName
-            '  QuickSpreadSheet.Columns(I).Width = QuickLibrary.Constants.ITEM_CODECOMPLETE_CELL_WIDTH
-            '  QuickSpreadSheet.Columns(I).CellType = _TextCellLabel
           Case _StockInquiryTable.Item_Code1Column.ColumnName
             QuickSpreadSheet.Columns(I).Width = QuickLibrary.Constants.ITEM_CODECOMPLETE_CELL_WIDTH
             QuickSpreadSheet.Columns(I).CellType = _TextCellLabel
@@ -191,39 +188,39 @@ Public Class StockInquiryForm
       '<<<<< Set fore color and back color based on quantity >>>>>
       For R As Int32 = 0 To QuickSpreadSheet.RowCount - 1
         For C As Int32 = 0 To _StockInquiryTable.Columns.Count - 1
-          Select Case _StockInquiryTable.Columns(C).ColumnName
-            Case _StockInquiryTable.Qty_Size01Column.ColumnName _
-                , _StockInquiryTable.Qty_Size02Column.ColumnName _
-                , _StockInquiryTable.Qty_Size03Column.ColumnName _
-                , _StockInquiryTable.Qty_Size04Column.ColumnName _
-                , _StockInquiryTable.Qty_Size05Column.ColumnName _
-                , _StockInquiryTable.Qty_Size06Column.ColumnName _
-                , _StockInquiryTable.Qty_Size07Column.ColumnName _
-                , _StockInquiryTable.Qty_Size08Column.ColumnName _
-                , _StockInquiryTable.Qty_Size09Column.ColumnName _
-                , _StockInquiryTable.Qty_Size10Column.ColumnName _
-                , _StockInquiryTable.Qty_Size11Column.ColumnName _
-                , _StockInquiryTable.Qty_TotalColumn.ColumnName
+          'If R = QuickSpreadSheet.RowCount - 1 Then
+          'QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorGrandTotalRow
+          If Convert.ToInt32(QuickSpreadSheet.GetValue(R, _StockInquiryTable.Co_IDColumn.Ordinal)) < 0 Then
+            QuickSpreadSheet.Rows(R).BackColor = QuickLibrary.Constants.BackColorTotalRow
+            QuickSpreadSheet.Rows(R).Border = New FarPoint.Win.LineBorder(Drawing.Color.Black, 1, False, True, False, True)
+            Exit For
+          Else
+            Select Case _StockInquiryTable.Columns(C).ColumnName
+              Case _StockInquiryTable.Qty_Size01Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size02Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size03Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size04Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size05Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size06Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size07Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size08Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size09Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size10Column.ColumnName _
+                  , _StockInquiryTable.Qty_Size11Column.ColumnName _
+                  , _StockInquiryTable.Qty_TotalColumn.ColumnName
 
-              If QuickSpreadSheet.GetValue(R, C) Is Nothing OrElse Convert.ToInt32(QuickSpreadSheet.GetValue(R, C)) = 0 Then
-                QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyZero
-                QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyZero
-              ElseIf Convert.ToInt32(QuickSpreadSheet.GetValue(R, C)) < 0 Then
-                QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyNegative
-                QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyNegative
-              Else
-                QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyPositive
-                QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyPositive
-              End If
-
-          End Select
-
-          If R = QuickSpreadSheet.RowCount - 1 Then
-            'QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorGrandTotalRow
-          ElseIf Convert.ToInt32(QuickSpreadSheet.GetValue(R, _StockInquiryTable.Co_IDColumn.Ordinal)) = 0 Then
-            QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorTotalRow
+                If QuickSpreadSheet.GetValue(R, C) Is Nothing OrElse Convert.ToInt32(QuickSpreadSheet.GetValue(R, C)) = 0 Then
+                  QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyZero
+                  QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyZero
+                ElseIf Convert.ToInt32(QuickSpreadSheet.GetValue(R, C)) < 0 Then
+                  QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyNegative
+                  QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyNegative
+                Else
+                  QuickSpreadSheet.Cells(R, C).ForeColor = QuickLibrary.Constants.ForeColorQtyPositive
+                  QuickSpreadSheet.Cells(R, C).BackColor = QuickLibrary.Constants.BackColorQtyPositive
+                End If
+            End Select
           End If
-
         Next C
       Next R
 
@@ -292,7 +289,7 @@ Public Class StockInquiryForm
     Try
       If TabControl1.SelectedTab Is StockTabPage Then
         ShowStockInformation()
-      ElseIf TabControl1.SelectedTab Is MinimumLevelTabPage Then
+      ElseIf TabControl1.SelectedTab Is MinimumLevelDeviationTabPage Then
         ShowMinimumLevelInformation()
       End If
 
@@ -340,7 +337,7 @@ Public Class StockInquiryForm
         Me.StockQuickSpread_Sheet1.PrintInfo.Preview = True
         Me.StockQuickSpread.PrintSheet(0)
 
-      ElseIf Me.TabControl1.SelectedTab Is Me.MinimumLevelTabPage Then
+      ElseIf Me.TabControl1.SelectedTab Is Me.MinimumLevelDeviationTabPage Then
         Me.MinimumStockLevelSheet.PrintInfo.Preview = True
         Me.MinimumStockLevelQuickSpread.PrintSheet(0)
 
@@ -378,7 +375,7 @@ Public Class StockInquiryForm
         If TabControl1.SelectedTab Is StockTabPage Then
           Me.StockQuickSpread.SaveExcel(_FileName, FarPoint.Excel.ExcelSaveFlags.SaveBothCustomRowAndColumnHeaders)
 
-        ElseIf TabControl1.SelectedTab Is MinimumLevelTabPage Then
+        ElseIf TabControl1.SelectedTab Is MinimumLevelDeviationTabPage Then
           Me.MinimumStockLevelQuickSpread.SaveExcel(_FileName, FarPoint.Excel.ExcelSaveFlags.SaveBothCustomRowAndColumnHeaders)
 
         End If
@@ -391,5 +388,29 @@ Public Class StockInquiryForm
   End Sub
 
 #End Region
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 19-Dec-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This method will recalculate stock.
+  ''' </summary>
+  Private Sub RecalculateStockButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RecalculateStockButton.Click
+    Try
+      Cursor = Windows.Forms.Cursors.WaitCursor
+
+      _StockInquiryTableAdapter.RecalculateItemSummary(0, 0, QuickLibrary.Constants.enuDocumentType.Stock)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in RecalculateStockButton_Click of StockInquiryForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    Finally
+      Cursor = Windows.Forms.Cursors.Default
+    End Try
+  End Sub
 
 End Class

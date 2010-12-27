@@ -113,8 +113,8 @@ Public Class ProcessWorkFlowForm
       _DetailRow.Destination_Process_ID = 0
       _DetailRow.ProcessWorkFlow_Desc = String.Empty
       _DetailRow.Stamp_UserID = Me.LoginInfoObject.CompanyID
-      _DetailRow.Stamp_DateTime = Now.Date
-      _DetailRow.Upload_DateTime = Now.Date
+      _DetailRow.Stamp_DateTime = Common.SystemDateTime
+      _DetailRow.Upload_DateTime = Common.SystemDateTime
       _DetailRow.RecordStatus_ID = 0
       _ProcessWorkFlowDataTable.Rows.Add(_DetailRow)
     Catch ex As Exception
@@ -310,7 +310,7 @@ Public Class ProcessWorkFlowForm
 
             'Common Fields
             .Co_ID = LoginInfoObject.CompanyID
-            .Stamp_DateTime = Now
+            .Stamp_DateTime = Common.SystemDateTime
             .Stamp_UserID = LoginInfoObject.UserID
 
             'Debug.WriteLine(I.ToString & "/" & _ProcessWorkFlowDataTable.Rows.Count.ToString & "=" & .Co_ID.ToString & "-" & .Source_Process_ID.ToString & "-" & .Destination_Process_ID.ToString)

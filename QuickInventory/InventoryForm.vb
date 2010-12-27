@@ -162,7 +162,7 @@ Public Class InventoryForm
         .Payment_Mode = 0
         .Remarks = Me.txtRemarks.Text
         .Inventory_Date = Convert.ToDateTime(uccSaleDate.Value)
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
         .Discount = Me.DiscountTextBox.IntegerNumber
         .SalesTax = Me.SalesTaxTextBox.IntegerNumber
@@ -199,7 +199,7 @@ Public Class InventoryForm
             _InventoryDetailDataRow.Source_Document_Co_ID = Me.CompanyComboBox1.CompanyID
             _InventoryDetailDataRow.Source_Document_No = Cast.ToInt32(Me.SourceDocumentNoTextBox.Text)
             _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
-            _InventoryDetailDataRow.Stamp_DateTime = Now
+            _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
             _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
             If _InventoryDetailDataRow.RowState = DataRowState.Detached Then
               _InventoryDetailDataTable.Rows.Add(_InventoryDetailDataRow)
@@ -338,7 +338,7 @@ Public Class InventoryForm
           .Inventory_Rate_Size12 = 0
           .Inventory_Rate_Size13 = 0
           .Item_ID = 0
-          .Stamp_DateTime = Now
+          .Stamp_DateTime = Common.SystemDateTime
           .Stamp_UserID = 0
 
           _InventoryDetailDataTable.Rows.Add(InventoryDetailDataRow)
@@ -829,7 +829,7 @@ Next
       Me.grdInventory.ShowDeleteRowButton(Me.grdInventory_Sheet1) = True
       '_ItemCodeColumnsCount = DatabaseCache.GetItemLeveling.Rows.Count
       SetGridLayout()
-      uccSaleDate.Value = Now
+      uccSaleDate.Value = Common.SystemDateTime
 
       AddItem()
 

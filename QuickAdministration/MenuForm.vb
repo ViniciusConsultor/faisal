@@ -174,8 +174,8 @@ Public Class MenuSetting
         Me._CurrentMenuDataRow.Menu_Desc = Me.MenuDescriptionTextBox.Text
         Me._CurrentMenuDataRow.Form_ID = CShort(Me.FormCodeComboBox.Value)
         Me._CurrentMenuDataRow.Stamp_UserId = LoginInfoObject.UserID
-        Me._CurrentMenuDataRow.Stamp_DateTime = Now
-        Me._CurrentMenuDataRow.Stamp_DateTime = Now
+        Me._CurrentMenuDataRow.Stamp_DateTime = Common.SystemDateTime
+        Me._CurrentMenuDataRow.Stamp_DateTime = Common.SystemDateTime
 
         If _CurrentMenuDataRow.RowState = DataRowState.Detached Then
           Me._MenuDataTable.Rows.Add(_CurrentMenuDataRow)

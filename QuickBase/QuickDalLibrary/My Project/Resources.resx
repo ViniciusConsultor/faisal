@@ -284,4 +284,10 @@
   <data name="upgrade_02_03_02_34_to_02_03_02_35" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\scripts\upgrade_02_03_02_34_to_02_03_02_35.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="upgrade_02_03_02_35_to_02_03_02_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\scripts\upgrade_02_03_02_35_to_02_03_02_36.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
+  <data name="upgrade_02_03_02_36_to_02_03_02_37" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\scripts\upgrade_02_03_02_36_to_02_03_02_37.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
 </root>

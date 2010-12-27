@@ -161,7 +161,7 @@ Public Class DatabaseVersion
           'Below trim statement was supressing o if it comes at the end of any script
           '_UpgradingScript(I) = _UpgradingScript(I).ToString.Trim(New Char() {Environment.NewLine, "g"c, "o"c, Environment.NewLine})
           _UpgradeCommand.CommandText = _UpgradingScript.Item(I).ToString
-          Debug.WriteLine("Script #" & I.ToString & Environment.NewLine & _UpgradingScript.Item(I).ToString & Environment.NewLine)
+          Debug.WriteLine("Script #" & (I + 1).ToString & Environment.NewLine & _UpgradingScript.Item(I).ToString & Environment.NewLine)
           'MsgBox(_UpgradingScript(I).ToString & I & "of" & _UpgradingScript.Count)
           _UpgradeCommand.ExecuteNonQuery()
         End If
@@ -172,10 +172,10 @@ Public Class DatabaseVersion
       'If _SettingDataTable.Rows.Count > 0 Then
       If _SettingTA.SettingIdExists(SETTING_ID_DbVersion).Value Then
         '_SettingRow = _SettingDataTable(0)
-        _SettingTA.UpdateSettingValue(_UpgradedDbVersion, DatabaseCache._LoginInfo.UserID, Now, 0, 0, SETTING_ID_DbVersion)
+        _SettingTA.UpdateSettingValue(_UpgradedDbVersion, DatabaseCache._LoginInfo.UserID, Common.SystemDateTime, 0, 0, SETTING_ID_DbVersion)
       Else
         '_SettingRow = _SettingDataTable.NewSettingRow
-        _SettingTA.InsertSettingValue(0, 0, SETTING_ID_DbVersion, SETTING_DESC_DbVersion, _UpgradedDbVersion, DatabaseCache._LoginInfo.UserID, Now, SETTING_VALUE_DATATYPE_STRING, String.Empty, String.Empty)
+        _SettingTA.InsertSettingValue(0, 0, SETTING_ID_DbVersion, SETTING_DESC_DbVersion, _UpgradedDbVersion, DatabaseCache._LoginInfo.UserID, Common.SystemDateTime, SETTING_VALUE_DATATYPE_STRING, String.Empty, String.Empty)
       End If
 
       _UpgradeCommand.Connection.Close()
@@ -213,6 +213,12 @@ Public Class DatabaseVersion
     Try
 
       Select Case ExistingDbVersionpara
+        Case "2.3.2.36"
+          _UpgradingTo = "2.3.2.37"
+          _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_36_to_02_03_02_37, Environment.NewLine & "go" & Environment.NewLine))
+        Case "2.3.2.35"
+          _UpgradingTo = "2.3.2.36"
+          _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_35_to_02_03_02_36, Environment.NewLine & "go" & Environment.NewLine))
         Case "2.3.2.34"
           _UpgradingTo = "2.3.2.35"
           _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_34_to_02_03_02_35, Environment.NewLine & "go" & Environment.NewLine))

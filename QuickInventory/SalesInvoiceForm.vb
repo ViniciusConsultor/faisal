@@ -193,7 +193,7 @@ Public Class SalesInvoiceForm
         .Source_Document_Co_ID = Me.CompanyComboBox1.CompanyID
         .Source_Document_No = Cast.ToInt32(Me.SourceDocumentNoTextBox.Text)
         .Inventory_Date = Convert.ToDateTime(uccSaleDate.Value)
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
       End With
 
@@ -228,7 +228,7 @@ Public Class SalesInvoiceForm
             _InventoryDetailDataRow.Source_Document_Co_ID = Me.CompanyComboBox1.CompanyID
             _InventoryDetailDataRow.Source_Document_No = Cast.ToInt32(Me.SourceDocumentNoTextBox.Text)
             _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
-            _InventoryDetailDataRow.Stamp_DateTime = Now
+            _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
             _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
             If _InventoryDetailDataRow.RowState = DataRowState.Detached Then
               _InventoryDetailDataTable.Rows.Add(_InventoryDetailDataRow)
@@ -287,7 +287,7 @@ Public Class SalesInvoiceForm
         For Each _VoucherRow In _VoucherTable.Rows
           If _VoucherRow.VoucherType_ID = _VoucherTypeID Then
             _VoucherRow.Voucher_Date = _CurrentInventoryDataRow.Inventory_Date
-            _VoucherRow.Stamp_DateTime = Now
+            _VoucherRow.Stamp_DateTime = Common.SystemDateTime
             _VoucherRow.Stamp_UserID = LoginInfoObject.UserID
             _VoucherRow.Remarks = "S. No. " & _CurrentInventoryDataRow.Inventory_No
             'Get voucher detail.
@@ -299,7 +299,7 @@ Public Class SalesInvoiceForm
                 _VoucherDetailRow.DebitAmount = _AmountTotal
               End If
               _VoucherDetailRow.Narration = "S. No. " & _CurrentInventoryDataRow.Inventory_No
-              _VoucherDetailRow.Stamp_DateTime = Now
+              _VoucherDetailRow.Stamp_DateTime = Common.SystemDateTime
               _VoucherDetailRow.Stamp_User_Id = LoginInfoObject.UserID
             Next
           End If
@@ -308,13 +308,13 @@ Public Class SalesInvoiceForm
         _VoucherDetailTA.Update(_VoucherDetailTable)
       Else
         _VoucherID = Convert.ToInt32(_VoucherTA.GetNewVoucherIDByCoID(LoginInfoObject.CompanyID))
-        _VoucherTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherTypeID, _VoucherID.ToString, _CurrentInventoryDataRow.Inventory_Date, DocumentStatuses.General_Posted, "S. No. " & _CurrentInventoryDataRow.Inventory_No, LoginInfoObject.UserID, Now, _CurrentInventoryDataRow.Inventory_ID, Convert.ToInt16(enuDocumentType.SalesInvoice), Nothing, Constants.DocumentStatuses.General_Posted)
+        _VoucherTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherTypeID, _VoucherID.ToString, _CurrentInventoryDataRow.Inventory_Date, DocumentStatuses.General_Posted, "S. No. " & _CurrentInventoryDataRow.Inventory_No, LoginInfoObject.UserID, Common.SystemDateTime, _CurrentInventoryDataRow.Inventory_ID, Convert.ToInt16(enuDocumentType.SalesInvoice), Nothing, Constants.DocumentStatuses.General_Posted)
         'Cash entry
         _VoucherDetailID = Convert.ToInt16(_VoucherDetailTA.GetNewVoucherDetailIDByCoIDVoucherID(LoginInfoObject.CompanyID, _VoucherID))
-        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _PartyCoaId, "S. No. " & _CurrentInventoryDataRow.Inventory_No, _AmountTotal, 0, LoginInfoObject.UserID, Now, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
+        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _PartyCoaId, "S. No. " & _CurrentInventoryDataRow.Inventory_No, _AmountTotal, 0, LoginInfoObject.UserID, Common.SystemDateTime, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
         'Sales entry
         _VoucherDetailID = Convert.ToInt16(_VoucherDetailTA.GetNewVoucherDetailIDByCoIDVoucherID(LoginInfoObject.CompanyID, _VoucherID))
-        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _SalesCoaId, "S. No. " & _CurrentInventoryDataRow.Inventory_No, 0, _AmountTotal, LoginInfoObject.UserID, Now, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
+        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _SalesCoaId, "S. No. " & _CurrentInventoryDataRow.Inventory_No, 0, _AmountTotal, LoginInfoObject.UserID, Common.SystemDateTime, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
       End If
 
       Return True
@@ -444,7 +444,7 @@ Public Class SalesInvoiceForm
         .Inventory_Rate_Size12 = 0
         .Inventory_Rate_Size13 = 0
         .Item_ID = 0
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = 0
 
         _InventoryDetailDataTable.Rows.Add(InventoryDetailDataRow)
@@ -892,7 +892,7 @@ Public Class SalesInvoiceForm
       Me.TotalAmountLabel.Text = "0"
       Me.TotalQtyLabel.Text = "0"
       MyBase.CancelButtonClick(sender, e)
-      uccSaleDate.Value = Now
+      uccSaleDate.Value = Common.SystemDateTime
       Me.grdInventory_Sheet1.RecalculateTotals(enInventoryColumns.Qty01)
 
       AddItem()
@@ -960,9 +960,9 @@ Public Class SalesInvoiceForm
             _ReportViewerForm.FormulaValues.Add("@InventoryNoLabel", "RB. No.:")
         End Select
         _ParameterValues.Add("CurrentCompany", Me.LoginInfoObject.CompanyDesc)
-        _ParameterValues.Add("DocumentTypeID", Convert.ToInt32(Me.DocumentType).ToString)
-        _ParameterValues.Add("CoID", Me.LoginInfoObject.CompanyID.ToString)
-        _ParameterValues.Add("InventoryID", Me._CurrentInventoryDataRow.Inventory_ID.ToString)
+        _ParameterValues.Add("@DocumentTypeID", Convert.ToInt32(Me.DocumentType).ToString)
+        _ParameterValues.Add("@CoID", Me.LoginInfoObject.CompanyID.ToString)
+        _ParameterValues.Add("@InventoryID", Me._CurrentInventoryDataRow.Inventory_ID.ToString)
 
         _SelectionFormula = ""
 

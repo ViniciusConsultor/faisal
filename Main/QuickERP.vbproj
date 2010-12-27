@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>QuickERP.My.MyApplication</StartupObject>
     <RootNamespace>QuickERP</RootNamespace>
-    <AssemblyName>QuickErp</AssemblyName>
+    <AssemblyName>QuickErp_Test</AssemblyName>
     <MyType>WindowsForms</MyType>
     <OptionStrict>On</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
@@ -31,7 +31,7 @@
     </UpgradeBackupLocation>
     <ApplicationRevision>26</ApplicationRevision>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishUrl>D:\Publish\Uniformers\QuickErp_02_03_02_35\</PublishUrl>
+    <PublishUrl>D:\Publish\QuickTijarat\QuickErp_02_03_02_37\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -41,12 +41,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://www.quicktijarat.com/quickerp/</UpdateUrl>
-    <ProductName>Quick Erp</ProductName>
+    <UpdateUrl>http://www.quicktijarat.com/quickerpbeta/</UpdateUrl>
+    <ProductName>Quick Erp %28beta%29</ProductName>
     <PublisherName>Quick Erp</PublisherName>
     <MinimumRequiredVersion>2.3.2.35</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationVersion>2.3.2.35</ApplicationVersion>
+    <ApplicationVersion>2.3.2.37</ApplicationVersion>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -55,7 +55,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>..\..\bin\Debug\QuickErp\</OutputPath>
-    <DocumentationFile>QuickErp.xml</DocumentationFile>
+    <DocumentationFile>QuickErp_Test.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -66,7 +66,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\Release\QuickErp\</OutputPath>
-    <DocumentationFile>QuickErp.xml</DocumentationFile>
+    <DocumentationFile>QuickErp_Test.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -382,6 +382,15 @@
       <PublishState>Exclude</PublishState>
       <FileType>File</FileType>
     </PublishFile>
+    <PublishFile Include="Guidlines\ScriptTemplates.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <FileType>File</FileType>
+    </PublishFile>
     <PublishFile Include="Infragistics2.Shared.v8.2">
       <Visible>False</Visible>
       <Group>
@@ -608,6 +617,15 @@
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="QuickLibrary">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="QuickProduction">
       <Visible>False</Visible>
       <Group>
       </Group>

@@ -87,7 +87,7 @@ Public Class SecurityRoleForm
           Else
             _CurrentSecurityDataRow.Inactive_To = Convert.ToDateTime(InactiveToCalendarCombo.Value)
           End If
-          .Stamp_DateTime = Date.Now()
+          .Stamp_DateTime = Common.SystemDateTime()
           .Stamp_UserID = LoginInfoObject.UserID
         End With
       End If

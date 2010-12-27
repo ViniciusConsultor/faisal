@@ -22,9 +22,9 @@ Partial Class StockInquiryForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-    Dim DefaultFocusIndicatorRenderer1 As FarPoint.Win.Spread.DefaultFocusIndicatorRenderer = New FarPoint.Win.Spread.DefaultFocusIndicatorRenderer
-    Dim DefaultScrollBarRenderer1 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DefaultScrollBarRenderer2 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultFocusIndicatorRenderer2 As FarPoint.Win.Spread.DefaultFocusIndicatorRenderer = New FarPoint.Win.Spread.DefaultFocusIndicatorRenderer
+    Dim DefaultScrollBarRenderer5 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultScrollBarRenderer6 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
     Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
@@ -37,15 +37,16 @@ Partial Class StockInquiryForm
     Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
-    Dim DefaultScrollBarRenderer3 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DefaultScrollBarRenderer4 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultScrollBarRenderer1 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultScrollBarRenderer2 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
     Me.StockQuickSpread = New QuickBusinessControls.ItemSpread
     Me.StockQuickSpread_Sheet1 = New QuickBusinessControls.ItemSpreadView
     Me.ItemLabel = New QuickControls.Quick_Label
     Me.ShowButton = New QuickControls.Quick_Button
     Me.TabControl1 = New System.Windows.Forms.TabControl
     Me.StockTabPage = New System.Windows.Forms.TabPage
-    Me.MinimumLevelTabPage = New System.Windows.Forms.TabPage
+    Me.ShowTotalRowsCheckBox = New QuickControls.Quick_CheckBox
+    Me.MinimumLevelDeviationTabPage = New System.Windows.Forms.TabPage
     Me.MinimumStockLevelFilterOptionQuickUltraComboBox = New QuickControls.Quick_UltraComboBox
     Me.MinimumStockLevelQuickSpread = New QuickBusinessControls.ItemSpread
     Me.MinimumStockLevelSheet = New QuickBusinessControls.ItemSpreadView
@@ -53,13 +54,14 @@ Partial Class StockInquiryForm
     Me.ExportToExcelButton = New QuickControls.Quick_Button
     Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog
     Me.ItemComboBox = New QuickBusinessControls.MultiComboBox
-    Me.ShowTotalRowsCheckBox = New QuickControls.Quick_CheckBox
+    Me.ReverseSignCheckBox = New QuickControls.Quick_CheckBox
+    Me.RecalculateStockButton = New QuickControls.Quick_Button
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.StockQuickSpread, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.StockQuickSpread_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.TabControl1.SuspendLayout()
     Me.StockTabPage.SuspendLayout()
-    Me.MinimumLevelTabPage.SuspendLayout()
+    Me.MinimumLevelDeviationTabPage.SuspendLayout()
     CType(Me.MinimumStockLevelFilterOptionQuickUltraComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.MinimumStockLevelQuickSpread, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.MinimumStockLevelSheet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,10 +77,10 @@ Partial Class StockInquiryForm
     Me.StockQuickSpread.AutoNewRow = True
     Me.StockQuickSpread.EditModePermanent = True
     Me.StockQuickSpread.EditModeReplace = True
-    Me.StockQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer1
+    Me.StockQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer2
     Me.StockQuickSpread.HorizontalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.StockQuickSpread.HorizontalScrollBar.Name = ""
-    Me.StockQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer1
+    Me.StockQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer5
     Me.StockQuickSpread.HorizontalScrollBar.TabIndex = 0
     Me.StockQuickSpread.ItemCodeFirstColumnIndex = -1
     Me.StockQuickSpread.ItemDescColumnIndex = -1
@@ -92,13 +94,13 @@ Partial Class StockInquiryForm
     Me.StockQuickSpread.LoginInfoObject = Nothing
     Me.StockQuickSpread.Name = "StockQuickSpread"
     Me.StockQuickSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.StockQuickSpread_Sheet1})
-    Me.StockQuickSpread.Size = New System.Drawing.Size(600, 268)
+    Me.StockQuickSpread.Size = New System.Drawing.Size(689, 268)
     Me.StockQuickSpread.SizesHorizontal = False
     Me.StockQuickSpread.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Classic
     Me.StockQuickSpread.TabIndex = 1
     Me.StockQuickSpread.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.StockQuickSpread.VerticalScrollBar.Name = ""
-    Me.StockQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer2
+    Me.StockQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer6
     Me.StockQuickSpread.VerticalScrollBar.TabIndex = 1
     Me.StockQuickSpread.VisualStyles = FarPoint.Win.VisualStyles.Off
     '
@@ -144,11 +146,11 @@ Partial Class StockInquiryForm
                 Or System.Windows.Forms.AnchorStyles.Left) _
                 Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
     Me.TabControl1.Controls.Add(Me.StockTabPage)
-    Me.TabControl1.Controls.Add(Me.MinimumLevelTabPage)
+    Me.TabControl1.Controls.Add(Me.MinimumLevelDeviationTabPage)
     Me.TabControl1.Location = New System.Drawing.Point(4, 76)
     Me.TabControl1.Name = "TabControl1"
     Me.TabControl1.SelectedIndex = 0
-    Me.TabControl1.Size = New System.Drawing.Size(617, 332)
+    Me.TabControl1.Size = New System.Drawing.Size(712, 332)
     Me.TabControl1.TabIndex = 7
     '
     'StockTabPage
@@ -158,22 +160,36 @@ Partial Class StockInquiryForm
     Me.StockTabPage.Location = New System.Drawing.Point(4, 22)
     Me.StockTabPage.Name = "StockTabPage"
     Me.StockTabPage.Padding = New System.Windows.Forms.Padding(3)
-    Me.StockTabPage.Size = New System.Drawing.Size(609, 306)
+    Me.StockTabPage.Size = New System.Drawing.Size(698, 306)
     Me.StockTabPage.TabIndex = 0
     Me.StockTabPage.Text = "Stock"
     Me.StockTabPage.UseVisualStyleBackColor = True
     '
-    'MinimumLevelTabPage
+    'ShowTotalRowsCheckBox
     '
-    Me.MinimumLevelTabPage.Controls.Add(Me.MinimumStockLevelFilterOptionQuickUltraComboBox)
-    Me.MinimumLevelTabPage.Controls.Add(Me.MinimumStockLevelQuickSpread)
-    Me.MinimumLevelTabPage.Location = New System.Drawing.Point(4, 22)
-    Me.MinimumLevelTabPage.Name = "MinimumLevelTabPage"
-    Me.MinimumLevelTabPage.Padding = New System.Windows.Forms.Padding(3)
-    Me.MinimumLevelTabPage.Size = New System.Drawing.Size(609, 306)
-    Me.MinimumLevelTabPage.TabIndex = 1
-    Me.MinimumLevelTabPage.Text = "Min Level"
-    Me.MinimumLevelTabPage.UseVisualStyleBackColor = True
+    Me.ShowTotalRowsCheckBox.AutoSize = True
+    Me.ShowTotalRowsCheckBox.Checked = True
+    Me.ShowTotalRowsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+    Me.ShowTotalRowsCheckBox.DefaultValue = False
+    Me.ShowTotalRowsCheckBox.Location = New System.Drawing.Point(8, 8)
+    Me.ShowTotalRowsCheckBox.Name = "ShowTotalRowsCheckBox"
+    Me.ShowTotalRowsCheckBox.Size = New System.Drawing.Size(110, 17)
+    Me.ShowTotalRowsCheckBox.TabIndex = 2
+    Me.ShowTotalRowsCheckBox.Text = "Show Total Rows"
+    Me.ShowTotalRowsCheckBox.UseVisualStyleBackColor = True
+    '
+    'MinimumLevelDeviationTabPage
+    '
+    Me.MinimumLevelDeviationTabPage.Controls.Add(Me.ReverseSignCheckBox)
+    Me.MinimumLevelDeviationTabPage.Controls.Add(Me.MinimumStockLevelFilterOptionQuickUltraComboBox)
+    Me.MinimumLevelDeviationTabPage.Controls.Add(Me.MinimumStockLevelQuickSpread)
+    Me.MinimumLevelDeviationTabPage.Location = New System.Drawing.Point(4, 22)
+    Me.MinimumLevelDeviationTabPage.Name = "MinimumLevelDeviationTabPage"
+    Me.MinimumLevelDeviationTabPage.Padding = New System.Windows.Forms.Padding(3)
+    Me.MinimumLevelDeviationTabPage.Size = New System.Drawing.Size(704, 306)
+    Me.MinimumLevelDeviationTabPage.TabIndex = 1
+    Me.MinimumLevelDeviationTabPage.Text = "Stock Deviated from Min Level"
+    Me.MinimumLevelDeviationTabPage.UseVisualStyleBackColor = True
     '
     'MinimumStockLevelFilterOptionQuickUltraComboBox
     '
@@ -253,10 +269,10 @@ Partial Class StockInquiryForm
     Me.MinimumStockLevelQuickSpread.AutoNewRow = True
     Me.MinimumStockLevelQuickSpread.EditModePermanent = True
     Me.MinimumStockLevelQuickSpread.EditModeReplace = True
-    Me.MinimumStockLevelQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer1
+    Me.MinimumStockLevelQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer2
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Name = ""
-    Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer3
+    Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer1
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.TabIndex = 0
     Me.MinimumStockLevelQuickSpread.ItemCodeFirstColumnIndex = -1
     Me.MinimumStockLevelQuickSpread.ItemDescColumnIndex = -1
@@ -270,13 +286,13 @@ Partial Class StockInquiryForm
     Me.MinimumStockLevelQuickSpread.LoginInfoObject = Nothing
     Me.MinimumStockLevelQuickSpread.Name = "MinimumStockLevelQuickSpread"
     Me.MinimumStockLevelQuickSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.MinimumStockLevelSheet})
-    Me.MinimumStockLevelQuickSpread.Size = New System.Drawing.Size(600, 268)
+    Me.MinimumStockLevelQuickSpread.Size = New System.Drawing.Size(695, 268)
     Me.MinimumStockLevelQuickSpread.SizesHorizontal = False
     Me.MinimumStockLevelQuickSpread.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Classic
     Me.MinimumStockLevelQuickSpread.TabIndex = 2
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Name = ""
-    Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer4
+    Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer2
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.TabIndex = 3
     Me.MinimumStockLevelQuickSpread.VisualStyles = FarPoint.Win.VisualStyles.Off
     '
@@ -318,25 +334,35 @@ Partial Class StockInquiryForm
     Me.ItemComboBox.Size = New System.Drawing.Size(144, 22)
     Me.ItemComboBox.TabIndex = 10
     '
-    'ShowTotalRowsCheckBox
+    'ReverseSignCheckBox
     '
-    Me.ShowTotalRowsCheckBox.AutoSize = True
-    Me.ShowTotalRowsCheckBox.Checked = True
-    Me.ShowTotalRowsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-    Me.ShowTotalRowsCheckBox.DefaultValue = False
-    Me.ShowTotalRowsCheckBox.Location = New System.Drawing.Point(8, 8)
-    Me.ShowTotalRowsCheckBox.Name = "ShowTotalRowsCheckBox"
-    Me.ShowTotalRowsCheckBox.Size = New System.Drawing.Size(110, 17)
-    Me.ShowTotalRowsCheckBox.TabIndex = 2
-    Me.ShowTotalRowsCheckBox.Text = "Show Total Rows"
-    Me.ShowTotalRowsCheckBox.UseVisualStyleBackColor = True
+    Me.ReverseSignCheckBox.AutoSize = True
+    Me.ReverseSignCheckBox.Checked = True
+    Me.ReverseSignCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+    Me.ReverseSignCheckBox.DefaultValue = False
+    Me.ReverseSignCheckBox.Location = New System.Drawing.Point(304, 8)
+    Me.ReverseSignCheckBox.Name = "ReverseSignCheckBox"
+    Me.ReverseSignCheckBox.Size = New System.Drawing.Size(145, 17)
+    Me.ReverseSignCheckBox.TabIndex = 4
+    Me.ReverseSignCheckBox.Text = "Access stock in negative"
+    Me.ReverseSignCheckBox.UseVisualStyleBackColor = True
+    '
+    'RecalculateStockButton
+    '
+    Me.RecalculateStockButton.Location = New System.Drawing.Point(612, 44)
+    Me.RecalculateStockButton.Name = "RecalculateStockButton"
+    Me.RecalculateStockButton.Size = New System.Drawing.Size(104, 23)
+    Me.RecalculateStockButton.TabIndex = 11
+    Me.RecalculateStockButton.Text = "Recalculate Stock"
+    Me.RecalculateStockButton.UseVisualStyleBackColor = True
     '
     'StockInquiryForm
     '
     Me.AcceptButton = Me.ShowButton
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(625, 440)
+    Me.ClientSize = New System.Drawing.Size(720, 440)
+    Me.Controls.Add(Me.RecalculateStockButton)
     Me.Controls.Add(Me.ItemComboBox)
     Me.Controls.Add(Me.ExportToExcelButton)
     Me.Controls.Add(Me.CompanyCheckedListBox1)
@@ -344,21 +370,22 @@ Partial Class StockInquiryForm
     Me.Controls.Add(Me.ShowButton)
     Me.Controls.Add(Me.ItemLabel)
     Me.Name = "StockInquiryForm"
-    Me.Text = "StockInquiryForm"
+    Me.Text = "Stock Inquiry"
     Me.Controls.SetChildIndex(Me.ItemLabel, 0)
     Me.Controls.SetChildIndex(Me.ShowButton, 0)
     Me.Controls.SetChildIndex(Me.TabControl1, 0)
     Me.Controls.SetChildIndex(Me.CompanyCheckedListBox1, 0)
     Me.Controls.SetChildIndex(Me.ExportToExcelButton, 0)
     Me.Controls.SetChildIndex(Me.ItemComboBox, 0)
+    Me.Controls.SetChildIndex(Me.RecalculateStockButton, 0)
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.StockQuickSpread, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.StockQuickSpread_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
     Me.TabControl1.ResumeLayout(False)
     Me.StockTabPage.ResumeLayout(False)
     Me.StockTabPage.PerformLayout()
-    Me.MinimumLevelTabPage.ResumeLayout(False)
-    Me.MinimumLevelTabPage.PerformLayout()
+    Me.MinimumLevelDeviationTabPage.ResumeLayout(False)
+    Me.MinimumLevelDeviationTabPage.PerformLayout()
     CType(Me.MinimumStockLevelFilterOptionQuickUltraComboBox, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.MinimumStockLevelQuickSpread, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.MinimumStockLevelSheet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -371,7 +398,7 @@ Partial Class StockInquiryForm
   Friend WithEvents ShowButton As QuickControls.Quick_Button
   Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
   Friend WithEvents StockTabPage As System.Windows.Forms.TabPage
-  Friend WithEvents MinimumLevelTabPage As System.Windows.Forms.TabPage
+  Friend WithEvents MinimumLevelDeviationTabPage As System.Windows.Forms.TabPage
   Friend WithEvents StockQuickSpread As QuickBusinessControls.ItemSpread
   Friend WithEvents MinimumStockLevelQuickSpread As QuickBusinessControls.ItemSpread
   Friend WithEvents MinimumStockLevelSheet As QuickBusinessControls.ItemSpreadView
@@ -381,4 +408,6 @@ Partial Class StockInquiryForm
   Friend WithEvents SaveFileDialog1 As System.Windows.Forms.SaveFileDialog
   Friend WithEvents ItemComboBox As QuickBusinessControls.MultiComboBox
   Friend WithEvents ShowTotalRowsCheckBox As QuickControls.Quick_CheckBox
+  Friend WithEvents ReverseSignCheckBox As QuickControls.Quick_CheckBox
+  Friend WithEvents RecalculateStockButton As QuickControls.Quick_Button
 End Class

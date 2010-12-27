@@ -236,7 +236,7 @@ Public Class PartyRegularForm
           .Phone = PhoneTextBox.Text
           .Fax = FaxTextBox.Text
           .URL = UrlTextBox.Text
-          .Stamp_DateTime = Now
+          .Stamp_DateTime = Common.SystemDateTime
           .Stamp_UserID = Me.LoginInfoObject.UserID
           If Me.InactiveFromCalendarCombo.Value Is DBNull.Value OrElse Me.InactiveFromCalendarCombo.Value Is Nothing Then
             .SetInactive_FromNull()

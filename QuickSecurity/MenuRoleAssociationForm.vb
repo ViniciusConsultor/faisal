@@ -96,7 +96,7 @@ Public Class MenuRoleAssociationForm
               'Try if record exists
               If _MenuRoleAssociationTA.UpdateStatus(Constants.RecordStatuses.Inserted, CompanyComboBox.CompanyID, .Menu_Id, Me.RolesComboBox1.RoleID) = 0 Then
                 'If 0 record is updated then record does not exist, insert it.
-                _MenuRoleAssociationTA.Insert(Me.CompanyComboBox.CompanyID, .Menu_Id, Me.RolesComboBox1.RoleID, Now, Me.LoginInfoObject.UserID, Nothing, Constants.RecordStatuses.Inserted)
+                _MenuRoleAssociationTA.Insert(Me.CompanyComboBox.CompanyID, .Menu_Id, Me.RolesComboBox1.RoleID, Common.SystemDateTime, Me.LoginInfoObject.UserID, Nothing, Constants.RecordStatuses.Inserted)
               End If
             Else
               'Delete record

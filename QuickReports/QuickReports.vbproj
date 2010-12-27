@@ -143,6 +143,12 @@
       <DependentUpon>COAActivity.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\InventoryGatePassReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryGatePassReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LedgerReport.vb">
       <DependentUpon>LedgerReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -195,12 +201,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VoucherReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\InventoryGatePassReport.vb">
-      <DependentUpon>InventoryGatePassReport.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\PurchaseOrderBalanceReport.vb">
@@ -285,6 +285,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>COAActivity.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InventoryGatePassReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryGatePassReport.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\LedgerReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LedgerReport.vb</LastGenOutput>
@@ -320,10 +324,6 @@
     <EmbeddedResource Include="Reports\VoucherReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VoucherReport.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InventoryGatePassReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryGatePassReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\PurchaseOrderBalanceReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

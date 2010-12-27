@@ -58,3 +58,41 @@ IF NOT EXISTS (SELECT * FROM Base_Setting WHERE Setting_ID = 'SettingID')
 		, 'String', NULL, NULL
 		, NULL, 1)
 		
+-- Insert Document Type	
+IF NOT EXISTS (SELECT * FROM Common_DocumentType WHERE DocumentType_ID = 0)
+	INSERT INTO [Common_DocumentType]
+		([DocumentType_ID]
+		,[DocumentType_Desc]
+		,[Stamp_DateTime]
+		,[Stamp_UserID]
+		,[Upload_DateTime]
+		,[RecordStatus_ID])
+	VALUES
+		(0
+		,'Document Type Desc'
+		,'YYYY-MM-DD'
+		,0
+		,NULL
+		,1)
+
+-- Insert Entity Type	
+IF NOT EXISTS (SELECT * FROM Common_EntityType WHERE EntityType_ID = 0)
+	INSERT INTO [Common_EntityType]
+		([EntityType_ID]
+		,[EntityType_Code]
+		,[EntityType_Desc]
+		,[Stamp_UserID]
+		,[Stamp_DateTime]
+		,[Upload_DateTime]
+		,[RecordStatus_ID])
+	VALUES
+		(0
+		,'Code'
+		,'Desc'
+		,0
+		,'yyyy-mm-dd'
+		,NULL
+		,1)
+     
+     
+     
