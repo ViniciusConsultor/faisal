@@ -68,7 +68,7 @@ Public Class CompanyForm
       Else
         _CurrentCompanyDataRow.Inactive_To = Convert.ToDateTime(CompanyInactiveToCalendarCombo.Value)
       End If
-      _CurrentCompanyDataRow.Stamp_DateTime = Date.Now
+      _CurrentCompanyDataRow.Stamp_DateTime = Common.SystemDateTime
       _CurrentCompanyDataRow.Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
 
       If _CurrentCompanyDataRow.RowState = DataRowState.Detached Then
@@ -92,7 +92,7 @@ Public Class CompanyForm
       _CommunicationDataRow.Communication_Type = Constants.enuCommuncationTypes.PhoneNumber
       _CommunicationDataRow.Communication_Value = Me.CommunicationTextBox.Text
       _CommunicationDataRow.Stamp_UserID = Me.LoginInfoObject.UserID
-      _CommunicationDataRow.Stamp_DateTime = Now
+      _CommunicationDataRow.Stamp_DateTime = Common.SystemDateTime
 
       If _CommunicationDataRow.RowState = DataRowState.Detached Then
         _CommunicationTable.Rows.Add(_CommunicationDataRow)
@@ -113,7 +113,7 @@ Public Class CompanyForm
       'Set common properites for insert and update
       _AddressDataRow.AddressType_ID = Constants.enuAddressTypes.PrimaryAddress
       _AddressDataRow.Address_Desc = Me.AddressTextBox.Text
-      _AddressDataRow.Stamp_DateTime = Now
+      _AddressDataRow.Stamp_DateTime = Common.SystemDateTime
       _AddressDataRow.Stamp_UserID = Me.LoginInfoObject.UserID
 
       If _AddressDataRow.RowState = DataRowState.Detached Then

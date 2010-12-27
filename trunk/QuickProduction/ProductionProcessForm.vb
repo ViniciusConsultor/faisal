@@ -104,8 +104,8 @@ Public Class DefineProcessForm
         Me._CurrentDefineProcessDataRow.Process_Code = Me.ProcessCodeTextBox.Text
         Me._CurrentDefineProcessDataRow.Process_Desc = Me.ProcessDescTextBox.Text
         Me._CurrentDefineProcessDataRow.Stamp_UserID = Convert.ToInt16(Me.LoginInfoObject.UserID)
-        Me._CurrentDefineProcessDataRow.Stamp_DateTime = Now.Date
-        Me._CurrentDefineProcessDataRow.Upload_DateTime = Now.Date
+        Me._CurrentDefineProcessDataRow.Stamp_DateTime = Common.SystemDateTime
+        Me._CurrentDefineProcessDataRow.Upload_DateTime = Common.SystemDateTime
 
         If Me._CurrentDefineProcessDataRow.RowState = DataRowState.Detached Then
           Me._DefineProcessDataTable.Rows.Add(Me._CurrentDefineProcessDataRow)

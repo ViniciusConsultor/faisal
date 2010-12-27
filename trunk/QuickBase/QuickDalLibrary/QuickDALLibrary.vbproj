@@ -222,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="QuickErp.snk" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_36_to_02_03_02_37.sql" />
     <None Include="Resources\Scripts\upgrade_02_03_02_32_to_02_03_02_33.sql" />
     <None Include="Resources\Scripts\upgrade_02_01_00_06_to_02_01_00_07.txt" />
     <None Include="Resources\Scripts\upgrade_02_01_00_09_to_02_02_00_00.txt" />

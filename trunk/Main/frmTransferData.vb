@@ -92,7 +92,7 @@ Public Class frmTransferData
       _CollectionDisplayName.Add("User Roles Association") : _CollectionTableName.Add("Sec_User_Role_Association")
       _CollectionDisplayName.Add("Transfers") : _CollectionTableName.Add("Transfer")
 
-      Me.StartDateCalendarCombo.Value = Date.Now.Subtract(New TimeSpan(7, 0, 0, 0))
+      Me.StartDateCalendarCombo.Value = Common.SystemDateTime.Subtract(New TimeSpan(7, 0, 0, 0))
       Me.LastTransferDateCheckBox.Checked = True
 
     Catch ex As Exception
@@ -482,7 +482,7 @@ Public Class frmTransferData
       Else
         _UserSpecificFromDate = Date.MinValue
       End If
-      _ToDate = Date.Now
+      _ToDate = Common.SystemDateTime
 
       _FileName = _TransferData.ExportDataToXmlFile(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserSpecificFromDate, _ToDate, False, _UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES)
 

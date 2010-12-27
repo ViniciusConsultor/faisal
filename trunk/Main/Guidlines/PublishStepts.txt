@@ -1,9 +1,9 @@
 Steps to Publish QuickErp
 
- 1- Increament Assembly Version.
- 2- Set Assembly Name.	("QuickErp" for production and "QuickErp_Test" for Beta/Testing)
- 3- Run application so that files are generated for new assembly name.
- 4- Add db version upgradation option in QuickDALLibrary.DatabaseVersion.vb.
+ 1- Add db version upgradation option in QuickDALLibrary.DatabaseVersion.vb.
+ 2- Increament Assembly Version.
+ 3- Set Assembly Name.	("QuickErp" for production and "QuickErp_Test" for Beta/Testing)
+ 4- Run application so that files are generated for new assembly name.
  5- Test the db upgradation on development db.
  6- Test the db upgradation on client db.
  7- Set Publish version as per Assembly Version.

@@ -133,7 +133,7 @@ Public Class SalesInvoicePosForm
         .Inventory_Date = Convert.ToDateTime(SaleDate.Value)
 
         '.DocumentType_ID = Convert.ToInt16(enuDocumentType.SalesInvoice)
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
       End With
 
@@ -255,7 +255,7 @@ Public Class SalesInvoicePosForm
             End Select
           End If
 
-          _InventoryDetailDataRow.Stamp_DateTime = Now
+          _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
           _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
           _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
           If .IsRowDeleted(I) Then
@@ -283,10 +283,10 @@ Public Class SalesInvoicePosForm
         _InventorySalesInvoiceRow.Discount = Cast.ToDecimal(DiscountTextBox.Text)
         _InventorySalesInvoiceRow.SalesTax = Cast.ToDecimal(SalesTaxTextBox.Text)
         _InventorySalesInvoiceRow.TotalCashReceived = Cast.ToDecimal(CashRecievedTextBox.Text)
-        _InventorySalesInvoiceRow.Stamp_DateTime = Now
+        _InventorySalesInvoiceRow.Stamp_DateTime = Common.SystemDateTime
         _InventorySalesInvoiceRow.Stamp_UserID = LoginInfoObject.UserID
       Else
-        _InventorySalesInvoiceTA.Insert(LoginInfoObject.CompanyID, SalesInvoiceID, SalesManComboBox.PartyID, Cast.ToDecimal(DiscountTextBox.Text), Cast.ToDecimal(SalesTaxTextBox.Text), Cast.ToDecimal(CashRecievedTextBox.Text), Now, LoginInfoObject.UserID, Nothing)
+        _InventorySalesInvoiceTA.Insert(LoginInfoObject.CompanyID, SalesInvoiceID, SalesManComboBox.PartyID, Cast.ToDecimal(DiscountTextBox.Text), Cast.ToDecimal(SalesTaxTextBox.Text), Cast.ToDecimal(CashRecievedTextBox.Text), Common.SystemDateTime, LoginInfoObject.UserID, Nothing)
       End If
       _InventorySalesInvoiceTA.Update(_InventorySalesInvoieDataTable)
 
@@ -315,7 +315,7 @@ Public Class SalesInvoicePosForm
         For Each _VoucherRow In _VoucherTable.Rows
           If _VoucherRow.VoucherType_ID = _VoucherTypeID Then
             _VoucherRow.Voucher_Date = _InventoryDataRow.Inventory_Date
-            _VoucherRow.Stamp_DateTime = Now
+            _VoucherRow.Stamp_DateTime = Common.SystemDateTime
             _VoucherRow.Stamp_UserID = LoginInfoObject.UserID
             _VoucherRow.Remarks = "S. No. " & _InventoryDataRow.Inventory_No
             'Get voucher detail.
@@ -327,7 +327,7 @@ Public Class SalesInvoicePosForm
                 _VoucherDetailRow.DebitAmount = _SalesInvoiceAmountTotal
               End If
               _VoucherDetailRow.Narration = "S. No. " & _InventoryDataRow.Inventory_No
-              _VoucherDetailRow.Stamp_DateTime = Now
+              _VoucherDetailRow.Stamp_DateTime = Common.SystemDateTime
               _VoucherDetailRow.Stamp_User_Id = LoginInfoObject.UserID
             Next
           End If
@@ -336,13 +336,13 @@ Public Class SalesInvoicePosForm
         _VoucherDetailTA.Update(_VoucherDetailTable)
       Else
         _VoucherID = Convert.ToInt32(_VoucherTA.GetNewVoucherIDByCoID(LoginInfoObject.CompanyID))
-        _VoucherTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherTypeID, _VoucherID.ToString, _InventoryDataRow.Inventory_Date, DocumentStatuses.General_Posted, "S. No. " & _InventoryDataRow.Inventory_No, LoginInfoObject.UserID, Now, SalesInvoiceID, Convert.ToInt16(enuDocumentType.SalesInvoice), Nothing, Constants.DocumentStatuses.General_Posted)
+        _VoucherTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherTypeID, _VoucherID.ToString, _InventoryDataRow.Inventory_Date, DocumentStatuses.General_Posted, "S. No. " & _InventoryDataRow.Inventory_No, LoginInfoObject.UserID, Common.SystemDateTime, SalesInvoiceID, Convert.ToInt16(enuDocumentType.SalesInvoice), Nothing, Constants.DocumentStatuses.General_Posted)
         'Cash entry
         _VoucherDetailID = Convert.ToInt16(_VoucherDetailTA.GetNewVoucherDetailIDByCoIDVoucherID(LoginInfoObject.CompanyID, _VoucherID))
-        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _CashCoaId, "S. No. " & _InventoryDataRow.Inventory_No, _SalesInvoiceAmountTotal, 0, LoginInfoObject.UserID, Now, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
+        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _CashCoaId, "S. No. " & _InventoryDataRow.Inventory_No, _SalesInvoiceAmountTotal, 0, LoginInfoObject.UserID, Common.SystemDateTime, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
         'Sales entry
         _VoucherDetailID = Convert.ToInt16(_VoucherDetailTA.GetNewVoucherDetailIDByCoIDVoucherID(LoginInfoObject.CompanyID, _VoucherID))
-        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _SalesCoaId, "S. No. " & _InventoryDataRow.Inventory_No, 0, _SalesInvoiceAmountTotal, LoginInfoObject.UserID, Now, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
+        _VoucherDetailTA.Insert(LoginInfoObject.CompanyID, _VoucherID, _VoucherDetailID, _SalesCoaId, "S. No. " & _InventoryDataRow.Inventory_No, 0, _SalesInvoiceAmountTotal, LoginInfoObject.UserID, Common.SystemDateTime, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, RecordStatuses.Inserted)
       End If
 
       If AutoPrintWithSaveCheckBox.Checked Then PrintReport(False)
@@ -839,7 +839,7 @@ Public Class SalesInvoicePosForm
       Me._SalesInvoiceDetailDataTable.Clear()
       Me.CurrentRecordDataRow = Nothing
       MyBase.CancelButtonClick(sender, e)
-      SaleDate.Value = Now
+      SaleDate.Value = Common.SystemDateTime
       SaleDate.Enabled = False
       Me.CashBalanceAmountLabel.Text = String.Empty
       Me.SalesManComboBox.Focus()
@@ -967,7 +967,7 @@ Public Class SalesInvoicePosForm
 
       obj = CType(Me.grdSalesInvoice.ActiveSheet.Columns(enSalesInvoiceColumns.Sale_Type + General.ItemCodeColumnsCount - 1).CellType, FarPoint.Win.Spread.CellType.ComboBoxCellType)
       obj.Editable = True
-      SaleDate.Value = Now
+      SaleDate.Value = Common.SystemDateTime
       SaleDate.Enabled = False
 
     Catch ex As Exception

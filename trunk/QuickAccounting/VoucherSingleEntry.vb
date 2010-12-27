@@ -94,7 +94,7 @@ Public Class VoucherSingleEntry
         .VoucherType_ID = Me.VoucherType
         .Remarks = RemarksTextBox.Text
         .Voucher_Date = Convert.ToDateTime(VoucherDateCalendar.Value)
-        .Stamp_DateTime = Now
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
       End With
       If _CurrentVoucherDataRow.RowState = DataRowState.Detached Then
@@ -114,7 +114,7 @@ Public Class VoucherSingleEntry
         VoucherDetailDataRow.CreditAmount = 0
         VoucherDetailDataRow.DebitAmount = 0
         VoucherDetailDataRow.Narration = ""
-        VoucherDetailDataRow.Stamp_DateTime = Now
+        VoucherDetailDataRow.Stamp_DateTime = Common.SystemDateTime
         VoucherDetailDataRow.Stamp_User_Id = LoginInfoObject.UserID
         _VoucherDetailDataTable.Rows.Add(VoucherDetailDataRow)
 
@@ -128,7 +128,7 @@ Public Class VoucherSingleEntry
         VoucherDetailDataRow.CreditAmount = 0
         VoucherDetailDataRow.DebitAmount = 0
         VoucherDetailDataRow.Narration = ""
-        VoucherDetailDataRow.Stamp_DateTime = Now
+        VoucherDetailDataRow.Stamp_DateTime = Common.SystemDateTime
         VoucherDetailDataRow.Stamp_User_Id = LoginInfoObject.UserID
         _VoucherDetailDataTable.Rows.Add(VoucherDetailDataRow)
       End If
@@ -154,7 +154,7 @@ Public Class VoucherSingleEntry
           End If
         End If
         VoucherDetailDataRow.Narration = RemarksTextBox.Text
-        VoucherDetailDataRow.Stamp_DateTime = Now
+        VoucherDetailDataRow.Stamp_DateTime = Common.SystemDateTime
         VoucherDetailDataRow.Stamp_User_Id = LoginInfoObject.UserID
 
         If VoucherDetailDataRow.RowState = DataRowState.Added Then
@@ -349,7 +349,7 @@ Public Class VoucherSingleEntry
       Me._VoucherDataTable.Rows.Clear()
       Me._VoucherDetailDataTable.Rows.Clear()
       'We should set the date to system date otherwise last record viewed date will be used.
-      Me.VoucherDateCalendar.Value = Now
+      Me.VoucherDateCalendar.Value = Common.SystemDateTime
       MyBase.CancelButtonClick(sender, e)
 
     Catch ex As Exception

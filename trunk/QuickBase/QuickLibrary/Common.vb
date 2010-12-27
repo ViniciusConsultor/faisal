@@ -148,7 +148,7 @@ Public Class Common
     Get
       Try
 
-        Return Date.Now
+        Return Date.UtcNow
 
       Catch ex As Exception
         Dim _qex As New QuickException("Exception in SystemDateTime of Common.", ex)

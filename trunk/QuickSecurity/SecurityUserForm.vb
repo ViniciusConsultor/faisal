@@ -177,8 +177,8 @@ Public Class SecurityUserForm
         _CurrentSecurityUserDataRow.Is_Admin = IsAdminCheckBox.Checked
         'Hidden values
         _CurrentSecurityUserDataRow.Stamp_UserID = LoginInfoObject.UserID
-        _CurrentSecurityUserDataRow.Stamp_DateTime = Date.Now
-        _CurrentSecurityUserDataRow.Upload_DateTime = Date.Now
+        _CurrentSecurityUserDataRow.Stamp_DateTime = Common.SystemDateTime
+        _CurrentSecurityUserDataRow.Upload_DateTime = Common.SystemDateTime
 
         If InactiveFromCalendarCombo.Value Is DBNull.Value OrElse InactiveFromCalendarCombo.Value Is Nothing Then
           _CurrentSecurityUserDataRow.SetInactive_FromNull()
@@ -210,7 +210,7 @@ Public Class SecurityUserForm
         End If
 
         _UserRoleAssociationRow.Role_ID = Convert.ToInt32(RolesComboBox1.Value)
-        _UserRoleAssociationRow.Stamp_DateTime = Now
+        _UserRoleAssociationRow.Stamp_DateTime = Common.SystemDateTime
         _UserRoleAssociationRow.Stamp_UserID = LoginInfoObject.UserID
 
         If _UserRoleAssociationRow.RowState = DataRowState.Detached Then
