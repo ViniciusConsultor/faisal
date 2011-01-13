@@ -20493,7 +20493,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection
-            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString1
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -20506,12 +20506,12 @@ Namespace QuickInventoryDataSetTableAdapters
                 "              Is_RawMaterial"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Invs_Item"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(1).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "DELETE FROM [Inv_Item] WHERE (Co_Id = @Co_Id)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(2).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20525,7 +20525,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(3).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20539,7 +20539,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(4).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT TOP (1) Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size"& _ 
                 "1, Item_MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinSto"& _ 
                 "ck_Size13, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_M"& _ 
@@ -20552,7 +20552,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(5).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT TOP (1) Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size"& _ 
                 "1, Item_MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinSto"& _ 
                 "ck_Size13, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_M"& _ 
@@ -20565,7 +20565,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(6).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(6).Connection = Me.Connection
             Me._commandCollection(6).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20578,7 +20578,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(7).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(7).Connection = Me.Connection
             Me._commandCollection(7).CommandText = "SELECT TOP (1) Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size"& _ 
                 "1, Item_MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinSto"& _ 
                 "ck_Size13, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_M"& _ 
@@ -20592,7 +20592,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Code", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(8).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(8).Connection = Me.Connection
             Me._commandCollection(8).CommandText = "SELECT TOP (1) Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size"& _ 
                 "1, Item_MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinSto"& _ 
                 "ck_Size13, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_M"& _ 
@@ -20607,7 +20607,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Code", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(9).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(9).Connection = Me.Connection
             Me._commandCollection(9).CommandText = "SELECT        Inv_Item.Co_ID, Inv_Item.Item_ID, Inv_Item.Parent_Item_ID, Inv_Item"& _ 
                 ".Party_ID, Inv_Item.Address_ID, Inv_Item.Item_Code, Inv_Item.Item_Desc, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
                 "                   Inv_Item.Item_SaleRate_Size01, Inv_Item.Item_SaleRate_Size02,"& _ 
@@ -20660,7 +20660,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FromDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Inventory_Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Inventory_Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(10).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(10).Connection = Me.Connection
             Me._commandCollection(10).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20691,7 +20691,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(11).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(12) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(12).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(12).Connection = Me.Connection
             Me._commandCollection(12).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20705,7 +20705,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(12).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(12).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(13) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(13).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(13).Connection = Me.Connection
             Me._commandCollection(13).CommandText = "SELECT Address_ID, Co_ID, Is_RawMaterial, Item_Code, Item_Desc, Item_ID, Parent_I"& _ 
                 "tem_ID, Party_ID, RecordStatus_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime"& _ 
                 " FROM Invs_Item WHERE (Co_ID = @CoID) AND (Item_Code = @ItemCode)"
@@ -20713,7 +20713,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(13).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(13).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(14) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(14).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(14).Connection = Me.Connection
             Me._commandCollection(14).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20727,7 +20727,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(14).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(14).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(15) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(15).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(15).Connection = Me.Connection
             Me._commandCollection(15).CommandText = "SELECT Co_ID, Item_Code, Item_ID, Item_MinStock_Size0, Item_MinStock_Size1, Item_"& _ 
                 "MinStock_Size10, Item_MinStock_Size11, Item_MinStock_Size12, Item_MinStock_Size1"& _ 
                 "3, Item_MinStock_Size2, Item_MinStock_Size3, Item_MinStock_Size4, Item_MinStock_"& _ 
@@ -20741,7 +20741,7 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(15).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(15).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Code", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(16) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(16).Connection = New Global.System.Data.SqlClient.SqlConnection(Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString)
+            Me._commandCollection(16).Connection = Me.Connection
             Me._commandCollection(16).CommandText = "SELECT     ISNULL(MAX(Item_ID), 0) + 1 AS NewID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Invs_Item"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
                 "  (Co_ID = @Co_ID)"
             Me._commandCollection(16).CommandType = Global.System.Data.CommandType.Text
@@ -22620,7 +22620,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection
-            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString1
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -23592,7 +23592,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection
-            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString1
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _

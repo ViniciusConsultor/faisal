@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\bin\Debug\QuickAdministration\</OutputPath>
+    <OutputPath>..\..\bin\QuickAdministration\</OutputPath>
     <DocumentationFile>QuickAdministration.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -34,7 +34,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\QuickAdministration\</OutputPath>
+    <OutputPath>..\..\bin\QuickAdministration\</OutputPath>
     <DocumentationFile>QuickAdministration.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

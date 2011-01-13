@@ -43,7 +43,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\bin\Debug\QuickInventory\</OutputPath>
+    <OutputPath>..\..\bin\QuickInventory\</OutputPath>
     <DocumentationFile>QuickInventory.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -54,7 +54,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\QuickInventory\</OutputPath>
+    <OutputPath>..\..\bin\QuickInventory\</OutputPath>
     <DocumentationFile>QuickInventory.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

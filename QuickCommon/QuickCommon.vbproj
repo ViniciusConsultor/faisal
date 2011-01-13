@@ -28,7 +28,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\bin\Debug\QuickCommon\</OutputPath>
+    <OutputPath>..\..\bin\QuickCommon\</OutputPath>
     <DocumentationFile>QuickCommon.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -39,7 +39,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\QuickCommon\</OutputPath>
+    <OutputPath>..\..\bin\QuickCommon\</OutputPath>
     <DocumentationFile>QuickCommon.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

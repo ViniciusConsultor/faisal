@@ -27,7 +27,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\bin\Debug\QuickErpService\</OutputPath>
+    <OutputPath>..\..\bin\QuickErpService\</OutputPath>
     <DocumentationFile>Service.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -38,7 +38,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\QuickErpService\</OutputPath>
+    <OutputPath>..\..\bin\QuickErpService\</OutputPath>
     <DocumentationFile>Service.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

@@ -1,4 +1,8 @@
 ﻿Partial Class QuickCommonDataSet
+  Partial Class ContactsDataTable
+
+  End Class
+
   Partial Class CompanyDataTable
 
     'Author: Faisal Saleem
