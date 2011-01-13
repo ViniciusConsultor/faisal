@@ -128,8 +128,8 @@
     </Compile>
     <Compile Include="QuickDataSetTableAdapter.vb" />
     <Compile Include="QuickInventoryDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="QuickInventoryDataSet.vb">

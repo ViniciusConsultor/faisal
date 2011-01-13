@@ -43,7 +43,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\..\bin\Debug\QuickDALLibrary\</OutputPath>
+    <OutputPath>..\..\..\bin\QuickDALLibrary\</OutputPath>
     <DocumentationFile>QuickDALLibrary.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -54,7 +54,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Release\QuickDALLibrary\</OutputPath>
+    <OutputPath>..\..\..\bin\QuickDALLibrary\</OutputPath>
     <DocumentationFile>QuickDALLibrary.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
