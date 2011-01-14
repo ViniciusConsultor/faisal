@@ -1,4 +1,8 @@
 ﻿Partial Class QuickCommonDataSet
+  Partial Class CombineControlSettingDataTable
+
+  End Class
+
   Partial Class ContactsDataTable
 
   End Class
