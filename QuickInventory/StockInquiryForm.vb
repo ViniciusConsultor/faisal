@@ -2,6 +2,7 @@ Imports QuickDALLibrary
 Imports QuickDAL.QuickInventoryDataSet
 Imports QuickDAL.QuickInventoryDataSetTableAdapters
 
+
 'Author: Faisal Saleem
 'Date Created(DD-MMM-YY): 2010
 '***** Modification History *****
@@ -118,8 +119,43 @@ Public Class StockInquiryForm
     Finally
       Cursor = Windows.Forms.Cursors.Default
     End Try
+    End Sub
+    'Author: Muhammad Zakee
+    'Date Created(DD-MMM-YY): 06-Jan-11
+    '***** Modification History *****
+    '                 Date      Description
+    'Name          (DD-MMM-YY) 
+    '--------------------------------------------------------------------------------
+    '
+    ''' <summary>
+    ''' It shows the sales stock level information.
+    ''' </summary>
+    Private Sub ShowSalesStockLevelInformation()
+    Try
+      Cursor = Windows.Forms.Cursors.WaitCursor
+      Dim _SalesStockInquiryTable As QuickDAL.QuickInventoryDataSet.StockInquiryDataTable
 
-  End Sub
+      Me.GetSalesQuickSpread.Reset()
+      Me.GetSalesQuickSpread.DataSource = Nothing
+      If Me.IncreaseQuantityTextBox.Text = String.Empty Then
+        Me.IncreaseQuantityTextBox.Text = (0).ToString
+      End If
+      _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, Me.IncreaseQuantityTextBox.Text, Me.TotalRowsCheckBox.Checked)
+      _SalesStockInquiryTable.Item_Code1Column.Expression = "substring(" & _SalesStockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
+      _SalesStockInquiryTable.Item_Code2Column.Expression = "substring(" & _SalesStockInquiryTable.Item_CodeColumn.ColumnName & ",4,2)"
+
+      SetGridLayout(Me.GetSalesQuickSpread_Sheet1, _SalesStockInquiryTable)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in click event method of GetSalesButton of ShowInquiryForm.", ex)
+      Throw _qex
+    Finally
+      Cursor = Windows.Forms.Cursors.Default
+    End Try
+    End Sub
+
+
+
 
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 29-Aug-10
@@ -272,8 +308,7 @@ Public Class StockInquiryForm
       Dim _qex As New QuickExceptionAdvanced("Exception in Load event method of StockInquiryForm.", ex)
       _qex.Show(Me.LoginInfoObject)
     End Try
-
-  End Sub
+    End Sub
 
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 29-Aug-10
@@ -291,6 +326,8 @@ Public Class StockInquiryForm
         ShowStockInformation()
       ElseIf TabControl1.SelectedTab Is MinimumLevelDeviationTabPage Then
         ShowMinimumLevelInformation()
+      ElseIf TabControl1.SelectedTab Is SalesStockInquiryTabPage Then
+        ShowSalesStockLevelInformation()
       End If
 
     Catch ex As Exception
@@ -377,7 +414,6 @@ Public Class StockInquiryForm
 
         ElseIf TabControl1.SelectedTab Is MinimumLevelDeviationTabPage Then
           Me.MinimumStockLevelQuickSpread.SaveExcel(_FileName, FarPoint.Excel.ExcelSaveFlags.SaveBothCustomRowAndColumnHeaders)
-
         End If
       End If
 
@@ -402,9 +438,7 @@ Public Class StockInquiryForm
   Private Sub RecalculateStockButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RecalculateStockButton.Click
     Try
       Cursor = Windows.Forms.Cursors.WaitCursor
-
       _StockInquiryTableAdapter.RecalculateItemSummary(0, 0, QuickLibrary.Constants.enuDocumentType.Stock)
-
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in RecalculateStockButton_Click of StockInquiryForm.", ex)
       _qex.Show(Me.LoginInfoObject)
@@ -413,4 +447,44 @@ Public Class StockInquiryForm
     End Try
   End Sub
 
+  Private Sub ShowSalesButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowSalesButton.Click
+    Try
+      Me.ShowSalesStockLevelInformation()
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in click event method of ShowButton of ShowInquiryForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    Finally
+      Cursor = Windows.Forms.Cursors.Default
+    End Try
+  End Sub
+
+  Private Sub IncreaseQuantityButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IncreaseQuantityButton.Click
+    Try
+      Me.ShowSalesStockLevelInformation()
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in click event method of ShowButton of ShowInquiryForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    Finally
+      Cursor = Windows.Forms.Cursors.Default
+    End Try
+  End Sub
+
+  Private Sub IncreaseQuantityTextBox_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles IncreaseQuantityTextBox.KeyPress
+    Try
+      If Me.IncreaseQuantityTextBox.Text <> String.Empty Then
+        If Not Char.IsDigit(e.KeyChar) And Not Asc(e.KeyChar) = 8 And Not Asc(e.KeyChar) = 37 Then
+          e.Handled = True
+        Else
+          If (Me.IncreaseQuantityTextBox.Text.Substring(Me.IncreaseQuantityTextBox.Text.Length - 1, 1)) = "%" And Not Asc(e.KeyChar) = 8 Then
+            e.Handled = True
+          Else
+            e.Handled = False
+          End If
+        End If
+      End If
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in keyPress event method of IncreaseQuantityTextBox of ShowInquiryForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    End Try
+  End Sub
 End Class
