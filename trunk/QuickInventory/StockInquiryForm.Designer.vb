@@ -57,6 +57,8 @@ Partial Class StockInquiryForm
     Dim DateButton14 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton15 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton16 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton17 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton18 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Me.StockQuickSpread = New QuickBusinessControls.ItemSpread
     Me.StockQuickSpread_Sheet1 = New QuickBusinessControls.ItemSpreadView
     Me.ItemLabel = New QuickControls.Quick_Label
@@ -510,6 +512,7 @@ Partial Class StockInquiryForm
     Me.DateToCalendarCombo.DateButtons.Add(DateButton6)
     Me.DateToCalendarCombo.DateButtons.Add(DateButton7)
     Me.DateToCalendarCombo.DateButtons.Add(DateButton8)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton9)
     Me.DateToCalendarCombo.DefaultValue = New Date(2010, 2, 2, 8, 36, 32, 453)
     Me.DateToCalendarCombo.Format = "dd-MM-yy"
     Me.DateToCalendarCombo.Location = New System.Drawing.Point(168, 7)
@@ -521,7 +524,6 @@ Partial Class StockInquiryForm
     'DateFromCalendarCombo
     '
     Me.DateFromCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton9)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton10)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton11)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton12)
@@ -529,6 +531,8 @@ Partial Class StockInquiryForm
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton14)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton15)
     Me.DateFromCalendarCombo.DateButtons.Add(DateButton16)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton17)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton18)
     Me.DateFromCalendarCombo.DefaultValue = New Date(2010, 2, 2, 8, 36, 32, 500)
     Me.DateFromCalendarCombo.Format = "dd-MM-yy"
     Me.DateFromCalendarCombo.Location = New System.Drawing.Point(43, 7)

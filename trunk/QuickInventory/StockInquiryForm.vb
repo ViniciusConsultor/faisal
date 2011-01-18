@@ -1,6 +1,7 @@
 Imports QuickDALLibrary
 Imports QuickDAL.QuickInventoryDataSet
 Imports QuickDAL.QuickInventoryDataSetTableAdapters
+Imports System.Windows.Forms
 
 
 'Author: Faisal Saleem
@@ -18,6 +19,7 @@ Public Class StockInquiryForm
   Private _StockInquiryTableAdapter As New StockInquiryTableAdapter
   Private _TextCellLabel As New FarPoint.Win.Spread.CellType.TextCellType
   Private _MinimumStockLevelFilterOptionsTable As New QuickDAL.LogicalDataSet.KeyValuePairDataTable
+  Private Flag As Boolean = False
 #End Region
 
 #Region "Properties"
@@ -140,7 +142,17 @@ Public Class StockInquiryForm
       If Me.IncreaseQuantityTextBox.Text = String.Empty Then
         Me.IncreaseQuantityTextBox.Text = (0).ToString
       End If
-      _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, Me.IncreaseQuantityTextBox.Text, Me.TotalRowsCheckBox.Checked)
+
+      If CDate(Me.DateFromCalendarCombo.Value) > CDate(Me.DateToCalendarCombo.Value) Then
+        MessageBox.Show("FromDate Calandar box date is not greater then TillDate calandar box", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        Exit Sub
+      End If
+      If Me.Flag = True Then
+        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, Me.IncreaseQuantityTextBox.Text, Me.TotalRowsCheckBox.Checked)
+      Else
+        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, (0).ToString, Me.TotalRowsCheckBox.Checked)
+      End If
+
       _SalesStockInquiryTable.Item_Code1Column.Expression = "substring(" & _SalesStockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
       _SalesStockInquiryTable.Item_Code2Column.Expression = "substring(" & _SalesStockInquiryTable.Item_CodeColumn.ColumnName & ",4,2)"
 
@@ -298,6 +310,9 @@ Public Class StockInquiryForm
       Me.MinimumStockLevelFilterOptionQuickUltraComboBox.Rows.Band.Columns(_MinimumStockLevelFilterOptionsTable.ValueColumn.ColumnName).Width = Me.MinimumStockLevelFilterOptionQuickUltraComboBox.DropDownWidth
       Me.MinimumStockLevelFilterOptionQuickUltraComboBox.SelectedRow = Me.MinimumStockLevelFilterOptionQuickUltraComboBox.Rows(0)
 
+      Me.DateFromCalendarCombo.Value = Now.Date
+      Me.DateToCalendarCombo.Value = Now.Date
+
       ShowButton_Click(sender, e)
       Me.StockQuickSpread.AllowUserZoom = True
       'Me.StockQuickSpread_Sheet1.AllowGroup = True
@@ -449,6 +464,7 @@ Public Class StockInquiryForm
 
   Private Sub ShowSalesButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ShowSalesButton.Click
     Try
+      Me.Flag = False
       Me.ShowSalesStockLevelInformation()
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in click event method of ShowButton of ShowInquiryForm.", ex)
@@ -460,6 +476,7 @@ Public Class StockInquiryForm
 
   Private Sub IncreaseQuantityButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IncreaseQuantityButton.Click
     Try
+      Me.Flag = True
       Me.ShowSalesStockLevelInformation()
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in click event method of ShowButton of ShowInquiryForm.", ex)
@@ -487,4 +504,6 @@ Public Class StockInquiryForm
       _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
+
+  
 End Class
