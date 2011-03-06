@@ -148,9 +148,9 @@ Public Class StockInquiryForm
         Exit Sub
       End If
       If Me.Flag = True Then
-        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, Me.IncreaseQuantityTextBox.Text, Me.TotalRowsCheckBox.Checked)
+        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, Convert.ToDateTime(Me.DateFromCalendarCombo.Value), Convert.ToDateTime(Me.DateToCalendarCombo.Value), Me.ItemComboBox.Text, Me.IncreaseQuantityTextBox.Text, Me.TotalRowsCheckBox.Checked)
       Else
-        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, CType(Format(Me.DateFromCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), CType(Format(Me.DateToCalendarCombo.Value, QuickDALLibrary.General.FormatDateForDisplay), Global.System.Nullable(Of Date)), Me.ItemComboBox.Text, (0).ToString, Me.TotalRowsCheckBox.Checked)
+        _SalesStockInquiryTable = _StockInquiryTableAdapter.GetSalesStockByItemCodeCompanies(Me.CompanyCheckedListBox1.CheckedKeys, Convert.ToDateTime(Me.DateFromCalendarCombo.Value), Convert.ToDateTime(Me.DateToCalendarCombo.Value), Me.ItemComboBox.Text, "0", Me.TotalRowsCheckBox.Checked)
       End If
 
       _SalesStockInquiryTable.Item_Code1Column.Expression = "substring(" & _SalesStockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"

@@ -200,6 +200,7 @@ Public Class Constants
   Public Const SETTING_ID_FormatDateForInput As String = "FormatDateForInput"
   Public Const SETTING_ID_DocumentNoFormat_SalesInvoice As String = "DocumentNoFormat" & SETTING_ID_SEPERATOR & "SalesInvoice"
   Public Const SETTING_ID_DocumentNoFormat_ProductionOrder As String = "DocumentNoFormat" & SETTING_ID_SEPERATOR & "ProductionOrder"
+  Public Const SETTING_ID_DocumentNoFormat_PosSalesInvoice As String = "DocumentNoFormat" & SETTING_ID_SEPERATOR & "PosSalesInvoice"
 
   Public Const SETTING_ID_EMAIL_AREA_MANAGER As String = "EmailAddressAreaManager"
 

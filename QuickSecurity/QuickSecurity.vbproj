@@ -69,6 +69,12 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormControlPermissionForm.Designer.vb">
+      <DependentUpon>FormControlPermissionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormControlPermissionForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MenuRoleAssociationForm.Designer.vb">
       <DependentUpon>MenuRoleAssociationForm.vb</DependentUpon>
     </Compile>
@@ -104,6 +110,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormControlPermissionForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormControlPermissionForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuRoleAssociationForm.resx">
       <DependentUpon>MenuRoleAssociationForm.vb</DependentUpon>
       <SubType>Designer</SubType>

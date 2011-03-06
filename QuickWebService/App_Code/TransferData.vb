@@ -14,7 +14,7 @@ Imports System.Data
 ''' xml file to database.
 ''' 
 ''' </summary>
-Public Class TransferData
+Public Class TransferData123
 
 #Region "Declarations"
   Private WithEvents _TransferTableAdapterTarget As New TransferTableAdapter

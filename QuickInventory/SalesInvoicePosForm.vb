@@ -105,6 +105,9 @@ Public Class SalesInvoicePosForm
       Dim ItemsUsedCollection As New Collection
       Dim SalesTypeLocal As Int32
       Dim _RecordSaved As Boolean = True
+      Dim _LikeOperatorPattern As String     'It will hold the value which will be used with like operator to get maximum value.
+      Dim _LastInventoryNo As Object
+      Dim _NewInventoryNo As String = String.Empty
 
       Me.grdSalesInvoice.EditMode = False
 
@@ -114,7 +117,19 @@ Public Class SalesInvoicePosForm
         _InventoryDataRow = _SalesInvoiceDataTable.NewInventoryRow
         SalesInvoiceID = _InventoryTableAdapterObject.GetNewInventoryIDByCoID(LoginInfoObject.CompanyID).Value
         _InventoryDataRow.Inventory_ID = SalesInvoiceID
-        _InventoryDataRow.Inventory_No = _InventoryTableAdapterObject.GetNewInventoryNoByCoIDDocumentTypeID(LoginInfoObject.CompanyID, Me.DocumentType).Value.ToString
+
+        '_InventoryDataRow.Inventory_No = _InventoryTableAdapterObject.GetNewInventoryNoByCoIDDocumentTypeID(LoginInfoObject.CompanyID, Me.DocumentType).Value.ToString
+
+
+        _LikeOperatorPattern = Common.GenerateNextDocumentNo(String.Empty, String.Empty, DatabaseCache.GetSettingValue(SETTING_ID_DocumentNoFormat_PosSalesInvoice), True)
+        _LastInventoryNo = _InventoryTableAdapterObject.GetMaxInventoryNoByCoIDDocumentTypeID(LoginInfoObject.CompanyID, Me.DocumentType, _LikeOperatorPattern)
+        If _LastInventoryNo Is Nothing Then
+          _NewInventoryNo = Common.GenerateNextDocumentNo(String.Empty, "", DatabaseCache.GetSettingValue(SETTING_ID_DocumentNoFormat_PosSalesInvoice), False)
+        Else
+          _NewInventoryNo = Common.GenerateNextDocumentNo(String.Empty, _LastInventoryNo.ToString, DatabaseCache.GetSettingValue(SETTING_ID_DocumentNoFormat_PosSalesInvoice), False)
+        End If
+
+        _InventoryDataRow.Inventory_No = _NewInventoryNo
         _InventoryDataRow.DocumentType_ID = Convert.ToInt16(Me.DocumentType)
         _InventoryDataRow.RecordStatus_ID = Constants.RecordStatuses.Inserted
         Me.SaleNoTextBox.Text = _InventoryDataRow.Inventory_No.ToString

@@ -199,6 +199,40 @@ Public Class LoginInfo
     End Set
   End Property
 
+  Private _RoleID As Int32
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 07-Mar-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' It will return the role id of the current logged in user
+  ''' </summary>
+  Public Property RoleID() As Int32
+    Get
+      Try
+
+        Return _RoleID
+
+      Catch ex As Exception
+        Dim _qex As New QuickExceptionAdvanced("Exception in RoleID of LoginInfo.", ex)
+        Throw _qex
+      End Try
+    End Get
+    Set(ByVal value As Int32)
+      Try
+
+        _RoleID = value
+
+      Catch ex As Exception
+        Dim _qex As New QuickExceptionAdvanced("Exception in RoleID of LoginInfo.", ex)
+        Throw _qex
+      End Try
+    End Set
+  End Property
+
   Public Function Clone() As Object Implements System.ICloneable.Clone
     Return MemberwiseClone()
   End Function

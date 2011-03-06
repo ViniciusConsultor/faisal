@@ -18,6 +18,10 @@ Public Class MDIParent1
   Private m_ChildFormNumber As Integer = 0
 
 
+  Dim _FormControlTA As New QuickDAL.QuickCommonDataSetTableAdapters.SettingFormControlsTableAdapter
+  Dim _FormControlTable As New QuickDAL.QuickCommonDataSet.SettingFormControlsDataTable
+  Dim _FormControlRow As QuickDAL.QuickCommonDataSet.SettingFormControlsRow
+
   Private Sub MDIParent1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
     Try
 
@@ -174,6 +178,7 @@ Public Class MDIParent1
               _LoginInfo.UserID = LoginFormObject.LoginInfoObject.UserID
               _LoginInfo.UserName = LoginFormObject.LoginInfoObject.UserName
               _LoginInfo.IsAdmin = LoginFormObject.LoginInfoObject.IsAdmin
+              _LoginInfo.RoleID = LoginFormObject.LoginInfoObject.RoleID
               _LoginInfo.DatabaseServerName = UserTA.GetConnection.DataSource
               _LoginInfo.DatabaseName = UserTA.GetConnection.Database
               'Set up the UI
@@ -279,6 +284,32 @@ Public Class MDIParent1
     End Try
   End Sub
 
+  Private Sub AddControls(ByVal _Control As Windows.Forms.Control, ByVal _FormID As Int16)
+    Try
+
+      If Not TypeOf _Control Is Label Then
+        _FormControlRow = _FormControlTable.NewSettingFormControlsRow
+        With _FormControlRow
+          .Control_ID = _FormControlTA.GetMaxControlID(_FormID).Value + Convert.ToInt16(1)
+          .Control_Name = _Control.Name
+          .Form_ID = _FormID
+          .RecordStatus_ID = 1
+          .Stamp_DateTime = Date.UtcNow
+          .Stamp_UserID = 0
+        End With
+        _FormControlTable.Rows.Add(_FormControlRow)
+        _FormControlTA.Update(_FormControlTable)
+      End If
+
+      For Each _NestedControl As Control In _Control.Controls
+        AddControls(_NestedControl, _FormID)
+      Next
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in AddControls of FormControlPermissionForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    End Try
+  End Sub
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 2009
   '***** Modification History *****
@@ -424,6 +455,8 @@ Public Class MDIParent1
             Form = New QuickSecurity.SecurityUserForm
           Case QuickLibrary.Entities.FORM_ID_USER_ROLE
             Form = New QuickSecurity.SecurityRoleForm
+          Case QuickLibrary.Entities.FORM_ID_FORM_CONTROL_PERMISSION
+            Form = New QuickSecurity.FormControlPermissionForm
 
             '<<<<<<<<<< Production
           Case QuickLibrary.Entities.FORM_ID_PROCESS
@@ -458,6 +491,7 @@ Public Class MDIParent1
               .LoginInfoObject.CompanyID = _LoginInfo.CompanyID
               .LoginInfoObject.UserID = _LoginInfo.UserID
               .LoginInfoObject.UserName = _LoginInfo.UserName
+              .LoginInfoObject.RoleID = _LoginInfo.RoleID
             End With
           End If
           Form.MdiParent = Me

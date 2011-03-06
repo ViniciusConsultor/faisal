@@ -39,6 +39,7 @@ Public Class Entities
   Public Const FORM_ID_MENU_ROLE_ASSOCIATION As String = "06-001"
   Public Const FORM_ID_USER As String = "06-002"
   Public Const FORM_ID_USER_ROLE As String = "06-003"
+  Public Const FORM_ID_FORM_CONTROL_PERMISSION As String = "06-004"
   '<<<<<<<<<< Production
   Public Const FORM_ID_PROCESS As String = "08-001"
   Public Const FORM_ID_PROCESS_WORKFLOW As String = "08-002"

@@ -149,6 +149,16 @@ Public Class ParentBasicForm
 #Region "Methods"
   Private Sub SetCommonControlProperties(ByVal _Control As Windows.Forms.Control)
     Try
+      Dim _FormControlPermissionTA As New QuickDAL.QuickSecurityDataSetTableAdapters.FormControlPermissionTableAdapter
+      Dim _FormControlPermissionTable As QuickDAL.QuickSecurityDataSet.FormControlPermissionDataTable
+
+      'Setting security
+      _FormControlPermissionTable = _FormControlPermissionTA.GetByCoIDRoleIDFormNameControlName(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.RoleID, Me.Name, _Control.Name)
+      If _FormControlPermissionTable.Rows.Count > 0 Then
+        _Control.Enabled = _FormControlPermissionTable(0).IsEnabled
+      End If
+
+      'Setting formats
       If TypeOf _Control Is QuickControls.Quick_UltraCalendarCombo Then
         With DirectCast(_Control, QuickControls.Quick_UltraCalendarCombo)
           .Format = DatabaseCache.GetSettingValue(Constants.SETTING_ID_FormatDateToDisplay)
@@ -173,6 +183,26 @@ Public Class ParentBasicForm
     InitializeComponent()
 
     ' Add any initialization after the InitializeComponent() call.
-    SetCommonControlProperties(Me)
+  End Sub
+
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 7-Mar-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This event method will do the setting necessary such as captions and security.
+  ''' </summary>
+  Private Sub ParentBasicForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Try
+      SetCommonControlProperties(Me)
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in ParentBasicForm_Load of ParentBasicForm.", ex)
+      Throw _qex
+    End Try
   End Sub
 End Class
