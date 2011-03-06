@@ -222,6 +222,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="QuickErp.snk" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_39_to_02_03_03_40.sql" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_38_to_02_03_02_39.sql" />
     <None Include="Resources\Scripts\upgrade_02_03_02_36_to_02_03_02_37.sql" />
     <None Include="Resources\Scripts\upgrade_02_03_02_32_to_02_03_02_33.sql" />
     <None Include="Resources\Scripts\upgrade_02_01_00_06_to_02_01_00_07.txt" />
@@ -274,6 +276,7 @@
     <None Include="Resources\Scripts\upgrade_02_03_02_33_to_02_03_02_34.sql" />
     <None Include="Resources\Scripts\upgrade_02_03_02_34_to_02_03_02_35.sql" />
     <None Include="Resources\Scripts\upgrade_02_03_02_35_to_02_03_02_36.sql" />
+    <None Include="Resources\Scripts\upgrade_02_03_02_37_to_02_03_02_38.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

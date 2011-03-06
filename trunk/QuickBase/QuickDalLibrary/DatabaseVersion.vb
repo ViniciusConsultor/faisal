@@ -213,6 +213,15 @@ Public Class DatabaseVersion
     Try
 
       Select Case ExistingDbVersionpara
+        Case "2.3.2.39"
+          _UpgradingTo = "2.3.3.40"
+          _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_39_to_02_03_03_40, Environment.NewLine & "go" & Environment.NewLine))
+        Case "2.3.2.38"
+          _UpgradingTo = "2.3.2.39"
+          _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_38_to_02_03_02_39, Environment.NewLine & "go" & Environment.NewLine))
+        Case "2.3.2.37"
+          _UpgradingTo = "2.3.2.38"
+          _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_37_to_02_03_02_38, Environment.NewLine & "go" & Environment.NewLine))
         Case "2.3.2.36"
           _UpgradingTo = "2.3.2.37"
           _UpgradingScript = New ArrayList(Common.SplitStringToArrayList(My.Resources.upgrade_02_03_02_36_to_02_03_02_37, Environment.NewLine & "go" & Environment.NewLine))

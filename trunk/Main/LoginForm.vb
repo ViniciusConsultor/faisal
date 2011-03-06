@@ -7,9 +7,14 @@ Imports QuickDalLibrary
 Public Class LoginForm
   Dim _UserTableAdapterObject As New UserTableAdapter
   Dim _UserDataTableObject As New UserDataTable
-  Dim _UserRowObject As UserRow
+  Dim _UserRoleTA As New UserRoleAssociationTableAdapter
   Dim _CompanyTA As New CompanyTableAdapter
+
   Dim _CompanyDataTable As CompanyDataTable
+  Dim _UserRoleTable As UserRoleAssociationDataTable
+
+  Dim _UserRowObject As UserRow
+
   Public _LoginInfo As New LoginInfo
 
   ' TODO: Insert code to perform custom authentication using the provided username and password 
@@ -53,6 +58,15 @@ Public Class LoginForm
             End If
             _LoginInfo.UserID = _UserRowObject.User_ID
             _LoginInfo.UserName = _UserRowObject.User_Name
+
+            ' Setting User Role
+            _UserRoleTable = _UserRoleTA.GetByCoIDUserID(_LoginInfo.CompanyID, _LoginInfo.UserID)
+            If _UserRoleTable.Rows.Count > 0 Then
+              _LoginInfo.RoleID = _UserRoleTable(0).Role_ID
+            Else
+              _LoginInfo.RoleID = 0
+            End If
+
             _LoginInfo.DatabaseServerName = _UserTableAdapterObject.GetConnection.DataSource
             Me.DialogResult = Windows.Forms.DialogResult.OK
             If SaveUserCheckBox.Checked Then

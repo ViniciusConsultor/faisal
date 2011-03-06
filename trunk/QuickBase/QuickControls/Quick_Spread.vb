@@ -139,14 +139,10 @@ Public Class Quick_Spread
 
 #Region "Event Methods"
 
-
-
-
-
   Private Sub Quick_Spread_ButtonClicked(ByVal sender As Object, ByVal e As FarPoint.Win.Spread.EditorNotifyEventArgs) Handles Me.ButtonClicked
     Try
 
-      If Me._ShowDeleteRowButton AndAlso (Me.ActiveSheet.ActiveColumnIndex < Me.ActiveSheet.RowCount - 1 OrElse Not Me.AutoNewRow) Then
+      If Me._ShowDeleteRowButton AndAlso e.Column = 0 AndAlso (Me.ActiveSheet.ActiveColumnIndex < Me.ActiveSheet.RowCount - 1 OrElse Not Me.AutoNewRow) Then
         If MessageBox.Show("Are you sure, you want to delete a row", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
           'Me.ActiveSheet.RemoveRows(e.Row, 1)
           Me.ActiveSheet.Rows(e.Row).Visible = False

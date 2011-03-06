@@ -94,5 +94,11 @@ IF NOT EXISTS (SELECT * FROM Common_EntityType WHERE EntityType_ID = 0)
 		,NULL
 		,1)
      
-     
-     
+-- Insert SettingForm
+IF NOT EXISTS (SELECT * FROM Base_SettingForm WHERE Form_ID = #)
+	INSERT INTO [Base_SettingForm]
+		([Form_ID], [Form_Code], [Form_Name], [RecordStatus_ID]
+		,[Stamp_UserID], [Stamp_DateTime], [Upload_DateTime])
+	VALUES
+		(#, '##-###', '', 1
+		,0, 'yyyy/mm/dd', NULL)

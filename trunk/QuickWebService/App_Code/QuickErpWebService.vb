@@ -1,6 +1,9 @@
 Imports System.Web
 Imports System.Web.Services
 Imports System.Web.Services.Protocols
+Imports QuickDAL
+Imports QuickLibrary
+
 <Assembly: system.Security.AllowPartiallyTrustedCallers()> 
 
 <WebService(Namespace:="http://quicktijarat.com/")> _
@@ -9,7 +12,7 @@ Imports System.Web.Services.Protocols
 Public Class Service
   Inherits System.Web.Services.WebService
 
-  Private DATA_TRANSFER_LOG_FILE As String = "bin\DataTransferLog_" & Format(Now, "yyMM") & ".txt"
+  Private DATA_TRANSFER_LOG_FILE As String = "bin\DataTransferLog_" & Format(Common.SystemDateTime, "yyMM") & ".txt"
 
   <WebMethod()> _
   Public Function HelloWorld() As String
@@ -32,20 +35,20 @@ Public Class Service
       Dim _TransferDataObject As New TransferData
       _TransferDataObject.PathForLogFile = Server.MapPath(DATA_TRANSFER_LOG_FILE)
 
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Now.ToString & ": ********** Web Service Started ***********", True)
+      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": ********** Web Service Started ***********", True)
       _TargetConnectionStringPara = ConfigurationManager.ConnectionStrings("Quick_Erp").ConnectionString
 
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Now.ToString & ": Calling TransferTableFromXML() method", True)
+      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": Calling TransferTableFromXML() method", True)
       _TransferDataObject.TransferTableFromXML(_CompanyID, _UserID, _TargetConnectionStringPara, Server.MapPath("FtpFiles\") & _FileNameWithPath, _FromDate, _ToDate)
 
       If _ExportFile Then
-        My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Environment.NewLine & Now.ToString & ": Calling ExportDataToXmlFile", True)
+        My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Environment.NewLine & Common.SystemDateTime.ToString & ": Calling ExportDataToXmlFile", True)
         _TransferDataObject.ExportDataToXmlFile(_CompanyID, _UserID, _FromDate, _ToDate, False, _TargetConnectionStringPara, Server.MapPath("FtpFiles\"))
       End If
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Now.ToString & ": ********** Web Service Ended ***********", True)
+      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": ********** Web Service Ended ***********", True)
 
     Catch ex As Exception
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Now.ToString & ": exception text=" & ex.Message, True)
+      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": exception text=" & ex.Message, True)
       Throw ex
     End Try
   End Function

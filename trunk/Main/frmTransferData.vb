@@ -670,4 +670,28 @@ Public Class frmTransferData
     End Try
 
   End Sub
+
+  Private Sub Quick_Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Quick_Button1.Click
+    OpenFileDialog1.ShowDialog()
+    If OpenFileDialog1.FileName <> String.Empty Then
+      Dim _SourceFileName As String = OpenFileDialog1.FileName
+      Dim _SourceFileStream As IO.FileStream = IO.File.OpenRead(_SourceFileName)
+      Dim _TargetFileStream As IO.FileStream = IO.File.Create(_SourceFileName & ".rfs")
+      Dim _gZip As New IO.Compression.GZipStream(_TargetFileStream, IO.Compression.CompressionMode.Compress, True)
+
+      Dim bytes As Int32 = _SourceFileStream.ReadByte
+
+      Do While bytes <> -1
+        _gZip.WriteByte(Convert.ToByte(bytes))
+        bytes = _SourceFileStream.ReadByte
+      Loop
+
+      _gZip.Close()
+      _TargetFileStream.Close()
+      _SourceFileStream.Close()
+
+      MessageBox.Show("Completed")
+    End If
+
+  End Sub
 End Class

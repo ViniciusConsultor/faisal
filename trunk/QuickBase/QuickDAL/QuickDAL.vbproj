@@ -118,6 +118,7 @@
     <Compile Include="QuickCommonDataSet.vb">
       <DependentUpon>QuickCommonDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuickCommonDataSetExtension.vb" />
     <Compile Include="QuickDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
