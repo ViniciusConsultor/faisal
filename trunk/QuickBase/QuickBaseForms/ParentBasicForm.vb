@@ -144,6 +144,44 @@ Public Class ParentBasicForm
       End Try
     End Set
   End Property
+
+
+  Private _ControlSecurityApplicable As Boolean = True
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 21-Mar-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' If this property is set to false then control security related code will not
+  ''' on this work.
+  ''' </summary>
+  Protected Property ControlSecurityApplicable() As Boolean
+    Get
+      Try
+
+        Return _ControlSecurityApplicable
+
+      Catch ex As Exception
+        Dim _qex As New QuickExceptionAdvanced("Exception in ControlSecurityApplicable of ParentBasicForm.", ex)
+        Throw _qex
+      End Try
+    End Get
+    Set(ByVal value As Boolean)
+      Try
+
+        _ControlSecurityApplicable = value
+
+      Catch ex As Exception
+        Dim _qex As New QuickExceptionAdvanced("Exception in ControlSecurityApplicable of ParentBasicForm.", ex)
+        Throw _qex
+      End Try
+    End Set
+  End Property
+
+
 #End Region
 
 #Region "Methods"
@@ -198,11 +236,13 @@ Public Class ParentBasicForm
   ''' </summary>
   Private Sub ParentBasicForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     Try
-      SetCommonControlProperties(Me)
+      If Me.ControlSecurityApplicable Then
+        SetCommonControlProperties(Me)
+      End If
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in ParentBasicForm_Load of ParentBasicForm.", ex)
-      Throw _qex
+      _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
 End Class

@@ -673,30 +673,18 @@ Public Class TransferData
 
       If SourceDatabase Then
         _SelectQueryString = "SELECT * FROM [" & _TableNamePara & "] WHERE " & _CompanyDataTableSource.Co_IdColumn.ColumnName _
-          & "=@Co_ID AND " & _CompanyDataTableSource.Stamp_DateTimeColumn.ColumnName & ">=@FromDateTime AND " _
-          & _CompanyDataTableSource.Stamp_DateTimeColumn.ColumnName & "<=@ToDateTime"
+          & "=@Co_ID AND (Upload_DateTime IS NULL OR Stamp_DateTime > Upload_DateTime)"
+
         _SelectCommand.CommandText = _SelectQueryString
-
         _SelectCommand.Parameters.Add("@Co_ID", SqlDbType.SmallInt)
-        _SelectCommand.Parameters.Add("@FromDateTime", SqlDbType.DateTime)
-        _SelectCommand.Parameters.Add("@ToDateTime", SqlDbType.DateTime)
-
         _SelectCommand.Parameters("@Co_ID").Value = _CoIDPara
-        _SelectCommand.Parameters.Item("@FromDateTime").Value = _LastUploadDateTimePara
-        _SelectCommand.Parameters.Item("@ToDateTime").Value = _ToDateTimePara
       Else
         _SelectQueryString = "SELECT * FROM [" & _TableNamePara & "] WHERE " & _CompanyDataTableSource.Co_IdColumn.ColumnName _
-          & "=@Co_ID AND " & _CompanyDataTableSource.Upload_DateTimeColumn.ColumnName & ">=@FromDateTime AND " _
-          & _CompanyDataTableSource.Stamp_DateTimeColumn.ColumnName & "<=@ToDateTime"
+          & "=@Co_ID AND (Upload_DateTime IS NULL OR Stamp_DateTime > Upload_DateTime)"
+
         _SelectCommand.CommandText = _SelectQueryString
-
         _SelectCommand.Parameters.Add("@Co_ID", SqlDbType.SmallInt)
-        _SelectCommand.Parameters.Add("@FromDateTime", SqlDbType.DateTime)
-        _SelectCommand.Parameters.Add("@ToDateTime", SqlDbType.DateTime)
-
         _SelectCommand.Parameters("@Co_ID").Value = _CoIDPara
-        _SelectCommand.Parameters.Item("@FromDateTime").Value = _LastUploadDateTimePara
-        _SelectCommand.Parameters.Item("@ToDateTime").Value = _LastUploadDateTimePara
       End If
 
       Return _SelectCommand

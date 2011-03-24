@@ -63,17 +63,17 @@ Public Class SecurityUserForm
       Dim _SecurityRoleTable As QuickSecurityDataSet.SecurityRoleDataTable = Nothing
 
       _SecurityRoleTable = _SecurityRoleTA.GetByCoID(Me.LoginInfoObject.CompanyID)
-      Me.RolesComboBox1.DataSource = _SecurityRoleTable
-      Me.RolesComboBox1.DisplayMember = _SecurityRoleTable.Role_DescColumn.ColumnName
-      Me.RolesComboBox1.ValueMember = _SecurityRoleTable.Role_IDColumn.ColumnName
+      Me.RolesComboBox.DataSource = _SecurityRoleTable
+      Me.RolesComboBox.DisplayMember = _SecurityRoleTable.Role_DescColumn.ColumnName
+      Me.RolesComboBox.ValueMember = _SecurityRoleTable.Role_IDColumn.ColumnName
 
       General.SetColumnCaptions(DirectCast(_SecurityRoleTable, DataTable), Me.Name)
 
-      For I As Int32 = 0 To Me.RolesComboBox1.Rows.Band.Columns.BoundColumnsCount - 1
-        With Me.RolesComboBox1.Rows.Band.Columns(I)
+      For I As Int32 = 0 To Me.RolesComboBox.Rows.Band.Columns.BoundColumnsCount - 1
+        With Me.RolesComboBox.Rows.Band.Columns(I)
           Select Case .Key
             Case _SecurityRoleTable.Role_DescColumn.ColumnName
-              Me.RolesComboBox1.Rows.Band.Columns(I).Width = Me.RolesComboBox1.Width - Constants.SCROLLBAR_WIDTH
+              Me.RolesComboBox.Rows.Band.Columns(I).Width = Me.RolesComboBox.Width - Constants.SCROLLBAR_WIDTH
             Case Else
               .Hidden = True
           End Select
@@ -99,9 +99,9 @@ Public Class SecurityUserForm
         QuickMessageBox.Show(Me.LoginInfoObject, "User name already exists, you should change the user name", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
         Return False
 
-      ElseIf RolesComboBox1.SelectedRow Is Nothing Then
+      ElseIf RolesComboBox.SelectedRow Is Nothing Then
         QuickMessageBox.Show(Me.LoginInfoObject, "User must have a role.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Warning)
-        Me.RolesComboBox1.Focus()
+        Me.RolesComboBox.Focus()
         Return False
 
       End If
@@ -144,10 +144,10 @@ Public Class SecurityUserForm
 
         _UserRoleAssociationTable = _UserRoleAssociationTA.GetByCoIDUserID(CompanyComboBox.CompanyID, _CurrentSecurityUserDataRow.User_ID)
         If _UserRoleAssociationTable.Rows.Count > 0 Then
-          RolesComboBox1.SelectedRow = Nothing
-          RolesComboBox1.Value = _UserRoleAssociationTable(0).Role_ID
+          RolesComboBox.SelectedRow = Nothing
+          RolesComboBox.Value = _UserRoleAssociationTable(0).Role_ID
         Else
-          RolesComboBox1.Value = Nothing
+          RolesComboBox.Value = Nothing
         End If
       End If
 
@@ -209,7 +209,7 @@ Public Class SecurityUserForm
           _UserRoleAssociationRow = _UserRoleAssociationTable(0)
         End If
 
-        _UserRoleAssociationRow.Role_ID = Convert.ToInt32(RolesComboBox1.Value)
+        _UserRoleAssociationRow.Role_ID = Convert.ToInt32(RolesComboBox.Value)
         _UserRoleAssociationRow.Stamp_DateTime = Common.SystemDateTime
         _UserRoleAssociationRow.Stamp_UserID = LoginInfoObject.UserID
 
@@ -240,8 +240,10 @@ Public Class SecurityUserForm
   Protected Overrides Sub MoveFirstButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
     Try
       Cursor = Cursors.WaitCursor
+      Dim _CompanyID As Int32 = Me.LoginInfoObject.CompanyID
 
-      _SecurityUserDataTable = Me._SecurityUserTableAdapterObject.GetFirstByCoID(CompanyComboBox.CompanyID)
+      If Me.CompanyComboBox.CompanyID > 0 Then _CompanyID = Me.CompanyComboBox.CompanyID
+      _SecurityUserDataTable = Me._SecurityUserTableAdapterObject.GetFirstByCoID(_CompanyID)
       MyBase.MoveFirstButtonClick(sender, e)
 
     Catch ex As Exception
@@ -256,18 +258,18 @@ Public Class SecurityUserForm
     Try
       Cursor = Cursors.WaitCursor
       Dim _TempTable As UserDataTable
+      Dim _CompanyID As Int32 = Me.LoginInfoObject.CompanyID
+      Dim _UserID As Int32 = 0
 
-      If (_CurrentSecurityUserDataRow Is Nothing) Then
-        _TempTable = (Me._SecurityUserTableAdapterObject.GetNextByCoIDUserID(CompanyComboBox.CompanyID, 0))
-      Else
-        _TempTable = Me._SecurityUserTableAdapterObject.GetNextByCoIDUserID(Me._CurrentSecurityUserDataRow.Co_ID, _CurrentSecurityUserDataRow.User_ID)
-        If _TempTable.Count = 0 Then
-          _TempTable = Me._SecurityUserTableAdapterObject.GetLastByCoID(LoginInfoObject.CompanyID)
-        End If
-      End If
+      If Me.CompanyComboBox.CompanyID > 0 Then _CompanyID = Me.CompanyComboBox.CompanyID
+      If _CurrentSecurityUserDataRow IsNot Nothing AndAlso Me.CompanyComboBox.CompanyID = _CurrentSecurityUserDataRow.Co_ID Then _UserID = _CurrentSecurityUserDataRow.User_ID
 
-      _SecurityUserDataTable = _TempTable
-      MyBase.MoveNextButtonClick(sender, e)
+      _TempTable = Me._SecurityUserTableAdapterObject.GetNextByCoIDUserID(_CompanyID, _UserID)
+      If _TempTable.Count > 0 Then
+        '_TempTable = Me._SecurityUserTableAdapterObject.GetLastByCoID(LoginInfoObject.CompanyID)
+        _SecurityUserDataTable = _TempTable
+        MyBase.MoveNextButtonClick(sender, e)
+      End If      
 
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in MoveNextButtonClick event method of SecurityUserForm.", ex)
@@ -281,18 +283,17 @@ Public Class SecurityUserForm
     Try
       Cursor = Cursors.WaitCursor
       Dim _TempTable As UserDataTable
+      Dim _CompanyID As Int32 = Me.LoginInfoObject.CompanyID
+      Dim _UserID As Int32 = 0
 
-      If (_CurrentSecurityUserDataRow Is Nothing) Then
-        _TempTable = (Me._SecurityUserTableAdapterObject.GetPreviousByCoIDUserID(CompanyComboBox.CompanyID, 0))
-      Else
-        _TempTable = Me._SecurityUserTableAdapterObject.GetPreviousByCoIDUserID(Me._CurrentSecurityUserDataRow.Co_ID, _CurrentSecurityUserDataRow.User_ID)
-        If _TempTable.Count = 0 Then
-          _TempTable = Me._SecurityUserTableAdapterObject.GetFirstByCoID(LoginInfoObject.CompanyID)
-        End If
+      If Me.CompanyComboBox.CompanyID > 0 Then _CompanyID = Me.CompanyComboBox.CompanyID
+      If _CurrentSecurityUserDataRow IsNot Nothing Then _UserID = _CurrentSecurityUserDataRow.User_ID
+      _TempTable = Me._SecurityUserTableAdapterObject.GetPreviousByCoIDUserID(_CompanyID, _UserID)
+      If _TempTable.Count > 0 Then
+        '_TempTable = Me._SecurityUserTableAdapterObject.GetFirstByCoID(LoginInfoObject.CompanyID)
+        _SecurityUserDataTable = _TempTable
+        MyBase.MovePreviousButtonClick(sender, e)
       End If
-
-      _SecurityUserDataTable = _TempTable
-      MyBase.MovePreviousButtonClick(sender, e)
 
     Catch ex As Exception
       Dim QuickExceptionObject As New QuickExceptionAdvanced("Exception in MovePreviousButtonClick event method of SecurityUserForm.", ex)
@@ -305,8 +306,10 @@ Public Class SecurityUserForm
   Protected Overrides Sub MoveLastButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
     Try
       Cursor = Cursors.WaitCursor
+      Dim _CompanyID As Int32 = Me.LoginInfoObject.CompanyID
 
-      _SecurityUserDataTable = Me._SecurityUserTableAdapterObject.GetLastByCoID(LoginInfoObject.CompanyID)
+      If Me.CompanyComboBox.CompanyID > 0 Then _CompanyID = Me.CompanyComboBox.CompanyID
+      _SecurityUserDataTable = Me._SecurityUserTableAdapterObject.GetLastByCoID(_CompanyID)
       MyBase.MoveLastButtonClick(sender, e)
 
     Catch ex As Exception
