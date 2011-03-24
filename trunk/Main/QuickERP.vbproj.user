@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>D:\Publish\QuickTijarat\QuickErp_02_03_03_40\|D:\Publish\QuickTijarat\QuickErp_02_03_02_37\|D:\Publish\Uniformers\QuickErp_02_03_02_39\|D:\Publish\Uniformers\QuickErp_02_03_02_37\|D:\Publish\QuickTijarat\QuickErp_02_03_02_36\</PublishUrlHistory>
+    <PublishUrlHistory>D:\Publish\QuickTijarat\QuickErp_02_03_03_41\|D:\Publish\QuickTijarat\QuickErp_02_03_03_40\|D:\Publish\Uniformers\QuickErp_02_03_03_40\|D:\Publish\Uniformers\QuickErp_02_03_02_39\|D:\Publish\QuickTijarat\QuickErp_02_03_02_37\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
@@ -14,6 +14,6 @@
     <ProjectView>ProjectFiles</ProjectView>
     <ErrorReportUrlHistory />
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
   </PropertyGroup>
 </Project>
