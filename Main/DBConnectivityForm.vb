@@ -28,6 +28,7 @@ Public Class DBConnectivityForm
     ' Add any initialization after the InitializeComponent() call.
     FormCode = "03-004"
     FormVersion = "1"
+    Me.ControlSecurityApplicable = False
   End Sub
 
 #Region "Properties"

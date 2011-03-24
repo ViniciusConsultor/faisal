@@ -54,23 +54,11 @@ Public Class frmTransferData
 
   Private Sub frmTransferData_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
     Try
-      WebServerConnectionString = Configuration.ConfigurationManager.ConnectionStrings("WebServer").ConnectionString
-      '_TransferTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_TransferPattern1TableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_TransferPattern2TableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_InventoryTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_InventoryDetailTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_PartyTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_CompanyTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_ItemTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_COATableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_SettingTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_UserTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_VoucherTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_VoucherDetailTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
-      '_VoucherTypeTableAdapterTarget.GetConnection.ConnectionString = WebServerConnectionString
 
-      'Me.Quick_WebBrowser1.OpenWaridWebToSmsPage()
+      Me.Quick_Button1.Visible = False
+
+      WebServerConnectionString = Configuration.ConfigurationManager.ConnectionStrings("WebServer").ConnectionString
+
       _CollectionDisplayName.Add("Companies") : _CollectionTableName.Add("Base_Company")
       '_CollectionDisplayName.Add("Document Types") : _CollectionTableName.Add("Common_DocumentType")
       '_CollectionDisplayName.Add("Entity Types") : _CollectionTableName.Add("Common_EntityType")
