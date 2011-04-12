@@ -299,4 +299,7 @@
   <data name="upgrade_02_03_02_39_to_02_03_03_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\scripts\upgrade_02_03_02_39_to_02_03_03_40.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
+  <data name="upgrade_02_03_03_41_to_02_03_03_42" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\scripts\upgrade_02_03_03_41_to_02_03_03_42.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  </data>
 </root>

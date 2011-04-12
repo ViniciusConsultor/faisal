@@ -40,6 +40,8 @@ Partial Public Class QuickSecurityDataSet
     
     Private tableFormControlPermission As FormControlPermissionDataTable
     
+    Private tableLocationCompanyTableAssociation As LocationCompanyTableAssociationDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -87,6 +89,9 @@ Partial Public Class QuickSecurityDataSet
             End If
             If (Not (ds.Tables("FormControlPermission")) Is Nothing) Then
                 MyBase.Tables.Add(New FormControlPermissionDataTable(ds.Tables("FormControlPermission")))
+            End If
+            If (Not (ds.Tables("LocationCompanyTableAssociation")) Is Nothing) Then
+                MyBase.Tables.Add(New LocationCompanyTableAssociationDataTable(ds.Tables("LocationCompanyTableAssociation")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -165,6 +170,15 @@ Partial Public Class QuickSecurityDataSet
     Public ReadOnly Property FormControlPermission() As FormControlPermissionDataTable
         Get
             Return Me.tableFormControlPermission
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property LocationCompanyTableAssociation() As LocationCompanyTableAssociationDataTable
+        Get
+            Return Me.tableLocationCompanyTableAssociation
         End Get
     End Property
     
@@ -248,6 +262,9 @@ Partial Public Class QuickSecurityDataSet
             If (Not (ds.Tables("FormControlPermission")) Is Nothing) Then
                 MyBase.Tables.Add(New FormControlPermissionDataTable(ds.Tables("FormControlPermission")))
             End If
+            If (Not (ds.Tables("LocationCompanyTableAssociation")) Is Nothing) Then
+                MyBase.Tables.Add(New LocationCompanyTableAssociationDataTable(ds.Tables("LocationCompanyTableAssociation")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -319,6 +336,12 @@ Partial Public Class QuickSecurityDataSet
                 Me.tableFormControlPermission.InitVars
             End If
         End If
+        Me.tableLocationCompanyTableAssociation = CType(MyBase.Tables("LocationCompanyTableAssociation"),LocationCompanyTableAssociationDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableLocationCompanyTableAssociation) Is Nothing) Then
+                Me.tableLocationCompanyTableAssociation.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -342,6 +365,8 @@ Partial Public Class QuickSecurityDataSet
         MyBase.Tables.Add(Me.tableUserRoleAssociation)
         Me.tableFormControlPermission = New FormControlPermissionDataTable
         MyBase.Tables.Add(Me.tableFormControlPermission)
+        Me.tableLocationCompanyTableAssociation = New LocationCompanyTableAssociationDataTable
+        MyBase.Tables.Add(Me.tableLocationCompanyTableAssociation)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -376,6 +401,11 @@ Partial Public Class QuickSecurityDataSet
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Private Function ShouldSerializeFormControlPermission() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+    Private Function ShouldSerializeLocationCompanyTableAssociation() As Boolean
         Return false
     End Function
     
@@ -448,6 +478,8 @@ Partial Public Class QuickSecurityDataSet
     Public Delegate Sub UserRoleAssociationRowChangeEventHandler(ByVal sender As Object, ByVal e As UserRoleAssociationRowChangeEvent)
     
     Public Delegate Sub FormControlPermissionRowChangeEventHandler(ByVal sender As Object, ByVal e As FormControlPermissionRowChangeEvent)
+    
+    Public Delegate Sub LocationCompanyTableAssociationRowChangeEventHandler(ByVal sender As Object, ByVal e As LocationCompanyTableAssociationRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2879,6 +2911,298 @@ Partial Public Class QuickSecurityDataSet
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class LocationCompanyTableAssociationDataTable
+        Inherits Global.System.Data.DataTable
+        Implements Global.System.Collections.IEnumerable
+        
+        Private columnLocation_ID As Global.System.Data.DataColumn
+        
+        Private columnCo_ID As Global.System.Data.DataColumn
+        
+        Private columnTableName As Global.System.Data.DataColumn
+        
+        Private columnAllowDownload As Global.System.Data.DataColumn
+        
+        Private columnAllowUploaded As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "LocationCompanyTableAssociation"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Location_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLocation_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Co_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCo_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property TableNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTableName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property AllowDownloadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAllowDownload
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property AllowUploadedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAllowUploaded
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As LocationCompanyTableAssociationRow
+            Get
+                Return CType(Me.Rows(index),LocationCompanyTableAssociationRow)
+            End Get
+        End Property
+        
+        Public Event LocationCompanyTableAssociationRowChanging As LocationCompanyTableAssociationRowChangeEventHandler
+        
+        Public Event LocationCompanyTableAssociationRowChanged As LocationCompanyTableAssociationRowChangeEventHandler
+        
+        Public Event LocationCompanyTableAssociationRowDeleting As LocationCompanyTableAssociationRowChangeEventHandler
+        
+        Public Event LocationCompanyTableAssociationRowDeleted As LocationCompanyTableAssociationRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Sub AddLocationCompanyTableAssociationRow(ByVal row As LocationCompanyTableAssociationRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Function AddLocationCompanyTableAssociationRow(ByVal Location_ID As Integer, ByVal Co_ID As Short, ByVal TableName As String, ByVal AllowDownload As Boolean, ByVal AllowUploaded As Boolean) As LocationCompanyTableAssociationRow
+            Dim rowLocationCompanyTableAssociationRow As LocationCompanyTableAssociationRow = CType(Me.NewRow,LocationCompanyTableAssociationRow)
+            Dim columnValuesArray() As Object = New Object() {Location_ID, Co_ID, TableName, AllowDownload, AllowUploaded}
+            rowLocationCompanyTableAssociationRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowLocationCompanyTableAssociationRow)
+            Return rowLocationCompanyTableAssociationRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function FindByLocation_IDCo_IDTableName(ByVal Location_ID As Integer, ByVal Co_ID As Short, ByVal TableName As String) As LocationCompanyTableAssociationRow
+            Return CType(Me.Rows.Find(New Object() {Location_ID, Co_ID, TableName}),LocationCompanyTableAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
+            Return Me.Rows.GetEnumerator
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As LocationCompanyTableAssociationDataTable = CType(MyBase.Clone,LocationCompanyTableAssociationDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New LocationCompanyTableAssociationDataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub InitVars()
+            Me.columnLocation_ID = MyBase.Columns("Location_ID")
+            Me.columnCo_ID = MyBase.Columns("Co_ID")
+            Me.columnTableName = MyBase.Columns("TableName")
+            Me.columnAllowDownload = MyBase.Columns("AllowDownload")
+            Me.columnAllowUploaded = MyBase.Columns("AllowUploaded")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitClass()
+            Me.columnLocation_ID = New Global.System.Data.DataColumn("Location_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLocation_ID)
+            Me.columnCo_ID = New Global.System.Data.DataColumn("Co_ID", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCo_ID)
+            Me.columnTableName = New Global.System.Data.DataColumn("TableName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTableName)
+            Me.columnAllowDownload = New Global.System.Data.DataColumn("AllowDownload", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAllowDownload)
+            Me.columnAllowUploaded = New Global.System.Data.DataColumn("AllowUploaded", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAllowUploaded)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLocation_ID, Me.columnCo_ID, Me.columnTableName}, true))
+            Me.columnLocation_ID.AllowDBNull = false
+            Me.columnCo_ID.AllowDBNull = false
+            Me.columnTableName.AllowDBNull = false
+            Me.columnTableName.MaxLength = 200
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function NewLocationCompanyTableAssociationRow() As LocationCompanyTableAssociationRow
+            Return CType(Me.NewRow,LocationCompanyTableAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New LocationCompanyTableAssociationRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(LocationCompanyTableAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.LocationCompanyTableAssociationRowChangedEvent) Is Nothing) Then
+                RaiseEvent LocationCompanyTableAssociationRowChanged(Me, New LocationCompanyTableAssociationRowChangeEvent(CType(e.Row,LocationCompanyTableAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.LocationCompanyTableAssociationRowChangingEvent) Is Nothing) Then
+                RaiseEvent LocationCompanyTableAssociationRowChanging(Me, New LocationCompanyTableAssociationRowChangeEvent(CType(e.Row,LocationCompanyTableAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.LocationCompanyTableAssociationRowDeletedEvent) Is Nothing) Then
+                RaiseEvent LocationCompanyTableAssociationRowDeleted(Me, New LocationCompanyTableAssociationRowChangeEvent(CType(e.Row,LocationCompanyTableAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.LocationCompanyTableAssociationRowDeletingEvent) Is Nothing) Then
+                RaiseEvent LocationCompanyTableAssociationRowDeleting(Me, New LocationCompanyTableAssociationRowChangeEvent(CType(e.Row,LocationCompanyTableAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub RemoveLocationCompanyTableAssociationRow(ByVal row As LocationCompanyTableAssociationRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence
+            Dim ds As QuickSecurityDataSet = New QuickSecurityDataSet
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "LocationCompanyTableAssociationDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
@@ -3950,6 +4274,102 @@ Partial Public Class QuickSecurityDataSet
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Partial Public Class LocationCompanyTableAssociationRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableLocationCompanyTableAssociation As LocationCompanyTableAssociationDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableLocationCompanyTableAssociation = CType(Me.Table,LocationCompanyTableAssociationDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Location_ID() As Integer
+            Get
+                Return CType(Me(Me.tableLocationCompanyTableAssociation.Location_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableLocationCompanyTableAssociation.Location_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Co_ID() As Short
+            Get
+                Return CType(Me(Me.tableLocationCompanyTableAssociation.Co_IDColumn),Short)
+            End Get
+            Set
+                Me(Me.tableLocationCompanyTableAssociation.Co_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property TableName() As String
+            Get
+                Return CType(Me(Me.tableLocationCompanyTableAssociation.TableNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableLocationCompanyTableAssociation.TableNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property AllowDownload() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableLocationCompanyTableAssociation.AllowDownloadColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AllowDownload' in table 'LocationCompanyTableAssociation' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLocationCompanyTableAssociation.AllowDownloadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property AllowUploaded() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableLocationCompanyTableAssociation.AllowUploadedColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AllowUploaded' in table 'LocationCompanyTableAssociation' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLocationCompanyTableAssociation.AllowUploadedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsAllowDownloadNull() As Boolean
+            Return Me.IsNull(Me.tableLocationCompanyTableAssociation.AllowDownloadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetAllowDownloadNull()
+            Me(Me.tableLocationCompanyTableAssociation.AllowDownloadColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsAllowUploadedNull() As Boolean
+            Return Me.IsNull(Me.tableLocationCompanyTableAssociation.AllowUploadedColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetAllowUploadedNull()
+            Me(Me.tableLocationCompanyTableAssociation.AllowUploadedColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
@@ -4167,6 +4587,39 @@ Partial Public Class QuickSecurityDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Row() As FormControlPermissionRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Public Class LocationCompanyTableAssociationRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As LocationCompanyTableAssociationRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New(ByVal row As LocationCompanyTableAssociationRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Row() As LocationCompanyTableAssociationRow
             Get
                 Return Me.eventRow
             End Get
@@ -6251,36 +6704,36 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT     Co_ID, User_ID, User_Name, User_Desc, Is_Admin, Password, Inactive_Fro"& _ 
-                "m, Inactive_To, Stamp_UserID, Stamp_DateTime, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Sec_"& _ 
-                "User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @CoID AND User_Name = @UserName AND Password = @Password"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserName", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT     Co_ID, User_ID, User_Name, User_Desc, Is_Admin, Password, Inactive_Fro"& _ 
                 "m, Inactive_To, Stamp_UserID, Stamp_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Sec_User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Co_I"& _ 
                 "D = @Co_ID OR @Co_ID = 0) AND Stamp_DateTime > @Stamp_DateTime"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Co_ID, Inactive_From, Inactive_To, Is_Admin, Password, Stamp_DateTime, Sta"& _ 
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT Co_ID, Inactive_From, Inactive_To, Is_Admin, Password, Stamp_DateTime, Sta"& _ 
                 "mp_UserID, Upload_DateTime, User_Desc, User_ID, User_Name FROM Sec_User WHERE (C"& _ 
                 "o_ID = @Co_Id) AND (Upload_DateTime > @Upload_DateTime)"
-            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
-            Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Co_ID, User_ID, User_Name, Password, User_Desc, Is_Admin, Inactive_From, I"& _ 
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_Id", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT Co_ID, User_ID, User_Name, Password, User_Desc, Is_Admin, Inactive_From, I"& _ 
                 "nactive_To, Stamp_UserID, Stamp_DateTime "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Sec_User "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @Co"& _ 
                 "_ID AND (User_ID = @User_ID)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "User_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT     Co_ID, User_ID, User_Name, User_Desc, Is_Admin, Password, Inactive_Fro"& _ 
+                "m, Inactive_To, Stamp_UserID, Stamp_DateTime, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Sec_"& _ 
+                "User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @CoID AND User_Name = @UserName AND Password = @Password"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "User_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserName", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT Co_ID, User_ID, User_Name, Password, User_Desc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&", Is_Admin, Inactive_From"& _ 
@@ -6349,29 +6802,8 @@ Namespace QuickSecurityDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetByCoIDUserNamePassword(ByVal CoID As Integer, ByVal UserName As String, ByVal Password As String) As QuickSecurityDataSet.UserDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
-            If (UserName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("UserName")
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(UserName,String)
-            End If
-            If (Password Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Password,String)
-            End If
-            Dim dataTable As QuickSecurityDataSet.UserDataTable = New QuickSecurityDataSet.UserDataTable
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetAllUpdatedByCoIDDateTime(ByVal Co_ID As Integer, ByVal Stamp_DateTime As Date) As QuickSecurityDataSet.UserDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(Stamp_DateTime,Date)
             Dim dataTable As QuickSecurityDataSet.UserDataTable = New QuickSecurityDataSet.UserDataTable
@@ -6383,7 +6815,7 @@ Namespace QuickSecurityDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetAllUploadedByCoIDDateTime(ByVal Co_Id As Integer, ByVal Upload_DateTime As Global.System.Nullable(Of Date)) As QuickSecurityDataSet.UserDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_Id,Integer)
             If (Upload_DateTime.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Upload_DateTime.Value,Date)
@@ -6399,9 +6831,30 @@ Namespace QuickSecurityDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetByCoIDUserID(ByVal Co_ID As Integer, ByVal User_ID As Integer) As QuickSecurityDataSet.UserDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(User_ID,Integer)
+            Dim dataTable As QuickSecurityDataSet.UserDataTable = New QuickSecurityDataSet.UserDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoIDUserNamePassword(ByVal CoID As Integer, ByVal UserName As String, ByVal Password As String) As QuickSecurityDataSet.UserDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            If (UserName Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("UserName")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(UserName,String)
+            End If
+            If (Password Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Password,String)
+            End If
             Dim dataTable As QuickSecurityDataSet.UserDataTable = New QuickSecurityDataSet.UserDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -7555,6 +8008,173 @@ Namespace QuickSecurityDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
             Return Me.Adapter.Update(dataRows)
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class LocationCompanyTableAssociationTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "LocationCompanyTableAssociation"
+            tableMapping.ColumnMappings.Add("Location_ID", "Location_ID")
+            tableMapping.ColumnMappings.Add("Co_ID", "Co_ID")
+            tableMapping.ColumnMappings.Add("TableName", "TableName")
+            tableMapping.ColumnMappings.Add("AllowDownload", "AllowDownload")
+            tableMapping.ColumnMappings.Add("AllowUploaded", "AllowUploaded")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT     Location_ID, Co_ID, TableName, AllowDownload, AllowUploaded"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+                "    SecLocationCompanyTableAssociation"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT slc.AllowDownload, slc.AllowUploaded, slc.Co_ID, slc.Location_ID, slc.Tabl"& _ 
+                "eName FROM SecLocationCompanyTableAssociation AS slc INNER JOIN Base_Location AS"& _ 
+                " bl ON slc.Location_ID = bl.Location_ID WHERE (bl.Database_Service_Broker_Guid ="& _ 
+                " @DatabaseServiceBrokerGuid)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DatabaseServiceBrokerGuid", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Database_Service_Broker_Guid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetAll() As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable = New QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillBy(ByVal dataTable As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable, ByVal DatabaseServiceBrokerGuid As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (DatabaseServiceBrokerGuid Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(DatabaseServiceBrokerGuid,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByDatabaseGuid(ByVal DatabaseServiceBrokerGuid As String) As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (DatabaseServiceBrokerGuid Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(DatabaseServiceBrokerGuid,String)
+            End If
+            Dim dataTable As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable = New QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
         End Function
     End Class
 End Namespace

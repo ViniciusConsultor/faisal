@@ -883,6 +883,35 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to IF EXISTS (SELECT * FROM sysObjects o WHERE o.[name] = &apos;spGetInsertAndUpdateCommandQuery&apos;)
+        '''	DROP PROC spGetInsertAndUpdateCommandQuery
+        '''go
+        '''CREATE PROCEDURE dbo.spGetInsertAndUpdateCommandQuery
+        '''	(
+        '''	@TableName VARCHAR(200)
+        '''	)
+        '''AS
+        '''BEGIN
+        '''	DECLARE @PkColumns VARCHAR(1000)
+        '''	DECLARE @Columns VARCHAR(2000)
+        '''	DECLARE @ValueColumns VARCHAR(MAX)
+        '''	DECLARE @UpdateSetPart VARCHAR(MAX)
+        '''	DECLARE @Query AS VARCHAR(8000)
+        '''
+        '''	SET NOCOUNT ON
+        '''
+        '''	SET @PkColumns = &apos;&apos;
+        '''	SET @Columns = &apos;&apos;
+        '''	SET @ValueColumns = &apos;&apos;
+        '''	SET @ [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property upgrade_02_03_03_41_to_02_03_03_42() As String
+            Get
+                Return ResourceManager.GetString("upgrade_02_03_03_41_to_02_03_03_42", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to IF NOT EXISTS (SELECT C.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id=c.id WHERE o.[Name] =&apos;Accounting_Voucher_Detail&apos; AND c.[Name]=&apos;Upload_DateTime&apos;) 
         '''ALTER TABLE Accounting_Voucher_Detail ADD Upload_DateTime datetime NULL
         '''go

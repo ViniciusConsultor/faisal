@@ -147,11 +147,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuickSecurityDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuickSecurityDataSetExtension.vb" />
     <Compile Include="QuickSystemDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuickSystemDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuickSystemDataSetExtension.vb" />
     <Compile Include="TransferData.vb" />
   </ItemGroup>
   <ItemGroup>

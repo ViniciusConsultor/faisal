@@ -30,45 +30,76 @@ Public Class Service
   ''' Nothing
   ''' </summary>
   <WebMethod()> _
-  Public Function ImportXmlFileToDatabase(ByVal _CompanyID As Int16, ByVal _UserID As Int32, ByVal _FileNameWithPath As String, ByVal _FromDate As DateTime, ByVal _ToDate As DateTime, ByVal _ExportFile As Boolean, ByVal _TargetConnectionStringPara As String) As Boolean
+  Public Function ImportXmlFileToDatabase(ByVal _CompanyID As Int16, ByVal _UserID As Int32, ByVal _FileNameWithPath As String, ByVal _ExportFileToDownload As Boolean, ByVal _TargetConnectionStringPara As String) As Boolean
     Try
       Dim _TransferDataObject As New TransferData
+      Dim _Succeeded As Boolean
+
       _TransferDataObject.PathForLogFile = Server.MapPath(DATA_TRANSFER_LOG_FILE)
 
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": ********** Web Service Started ***********", True)
+      _TransferDataObject.AppendTextToLogFile(Environment.NewLine & Environment.NewLine & "********** Web Service Started ***********")
       _TargetConnectionStringPara = ConfigurationManager.ConnectionStrings("Quick_Erp").ConnectionString
 
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": Calling TransferTableFromXML() method", True)
-      _TransferDataObject.TransferTableFromXML(_CompanyID, _UserID, _TargetConnectionStringPara, Server.MapPath("FtpFiles\") & _FileNameWithPath, _FromDate, _ToDate)
+      _TransferDataObject.AppendTextToLogFile("Calling TransferTableFromXML() method")
+      _Succeeded = _TransferDataObject.TransferTableFromXML(_CompanyID, _UserID, _TargetConnectionStringPara, Server.MapPath("FtpFiles\") & _FileNameWithPath)
 
-      If _ExportFile Then
-        My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Environment.NewLine & Common.SystemDateTime.ToString & ": Calling ExportDataToXmlFile", True)
-        _TransferDataObject.ExportDataToXmlFile(_CompanyID, _UserID, _FromDate, _ToDate, False, _TargetConnectionStringPara, Server.MapPath("FtpFiles\"))
-      End If
-      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": ********** Web Service Ended ***********", True)
+      'If _ExportFileToDownload Then
+      '  _TransferDataObject.AppendTextToLogFile("Calling ExportDataToXmlFile")
+      '  _TransferDataObject.ExportDataToXmlFile(_CompanyID, _UserID, False, _TargetConnectionStringPara, Server.MapPath("FtpFiles\"))
+      'End If
+      _TransferDataObject.AppendTextToLogFile("********** Web Service Ended ***********")
 
+      Return _Succeeded
     Catch ex As Exception
       My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": exception text=" & ex.Message, True)
       Throw ex
     End Try
   End Function
 
-  ''Author: Faisal Saleem
-  ''Date Created(DD-MMM-YY): 01-Apr-10
-  ''***** Modification History *****
-  ''                 Date      Description
-  ''Name          (DD-MMM-YY) 
-  ''--------------------------------------------------------------------------------
-  ''
-  '''' <summary>
-  '''' Nothing
-  '''' </summary>
-  'Public Function ExportDataToXmlFile() As Boolean
-  '  Try
-  '    Dim _TransferDataObject As New TransferData
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 03-Apr-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This will return the datatable containing allowed companies and
+  ''' tables.
+  ''' </summary>
+  <WebMethod()> _
+  Public Function GetAllowedTables(ByVal DatabaseServiceBrokerGuidpara As String) As Data.DataTable
+    Try
+      Dim _LocationCompanyTableAssociationTA As New QuickSecurityDataSetTableAdapters.LocationCompanyTableAssociationTableAdapter
+      Dim _LocationCompanyTableAssociationTable As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
 
-  '  Catch ex As Exception
-  '    Throw ex
-  '  End Try
-  'End Function
+      _LocationCompanyTableAssociationTA.GetConnection.ConnectionString = ConfigurationManager.ConnectionStrings("Quick_Erp").ConnectionString
+      _LocationCompanyTableAssociationTable = _LocationCompanyTableAssociationTA.GetByDatabaseGuid(DatabaseServiceBrokerGuidpara)
+
+      Return _LocationCompanyTableAssociationTable
+
+    Catch ex As Exception
+      Dim _qex As New Exception("Exception in GetAllwedTables of QuickErpWebService.", ex)
+      Throw _qex
+    End Try
+  End Function
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 27-Mar-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' This function will export the data to xml file for downloading.
+  ''' </summary>
+  Private Function ExportDataToFileForDownload() As Boolean
+    Try
+
+    Catch ex As Exception
+      My.Computer.FileSystem.WriteAllText(Server.MapPath(DATA_TRANSFER_LOG_FILE), Environment.NewLine & Common.SystemDateTime.ToString & ": exception text=" & ex.Message, True)
+      Throw ex
+    End Try
+  End Function
 End Class
