@@ -45,9 +45,15 @@ Public Class StockInquiryForm
       Me.StockQuickSpread_Sheet1.Reset()
       Me.StockQuickSpread_Sheet1.DataSource = Nothing
       '_StockInquiryTable = _StockInquiryTableAdapter.GetByItemID(Me.ItemComboBox.ItemCode)
-      _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0, ShowTotalRowsCheckBox.Checked)
 
+
+      If Me.CurrentStockCheckBox.Checked = True Then
+        _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeCompanies(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, 0, ShowTotalRowsCheckBox.Checked)
+      Else
+        _StockInquiryTable = _StockInquiryTableAdapter.GetStockByItemCodeAndDateCompany(Me.ItemComboBox.Text, Me.CompanyCheckedListBox1.CheckedKeys, Convert.ToDateTime(Me.DateStockCalendarCombo.Value), Me.ShowTotalRowsCheckBox.Checked)
+      End If
       SetGridLayout(Me.StockQuickSpread_Sheet1, _StockInquiryTable)
+
       _StockInquiryTable.Item_Code1Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",1,2)"
       _StockInquiryTable.Item_Code2Column.Expression = "substring(" & _StockInquiryTable.Item_CodeColumn.ColumnName & ",4,2)"
 
@@ -312,6 +318,8 @@ Public Class StockInquiryForm
 
       Me.DateFromCalendarCombo.Value = Now.Date
       Me.DateToCalendarCombo.Value = Now.Date
+      Me.DateStockCalendarCombo.Value = Now.Date
+      Me.DateStockCalendarCombo.Enabled = False
 
       ShowButton_Click(sender, e)
       Me.StockQuickSpread.AllowUserZoom = True
@@ -506,4 +514,20 @@ Public Class StockInquiryForm
   End Sub
 
   
+  Private Sub CurrentStockCheckBox_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CurrentStockCheckBox.CheckedChanged
+    Try
+      Cursor = Windows.Forms.Cursors.WaitCursor
+      If Me.CurrentStockCheckBox.Checked = True Then
+        Me.DateStockCalendarCombo.Enabled = False
+      Else
+        Me.DateStockCalendarCombo.Enabled = True
+      End If
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in CurrentStockCheckBox_Checked of StockInquiryForm.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    Finally
+      Cursor = Windows.Forms.Cursors.Default
+    End Try
+  End Sub
 End Class
