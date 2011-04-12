@@ -131,6 +131,18 @@ Public Class SalesInvoiceForm
     End Try
   End Function
 
+
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 2009
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  'Faisal Saleem  27-Mar-11   Setting Upload_DateTime to null in insert and update
+  '                           due to change in transfer data logic.
+  ''' <summary>
+  ''' This function will save the record in database.
+  ''' </summary>
   Protected Overrides Function SaveRecord() As Boolean
     Try
       Dim InventoryID As Int32
@@ -146,9 +158,9 @@ Public Class SalesInvoiceForm
       Me.grdInventory.EditMode = False
       Me.grdInventory_Sheet1.SetActiveCell(Me.grdInventory_Sheet1.RowCount - 1, enInventoryColumns.Item_Code)  'For some unknown reason new version of farpoint is not working without this line.
 
-            Debug.WriteLine(_InventoryDetailDataTable.Rows.Count)
+      Debug.WriteLine(_InventoryDetailDataTable.Rows.Count)
       _InventoryDetailDataTable.Rows.RemoveAt(_InventoryDetailDataTable.Rows.Count - 1)
-            Debug.WriteLine(_InventoryDetailDataTable.Rows.Count)
+      Debug.WriteLine(_InventoryDetailDataTable.Rows.Count)
 
       If Not IsValid() Then Exit Function
 
@@ -195,6 +207,7 @@ Public Class SalesInvoiceForm
         .Inventory_Date = Convert.ToDateTime(uccSaleDate.Value)
         .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
+        .SetUpload_DateTimeNull()   'It should be null in both insert and update so that record is ready to upload in either type of change.
       End With
 
       'CurrentRecordDataRow is used by parent form.
@@ -230,6 +243,7 @@ Public Class SalesInvoiceForm
             _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
             _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
             _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
+            _InventoryDetailDataRow.SetUpload_DateTimeNull()
             If _InventoryDetailDataRow.RowState = DataRowState.Detached Then
               _InventoryDetailDataTable.Rows.Add(_InventoryDetailDataRow)
             End If
@@ -290,6 +304,7 @@ Public Class SalesInvoiceForm
             _VoucherRow.Stamp_DateTime = Common.SystemDateTime
             _VoucherRow.Stamp_UserID = LoginInfoObject.UserID
             _VoucherRow.Remarks = "S. No. " & _CurrentInventoryDataRow.Inventory_No
+            _VoucherRow.SetUpload_DateTimeNull()
             'Get voucher detail.
             _VoucherDetailTable = _VoucherDetailTA.GetByCoIDVoucherID(_VoucherRow.Co_ID, _VoucherRow.Voucher_ID)
             For Each _VoucherDetailRow In _VoucherDetailTable.Rows
@@ -301,6 +316,7 @@ Public Class SalesInvoiceForm
               _VoucherDetailRow.Narration = "S. No. " & _CurrentInventoryDataRow.Inventory_No
               _VoucherDetailRow.Stamp_DateTime = Common.SystemDateTime
               _VoucherDetailRow.Stamp_User_Id = LoginInfoObject.UserID
+              _VoucherDetailRow.SetUpload_DateTimeNull()
             Next
           End If
         Next

@@ -90,14 +90,14 @@ Public Class DBConnectivityForm
     Try
       Dim _SQLConnectionStringBuilder As New SqlClient.SqlConnectionStringBuilder
       Dim _ObjectTA As New QuickDAL.QuickSystemDataSetTableAdapters.ObjectTableAdapter
-      Dim _ObjectTable As QuickDAL.QuickSystemDataSet.ObjectDataTable = Nothing
+      Dim _NumberOfTables As Nullable(Of Int32)
 
       _SQLConnectionObject = _UserTAObject.GetConnection
 
       Try
         _SQLConnectionObject.Open()
-        _ObjectTable = _ObjectTA.GetByObjectType(Constants.OBJECTTYPE_USER_TABLE)
-        If _ObjectTable.Rows.Count = 0 Then
+        _NumberOfTables = _ObjectTA.NumberOfTables
+        If _NumberOfTables.Value = 0 Then
           'If there is no table then create tables
           CreateDatabase = False
           CreateObjectsOnly = True

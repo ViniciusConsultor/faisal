@@ -59,12 +59,12 @@ Public Class frmTransferData
 
       WebServerConnectionString = Configuration.ConfigurationManager.ConnectionStrings("WebServer").ConnectionString
 
-      _CollectionDisplayName.Add("Companies") : _CollectionTableName.Add("Base_Company")
+      '_CollectionDisplayName.Add("Companies") : _CollectionTableName.Add("Base_Company")
       '_CollectionDisplayName.Add("Document Types") : _CollectionTableName.Add("Common_DocumentType")
       '_CollectionDisplayName.Add("Entity Types") : _CollectionTableName.Add("Common_EntityType")
       '_CollectionDisplayName.Add("Common_Status_Type") : _CollectionTableName.Add("Common_Status_Type")
       '_CollectionDisplayName.Add("Status") : _CollectionTableName.Add("Common_Status")
-      _CollectionDisplayName.Add("Users") : _CollectionTableName.Add("Sec_User")
+      '_CollectionDisplayName.Add("Users") : _CollectionTableName.Add("Sec_User")
       _CollectionDisplayName.Add("Items") : _CollectionTableName.Add("Inv_Item")
       _CollectionDisplayName.Add("Parties") : _CollectionTableName.Add("Party")
       _CollectionDisplayName.Add("COA(s)") : _CollectionTableName.Add("Accounting_COA")
@@ -78,10 +78,7 @@ Public Class frmTransferData
       _CollectionDisplayName.Add("Voucher") : _CollectionTableName.Add("Accounting_Voucher")
       _CollectionDisplayName.Add("Roles") : _CollectionTableName.Add("Sec_Role")
       _CollectionDisplayName.Add("User Roles Association") : _CollectionTableName.Add("Sec_User_Role_Association")
-      _CollectionDisplayName.Add("Transfers") : _CollectionTableName.Add("Transfer")
-
-      Me.StartDateCalendarCombo.Value = Common.SystemDateTime.Subtract(New TimeSpan(7, 0, 0, 0))
-      Me.LastTransferDateCheckBox.Checked = True
+      '_CollectionDisplayName.Add("Transfers") : _CollectionTableName.Add("Transfer")
 
     Catch ex As Exception
       Dim ExceptionObject As New QuickExceptionAdvanced("Exception in transfering sales data", ex)
@@ -98,31 +95,6 @@ Public Class frmTransferData
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in ProgressChanged event method of frmTransferData.", ex)
       Throw _qex
-    End Try
-  End Sub
-
-  'Author: Faisal Saleem
-  'Date Created(DD-MMM-YY): 27-Mar-2010
-  '***** Modification History *****
-  '                 Date      Description
-  'Name          (DD-MMM-YY) 
-  '--------------------------------------------------------------------------------
-  '
-  ''' <summary>
-  ''' Nothing
-  ''' </summary>
-  Private Sub StartDateCalendarCombo_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles StartDateCalendarCombo.TextChanged
-    Try
-      If StartDateCalendarCombo.Value IsNot Nothing Then
-        _UserSpecificFromDate = Convert.ToDateTime(StartDateCalendarCombo.Value)
-      Else
-        _UserSpecificFromDate = Date.MinValue
-      End If
-      My.Application.DoEvents()
-
-    Catch ex As Exception
-      Dim _qex As New QuickExceptionAdvanced("Exception in TextChanged event method of StartDateCalendarCombo of frmTransferData.", ex)
-      _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
 
@@ -457,43 +429,64 @@ Public Class frmTransferData
     Dim _Dataset As New DataSet
     Dim _FileName As String = String.Empty
     Dim _QuickErpWebServiceObject As New QuickERP.QuickErpWebService.Service
+    Dim _AllowedCompaniesAndTablesTA As New QuickSecurityDataSetTableAdapters.LocationCompanyTableAssociationTableAdapter
+    Dim _AllowedCompaniesAndTablesTable As QuickSecurityDataSet.LocationCompanyTableAssociationDataTable
+    Dim _AllowedCompaniesAndTablesGeneralTable As DataTable
+    Dim _DatabaseTA As New QuickCommonDataSetTableAdapters.DatabaseTableAdapter
+    Dim _DatabaseGuid As System.Nullable(Of Guid)
+
+    '_TransferData.CompressFile("c:\10.xls", "c:\10.zip")
+    '_TransferData.DecompressFile("c:\10.zip", "c:\11.xls")
+    'Return
 
     Try
       Dim _CompanyForDataTransfer As New CompanyDataTable
+      Dim _WebServiceCompleted As Boolean
 
       Cursor = Cursors.WaitCursor
       Me.TransferStatusTextBox1.Text = String.Empty
       Me.StartTransferXmlButton.Enabled = False
 
-      If Me.LastTransferDateCheckBox.Checked OrElse StartDateCalendarCombo.Value IsNot Nothing Then
-        _UserSpecificFromDate = Convert.ToDateTime(StartDateCalendarCombo.Value)
+      _DatabaseGuid = _DatabaseTA.GetDatabaseGuidByDatabaseName(Me.LoginInfoObject.DatabaseName)
+      If _DatabaseGuid.HasValue Then
+        _AllowedCompaniesAndTablesGeneralTable = _QuickErpWebServiceObject.GetAllowedTables(_DatabaseGuid.Value.ToString)
+        If _AllowedCompaniesAndTablesGeneralTable IsNot Nothing AndAlso _AllowedCompaniesAndTablesGeneralTable.Rows.Count > 0 Then
+
+          Do  'Keep on uploading while there are records to upload
+            _FileName = _TransferData.ExportDataToXmlFile(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, False, _UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES, _AllowedCompaniesAndTablesGeneralTable)
+
+            If _FileName <> TransferData.NO_RECORDS_FILE_NAME Then
+              _TransferData.UploadFile(_FileName)
+
+              'Try
+              _QuickErpWebServiceObject.Timeout = 9900000
+              _WebServiceCompleted = _QuickErpWebServiceObject.ImportXmlFileToDatabase(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _FileName, False, WebServerConnectionString)
+              If _WebServiceCompleted Then
+                _TransferData.SetUploadedIndicatorFromXmlFileData(_UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName.Substring(0, _FileName.LastIndexOf("."c)) & ".qerp")
+              End If
+
+              '_TransferData.DownloadFile(_FileName)
+              '_TransferData.TransferTableFromXML(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName)
+              'Catch ex As Exception
+              '  Dim qex As New QuickExceptionAdvanced("Webservice", ex)
+              '  qex.Show(Me.LoginInfoObject)
+              'End Try
+              My.Computer.FileSystem.DeleteFile(TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName)
+              My.Computer.FileSystem.DeleteFile(TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName.Substring(0, _FileName.LastIndexOf("."c)) & ".qerp")
+            End If 'Check of no records to upload
+          Loop While _FileName <> TransferData.NO_RECORDS_FILE_NAME
+
+          QuickAlert.SendEmailAlerts()
+          If ShutdownCheckBox.Checked Then
+            Shell("shutdown -s -f")
+          Else
+            QuickMessageBox.Show(Me.LoginInfoObject, "Records successfully transfered", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Information)
+          End If
+        Else
+          QuickMessageBox.Show(Me.LoginInfoObject, "You are not allowed to transfer data.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
+        End If
       Else
-        _UserSpecificFromDate = Date.MinValue
-      End If
-      _ToDate = Common.SystemDateTime
-
-      _FileName = _TransferData.ExportDataToXmlFile(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserSpecificFromDate, _ToDate, False, _UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES)
-
-      _TransferData.UploadFile(_FileName)
-      My.Computer.FileSystem.DeleteFile(TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName)
-
-      'This try catch will be removed when webservice is active.
-      Try
-        _QuickErpWebServiceObject.Timeout = 9900000
-        _QuickErpWebServiceObject.ImportXmlFileToDatabase(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _FileName, _UserSpecificFromDate, _ToDate, True, WebServerConnectionString)
-
-        _TransferData.DownloadFile(_FileName)
-        _TransferData.TransferTableFromXML(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName, _UserSpecificFromDate, _ToDate)
-      Catch ex As Exception
-        Dim qex As New QuickExceptionAdvanced("Webservice", ex)
-        qex.Show(Me.LoginInfoObject)
-      End Try
-
-      QuickAlert.SendEmailAlerts()
-      If ShutdownCheckBox.Checked Then
-        Shell("shutdown -s -f")
-      Else
-        QuickMessageBox.Show(Me.LoginInfoObject, "Records successfully transfered", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Information)
+        QuickMessageBox.Show(Me.LoginInfoObject, "Your database id cannot be found", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
       End If
 
     Catch ex As Exception
@@ -518,7 +511,7 @@ Public Class frmTransferData
       OpenFileDialog1.Filter = "Erp Files|*.qerp"
       OpenFileDialog1.ShowDialog()
       If OpenFileDialog1.FileName <> String.Empty Then
-        _TransferData.TransferTableFromXML(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserTableAdapterSource.GetConnection.ConnectionString, OpenFileDialog1.FileName, _UserSpecificFromDate, _ToDate)
+        _TransferData.TransferTableFromXML(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _UserTableAdapterSource.GetConnection.ConnectionString, OpenFileDialog1.FileName)
       End If
 
       QuickDALLibrary.QuickMessageBox.Show(Me.LoginInfoObject, "Completed successfully.", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Information)
@@ -622,41 +615,6 @@ Public Class frmTransferData
 
   Protected Overrides Sub Finalize()
     MyBase.Finalize()
-  End Sub
-
-  'Author: Faisal Saleem
-  'Date Created(DD-MMM-YY): 22-Sep-10
-  '***** Modification History *****
-  '                 Date      Description
-  'Name          (DD-MMM-YY) 
-  '--------------------------------------------------------------------------------
-  '
-  ''' <summary>
-  ''' LastTransferDate CheckBox checked changed event method.
-  ''' </summary>
-  Private Sub LastTransferDateCheckBox_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LastTransferDateCheckBox.CheckedChanged
-    Try
-      Dim _TransferTableAdapterSource As New TransferTableAdapter
-      Dim _MinimumFromDate As Nullable(Of DateTime)
-
-      Me.StartDateCalendarCombo.Enabled = Not Me.LastTransferDateCheckBox.Checked
-
-      If Me.LastTransferDateCheckBox.Checked Then
-        For I As Int32 = 1 To _TransferData.TableNameCollection.Count
-          _MinimumFromDate = _TransferTableAdapterSource.GetMaximumStartDateTimeByTableName(_TransferData.TableNameCollection(I).ToString)
-
-          If _MinimumFromDate.HasValue AndAlso (Me.StartDateCalendarCombo.Value Is Nothing OrElse DateTime.Compare(_MinimumFromDate.Value, Convert.ToDateTime(Me.StartDateCalendarCombo.Value)) < 0) Then
-            Me.StartDateCalendarCombo.Value = _MinimumFromDate.Value
-
-          End If
-        Next I
-      End If
-
-    Catch ex As Exception
-      Dim _qex As New QuickExceptionAdvanced("Exception in LastTransferDateCheckBox_CheckedChanged of frmTransferData.", ex)
-      _qex.Show(Me.LoginInfoObject)
-    End Try
-
   End Sub
 
   Private Sub Quick_Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Quick_Button1.Click

@@ -95,6 +95,17 @@ Public Class SalesInvoicePosForm
     End Try
   End Function
 
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 2009
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  'Faisal Saleem  27-Mar-11   Setting Upload_DateTime to null in insert and update
+  '                           due to change in transfer data logic.
+  ''' <summary>
+  ''' This function will save the record in database.
+  ''' </summary>
   Protected Overrides Function SaveRecord() As Boolean
     Try
       Dim SalesInvoiceID As Int32
@@ -135,10 +146,11 @@ Public Class SalesInvoicePosForm
         Me.SaleNoTextBox.Text = _InventoryDataRow.Inventory_No.ToString
         '_CurrentSalesInvoiceDataRow = _InventoryDataRow
       Else
+        'User is updating record
         _InventoryDataRow = _SalesInvoiceDataTable(Me.CurrentRecordIndex)
         SalesInvoiceID = _SalesInvoiceDataTable(Me.CurrentRecordIndex).Inventory_ID
-        'In case of updated only common properties need to be set.
       End If
+
       'Set common properties for both update an insert.
       With _InventoryDataRow
         .Co_ID = LoginInfoObject.CompanyID
@@ -150,6 +162,7 @@ Public Class SalesInvoicePosForm
         '.DocumentType_ID = Convert.ToInt16(enuDocumentType.SalesInvoice)
         .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
+        .SetUpload_DateTimeNull()
       End With
 
       If _InventoryDataRow.RowState = DataRowState.Detached Then
@@ -273,6 +286,8 @@ Public Class SalesInvoicePosForm
           _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
           _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
           _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
+          _InventoryDetailDataRow.SetUpload_DateTimeNull()
+
           If .IsRowDeleted(I) Then
             '_InventoryDetailDataRow.RecordStatus_ID = Constants.RecordStatuses.Deleted
           ElseIf _InventoryDetailDataRow.RowState = DataRowState.Detached Or _InventoryDetailDataRow.RowState = DataRowState.Added Then
@@ -300,6 +315,7 @@ Public Class SalesInvoicePosForm
         _InventorySalesInvoiceRow.TotalCashReceived = Cast.ToDecimal(CashRecievedTextBox.Text)
         _InventorySalesInvoiceRow.Stamp_DateTime = Common.SystemDateTime
         _InventorySalesInvoiceRow.Stamp_UserID = LoginInfoObject.UserID
+        _InventorySalesInvoiceRow.SetUpload_DateTimeNull()
       Else
         _InventorySalesInvoiceTA.Insert(LoginInfoObject.CompanyID, SalesInvoiceID, SalesManComboBox.PartyID, Cast.ToDecimal(DiscountTextBox.Text), Cast.ToDecimal(SalesTaxTextBox.Text), Cast.ToDecimal(CashRecievedTextBox.Text), Common.SystemDateTime, LoginInfoObject.UserID, Nothing)
       End If
@@ -333,6 +349,7 @@ Public Class SalesInvoicePosForm
             _VoucherRow.Stamp_DateTime = Common.SystemDateTime
             _VoucherRow.Stamp_UserID = LoginInfoObject.UserID
             _VoucherRow.Remarks = "S. No. " & _InventoryDataRow.Inventory_No
+            _VoucherRow.SetUpload_DateTimeNull()
             'Get voucher detail.
             _VoucherDetailTable = _VoucherDetailTA.GetByCoIDVoucherID(_VoucherRow.Co_ID, _VoucherRow.Voucher_ID)
             For Each _VoucherDetailRow In _VoucherDetailTable.Rows
@@ -344,6 +361,7 @@ Public Class SalesInvoicePosForm
               _VoucherDetailRow.Narration = "S. No. " & _InventoryDataRow.Inventory_No
               _VoucherDetailRow.Stamp_DateTime = Common.SystemDateTime
               _VoucherDetailRow.Stamp_User_Id = LoginInfoObject.UserID
+              _VoucherDetailRow.SetUpload_DateTimeNull()
             Next
           End If
         Next

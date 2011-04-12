@@ -20,22 +20,15 @@ Partial Class frmTransferData
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
     Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance(1326844)
-    Dim DateButton1 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton2 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Me.TransferStatusTextBox1 = New QuickControls.Quick_TextBox
     Me.OverAllUltraProgressBar1 = New QuickControls.Quick_UltraProgressBar
     Me.ProcessUltraProgressBar = New QuickControls.Quick_UltraProgressBar
     Me.DownloadCheckBox = New QuickControls.Quick_CheckBox
-    Me.StartDateCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
     Me.ShutdownCheckBox = New QuickControls.Quick_CheckBox
     Me.StartTransferXmlButton = New QuickControls.Quick_Button
     Me.ImportFromXML = New QuickControls.Quick_Button
     Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-    Me.LastTransferDateCheckBox = New QuickControls.Quick_CheckBox
     Me.Quick_Button1 = New QuickControls.Quick_Button
-    CType(Me.StartDateCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
     'TransferStatusTextBox1
@@ -103,22 +96,6 @@ Partial Class frmTransferData
     Me.DownloadCheckBox.Text = "Download"
     Me.DownloadCheckBox.UseVisualStyleBackColor = True
     '
-    'StartDateCalendarCombo
-    '
-    Me.StartDateCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.StartDateCalendarCombo.DateButtons.Add(DateButton1)
-    Me.StartDateCalendarCombo.DateButtons.Add(DateButton2)
-    Me.StartDateCalendarCombo.DateButtons.Add(DateButton3)
-    Me.StartDateCalendarCombo.DateButtons.Add(DateButton4)
-    Me.StartDateCalendarCombo.DefaultValue = New Date(2010, 3, 23, 12, 26, 9, 265)
-    Me.StartDateCalendarCombo.Format = "dd-MM-yy"
-    Me.StartDateCalendarCombo.Location = New System.Drawing.Point(376, 5)
-    Me.StartDateCalendarCombo.Name = "StartDateCalendarCombo"
-    Me.StartDateCalendarCombo.NonAutoSizeHeight = 21
-    Me.StartDateCalendarCombo.Size = New System.Drawing.Size(97, 21)
-    Me.StartDateCalendarCombo.TabIndex = 6
-    Me.StartDateCalendarCombo.Value = New Date(2009, 5, 12, 0, 0, 0, 0)
-    '
     'ShutdownCheckBox
     '
     Me.ShutdownCheckBox.AutoSize = True
@@ -152,17 +129,6 @@ Partial Class frmTransferData
     '
     Me.OpenFileDialog1.FileName = "OpenFileDialog1"
     '
-    'LastTransferDateCheckBox
-    '
-    Me.LastTransferDateCheckBox.AutoSize = True
-    Me.LastTransferDateCheckBox.DefaultValue = False
-    Me.LastTransferDateCheckBox.Location = New System.Drawing.Point(260, 7)
-    Me.LastTransferDateCheckBox.Name = "LastTransferDateCheckBox"
-    Me.LastTransferDateCheckBox.Size = New System.Drawing.Size(114, 17)
-    Me.LastTransferDateCheckBox.TabIndex = 12
-    Me.LastTransferDateCheckBox.Text = "Last Transfer Date"
-    Me.LastTransferDateCheckBox.UseVisualStyleBackColor = True
-    '
     'Quick_Button1
     '
     Me.Quick_Button1.Location = New System.Drawing.Point(476, 4)
@@ -171,6 +137,7 @@ Partial Class frmTransferData
     Me.Quick_Button1.TabIndex = 13
     Me.Quick_Button1.Text = "Compress"
     Me.Quick_Button1.UseVisualStyleBackColor = True
+    Me.Quick_Button1.Visible = False
     '
     'frmTransferData
     '
@@ -179,11 +146,9 @@ Partial Class frmTransferData
     Me.BackColor = System.Drawing.SystemColors.Control
     Me.ClientSize = New System.Drawing.Size(606, 402)
     Me.Controls.Add(Me.Quick_Button1)
-    Me.Controls.Add(Me.LastTransferDateCheckBox)
     Me.Controls.Add(Me.ImportFromXML)
     Me.Controls.Add(Me.StartTransferXmlButton)
     Me.Controls.Add(Me.ShutdownCheckBox)
-    Me.Controls.Add(Me.StartDateCalendarCombo)
     Me.Controls.Add(Me.DownloadCheckBox)
     Me.Controls.Add(Me.TransferStatusTextBox1)
     Me.Controls.Add(Me.ProcessUltraProgressBar)
@@ -195,13 +160,10 @@ Partial Class frmTransferData
     Me.Controls.SetChildIndex(Me.ProcessUltraProgressBar, 0)
     Me.Controls.SetChildIndex(Me.TransferStatusTextBox1, 0)
     Me.Controls.SetChildIndex(Me.DownloadCheckBox, 0)
-    Me.Controls.SetChildIndex(Me.StartDateCalendarCombo, 0)
     Me.Controls.SetChildIndex(Me.ShutdownCheckBox, 0)
     Me.Controls.SetChildIndex(Me.StartTransferXmlButton, 0)
     Me.Controls.SetChildIndex(Me.ImportFromXML, 0)
-    Me.Controls.SetChildIndex(Me.LastTransferDateCheckBox, 0)
     Me.Controls.SetChildIndex(Me.Quick_Button1, 0)
-    CType(Me.StartDateCalendarCombo, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
@@ -210,11 +172,9 @@ Partial Class frmTransferData
   Friend WithEvents OverAllUltraProgressBar1 As QuickControls.Quick_UltraProgressBar
   Friend WithEvents ProcessUltraProgressBar As QuickControls.Quick_UltraProgressBar
   Friend WithEvents DownloadCheckBox As QuickControls.Quick_CheckBox
-  Friend WithEvents StartDateCalendarCombo As QuickControls.Quick_UltraCalendarCombo
   Friend WithEvents ShutdownCheckBox As QuickControls.Quick_CheckBox
   Friend WithEvents StartTransferXmlButton As QuickControls.Quick_Button
   Friend WithEvents ImportFromXML As QuickControls.Quick_Button
   Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-  Friend WithEvents LastTransferDateCheckBox As QuickControls.Quick_CheckBox
   Friend WithEvents Quick_Button1 As QuickControls.Quick_Button
 End Class

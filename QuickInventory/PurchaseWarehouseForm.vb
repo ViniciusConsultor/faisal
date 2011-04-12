@@ -108,6 +108,17 @@ Public Class PurchaseWarehouseForm
     End Try
   End Function
 
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 2010
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  'Faisal Saleem  27-Mar-11   Setting Upload_DateTime to null in insert and update
+  '                           due to change in transfer data logic.
+  ''' <summary>
+  ''' This function will save the record in database.
+  ''' </summary>
   Protected Overrides Function SaveRecord() As Boolean
     Try
       Dim InventoryID As Int32
@@ -146,6 +157,7 @@ Public Class PurchaseWarehouseForm
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
         .Discount = 0
         .SalesTax = 0
+        .SetUpload_DateTimeNull()
       End With
 
       'CurrentRecordDataRow is used by parent form.
@@ -179,6 +191,7 @@ Public Class PurchaseWarehouseForm
             _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
             _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
             _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
+            _InventoryDetailDataRow.SetUpload_DateTimeNull()
             If _InventoryDetailDataRow.RowState = DataRowState.Detached Then
               _InventoryDetailDataTable.Rows.Add(_InventoryDetailDataRow)
             End If

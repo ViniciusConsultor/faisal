@@ -492,6 +492,8 @@ Public Class MDIParent1
               .LoginInfoObject.UserID = _LoginInfo.UserID
               .LoginInfoObject.UserName = _LoginInfo.UserName
               .LoginInfoObject.RoleID = _LoginInfo.RoleID
+              .LoginInfoObject.DatabaseName = _LoginInfo.DatabaseName
+              .LoginInfoObject.DatabaseServerName = _LoginInfo.DatabaseServerName
             End With
           End If
           Form.MdiParent = Me

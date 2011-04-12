@@ -166,6 +166,7 @@ Public Class InventoryForm
         .Stamp_UserID = Convert.ToInt16(LoginInfoObject.UserID)
         .Discount = Me.DiscountTextBox.IntegerNumber
         .SalesTax = Me.SalesTaxTextBox.IntegerNumber
+        .SetUpload_DateTimeNull()
       End With
 
       'CurrentRecordDataRow is used by parent form.
@@ -201,6 +202,7 @@ Public Class InventoryForm
             _InventoryDetailDataRow.Warehouse_ID = _DefaultWarehouseID
             _InventoryDetailDataRow.Stamp_DateTime = Common.SystemDateTime
             _InventoryDetailDataRow.Stamp_UserID = LoginInfoObject.UserID
+            _InventoryDetailDataRow.SetUpload_DateTimeNull()
             If _InventoryDetailDataRow.RowState = DataRowState.Detached Then
               _InventoryDetailDataTable.Rows.Add(_InventoryDetailDataRow)
             End If
