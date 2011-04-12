@@ -22,9 +22,21 @@ Partial Class StockInquiryForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-    Dim DefaultFocusIndicatorRenderer1 As FarPoint.Win.Spread.DefaultFocusIndicatorRenderer = New FarPoint.Win.Spread.DefaultFocusIndicatorRenderer
-    Dim DefaultScrollBarRenderer1 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DefaultScrollBarRenderer2 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultFocusIndicatorRenderer2 As FarPoint.Win.Spread.DefaultFocusIndicatorRenderer = New FarPoint.Win.Spread.DefaultFocusIndicatorRenderer
+    Dim DefaultScrollBarRenderer7 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultScrollBarRenderer8 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DateButton35 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton36 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton37 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton38 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton39 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton40 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton41 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton42 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton43 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton44 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton45 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton46 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
@@ -37,34 +49,41 @@ Partial Class StockInquiryForm
     Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
+    Dim DefaultScrollBarRenderer1 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
+    Dim DefaultScrollBarRenderer2 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
     Dim DefaultScrollBarRenderer3 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
     Dim DefaultScrollBarRenderer4 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DefaultScrollBarRenderer5 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DefaultScrollBarRenderer6 As FarPoint.Win.Spread.DefaultScrollBarRenderer = New FarPoint.Win.Spread.DefaultScrollBarRenderer
-    Dim DateButton1 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton2 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton8 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton9 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton10 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton11 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton12 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton13 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton14 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton15 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton16 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton17 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton18 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton47 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton48 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton49 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton50 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton51 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton52 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton53 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton54 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton55 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton56 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton57 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton58 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton59 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton60 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton61 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton62 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton63 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton64 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton65 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton66 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton67 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton68 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Me.StockQuickSpread = New QuickBusinessControls.ItemSpread
     Me.StockQuickSpread_Sheet1 = New QuickBusinessControls.ItemSpreadView
     Me.ItemLabel = New QuickControls.Quick_Label
     Me.ShowButton = New QuickControls.Quick_Button
     Me.TabControl1 = New System.Windows.Forms.TabControl
     Me.StockTabPage = New System.Windows.Forms.TabPage
+    Me.Quick_Label4 = New QuickControls.Quick_Label
+    Me.DateStockCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
+    Me.CurrentStockCheckBox = New QuickControls.Quick_CheckBox
     Me.ShowTotalRowsCheckBox = New QuickControls.Quick_CheckBox
     Me.MinimumLevelDeviationTabPage = New System.Windows.Forms.TabPage
     Me.ReverseSignCheckBox = New QuickControls.Quick_CheckBox
@@ -93,6 +112,7 @@ Partial Class StockInquiryForm
     CType(Me.StockQuickSpread_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.TabControl1.SuspendLayout()
     Me.StockTabPage.SuspendLayout()
+    CType(Me.DateStockCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.MinimumLevelDeviationTabPage.SuspendLayout()
     CType(Me.MinimumStockLevelFilterOptionQuickUltraComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.MinimumStockLevelQuickSpread, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,10 +134,10 @@ Partial Class StockInquiryForm
     Me.StockQuickSpread.AutoNewRow = True
     Me.StockQuickSpread.EditModePermanent = True
     Me.StockQuickSpread.EditModeReplace = True
-    Me.StockQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer1
+    Me.StockQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer2
     Me.StockQuickSpread.HorizontalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.StockQuickSpread.HorizontalScrollBar.Name = ""
-    Me.StockQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer1
+    Me.StockQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer7
     Me.StockQuickSpread.HorizontalScrollBar.TabIndex = 0
     Me.StockQuickSpread.ItemCodeFirstColumnIndex = -1
     Me.StockQuickSpread.ItemDescColumnIndex = -1
@@ -137,7 +157,7 @@ Partial Class StockInquiryForm
     Me.StockQuickSpread.TabIndex = 1
     Me.StockQuickSpread.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.StockQuickSpread.VerticalScrollBar.Name = ""
-    Me.StockQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer2
+    Me.StockQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer8
     Me.StockQuickSpread.VerticalScrollBar.TabIndex = 1
     Me.StockQuickSpread.VisualStyles = FarPoint.Win.VisualStyles.Off
     '
@@ -193,6 +213,9 @@ Partial Class StockInquiryForm
     '
     'StockTabPage
     '
+    Me.StockTabPage.Controls.Add(Me.Quick_Label4)
+    Me.StockTabPage.Controls.Add(Me.DateStockCalendarCombo)
+    Me.StockTabPage.Controls.Add(Me.CurrentStockCheckBox)
     Me.StockTabPage.Controls.Add(Me.ShowTotalRowsCheckBox)
     Me.StockTabPage.Controls.Add(Me.StockQuickSpread)
     Me.StockTabPage.Location = New System.Drawing.Point(4, 22)
@@ -202,6 +225,53 @@ Partial Class StockInquiryForm
     Me.StockTabPage.TabIndex = 0
     Me.StockTabPage.Text = "Stock"
     Me.StockTabPage.UseVisualStyleBackColor = True
+    '
+    'Quick_Label4
+    '
+    Me.Quick_Label4.AllowClearValue = False
+    Me.Quick_Label4.AutoSize = True
+    Me.Quick_Label4.DefaultValue = ""
+    Me.Quick_Label4.Location = New System.Drawing.Point(237, 10)
+    Me.Quick_Label4.Name = "Quick_Label4"
+    Me.Quick_Label4.Size = New System.Drawing.Size(64, 13)
+    Me.Quick_Label4.TabIndex = 12
+    Me.Quick_Label4.Text = "Stock Date:"
+    '
+    'DateStockCalendarCombo
+    '
+    Me.DateStockCalendarCombo.BackColor = System.Drawing.SystemColors.Window
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton35)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton36)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton37)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton38)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton39)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton40)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton41)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton42)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton43)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton44)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton45)
+    Me.DateStockCalendarCombo.DateButtons.Add(DateButton46)
+    Me.DateStockCalendarCombo.DefaultValue = New Date(2010, 2, 2, 8, 36, 32, 453)
+    Me.DateStockCalendarCombo.Format = "dd-MM-yy"
+    Me.DateStockCalendarCombo.Location = New System.Drawing.Point(307, 6)
+    Me.DateStockCalendarCombo.Name = "DateStockCalendarCombo"
+    Me.DateStockCalendarCombo.NonAutoSizeHeight = 21
+    Me.DateStockCalendarCombo.Size = New System.Drawing.Size(88, 21)
+    Me.DateStockCalendarCombo.TabIndex = 7
+    '
+    'CurrentStockCheckBox
+    '
+    Me.CurrentStockCheckBox.AutoSize = True
+    Me.CurrentStockCheckBox.Checked = True
+    Me.CurrentStockCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+    Me.CurrentStockCheckBox.DefaultValue = False
+    Me.CurrentStockCheckBox.Location = New System.Drawing.Point(129, 8)
+    Me.CurrentStockCheckBox.Name = "CurrentStockCheckBox"
+    Me.CurrentStockCheckBox.Size = New System.Drawing.Size(91, 17)
+    Me.CurrentStockCheckBox.TabIndex = 3
+    Me.CurrentStockCheckBox.Text = "Current Stock"
+    Me.CurrentStockCheckBox.UseVisualStyleBackColor = True
     '
     'ShowTotalRowsCheckBox
     '
@@ -320,10 +390,10 @@ Partial Class StockInquiryForm
     Me.MinimumStockLevelQuickSpread.AutoNewRow = True
     Me.MinimumStockLevelQuickSpread.EditModePermanent = True
     Me.MinimumStockLevelQuickSpread.EditModeReplace = True
-    Me.MinimumStockLevelQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer1
+    Me.MinimumStockLevelQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer2
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Name = ""
-    Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer3
+    Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer1
     Me.MinimumStockLevelQuickSpread.HorizontalScrollBar.TabIndex = 0
     Me.MinimumStockLevelQuickSpread.ItemCodeFirstColumnIndex = -1
     Me.MinimumStockLevelQuickSpread.ItemDescColumnIndex = -1
@@ -343,7 +413,7 @@ Partial Class StockInquiryForm
     Me.MinimumStockLevelQuickSpread.TabIndex = 2
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Name = ""
-    Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer4
+    Me.MinimumStockLevelQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer2
     Me.MinimumStockLevelQuickSpread.VerticalScrollBar.TabIndex = 3
     Me.MinimumStockLevelQuickSpread.VisualStyles = FarPoint.Win.VisualStyles.Off
     '
@@ -401,10 +471,10 @@ Partial Class StockInquiryForm
     Me.GetSalesQuickSpread.AutoNewRow = True
     Me.GetSalesQuickSpread.EditModePermanent = True
     Me.GetSalesQuickSpread.EditModeReplace = True
-    Me.GetSalesQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer1
+    Me.GetSalesQuickSpread.FocusRenderer = DefaultFocusIndicatorRenderer2
     Me.GetSalesQuickSpread.HorizontalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.GetSalesQuickSpread.HorizontalScrollBar.Name = ""
-    Me.GetSalesQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer5
+    Me.GetSalesQuickSpread.HorizontalScrollBar.Renderer = DefaultScrollBarRenderer3
     Me.GetSalesQuickSpread.HorizontalScrollBar.TabIndex = 0
     Me.GetSalesQuickSpread.ItemCodeFirstColumnIndex = -1
     Me.GetSalesQuickSpread.ItemDescColumnIndex = -1
@@ -424,7 +494,7 @@ Partial Class StockInquiryForm
     Me.GetSalesQuickSpread.TabIndex = 17
     Me.GetSalesQuickSpread.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
     Me.GetSalesQuickSpread.VerticalScrollBar.Name = ""
-    Me.GetSalesQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer6
+    Me.GetSalesQuickSpread.VerticalScrollBar.Renderer = DefaultScrollBarRenderer4
     Me.GetSalesQuickSpread.VerticalScrollBar.TabIndex = 3
     Me.GetSalesQuickSpread.VisualStyles = FarPoint.Win.VisualStyles.Off
     '
@@ -504,15 +574,17 @@ Partial Class StockInquiryForm
     'DateToCalendarCombo
     '
     Me.DateToCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton1)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton2)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton3)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton4)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton5)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton6)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton7)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton8)
-    Me.DateToCalendarCombo.DateButtons.Add(DateButton9)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton47)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton48)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton49)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton50)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton51)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton52)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton53)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton54)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton55)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton56)
+    Me.DateToCalendarCombo.DateButtons.Add(DateButton57)
     Me.DateToCalendarCombo.DefaultValue = New Date(2010, 2, 2, 8, 36, 32, 453)
     Me.DateToCalendarCombo.Format = "dd-MM-yy"
     Me.DateToCalendarCombo.Location = New System.Drawing.Point(168, 7)
@@ -524,15 +596,17 @@ Partial Class StockInquiryForm
     'DateFromCalendarCombo
     '
     Me.DateFromCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton10)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton11)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton12)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton13)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton14)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton15)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton16)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton17)
-    Me.DateFromCalendarCombo.DateButtons.Add(DateButton18)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton58)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton59)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton60)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton61)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton62)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton63)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton64)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton65)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton66)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton67)
+    Me.DateFromCalendarCombo.DateButtons.Add(DateButton68)
     Me.DateFromCalendarCombo.DefaultValue = New Date(2010, 2, 2, 8, 36, 32, 500)
     Me.DateFromCalendarCombo.Format = "dd-MM-yy"
     Me.DateFromCalendarCombo.Location = New System.Drawing.Point(43, 7)
@@ -601,6 +675,7 @@ Partial Class StockInquiryForm
     Me.TabControl1.ResumeLayout(False)
     Me.StockTabPage.ResumeLayout(False)
     Me.StockTabPage.PerformLayout()
+    CType(Me.DateStockCalendarCombo, System.ComponentModel.ISupportInitialize).EndInit()
     Me.MinimumLevelDeviationTabPage.ResumeLayout(False)
     Me.MinimumLevelDeviationTabPage.PerformLayout()
     CType(Me.MinimumStockLevelFilterOptionQuickUltraComboBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -634,15 +709,18 @@ Partial Class StockInquiryForm
   Friend WithEvents ReverseSignCheckBox As QuickControls.Quick_CheckBox
   Friend WithEvents RecalculateStockButton As QuickControls.Quick_Button
   Friend WithEvents SalesStockInquiryTabPage As System.Windows.Forms.TabPage
-    Friend WithEvents DateToCalendarCombo As QuickControls.Quick_UltraCalendarCombo
-    Friend WithEvents DateFromCalendarCombo As QuickControls.Quick_UltraCalendarCombo
-    Friend WithEvents Quick_Label1 As QuickControls.Quick_Label
-    Friend WithEvents Quick_Label2 As QuickControls.Quick_Label
-    Friend WithEvents Quick_Label3 As QuickControls.Quick_Label
-    Friend WithEvents IncreaseQuantityTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents ShowSalesButton As QuickControls.Quick_Button
-    Friend WithEvents IncreaseQuantityButton As QuickControls.Quick_Button
-    Friend WithEvents GetSalesQuickSpread As QuickBusinessControls.ItemSpread
+  Friend WithEvents DateToCalendarCombo As QuickControls.Quick_UltraCalendarCombo
+  Friend WithEvents DateFromCalendarCombo As QuickControls.Quick_UltraCalendarCombo
+  Friend WithEvents Quick_Label1 As QuickControls.Quick_Label
+  Friend WithEvents Quick_Label2 As QuickControls.Quick_Label
+  Friend WithEvents Quick_Label3 As QuickControls.Quick_Label
+  Friend WithEvents IncreaseQuantityTextBox As System.Windows.Forms.TextBox
+  Friend WithEvents ShowSalesButton As QuickControls.Quick_Button
+  Friend WithEvents IncreaseQuantityButton As QuickControls.Quick_Button
+  Friend WithEvents GetSalesQuickSpread As QuickBusinessControls.ItemSpread
   Friend WithEvents GetSalesQuickSpread_Sheet1 As QuickBusinessControls.ItemSpreadView
   Friend WithEvents TotalRowsCheckBox As QuickControls.Quick_CheckBox
+  Friend WithEvents DateStockCalendarCombo As QuickControls.Quick_UltraCalendarCombo
+  Friend WithEvents CurrentStockCheckBox As QuickControls.Quick_CheckBox
+  Friend WithEvents Quick_Label4 As QuickControls.Quick_Label
 End Class
