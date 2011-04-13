@@ -480,8 +480,18 @@ Public Class MDIParent1
             Form = New QuickProduction.ProcessWorkFlowForm
           Case "99-003"
             Form = New QuickInventory.InventoryFormSizes
+          Case "99-001"
+            Form = New QuickProduction.DefineProcessForm
+          Case "99-002"
+            Form = New QuickProduction.ProcessWorkFlowForm
+          Case "03-008"
+            Form = New QuickAdministration.MenuSetting
+          Case "03-009"
+
+            Form = New QuickAdministration.FormSetting
           Case Else
             'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
+
         End Select
 
         If Form IsNot Nothing Then
