@@ -58,6 +58,8 @@ Partial Public Class QuickInventoryDataSet
     
     Private tableItemDetail As ItemDetailDataTable
     
+    Private tableItemGrade As ItemGradeDataTable
+    
     Private relationFK_Inv_SalesInvoice_Detail_Inv_Item As Global.System.Data.DataRelation
     
     Private relationFK_Inv_SalesInvoice_Detail_Inv_Item1 As Global.System.Data.DataRelation
@@ -67,6 +69,8 @@ Partial Public Class QuickInventoryDataSet
     Private relationFK_Inv_Item_Detail_Inv_ItemSize As Global.System.Data.DataRelation
     
     Private relationFK_Inv_Item_Detail_Invs_Item As Global.System.Data.DataRelation
+    
+    Private relationFK_Inv_Item_Detail_ItemGrade As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -142,6 +146,9 @@ Partial Public Class QuickInventoryDataSet
             End If
             If (Not (ds.Tables("ItemDetail")) Is Nothing) Then
                 MyBase.Tables.Add(New ItemDetailDataTable(ds.Tables("ItemDetail")))
+            End If
+            If (Not (ds.Tables("ItemGrade")) Is Nothing) Then
+                MyBase.Tables.Add(New ItemGradeDataTable(ds.Tables("ItemGrade")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -305,6 +312,15 @@ Partial Public Class QuickInventoryDataSet
     End Property
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property ItemGrade() As ItemGradeDataTable
+        Get
+            Return Me.tableItemGrade
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -410,6 +426,9 @@ Partial Public Class QuickInventoryDataSet
             End If
             If (Not (ds.Tables("ItemDetail")) Is Nothing) Then
                 MyBase.Tables.Add(New ItemDetailDataTable(ds.Tables("ItemDetail")))
+            End If
+            If (Not (ds.Tables("ItemGrade")) Is Nothing) Then
+                MyBase.Tables.Add(New ItemGradeDataTable(ds.Tables("ItemGrade")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -536,11 +555,18 @@ Partial Public Class QuickInventoryDataSet
                 Me.tableItemDetail.InitVars
             End If
         End If
+        Me.tableItemGrade = CType(MyBase.Tables("ItemGrade"),ItemGradeDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableItemGrade) Is Nothing) Then
+                Me.tableItemGrade.InitVars
+            End If
+        End If
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item")
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item1 = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item1")
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item2 = Me.Relations("FK_Inv_SalesInvoice_Detail_Inv_Item2")
         Me.relationFK_Inv_Item_Detail_Inv_ItemSize = Me.Relations("FK_Inv_Item_Detail_Inv_ItemSize")
         Me.relationFK_Inv_Item_Detail_Invs_Item = Me.Relations("FK_Inv_Item_Detail_Invs_Item")
+        Me.relationFK_Inv_Item_Detail_ItemGrade = Me.Relations("FK_Inv_Item_Detail_ItemGrade")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -582,6 +608,8 @@ Partial Public Class QuickInventoryDataSet
         MyBase.Tables.Add(Me.tableInventoryFacts)
         Me.tableItemDetail = New ItemDetailDataTable
         MyBase.Tables.Add(Me.tableItemDetail)
+        Me.tableItemGrade = New ItemGradeDataTable
+        MyBase.Tables.Add(Me.tableItemGrade)
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item = New Global.System.Data.DataRelation("FK_Inv_SalesInvoice_Detail_Inv_Item", New Global.System.Data.DataColumn() {Me.tableItem.Co_IDColumn, Me.tableItem.Item_IDColumn}, New Global.System.Data.DataColumn() {Me.tableInventoryDetail.Co_IDColumn, Me.tableInventoryDetail.Item_IDColumn}, false)
         Me.Relations.Add(Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item)
         Me.relationFK_Inv_SalesInvoice_Detail_Inv_Item1 = New Global.System.Data.DataRelation("FK_Inv_SalesInvoice_Detail_Inv_Item1", New Global.System.Data.DataColumn() {Me.tableItem.Co_IDColumn, Me.tableItem.Item_IDColumn}, New Global.System.Data.DataColumn() {Me.tableInvs_InventoryDetail.Co_IDColumn, Me.tableInvs_InventoryDetail.Item_IDColumn}, false)
@@ -592,6 +620,8 @@ Partial Public Class QuickInventoryDataSet
         Me.Relations.Add(Me.relationFK_Inv_Item_Detail_Inv_ItemSize)
         Me.relationFK_Inv_Item_Detail_Invs_Item = New Global.System.Data.DataRelation("FK_Inv_Item_Detail_Invs_Item", New Global.System.Data.DataColumn() {Me.tableInvs_Item.Co_IDColumn, Me.tableInvs_Item.Item_IDColumn}, New Global.System.Data.DataColumn() {Me.tableItemDetail.Co_IDColumn, Me.tableItemDetail.Item_IDColumn}, false)
         Me.Relations.Add(Me.relationFK_Inv_Item_Detail_Invs_Item)
+        Me.relationFK_Inv_Item_Detail_ItemGrade = New Global.System.Data.DataRelation("FK_Inv_Item_Detail_ItemGrade", New Global.System.Data.DataColumn() {Me.tableItemGrade.Co_IDColumn, Me.tableItemGrade.ItemGrade_IDColumn}, New Global.System.Data.DataColumn() {Me.tableItemDetail.Co_IDColumn, Me.tableItemDetail.ItemGrade_IDColumn}, false)
+        Me.Relations.Add(Me.relationFK_Inv_Item_Detail_ItemGrade)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -671,6 +701,11 @@ Partial Public Class QuickInventoryDataSet
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Private Function ShouldSerializeItemDetail() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+    Private Function ShouldSerializeItemGrade() As Boolean
         Return false
     End Function
     
@@ -761,6 +796,8 @@ Partial Public Class QuickInventoryDataSet
     Public Delegate Sub InventoryFactsRowChangeEventHandler(ByVal sender As Object, ByVal e As InventoryFactsRowChangeEvent)
     
     Public Delegate Sub ItemDetailRowChangeEventHandler(ByVal sender As Object, ByVal e As ItemDetailRowChangeEvent)
+    
+    Public Delegate Sub ItemGradeRowChangeEventHandler(ByVal sender As Object, ByVal e As ItemGradeRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -6664,6 +6701,10 @@ Partial Public Class QuickInventoryDataSet
         
         Private columnRecordStatus_ID As Global.System.Data.DataColumn
         
+        Private columnInactive_From As Global.System.Data.DataColumn
+        
+        Private columnInactive_To As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
             MyBase.New
@@ -6752,6 +6793,20 @@ Partial Public Class QuickInventoryDataSet
             End Get
         End Property
         
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Inactive_FromColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInactive_From
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Inactive_ToColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInactive_To
+            End Get
+        End Property
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6781,9 +6836,9 @@ Partial Public Class QuickInventoryDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddItemSizeRow(ByVal Co_ID As Short, ByVal ItemSize_ID As Short, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal ItemSize_Code As String, ByVal ItemSize_Desc As String, ByVal RecordStatus_ID As Integer) As ItemSizeRow
+        Public Overloads Function AddItemSizeRow(ByVal Co_ID As Short, ByVal ItemSize_ID As Short, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal ItemSize_Code As String, ByVal ItemSize_Desc As String, ByVal RecordStatus_ID As Integer, ByVal Inactive_From As Date, ByVal Inactive_To As Date) As ItemSizeRow
             Dim rowItemSizeRow As ItemSizeRow = CType(Me.NewRow,ItemSizeRow)
-            Dim columnValuesArray() As Object = New Object() {Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, ItemSize_Code, ItemSize_Desc, RecordStatus_ID}
+            Dim columnValuesArray() As Object = New Object() {Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateTime, ItemSize_Code, ItemSize_Desc, RecordStatus_ID, Inactive_From, Inactive_To}
             rowItemSizeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowItemSizeRow)
             Return rowItemSizeRow
@@ -6821,6 +6876,8 @@ Partial Public Class QuickInventoryDataSet
             Me.columnItemSize_Code = MyBase.Columns("ItemSize_Code")
             Me.columnItemSize_Desc = MyBase.Columns("ItemSize_Desc")
             Me.columnRecordStatus_ID = MyBase.Columns("RecordStatus_ID")
+            Me.columnInactive_From = MyBase.Columns("Inactive_From")
+            Me.columnInactive_To = MyBase.Columns("Inactive_To")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -6841,6 +6898,10 @@ Partial Public Class QuickInventoryDataSet
             MyBase.Columns.Add(Me.columnItemSize_Desc)
             Me.columnRecordStatus_ID = New Global.System.Data.DataColumn("RecordStatus_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRecordStatus_ID)
+            Me.columnInactive_From = New Global.System.Data.DataColumn("Inactive_From", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInactive_From)
+            Me.columnInactive_To = New Global.System.Data.DataColumn("Inactive_To", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInactive_To)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCo_ID, Me.columnItemSize_ID}, true))
             Me.columnCo_ID.AllowDBNull = false
             Me.columnItemSize_ID.AllowDBNull = false
@@ -8127,6 +8188,363 @@ Partial Public Class QuickInventoryDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ItemDetailDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class ItemGradeDataTable
+        Inherits Global.System.Data.DataTable
+        Implements Global.System.Collections.IEnumerable
+        
+        Private columnCo_ID As Global.System.Data.DataColumn
+        
+        Private columnItemGrade_ID As Global.System.Data.DataColumn
+        
+        Private columnItemGrade_Code As Global.System.Data.DataColumn
+        
+        Private columnItemGrade_Desc As Global.System.Data.DataColumn
+        
+        Private columnStamp_UserID As Global.System.Data.DataColumn
+        
+        Private columnStamp_DateTime As Global.System.Data.DataColumn
+        
+        Private columnUpload_DateTime As Global.System.Data.DataColumn
+        
+        Private columnRecordStatus_ID As Global.System.Data.DataColumn
+        
+        Private columnInactive_From As Global.System.Data.DataColumn
+        
+        Private columnInactive_To As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "ItemGrade"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Co_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCo_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property ItemGrade_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemGrade_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property ItemGrade_CodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemGrade_Code
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property ItemGrade_DescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnItemGrade_Desc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Stamp_UserIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStamp_UserID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Stamp_DateTimeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStamp_DateTime
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Upload_DateTimeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUpload_DateTime
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property RecordStatus_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRecordStatus_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Inactive_FromColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInactive_From
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Inactive_ToColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInactive_To
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As ItemGradeRow
+            Get
+                Return CType(Me.Rows(index),ItemGradeRow)
+            End Get
+        End Property
+        
+        Public Event ItemGradeRowChanging As ItemGradeRowChangeEventHandler
+        
+        Public Event ItemGradeRowChanged As ItemGradeRowChangeEventHandler
+        
+        Public Event ItemGradeRowDeleting As ItemGradeRowChangeEventHandler
+        
+        Public Event ItemGradeRowDeleted As ItemGradeRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Sub AddItemGradeRow(ByVal row As ItemGradeRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Function AddItemGradeRow(ByVal Co_ID As Short, ByVal ItemGrade_ID As Short, ByVal ItemGrade_Code As String, ByVal ItemGrade_Desc As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Date, ByVal RecordStatus_ID As Integer, ByVal Inactive_From As Date, ByVal Inactive_To As Date) As ItemGradeRow
+            Dim rowItemGradeRow As ItemGradeRow = CType(Me.NewRow,ItemGradeRow)
+            Dim columnValuesArray() As Object = New Object() {Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, Inactive_To}
+            rowItemGradeRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowItemGradeRow)
+            Return rowItemGradeRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function FindByCo_IDItemGrade_ID(ByVal Co_ID As Short, ByVal ItemGrade_ID As Short) As ItemGradeRow
+            Return CType(Me.Rows.Find(New Object() {Co_ID, ItemGrade_ID}),ItemGradeRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
+            Return Me.Rows.GetEnumerator
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As ItemGradeDataTable = CType(MyBase.Clone,ItemGradeDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New ItemGradeDataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub InitVars()
+            Me.columnCo_ID = MyBase.Columns("Co_ID")
+            Me.columnItemGrade_ID = MyBase.Columns("ItemGrade_ID")
+            Me.columnItemGrade_Code = MyBase.Columns("ItemGrade_Code")
+            Me.columnItemGrade_Desc = MyBase.Columns("ItemGrade_Desc")
+            Me.columnStamp_UserID = MyBase.Columns("Stamp_UserID")
+            Me.columnStamp_DateTime = MyBase.Columns("Stamp_DateTime")
+            Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
+            Me.columnRecordStatus_ID = MyBase.Columns("RecordStatus_ID")
+            Me.columnInactive_From = MyBase.Columns("Inactive_From")
+            Me.columnInactive_To = MyBase.Columns("Inactive_To")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitClass()
+            Me.columnCo_ID = New Global.System.Data.DataColumn("Co_ID", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCo_ID)
+            Me.columnItemGrade_ID = New Global.System.Data.DataColumn("ItemGrade_ID", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemGrade_ID)
+            Me.columnItemGrade_Code = New Global.System.Data.DataColumn("ItemGrade_Code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemGrade_Code)
+            Me.columnItemGrade_Desc = New Global.System.Data.DataColumn("ItemGrade_Desc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnItemGrade_Desc)
+            Me.columnStamp_UserID = New Global.System.Data.DataColumn("Stamp_UserID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStamp_UserID)
+            Me.columnStamp_DateTime = New Global.System.Data.DataColumn("Stamp_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStamp_DateTime)
+            Me.columnUpload_DateTime = New Global.System.Data.DataColumn("Upload_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUpload_DateTime)
+            Me.columnRecordStatus_ID = New Global.System.Data.DataColumn("RecordStatus_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRecordStatus_ID)
+            Me.columnInactive_From = New Global.System.Data.DataColumn("Inactive_From", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInactive_From)
+            Me.columnInactive_To = New Global.System.Data.DataColumn("Inactive_To", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInactive_To)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCo_ID, Me.columnItemGrade_ID}, true))
+            Me.columnCo_ID.AllowDBNull = false
+            Me.columnItemGrade_ID.AllowDBNull = false
+            Me.columnItemGrade_Code.AllowDBNull = false
+            Me.columnItemGrade_Code.MaxLength = 10
+            Me.columnItemGrade_Desc.AllowDBNull = false
+            Me.columnItemGrade_Desc.MaxLength = 250
+            Me.columnStamp_UserID.AllowDBNull = false
+            Me.columnStamp_DateTime.AllowDBNull = false
+            Me.columnRecordStatus_ID.AllowDBNull = false
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function NewItemGradeRow() As ItemGradeRow
+            Return CType(Me.NewRow,ItemGradeRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New ItemGradeRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(ItemGradeRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.ItemGradeRowChangedEvent) Is Nothing) Then
+                RaiseEvent ItemGradeRowChanged(Me, New ItemGradeRowChangeEvent(CType(e.Row,ItemGradeRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.ItemGradeRowChangingEvent) Is Nothing) Then
+                RaiseEvent ItemGradeRowChanging(Me, New ItemGradeRowChangeEvent(CType(e.Row,ItemGradeRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.ItemGradeRowDeletedEvent) Is Nothing) Then
+                RaiseEvent ItemGradeRowDeleted(Me, New ItemGradeRowChangeEvent(CType(e.Row,ItemGradeRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.ItemGradeRowDeletingEvent) Is Nothing) Then
+                RaiseEvent ItemGradeRowDeleting(Me, New ItemGradeRowChangeEvent(CType(e.Row,ItemGradeRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub RemoveItemGradeRow(ByVal row As ItemGradeRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence
+            Dim ds As QuickInventoryDataSet = New QuickInventoryDataSet
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "ItemGradeDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -11992,6 +12410,34 @@ Partial Public Class QuickInventoryDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Inactive_From() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableItemSize.Inactive_FromColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Inactive_From' in table 'ItemSize' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableItemSize.Inactive_FromColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Inactive_To() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableItemSize.Inactive_ToColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Inactive_To' in table 'ItemSize' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableItemSize.Inactive_ToColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsUpload_DateTimeNull() As Boolean
             Return Me.IsNull(Me.tableItemSize.Upload_DateTimeColumn)
         End Function
@@ -12019,6 +12465,26 @@ Partial Public Class QuickInventoryDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub SetRecordStatus_IDNull()
             Me(Me.tableItemSize.RecordStatus_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsInactive_FromNull() As Boolean
+            Return Me.IsNull(Me.tableItemSize.Inactive_FromColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetInactive_FromNull()
+            Me(Me.tableItemSize.Inactive_FromColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsInactive_ToNull() As Boolean
+            Return Me.IsNull(Me.tableItemSize.Inactive_ToColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetInactive_ToNull()
+            Me(Me.tableItemSize.Inactive_ToColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -12823,6 +13289,16 @@ Partial Public Class QuickInventoryDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ItemGradeRowParent() As ItemGradeRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Inv_Item_Detail_ItemGrade")),ItemGradeRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_Inv_Item_Detail_ItemGrade"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsColor_IDNull() As Boolean
             Return Me.IsNull(Me.tableItemDetail.Color_IDColumn)
         End Function
@@ -12861,6 +13337,173 @@ Partial Public Class QuickInventoryDataSet
         Public Sub SetUpload_DateTimeNull()
             Me(Me.tableItemDetail.Upload_DateTimeColumn) = Global.System.Convert.DBNull
         End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Partial Public Class ItemGradeRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableItemGrade As ItemGradeDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableItemGrade = CType(Me.Table,ItemGradeDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Co_ID() As Short
+            Get
+                Return CType(Me(Me.tableItemGrade.Co_IDColumn),Short)
+            End Get
+            Set
+                Me(Me.tableItemGrade.Co_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ItemGrade_ID() As Short
+            Get
+                Return CType(Me(Me.tableItemGrade.ItemGrade_IDColumn),Short)
+            End Get
+            Set
+                Me(Me.tableItemGrade.ItemGrade_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ItemGrade_Code() As String
+            Get
+                Return CType(Me(Me.tableItemGrade.ItemGrade_CodeColumn),String)
+            End Get
+            Set
+                Me(Me.tableItemGrade.ItemGrade_CodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ItemGrade_Desc() As String
+            Get
+                Return CType(Me(Me.tableItemGrade.ItemGrade_DescColumn),String)
+            End Get
+            Set
+                Me(Me.tableItemGrade.ItemGrade_DescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Stamp_UserID() As Integer
+            Get
+                Return CType(Me(Me.tableItemGrade.Stamp_UserIDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableItemGrade.Stamp_UserIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Stamp_DateTime() As Date
+            Get
+                Return CType(Me(Me.tableItemGrade.Stamp_DateTimeColumn),Date)
+            End Get
+            Set
+                Me(Me.tableItemGrade.Stamp_DateTimeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Upload_DateTime() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableItemGrade.Upload_DateTimeColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Upload_DateTime' in table 'ItemGrade' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableItemGrade.Upload_DateTimeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property RecordStatus_ID() As Integer
+            Get
+                Return CType(Me(Me.tableItemGrade.RecordStatus_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableItemGrade.RecordStatus_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Inactive_From() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableItemGrade.Inactive_FromColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Inactive_From' in table 'ItemGrade' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableItemGrade.Inactive_FromColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Inactive_To() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableItemGrade.Inactive_ToColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Inactive_To' in table 'ItemGrade' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableItemGrade.Inactive_ToColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsUpload_DateTimeNull() As Boolean
+            Return Me.IsNull(Me.tableItemGrade.Upload_DateTimeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetUpload_DateTimeNull()
+            Me(Me.tableItemGrade.Upload_DateTimeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsInactive_FromNull() As Boolean
+            Return Me.IsNull(Me.tableItemGrade.Inactive_FromColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetInactive_FromNull()
+            Me(Me.tableItemGrade.Inactive_FromColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsInactive_ToNull() As Boolean
+            Return Me.IsNull(Me.tableItemGrade.Inactive_ToColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetInactive_ToNull()
+            Me(Me.tableItemGrade.Inactive_ToColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function GetItemDetailRows() As ItemDetailRow()
+            If (Me.Table.ChildRelations("FK_Inv_Item_Detail_ItemGrade") Is Nothing) Then
+                Return New ItemDetailRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Inv_Item_Detail_ItemGrade")),ItemDetailRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -13378,6 +14021,39 @@ Partial Public Class QuickInventoryDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Row() As ItemDetailRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Public Class ItemGradeRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As ItemGradeRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New(ByVal row As ItemGradeRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Row() As ItemGradeRow
             Get
                 Return Me.eventRow
             End Get
@@ -22538,6 +23214,8 @@ Namespace QuickInventoryDataSetTableAdapters
             tableMapping.ColumnMappings.Add("ItemSize_Code", "ItemSize_Code")
             tableMapping.ColumnMappings.Add("ItemSize_Desc", "ItemSize_Desc")
             tableMapping.ColumnMappings.Add("RecordStatus_ID", "RecordStatus_ID")
+            tableMapping.ColumnMappings.Add("Inactive_From", "Inactive_From")
+            tableMapping.ColumnMappings.Add("Inactive_To", "Inactive_To")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -22548,7 +23226,10 @@ Namespace QuickInventoryDataSetTableAdapters
                 "DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upl"& _ 
                 "oad_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ("& _ 
                 "(@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID] IS NULL) OR ([RecordStatus_ID"& _ 
-                "] = @Original_RecordStatus_ID)))"
+                "] = @Original_RecordStatus_ID)) AND ((@IsNull_Inactive_From = 1 AND [Inactive_Fr"& _ 
+                "om] IS NULL) OR ([Inactive_From] = @Original_Inactive_From)) AND ((@IsNull_Inact"& _ 
+                "ive_To = 1 AND [Inactive_To] IS NULL) OR ([Inactive_To] = @Original_Inactive_To)"& _ 
+                "))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemSize_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -22561,15 +23242,20 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_From", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_To", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Inv_ItemSize] ([Co_ID], [ItemSize_ID], [ItemSize_Code], [ItemSize_De"& _ 
-                "sc], [Stamp_UserID], [Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID]) VAL"& _ 
-                "UES (@Co_ID, @ItemSize_ID, @ItemSize_Code, @ItemSize_Desc, @Stamp_UserID, @Stamp"& _ 
-                "_DateTime, @Upload_DateTime, @RecordStatus_ID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemSize_ID, Item"& _ 
-                "Size_Code, ItemSize_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordS"& _ 
-                "tatus_ID FROM Inv_ItemSize WHERE (Co_ID = @Co_ID) AND (ItemSize_ID = @ItemSize_I"& _ 
-                "D)"
+                "sc], [Stamp_UserID], [Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID], [In"& _ 
+                "active_From], [Inactive_To]) VALUES (@Co_ID, @ItemSize_ID, @ItemSize_Code, @Item"& _ 
+                "Size_Desc, @Stamp_UserID, @Stamp_DateTime, @Upload_DateTime, @RecordStatus_ID, @"& _ 
+                "Inactive_From, @Inactive_To);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemSize_ID, ItemSize_Code, ItemSiz"& _ 
+                "e_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive"& _ 
+                "_From, Inactive_To FROM Inv_ItemSize WHERE (Co_ID = @Co_ID) AND (ItemSize_ID = @"& _ 
+                "ItemSize_ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSize_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22579,22 +23265,27 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Inv_ItemSize] SET [Co_ID] = @Co_ID, [ItemSize_ID] = @ItemSize_ID, [ItemSi"& _ 
                 "ze_Code] = @ItemSize_Code, [ItemSize_Desc] = @ItemSize_Desc, [Stamp_UserID] = @S"& _ 
                 "tamp_UserID, [Stamp_DateTime] = @Stamp_DateTime, [Upload_DateTime] = @Upload_Dat"& _ 
-                "eTime, [RecordStatus_ID] = @RecordStatus_ID WHERE (([Co_ID] = @Original_Co_ID) A"& _ 
-                "ND ([ItemSize_ID] = @Original_ItemSize_ID) AND ([ItemSize_Code] = @Original_Item"& _ 
-                "Size_Code) AND ((@IsNull_ItemSize_Desc = 1 AND [ItemSize_Desc] IS NULL) OR ([Ite"& _ 
-                "mSize_Desc] = @Original_ItemSize_Desc)) AND ([Stamp_UserID] = @Original_Stamp_Us"& _ 
-                "erID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_Dat"& _ 
-                "eTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Uploa"& _ 
-                "d_DateTime)) AND ((@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID] IS NULL) OR"& _ 
-                " ([RecordStatus_ID] = @Original_RecordStatus_ID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemSize_ID, "& _ 
-                "ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, Rec"& _ 
-                "ordStatus_ID FROM Inv_ItemSize WHERE (Co_ID = @Co_ID) AND (ItemSize_ID = @ItemSi"& _ 
-                "ze_ID)"
+                "eTime, [RecordStatus_ID] = @RecordStatus_ID, [Inactive_From] = @Inactive_From, ["& _ 
+                "Inactive_To] = @Inactive_To WHERE (([Co_ID] = @Original_Co_ID) AND ([ItemSize_ID"& _ 
+                "] = @Original_ItemSize_ID) AND ([ItemSize_Code] = @Original_ItemSize_Code) AND ("& _ 
+                "(@IsNull_ItemSize_Desc = 1 AND [ItemSize_Desc] IS NULL) OR ([ItemSize_Desc] = @O"& _ 
+                "riginal_ItemSize_Desc)) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stam"& _ 
+                "p_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [U"& _ 
+                "pload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND"& _ 
+                " ((@IsNull_RecordStatus_ID = 1 AND [RecordStatus_ID] IS NULL) OR ([RecordStatus_"& _ 
+                "ID] = @Original_RecordStatus_ID)) AND ((@IsNull_Inactive_From = 1 AND [Inactive_"& _ 
+                "From] IS NULL) OR ([Inactive_From] = @Original_Inactive_From)) AND ((@IsNull_Ina"& _ 
+                "ctive_To = 1 AND [Inactive_To] IS NULL) OR ([Inactive_To] = @Original_Inactive_T"& _ 
+                "o)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, St"& _ 
+                "amp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, Inactive_To FROM "& _ 
+                "Inv_ItemSize WHERE (Co_ID = @Co_ID) AND (ItemSize_ID = @ItemSize_ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSize_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -22604,6 +23295,8 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemSize_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemSize_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -22615,6 +23308,10 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_From", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_To", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -22625,35 +23322,94 @@ Namespace QuickInventoryDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(10) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Co_ID, ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_"& _ 
-                "DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"
+                "DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From,  Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
+                "      Inv_ItemSize"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT     Co_ID, ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_"& _ 
-                "DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_"& _ 
-                "ID = @CoID"
+            Me._commandCollection(1).CommandText = "SELECT     Co_ID, ItemSize_Code, ItemSize_Desc, ItemSize_ID, RecordStatus_ID, Sta"& _ 
+                "mp_DateTime, Stamp_UserID, Upload_DateTime, Inactive_To, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                " Inactive_From"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @CoID)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT     Co_ID, ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_"& _ 
-                "DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_"& _ 
-                "ID = @CoID AND ItemSize_Code = @ItemSizeCode"
+            Me._commandCollection(2).CommandText = "SELECT Co_ID, Inactive_From, Inactive_To, ItemSize_Code, ItemSize_Desc, ItemSize_"& _ 
+                "ID, RecordStatus_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Inv_Item"& _ 
+                "Size WHERE (Co_ID = @CoID) AND (ItemSize_Code = @ItemSizeCode)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT     Co_ID, ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_"& _ 
-                "DateTime, Upload_DateTime, RecordStatus_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_"& _ 
-                "ID = @CoID AND ItemSize_Desc = @ItemSizeDesc"
+            Me._commandCollection(3).CommandText = "SELECT Co_ID, Inactive_From, Inactive_To, ItemSize_Code, ItemSize_Desc, ItemSize_"& _ 
+                "ID, RecordStatus_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Inv_Item"& _ 
+                "Size WHERE (Co_ID = @CoID) AND (ItemSize_Desc = @ItemSizeDesc)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeDesc", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_Desc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT ItemSize_Code FROM Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@CoID AND ItemSize_Code = @I"& _ 
+                "temSizeCode AND RecordStatus_ID <> 4"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT ItemSize_Code FROM Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@CoID AND ItemSize_ID <> @It"& _ 
+                "emSizeID AND ItemSize_Code = @ItemSizeCode "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              AND RecordStatus_ID <"& _ 
+                "> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT    TOP (1)  Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateT"& _ 
+                "ime,                     ItemSize_Desc ,RecordStatus_ID ,ItemSize_Code ,Inactive"& _ 
+                "_From, Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID) AN"& _ 
+                "D RecordStatus_ID <> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemSize_ID"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "SELECT    TOP (1)  Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateT"& _ 
+                "ime,                     ItemSize_Desc ,RecordStatus_ID ,ItemSize_Code ,Inactive"& _ 
+                "_From, Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID) AN"& _ 
+                "D RecordStatus_ID <> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemSize_ID DESC"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "SELECT     ISNULL(MAX(ItemSize_ID), 0) + 1 AS ItemSize_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemS"& _ 
+                "ize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(9).Connection = Me.Connection
+            Me._commandCollection(9).CommandText = "SELECT    TOP (1)  Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateT"& _ 
+                "ime,                     ItemSize_Desc ,RecordStatus_ID ,ItemSize_Code ,Inactive"& _ 
+                "_From, Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID) AN"& _ 
+                "D (ItemSize_ID > @ItemSizeID) AND ( RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemSize_I"& _ 
+                "D"
+            Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(10).Connection = Me.Connection
+            Me._commandCollection(10).CommandText = "SELECT    TOP (1)  Co_ID, ItemSize_ID, Stamp_UserID, Stamp_DateTime, Upload_DateT"& _ 
+                "ime,                     ItemSize_Desc ,RecordStatus_ID ,ItemSize_Code ,Inactive"& _ 
+                "_From, Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemSize"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID) AN"& _ 
+                "D (ItemSize_ID < @ItemSizeID) AND ( RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemSize_I"& _ 
+                "D DESC"
+            Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemSizeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemSize_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22710,6 +23466,52 @@ Namespace QuickInventoryDataSetTableAdapters
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetFirstbyCoID(ByVal Co_ID As Integer) As QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(6)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemSizeDataTable = New QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetLastByCoID(ByVal Co_ID As Integer) As QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(7)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemSizeDataTable = New QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetNextByCoIDItemSizeID(ByVal Co_ID As Integer, ByVal ItemSizeID As Integer) As QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(9)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemSizeID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemSizeDataTable = New QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetPreviousByCoIDItemSizeID(ByVal Co_ID As Integer, ByVal ItemSizeID As Integer) As QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(10)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemSizeID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemSizeDataTable = New QuickInventoryDataSet.ItemSizeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataTable As QuickInventoryDataSet.ItemSizeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
@@ -22736,7 +23538,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_ItemSize_ID As Short, ByVal Original_ItemSize_Code As String, ByVal Original_ItemSize_Desc As String, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_ItemSize_ID As Short, ByVal Original_ItemSize_Code As String, ByVal Original_ItemSize_Desc As String, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer), ByVal Original_Inactive_From As Global.System.Nullable(Of Date), ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Co_ID,Short)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_ItemSize_ID,Short)
             If (Original_ItemSize_Code Is Nothing) Then
@@ -22767,6 +23569,20 @@ Namespace QuickInventoryDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
+            If (Original_Inactive_From.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Inactive_From.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Inactive_To.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Inactive_To.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -22785,7 +23601,7 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal ItemSize_ID As Short, ByVal ItemSize_Code As String, ByVal ItemSize_Desc As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal ItemSize_ID As Short, ByVal ItemSize_Code As String, ByVal ItemSize_Desc As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Global.System.Nullable(Of Integer), ByVal Inactive_From As Global.System.Nullable(Of Date), ByVal Inactive_To As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(Co_ID,Short)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(ItemSize_ID,Short)
             If (ItemSize_Code Is Nothing) Then
@@ -22809,6 +23625,16 @@ Namespace QuickInventoryDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(RecordStatus_ID.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (Inactive_From.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Inactive_From.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Inactive_To.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Inactive_To.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -22837,6 +23663,8 @@ Namespace QuickInventoryDataSetTableAdapters
                     ByVal Stamp_DateTime As Date,  _
                     ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
                     ByVal RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Inactive_To As Global.System.Nullable(Of Date),  _
                     ByVal Original_Co_ID As Short,  _
                     ByVal Original_ItemSize_ID As Short,  _
                     ByVal Original_ItemSize_Code As String,  _
@@ -22844,7 +23672,9 @@ Namespace QuickInventoryDataSetTableAdapters
                     ByVal Original_Stamp_UserID As Integer,  _
                     ByVal Original_Stamp_DateTime As Date,  _
                     ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
-                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
+                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Co_ID,Short)
             Me.Adapter.UpdateCommand.Parameters(1).Value = CType(ItemSize_ID,Short)
             If (ItemSize_Code Is Nothing) Then
@@ -22869,35 +23699,59 @@ Namespace QuickInventoryDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Co_ID,Short)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ItemSize_ID,Short)
+            If (Inactive_From.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Inactive_From.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Inactive_To.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Inactive_To.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ItemSize_ID,Short)
             If (Original_ItemSize_Code Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ItemSize_Code")
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ItemSize_Code,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ItemSize_Code,String)
             End If
             If (Original_ItemSize_Desc Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ItemSize_Desc,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_ItemSize_Desc,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Stamp_UserID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Stamp_DateTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_UserID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Stamp_DateTime,Date)
             If (Original_Upload_DateTime.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Upload_DateTime.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (Original_RecordStatus_ID.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_RecordStatus_ID.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Upload_DateTime.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Original_RecordStatus_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_RecordStatus_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Inactive_From.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Inactive_From.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Inactive_To.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Inactive_To.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -22917,8 +23771,115 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ItemSize_Code As String, ByVal ItemSize_Desc As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Global.System.Nullable(Of Integer), ByVal Original_Co_ID As Short, ByVal Original_ItemSize_ID As Short, ByVal Original_ItemSize_Code As String, ByVal Original_ItemSize_Desc As String, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer)) As Integer
-            Return Me.Update(Original_Co_ID, Original_ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Original_Co_ID, Original_ItemSize_ID, Original_ItemSize_Code, Original_ItemSize_Desc, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID)
+        Public Overloads Overridable Function Update( _
+                    ByVal ItemSize_Code As String,  _
+                    ByVal ItemSize_Desc As String,  _
+                    ByVal Stamp_UserID As Integer,  _
+                    ByVal Stamp_DateTime As Date,  _
+                    ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Inactive_To As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Co_ID As Short,  _
+                    ByVal Original_ItemSize_ID As Short,  _
+                    ByVal Original_ItemSize_Code As String,  _
+                    ByVal Original_ItemSize_Desc As String,  _
+                    ByVal Original_Stamp_UserID As Integer,  _
+                    ByVal Original_Stamp_DateTime As Date,  _
+                    ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RecordStatus_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Original_Co_ID, Original_ItemSize_ID, ItemSize_Code, ItemSize_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, Inactive_To, Original_Co_ID, Original_ItemSize_ID, Original_ItemSize_Code, Original_ItemSize_Desc, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID, Original_Inactive_From, Original_Inactive_To)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetCoIDDuplicateItemSizeCode(ByVal CoID As Integer, ByVal ItemSizeCode As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            If (ItemSizeCode Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemSizeCode")
+            Else
+                command.Parameters(1).Value = CType(ItemSizeCode,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetCoIDDuplicateItemSizeCodeByItemSizeID(ByVal CoID As Integer, ByVal ItemSizeID As Integer, ByVal ItemSizeCode As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            command.Parameters(1).Value = CType(ItemSizeID,Integer)
+            If (ItemSizeCode Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemSizeCode")
+            Else
+                command.Parameters(2).Value = CType(ItemSizeCode,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetNewItemSizeIDbyCoID(ByVal Co_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+            command.Parameters(0).Value = CType(Co_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
         End Function
     End Class
     
@@ -23063,32 +24024,32 @@ Namespace QuickInventoryDataSetTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item_Code", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Item_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "dbo.SpGetStockByItemCodeAndDateCompany"
+            Me._commandCollection(1).CommandText = "dbo.spGetMinimumStockLevelByItemCodeCompanies"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.StoredProcedure
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Companies", Global.System.Data.SqlDbType.VarChar, 8000, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StockDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AddTotalRows", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WarehouseID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReverseSign", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "dbo.spGetMinimumStockLevelByItemCodeCompanies"
+            Me._commandCollection(2).CommandText = "dbo.SpGetSalesStockByItemCodeCompany"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.StoredProcedure
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Companies", Global.System.Data.SqlDbType.VarChar, 8000, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WarehouseID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReverseSign", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FromDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IncreaseFactor", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AddTotalRows", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "dbo.SpGetSalesStockByItemCodeCompany"
+            Me._commandCollection(3).CommandText = "dbo.SpGetStockByItemCodeAndDateCompany"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.StoredProcedure
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Companies", Global.System.Data.SqlDbType.VarChar, 8000, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FromDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemCode", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IncreaseFactor", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Companies", Global.System.Data.SqlDbType.VarChar, 8000, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@StockDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 23, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AddTotalRows", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(4).Connection = Me.Connection
@@ -23129,38 +24090,8 @@ Namespace QuickInventoryDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetStockByItemCodeAndDateCompany(ByVal ItemCode As String, ByVal Companies As String, ByVal StockDate As Global.System.Nullable(Of Date), ByVal AddTotalRows As Global.System.Nullable(Of Boolean)) As QuickInventoryDataSet.StockInquiryDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (ItemCode Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemCode,String)
-            End If
-            If (Companies Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Companies,String)
-            End If
-            If (StockDate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(StockDate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (AddTotalRows.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(AddTotalRows.Value,Boolean)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetMinimumStockLevelByItemCodeCompanies(ByVal ItemCode As String, ByVal Companies As String, ByVal WarehouseID As Global.System.Nullable(Of Integer), ByVal ReverseSign As Global.System.Nullable(Of Boolean)) As QuickInventoryDataSet.StockInquiryDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (ItemCode Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -23190,7 +24121,7 @@ Namespace QuickInventoryDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function GetSalesStockByItemCodeCompanies1(ByVal dataTable As QuickInventoryDataSet.StockInquiryDataTable, ByVal Companies As String, ByVal FromDate As Global.System.Nullable(Of Date), ByVal ToDate As Global.System.Nullable(Of Date), ByVal ItemCode As String, ByVal IncreaseFactor As String, ByVal AddTotalRows As Global.System.Nullable(Of Boolean)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Companies Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -23232,7 +24163,7 @@ Namespace QuickInventoryDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetSalesStockByItemCodeCompanies(ByVal Companies As String, ByVal FromDate As Global.System.Nullable(Of Date), ByVal ToDate As Global.System.Nullable(Of Date), ByVal ItemCode As String, ByVal IncreaseFactor As String, ByVal AddTotalRows As Global.System.Nullable(Of Boolean)) As QuickInventoryDataSet.StockInquiryDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Companies Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -23262,6 +24193,36 @@ Namespace QuickInventoryDataSetTableAdapters
                 Me.Adapter.SelectCommand.Parameters(6).Value = CType(AddTotalRows.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetStockByItemCodeAndDateCompany(ByVal ItemCode As String, ByVal Companies As String, ByVal StockDate As Global.System.Nullable(Of Date), ByVal AddTotalRows As Global.System.Nullable(Of Boolean)) As QuickInventoryDataSet.StockInquiryDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (ItemCode Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemCode,String)
+            End If
+            If (Companies Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(Companies,String)
+            End If
+            If (StockDate.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(StockDate.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (AddTotalRows.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(AddTotalRows.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As QuickInventoryDataSet.StockInquiryDataTable = New QuickInventoryDataSet.StockInquiryDataTable
             Me.Adapter.Fill(dataTable)
@@ -24130,6 +25091,695 @@ Namespace QuickInventoryDataSetTableAdapters
                 Return New Global.System.Nullable(Of Integer)
             Else
                 Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class ItemGradeTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "ItemGrade"
+            tableMapping.ColumnMappings.Add("Co_ID", "Co_ID")
+            tableMapping.ColumnMappings.Add("ItemGrade_ID", "ItemGrade_ID")
+            tableMapping.ColumnMappings.Add("ItemGrade_Code", "ItemGrade_Code")
+            tableMapping.ColumnMappings.Add("ItemGrade_Desc", "ItemGrade_Desc")
+            tableMapping.ColumnMappings.Add("Stamp_UserID", "Stamp_UserID")
+            tableMapping.ColumnMappings.Add("Stamp_DateTime", "Stamp_DateTime")
+            tableMapping.ColumnMappings.Add("Upload_DateTime", "Upload_DateTime")
+            tableMapping.ColumnMappings.Add("RecordStatus_ID", "RecordStatus_ID")
+            tableMapping.ColumnMappings.Add("Inactive_From", "Inactive_From")
+            tableMapping.ColumnMappings.Add("Inactive_To", "Inactive_To")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Inv_ItemGrade] WHERE (([Co_ID] = @Original_Co_ID) AND ([ItemGrade_ID"& _ 
+                "] = @Original_ItemGrade_ID) AND ([ItemGrade_Code] = @Original_ItemGrade_Code) AN"& _ 
+                "D ([ItemGrade_Desc] = @Original_ItemGrade_Desc) AND ([Stamp_UserID] = @Original_"& _ 
+                "Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Up"& _ 
+                "load_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Origin"& _ 
+                "al_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID) AND ((@"& _ 
+                "IsNull_Inactive_From = 1 AND [Inactive_From] IS NULL) OR ([Inactive_From] = @Ori"& _ 
+                "ginal_Inactive_From)) AND ((@IsNull_Inactive_To = 1 AND [Inactive_To] IS NULL) O"& _ 
+                "R ([Inactive_To] = @Original_Inactive_To)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Desc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_From", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_To", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Inv_ItemGrade] ([Co_ID], [ItemGrade_ID], [ItemGrade_Code], [ItemGrad"& _ 
+                "e_Desc], [Stamp_UserID], [Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID],"& _ 
+                " [Inactive_From], [Inactive_To]) VALUES (@Co_ID, @ItemGrade_ID, @ItemGrade_Code,"& _ 
+                " @ItemGrade_Desc, @Stamp_UserID, @Stamp_DateTime, @Upload_DateTime, @RecordStatu"& _ 
+                "s_ID, @Inactive_From, @Inactive_To);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemGrade_ID, ItemGrade_Code"& _ 
+                ", ItemGrade_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID"& _ 
+                ", Inactive_From, Inactive_To FROM Inv_ItemGrade WHERE (Co_ID = @Co_ID) AND (Item"& _ 
+                "Grade_ID = @ItemGrade_ID)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Desc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Inv_ItemGrade] SET [Co_ID] = @Co_ID, [ItemGrade_ID] = @ItemGrade_ID, [Ite"& _ 
+                "mGrade_Code] = @ItemGrade_Code, [ItemGrade_Desc] = @ItemGrade_Desc, [Stamp_UserI"& _ 
+                "D] = @Stamp_UserID, [Stamp_DateTime] = @Stamp_DateTime, [Upload_DateTime] = @Upl"& _ 
+                "oad_DateTime, [RecordStatus_ID] = @RecordStatus_ID, [Inactive_From] = @Inactive_"& _ 
+                "From, [Inactive_To] = @Inactive_To WHERE (([Co_ID] = @Original_Co_ID) AND ([Item"& _ 
+                "Grade_ID] = @Original_ItemGrade_ID) AND ([ItemGrade_Code] = @Original_ItemGrade_"& _ 
+                "Code) AND ([ItemGrade_Desc] = @Original_ItemGrade_Desc) AND ([Stamp_UserID] = @O"& _ 
+                "riginal_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@I"& _ 
+                "sNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] ="& _ 
+                " @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID)"& _ 
+                " AND ((@IsNull_Inactive_From = 1 AND [Inactive_From] IS NULL) OR ([Inactive_From"& _ 
+                "] = @Original_Inactive_From)) AND ((@IsNull_Inactive_To = 1 AND [Inactive_To] IS"& _ 
+                " NULL) OR ([Inactive_To] = @Original_Inactive_To)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, ItemGrade_ID"& _ 
+                ", ItemGrade_Code, ItemGrade_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime,"& _ 
+                " RecordStatus_ID, Inactive_From, Inactive_To FROM Inv_ItemGrade WHERE (Co_ID = @"& _ 
+                "Co_ID) AND (ItemGrade_ID = @ItemGrade_ID)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGrade_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Desc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_Code", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ItemGrade_Desc", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Desc", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatus_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatus_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_From", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_From", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_From", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Inactive_To", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Inactive_To", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Inactive_To", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT     Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserID, Sta"& _ 
+                "mp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "      Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemGrade"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT     Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserID, Sta"& _ 
+                "mp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+                "      Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@CoID"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT TOP (1)   Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserI"& _ 
+                "D, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "            Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (Co_ID = @Co_ID) AND Rec"& _ 
+                "ordStatus_ID <> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemGrade_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT TOP(1)     Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_User"& _ 
+                "ID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "             Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@COID AND Rec"& _ 
+                "ordStatus_ID <> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemGrade_ID DESC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@COID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT TOP (1)   Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserI"& _ 
+                "D, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "            Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   (Co_ID =@CoID) AND "& _ 
+                "(ItemGrade_ID > @ItemGradeID) AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemGrade_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGradeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT TOP (1)     Co_ID, ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_Use"& _ 
+                "rID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "              Inactive_To"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Co_ID = @CoID) AND"& _ 
+                " (ItemGrade_ID < @ItemGradeID) AND (RecordStatus_ID <> 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ItemGrade_ID"& _ 
+                " DESC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGradeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT ItemGrade_Code FROM Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@CoID AND ItemGrade_Code ="& _ 
+                " @ItemGradeCode AND RecordStatus_ID <> 4"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGradeCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "SELECT ItemGrade_Code FROM Inv_ItemGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID =@CoID AND ItemGrade_ID <> "& _ 
+                "@ItemGradeID AND ItemGrade_Code = @ItemGradeCode "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              AND RecordStatu"& _ 
+                "s_ID <> 4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGradeID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ItemGradeCode", Global.System.Data.SqlDbType.VarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "ItemGrade_Code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "SELECT     ISNULL(MAX(ItemGrade_ID), 0) + 1 AS ItemGrade_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Inv_Ite"& _ 
+                "mGrade"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Co_ID = @Co_ID)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetAll() As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetByCoID(ByVal CoID As Integer) As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetFirstByCoID(ByVal Co_ID As Integer) As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Co_ID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetLastByCoID(ByVal COID As Integer) As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(COID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetNextByCoIDItemGradeID(ByVal CoID As Integer, ByVal ItemGradeID As Integer) As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemGradeID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetPreviousByCoIDItemGradeID(ByVal CoID As Integer, ByVal ItemGradeID As Integer) As QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(ItemGradeID,Integer)
+            Dim dataTable As QuickInventoryDataSet.ItemGradeDataTable = New QuickInventoryDataSet.ItemGradeDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As QuickInventoryDataSet.ItemGradeDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As QuickInventoryDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "ItemGrade")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_ItemGrade_ID As Short, ByVal Original_ItemGrade_Code As String, ByVal Original_ItemGrade_Desc As String, ByVal Original_Stamp_UserID As Integer, ByVal Original_Stamp_DateTime As Date, ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_RecordStatus_ID As Integer, ByVal Original_Inactive_From As Global.System.Nullable(Of Date), ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_ItemGrade_ID,Short)
+            If (Original_ItemGrade_Code Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_ItemGrade_Code")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_ItemGrade_Code,String)
+            End If
+            If (Original_ItemGrade_Desc Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_ItemGrade_Desc")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_ItemGrade_Desc,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Stamp_UserID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Stamp_DateTime,Date)
+            If (Original_Upload_DateTime.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_RecordStatus_ID,Integer)
+            If (Original_Inactive_From.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Inactive_From.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Inactive_To.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Inactive_To.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal ItemGrade_ID As Short, ByVal ItemGrade_Code As String, ByVal ItemGrade_Desc As String, ByVal Stamp_UserID As Integer, ByVal Stamp_DateTime As Date, ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal RecordStatus_ID As Integer, ByVal Inactive_From As Global.System.Nullable(Of Date), ByVal Inactive_To As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Co_ID,Short)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(ItemGrade_ID,Short)
+            If (ItemGrade_Code Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGrade_Code")
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(ItemGrade_Code,String)
+            End If
+            If (ItemGrade_Desc Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGrade_Desc")
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(ItemGrade_Desc,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Stamp_UserID,Integer)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(Stamp_DateTime,Date)
+            If (Upload_DateTime.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(RecordStatus_ID,Integer)
+            If (Inactive_From.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Inactive_From.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Inactive_To.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(Inactive_To.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Co_ID As Short,  _
+                    ByVal ItemGrade_ID As Short,  _
+                    ByVal ItemGrade_Code As String,  _
+                    ByVal ItemGrade_Desc As String,  _
+                    ByVal Stamp_UserID As Integer,  _
+                    ByVal Stamp_DateTime As Date,  _
+                    ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal RecordStatus_ID As Integer,  _
+                    ByVal Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Inactive_To As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Co_ID As Short,  _
+                    ByVal Original_ItemGrade_ID As Short,  _
+                    ByVal Original_ItemGrade_Code As String,  _
+                    ByVal Original_ItemGrade_Desc As String,  _
+                    ByVal Original_Stamp_UserID As Integer,  _
+                    ByVal Original_Stamp_DateTime As Date,  _
+                    ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RecordStatus_ID As Integer,  _
+                    ByVal Original_Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(ItemGrade_ID,Short)
+            If (ItemGrade_Code Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGrade_Code")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(ItemGrade_Code,String)
+            End If
+            If (ItemGrade_Desc Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGrade_Desc")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(ItemGrade_Desc,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Stamp_UserID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Stamp_DateTime,Date)
+            If (Upload_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(RecordStatus_ID,Integer)
+            If (Inactive_From.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Inactive_From.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Inactive_To.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Inactive_To.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ItemGrade_ID,Short)
+            If (Original_ItemGrade_Code Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_ItemGrade_Code")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ItemGrade_Code,String)
+            End If
+            If (Original_ItemGrade_Desc Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_ItemGrade_Desc")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_ItemGrade_Desc,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Stamp_UserID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_DateTime,Date)
+            If (Original_Upload_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_RecordStatus_ID,Integer)
+            If (Original_Inactive_From.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Inactive_From.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Inactive_To.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Inactive_To.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal ItemGrade_Code As String,  _
+                    ByVal ItemGrade_Desc As String,  _
+                    ByVal Stamp_UserID As Integer,  _
+                    ByVal Stamp_DateTime As Date,  _
+                    ByVal Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal RecordStatus_ID As Integer,  _
+                    ByVal Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Inactive_To As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Co_ID As Short,  _
+                    ByVal Original_ItemGrade_ID As Short,  _
+                    ByVal Original_ItemGrade_Code As String,  _
+                    ByVal Original_ItemGrade_Desc As String,  _
+                    ByVal Original_Stamp_UserID As Integer,  _
+                    ByVal Original_Stamp_DateTime As Date,  _
+                    ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date),  _
+                    ByVal Original_RecordStatus_ID As Integer,  _
+                    ByVal Original_Inactive_From As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Inactive_To As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Original_Co_ID, Original_ItemGrade_ID, ItemGrade_Code, ItemGrade_Desc, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID, Inactive_From, Inactive_To, Original_Co_ID, Original_ItemGrade_ID, Original_ItemGrade_Code, Original_ItemGrade_Desc, Original_Stamp_UserID, Original_Stamp_DateTime, Original_Upload_DateTime, Original_RecordStatus_ID, Original_Inactive_From, Original_Inactive_To)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetCoIDDuplicateItemGradeCode(ByVal CoID As Integer, ByVal ItemGradeCode As String) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            If (ItemGradeCode Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGradeCode")
+            Else
+                command.Parameters(1).Value = CType(ItemGradeCode,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetCoIDDuplicateItemGradeCodeByItemGradeID(ByVal CoID As Integer, ByVal ItemGradeID As Integer, ByVal ItemGradeCode As String) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            command.Parameters(1).Value = CType(ItemGradeID,Integer)
+            If (ItemGradeCode Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ItemGradeCode")
+            Else
+                command.Parameters(2).Value = CType(ItemGradeCode,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetNewItemGradeIDByCoID(ByVal Co_ID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+            command.Parameters(0).Value = CType(Co_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
             End If
         End Function
     End Class
