@@ -892,22 +892,39 @@ Namespace My.Resources
         '''	)
         '''AS
         '''BEGIN
+        '''	DECLARE @PkColumnsForWhere VARCHAR(1000)
         '''	DECLARE @PkColumns VARCHAR(1000)
+        '''	DECLARE @PkColumnsParameters VARCHAR(1000)
         '''	DECLARE @Columns VARCHAR(2000)
         '''	DECLARE @ValueColumns VARCHAR(MAX)
         '''	DECLARE @UpdateSetPart VARCHAR(MAX)
         '''	DECLARE @Query AS VARCHAR(8000)
         '''
-        '''	SET NOCOUNT ON
-        '''
-        '''	SET @PkColumns = &apos;&apos;
-        '''	SET @Columns = &apos;&apos;
-        '''	SET @ValueColumns = &apos;&apos;
-        '''	SET @ [rest of string was truncated]&quot;;.
+        '''	SET [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property upgrade_02_03_03_41_to_02_03_03_42() As String
             Get
                 Return ResourceManager.GetString("upgrade_02_03_03_41_to_02_03_03_42", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to IF NOT EXISTS (SELECT * FROM Base_Menu WHERE Menu_ID = 308)
+        '''	INSERT INTO [Base_Menu]
+        '''		([Menu_Id], [Menu_Desc], [Form_Code], [Display_Order], [Parent_Menu_Id]
+        '''		,[Stamp_UserId], [Stamp_DateTime], [Upload_DateTime], [RecordStatus_ID], [Form_ID])
+        '''	VALUES
+        '''		(308, &apos;Menu Setting&apos;, &apos;03-008&apos;,8,300
+        '''		, 1, &apos;2011-04-12&apos;, NULL, 1,0 )
+        '''go
+        '''IF NOT EXISTS (SELECT * FROM Base_Menu WHERE Menu_ID = 309)
+        '''	INSERT INTO [Base_Menu]
+        '''		([Menu_Id], [Menu_Desc], [Form_Code], [Display_Order], [Parent_Menu_Id]
+        '''		,[Stamp_User [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property upgrade_02_03_03_42_to_02_03_03_43() As String
+            Get
+                Return ResourceManager.GetString("upgrade_02_03_03_42_to_02_03_03_43", resourceCulture)
             End Get
         End Property
         

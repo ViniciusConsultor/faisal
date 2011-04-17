@@ -487,7 +487,6 @@ Public Class MDIParent1
           Case "03-008"
             Form = New QuickAdministration.MenuSetting
           Case "03-009"
-
             Form = New QuickAdministration.FormSetting
           Case Else
             'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)

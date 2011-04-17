@@ -53,9 +53,11 @@ Partial Class MenuSetting
     '
     'MenuTreeView
     '
-    Me.MenuTreeView.Location = New System.Drawing.Point(0, 117)
+    Me.MenuTreeView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+    Me.MenuTreeView.Location = New System.Drawing.Point(4, 44)
     Me.MenuTreeView.Name = "MenuTreeView"
-    Me.MenuTreeView.Size = New System.Drawing.Size(277, 580)
+    Me.MenuTreeView.Size = New System.Drawing.Size(292, 374)
     Me.MenuTreeView.TabIndex = 2
     '
     'MenuDisplayTextBox
@@ -65,7 +67,7 @@ Partial Class MenuSetting
     Me.MenuDisplayTextBox.IsMandatory = False
     Me.MenuDisplayTextBox.IsReadonlyForExistingRecord = False
     Me.MenuDisplayTextBox.IsReadonlyForNewRecord = False
-    Me.MenuDisplayTextBox.Location = New System.Drawing.Point(481, 195)
+    Me.MenuDisplayTextBox.Location = New System.Drawing.Point(408, 112)
     Me.MenuDisplayTextBox.Name = "MenuDisplayTextBox"
     Me.MenuDisplayTextBox.PercentNumber = 0
     Me.MenuDisplayTextBox.ReadOnly = True
@@ -79,7 +81,7 @@ Partial Class MenuSetting
     Me.Quick_Label3.AllowClearValue = False
     Me.Quick_Label3.AutoSize = True
     Me.Quick_Label3.DefaultValue = ""
-    Me.Quick_Label3.Location = New System.Drawing.Point(378, 195)
+    Me.Quick_Label3.Location = New System.Drawing.Point(305, 116)
     Me.Quick_Label3.Name = "Quick_Label3"
     Me.Quick_Label3.Size = New System.Drawing.Size(70, 13)
     Me.Quick_Label3.TabIndex = 33
@@ -92,7 +94,7 @@ Partial Class MenuSetting
     Me.MenuDescriptionTextBox.IsMandatory = False
     Me.MenuDescriptionTextBox.IsReadonlyForExistingRecord = False
     Me.MenuDescriptionTextBox.IsReadonlyForNewRecord = False
-    Me.MenuDescriptionTextBox.Location = New System.Drawing.Point(481, 163)
+    Me.MenuDescriptionTextBox.Location = New System.Drawing.Point(408, 84)
     Me.MenuDescriptionTextBox.Name = "MenuDescriptionTextBox"
     Me.MenuDescriptionTextBox.PercentNumber = 0
     Me.MenuDescriptionTextBox.Size = New System.Drawing.Size(344, 20)
@@ -105,7 +107,7 @@ Partial Class MenuSetting
     Me.Quick_Label2.AllowClearValue = False
     Me.Quick_Label2.AutoSize = True
     Me.Quick_Label2.DefaultValue = ""
-    Me.Quick_Label2.Location = New System.Drawing.Point(378, 163)
+    Me.Quick_Label2.Location = New System.Drawing.Point(305, 88)
     Me.Quick_Label2.Name = "Quick_Label2"
     Me.Quick_Label2.Size = New System.Drawing.Size(90, 13)
     Me.Quick_Label2.TabIndex = 32
@@ -118,7 +120,7 @@ Partial Class MenuSetting
     Me.MenuIDTextBox.IsMandatory = False
     Me.MenuIDTextBox.IsReadonlyForExistingRecord = False
     Me.MenuIDTextBox.IsReadonlyForNewRecord = False
-    Me.MenuIDTextBox.Location = New System.Drawing.Point(481, 124)
+    Me.MenuIDTextBox.Location = New System.Drawing.Point(408, 56)
     Me.MenuIDTextBox.Name = "MenuIDTextBox"
     Me.MenuIDTextBox.PercentNumber = 0
     Me.MenuIDTextBox.ReadOnly = True
@@ -132,7 +134,7 @@ Partial Class MenuSetting
     Me.Quick_Label4.AllowClearValue = False
     Me.Quick_Label4.AutoSize = True
     Me.Quick_Label4.DefaultValue = ""
-    Me.Quick_Label4.Location = New System.Drawing.Point(378, 124)
+    Me.Quick_Label4.Location = New System.Drawing.Point(305, 60)
     Me.Quick_Label4.Name = "Quick_Label4"
     Me.Quick_Label4.Size = New System.Drawing.Size(48, 13)
     Me.Quick_Label4.TabIndex = 29
@@ -145,7 +147,7 @@ Partial Class MenuSetting
     Me.ParentMenuIDTextBox.IsMandatory = False
     Me.ParentMenuIDTextBox.IsReadonlyForExistingRecord = False
     Me.ParentMenuIDTextBox.IsReadonlyForNewRecord = False
-    Me.ParentMenuIDTextBox.Location = New System.Drawing.Point(481, 278)
+    Me.ParentMenuIDTextBox.Location = New System.Drawing.Point(408, 172)
     Me.ParentMenuIDTextBox.Name = "ParentMenuIDTextBox"
     Me.ParentMenuIDTextBox.PercentNumber = 0
     Me.ParentMenuIDTextBox.ReadOnly = True
@@ -159,7 +161,7 @@ Partial Class MenuSetting
     Me.Quick_Label1.AllowClearValue = False
     Me.Quick_Label1.AutoSize = True
     Me.Quick_Label1.DefaultValue = ""
-    Me.Quick_Label1.Location = New System.Drawing.Point(378, 278)
+    Me.Quick_Label1.Location = New System.Drawing.Point(305, 176)
     Me.Quick_Label1.Name = "Quick_Label1"
     Me.Quick_Label1.Size = New System.Drawing.Size(82, 13)
     Me.Quick_Label1.TabIndex = 35
@@ -230,7 +232,7 @@ Partial Class MenuSetting
     Me.FormCodeComboBox.IsMandatory = False
     Me.FormCodeComboBox.IsReadonlyForExistingRecord = False
     Me.FormCodeComboBox.IsReadonlyForNewRecord = False
-    Me.FormCodeComboBox.Location = New System.Drawing.Point(481, 235)
+    Me.FormCodeComboBox.Location = New System.Drawing.Point(408, 140)
     Me.FormCodeComboBox.Name = "FormCodeComboBox"
     Me.FormCodeComboBox.Size = New System.Drawing.Size(179, 22)
     Me.FormCodeComboBox.TabIndex = 1
@@ -240,7 +242,7 @@ Partial Class MenuSetting
     Me.Quick_Label5.AllowClearValue = False
     Me.Quick_Label5.AutoSize = True
     Me.Quick_Label5.DefaultValue = ""
-    Me.Quick_Label5.Location = New System.Drawing.Point(376, 240)
+    Me.Quick_Label5.Location = New System.Drawing.Point(303, 145)
     Me.Quick_Label5.Name = "Quick_Label5"
     Me.Quick_Label5.Size = New System.Drawing.Size(58, 13)
     Me.Quick_Label5.TabIndex = 37
@@ -248,45 +250,45 @@ Partial Class MenuSetting
     '
     'UpArrow
     '
-    Me.UpArrow.Location = New System.Drawing.Point(481, 351)
+    Me.UpArrow.Location = New System.Drawing.Point(448, 204)
     Me.UpArrow.Name = "UpArrow"
-    Me.UpArrow.Size = New System.Drawing.Size(75, 39)
+    Me.UpArrow.Size = New System.Drawing.Size(30, 30)
     Me.UpArrow.TabIndex = 38
-    Me.UpArrow.Text = "UP Arrow"
+    Me.UpArrow.Text = "^"
     Me.UpArrow.UseVisualStyleBackColor = True
     '
     'DownArrow
     '
-    Me.DownArrow.Location = New System.Drawing.Point(501, 445)
+    Me.DownArrow.Location = New System.Drawing.Point(448, 260)
     Me.DownArrow.Name = "DownArrow"
-    Me.DownArrow.Size = New System.Drawing.Size(75, 39)
+    Me.DownArrow.Size = New System.Drawing.Size(30, 30)
     Me.DownArrow.TabIndex = 39
-    Me.DownArrow.Text = "Down Arrow"
+    Me.DownArrow.Text = "v"
     Me.DownArrow.UseVisualStyleBackColor = True
     '
     'RightArrowButton
     '
-    Me.RightArrowButton.Location = New System.Drawing.Point(582, 396)
+    Me.RightArrowButton.Location = New System.Drawing.Point(476, 232)
     Me.RightArrowButton.Name = "RightArrowButton"
-    Me.RightArrowButton.Size = New System.Drawing.Size(75, 39)
+    Me.RightArrowButton.Size = New System.Drawing.Size(30, 30)
     Me.RightArrowButton.TabIndex = 40
-    Me.RightArrowButton.Text = ">>"
+    Me.RightArrowButton.Text = ">"
     Me.RightArrowButton.UseVisualStyleBackColor = True
     '
     'LeftArrowButton
     '
-    Me.LeftArrowButton.Location = New System.Drawing.Point(412, 396)
+    Me.LeftArrowButton.Location = New System.Drawing.Point(420, 232)
     Me.LeftArrowButton.Name = "LeftArrowButton"
-    Me.LeftArrowButton.Size = New System.Drawing.Size(75, 39)
+    Me.LeftArrowButton.Size = New System.Drawing.Size(30, 30)
     Me.LeftArrowButton.TabIndex = 41
-    Me.LeftArrowButton.Text = "<<"
+    Me.LeftArrowButton.Text = "<"
     Me.LeftArrowButton.UseVisualStyleBackColor = True
     '
     'MenuSetting
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(1028, 746)
+    Me.ClientSize = New System.Drawing.Size(759, 447)
     Me.Controls.Add(Me.LeftArrowButton)
     Me.Controls.Add(Me.RightArrowButton)
     Me.Controls.Add(Me.DownArrow)
