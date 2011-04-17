@@ -97,6 +97,12 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemFormNew.Designer.vb">
+      <DependentUpon>ItemFormNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ItemFormNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseWarehouseForm.designer.vb">
       <DependentUpon>PurchaseWarehouseForm.vb</DependentUpon>
     </Compile>
@@ -192,6 +198,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ItemFormNew.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ItemFormNew.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseWarehouseForm.resx">
       <DependentUpon>PurchaseWarehouseForm.vb</DependentUpon>
       <SubType>Designer</SubType>

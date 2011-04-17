@@ -73,6 +73,12 @@
     <Compile Include="BranchForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ColorForm.Designer.vb">
+      <DependentUpon>ColorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CompanyForm.Designer.vb">
       <DependentUpon>CompanyForm.vb</DependentUpon>
     </Compile>
@@ -117,6 +123,10 @@
     <EmbeddedResource Include="BranchForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BranchForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorForm.resx">
+      <DependentUpon>ColorForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyForm.resx">
       <DependentUpon>CompanyForm.vb</DependentUpon>
