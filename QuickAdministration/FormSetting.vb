@@ -223,10 +223,8 @@ Public Class FormSetting
       End If
       If _CombineControlSettingDataTable.Rows.Count > 0 Then
         If Me._Flag = True Then
-
           Me._ControlID = CInt(Me._ControlSettingTableAdapter.GetMaxControlID(CInt(Me.FormIDTextBox.Text)))
         End If
-
         Me._Flag = False
         Me._ControlID = Me._ControlID + 1
       Else
@@ -240,8 +238,6 @@ Public Class FormSetting
 
       _CombineControlRow.Co_ID = CShort(Me._CompanyID)
       _CombineControlRow.Form_ID = CShort(Me.FormIDTextBox.Text)
-
-
       _CombineControlRow.Control_ID = CShort(Me._ControlID)
       _CombineControlRow.Control_Caption = String.Empty
       _CombineControlRow.Control_Name = String.Empty
@@ -329,7 +325,6 @@ Public Class FormSetting
           End If
         Next
       End If
-
       Return True
 
     Catch ex As Exception
@@ -508,8 +503,6 @@ Public Class FormSetting
         'Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetByFormIDDisplay(CInt(Me.FormIDTextBox.Text))
         'Me.ShowRecord()
 
-
-
         Return True
       Else
         '  Me.AddRow()
@@ -557,7 +550,6 @@ Public Class FormSetting
     Try
       Cursor = Cursors.WaitCursor
       Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetFirstByFormID
-      ' MsgBox(Me._FormSettingDataTable.Rows.Count)
       MyBase.MoveFirstButtonClick(sender, e)
 
     Catch ex As Exception
@@ -575,7 +567,7 @@ Public Class FormSetting
       If (Me._FormSettingRow Is Nothing) Then
         Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetFirstByFormID
       Else
-        Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetNextbyCoIDFormID(CInt(Me.FormIDTextBox.Text))
+        Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetNextByCoIDFormID(CInt(Me.FormIDTextBox.Text))
         If Me._FormSettingDataTable.Count = 0 Then
           Me._FormSettingDataTable = Me._FormSettingTableAdapter.GetLastByFormID
         End If
