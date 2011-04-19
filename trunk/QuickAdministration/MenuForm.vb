@@ -4,7 +4,7 @@ Imports QuickDAL.QuickERP
 Imports QuickDAL.QuickERPTableAdapters
 Imports QuickDalLibrary
 Imports QuickLibrary
-Imports QuickERP
+'Imports QuickERP
 Imports QuickLibrary.Constants
 Imports QuickLibrary.Common
 Imports QuickDAL.QuickSecurityDataSetTableAdapters
@@ -16,14 +16,12 @@ Public Class MenuSetting
 
 
 #Region "Declarations"
-    Private _MenuTableAdapter As New MenuTableAdapter
-    Private _MenuDataTable As New MenuDataTable
-    Private _CurrentMenuDataRow As MenuRow
-    Private _SelectedNodeMenuDataRow As MenuRow
-
-    Private _FormSettingTableAdapter As New SettingFormTableAdapter
-    Private _FormSettingDataTable As New SettingFormDataTable
-
+  Private _MenuTableAdapter As New MenuTableAdapter
+  Private _MenuDataTable As New MenuDataTable
+  Private _CurrentMenuDataRow As MenuRow
+  Private _SelectedNodeMenuDataRow As MenuRow
+  Private _FormSettingTableAdapter As New SettingFormTableAdapter
+  Private _FormSettingDataTable As New SettingFormDataTable
   Private _CurrentNodeMenuID As Integer
 
 
@@ -50,12 +48,9 @@ Public Class MenuSetting
 #Region "Methods"
 
   Public Sub New()
-
     ' This call is required by the Windows Form Designer.
     InitializeComponent()
-
     ' Add any initialization after the InitializeComponent() call.
-
   End Sub
 
   Private Sub LoadTreeView()
@@ -90,7 +85,6 @@ Public Class MenuSetting
       Me.FormCodeComboBox.ValueMember = Me._FormSettingDataTable.Form_IDColumn.ColumnName
       Me.FormCodeComboBox.DisplayMember = Me._FormSettingDataTable.Form_NameColumn.ColumnName
 
-
       With FormCodeComboBox.DisplayLayout.Bands(0)
         For i As Int32 = 0 To .Columns.Count - 1
           If .Columns(Me._FormSettingDataTable.Form_NameColumn.ColumnName).Index <> .Columns(i).Index Then
@@ -105,9 +99,6 @@ Public Class MenuSetting
 
     End Try
     End Function
-
-
-
 
   Private Function IsValid() As Boolean
     Try
@@ -399,7 +390,6 @@ Public Class MenuSetting
         Me.MenuTreeView.Select()
 
         _SelectedNodeMenuID = Me._CurrentMenuDataRow.Menu_Id
-
         Me._MenuDataTable = Me._MenuTableAdapter.GetByMenuID(_MenuID)
         If Me._MenuDataTable.Rows(0).Item(MenuEnum.Parent_Menu_Id).ToString = Me._CurrentMenuDataRow.Item(MenuEnum.Parent_Menu_Id).ToString Then
           Me._MenuDataTable.Rows(0).Item(MenuEnum.Parent_Menu_Id) = _SelectedNodeMenuID
@@ -563,10 +553,10 @@ Public Class MenuSetting
 
 
 
- 
- 
-  
- 
- 
-  
+
+
+
+
+
+
 End Class

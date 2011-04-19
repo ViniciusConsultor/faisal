@@ -19,7 +19,6 @@ Partial Class FormSetting
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-    Dim TipAppearance1 As FarPoint.Win.Spread.TipAppearance = New FarPoint.Win.Spread.TipAppearance
     Me.FormIDTextBox = New QuickControls.Quick_TextBox
     Me.Quick_Label4 = New QuickControls.Quick_Label
     Me.FormCodeTextBox = New QuickControls.Quick_TextBox
@@ -95,7 +94,7 @@ Partial Class FormSetting
     Me.FormNameTextBox.IsMandatory = False
     Me.FormNameTextBox.IsReadonlyForExistingRecord = False
     Me.FormNameTextBox.IsReadonlyForNewRecord = False
-    Me.FormNameTextBox.Location = New System.Drawing.Point(114, 99)
+    Me.FormNameTextBox.Location = New System.Drawing.Point(114, 92)
     Me.FormNameTextBox.Name = "FormNameTextBox"
     Me.FormNameTextBox.PercentNumber = 0
     Me.FormNameTextBox.Size = New System.Drawing.Size(344, 20)
@@ -108,7 +107,7 @@ Partial Class FormSetting
     Me.Quick_Label2.AllowClearValue = False
     Me.Quick_Label2.AutoSize = True
     Me.Quick_Label2.DefaultValue = ""
-    Me.Quick_Label2.Location = New System.Drawing.Point(35, 103)
+    Me.Quick_Label2.Location = New System.Drawing.Point(35, 96)
     Me.Quick_Label2.Name = "Quick_Label2"
     Me.Quick_Label2.Size = New System.Drawing.Size(61, 13)
     Me.Quick_Label2.TabIndex = 23
@@ -121,7 +120,7 @@ Partial Class FormSetting
     Me.FormCaptionTextBox.IsMandatory = False
     Me.FormCaptionTextBox.IsReadonlyForExistingRecord = False
     Me.FormCaptionTextBox.IsReadonlyForNewRecord = False
-    Me.FormCaptionTextBox.Location = New System.Drawing.Point(114, 131)
+    Me.FormCaptionTextBox.Location = New System.Drawing.Point(114, 124)
     Me.FormCaptionTextBox.Name = "FormCaptionTextBox"
     Me.FormCaptionTextBox.PercentNumber = 0
     Me.FormCaptionTextBox.Size = New System.Drawing.Size(344, 20)
@@ -134,7 +133,7 @@ Partial Class FormSetting
     Me.Quick_Label3.AllowClearValue = False
     Me.Quick_Label3.AutoSize = True
     Me.Quick_Label3.DefaultValue = ""
-    Me.Quick_Label3.Location = New System.Drawing.Point(35, 135)
+    Me.Quick_Label3.Location = New System.Drawing.Point(35, 128)
     Me.Quick_Label3.Name = "Quick_Label3"
     Me.Quick_Label3.Size = New System.Drawing.Size(69, 13)
     Me.Quick_Label3.TabIndex = 25
@@ -150,30 +149,22 @@ Partial Class FormSetting
     Me.FormControlSettingQuickSpread.BackColor = System.Drawing.SystemColors.Control
     Me.FormControlSettingQuickSpread.EditModePermanent = True
     Me.FormControlSettingQuickSpread.EditModeReplace = True
-    Me.FormControlSettingQuickSpread.Location = New System.Drawing.Point(6, 163)
+    Me.FormControlSettingQuickSpread.Location = New System.Drawing.Point(6, 160)
     Me.FormControlSettingQuickSpread.Name = "FormControlSettingQuickSpread"
     Me.FormControlSettingQuickSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.FormControlSettingQuickSpread_Sheet1})
-    Me.FormControlSettingQuickSpread.Size = New System.Drawing.Size(1001, 297)
+    Me.FormControlSettingQuickSpread.Size = New System.Drawing.Size(1015, 557)
     Me.FormControlSettingQuickSpread.TabIndex = 3
-    TipAppearance1.BackColor = System.Drawing.SystemColors.Info
-    TipAppearance1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    TipAppearance1.ForeColor = System.Drawing.SystemColors.InfoText
-    Me.FormControlSettingQuickSpread.TextTipAppearance = TipAppearance1
     '
     'FormControlSettingQuickSpread_Sheet1
     '
     Me.FormControlSettingQuickSpread_Sheet1.Reset()
     Me.FormControlSettingQuickSpread_Sheet1.SheetName = "Sheet1"
-    'Formulas and custom names must be loaded with R1C1 reference style
-    Me.FormControlSettingQuickSpread_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
-    Me.FormControlSettingQuickSpread_Sheet1.AutoUpdateNotes = True
-    Me.FormControlSettingQuickSpread_Sheet1.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
     '
     'FormSetting
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(1028, 623)
+    Me.ClientSize = New System.Drawing.Size(1028, 746)
     Me.Controls.Add(Me.FormControlSettingQuickSpread)
     Me.Controls.Add(Me.FormCaptionTextBox)
     Me.Controls.Add(Me.Quick_Label3)
