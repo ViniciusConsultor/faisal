@@ -5674,8 +5674,9 @@ Namespace QuickSecurityDataSetTableAdapters
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, Rec"& _ 
-                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE"& _ 
-                " (RecordStatus_ID <> 4) ORDER BY Parent_Menu_Id, Display_Order"
+                "ordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Base_Menu "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
+                "HERE (RecordStatus_ID <> 4 OR RecordStatus_ID IS NUll) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Parent_Menu_Id"& _ 
+                ", Display_Order"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(5).Connection = Me.Connection
