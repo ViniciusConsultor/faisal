@@ -488,7 +488,10 @@ SELECT Menu_Id, Menu_Desc, Form_Code, Display_Order, Parent_Menu_Id, Stamp_UserI
               <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Base_Menu" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByParentMenuIDByDisplayOrder" GetMethodModifier="Public" GetMethodName="GetByParentMenuIDByDisplayOrder" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByParentMenuIDByDisplayOrder" UserSourceName="GetByParentMenuIDByDisplayOrder1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
-                    <CommandText>SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime FROM Base_Menu WHERE (RecordStatus_ID &lt;&gt; 4) ORDER BY Parent_Menu_Id, Display_Order</CommandText>
+                    <CommandText>SELECT Display_Order, Form_Code, Form_ID, Menu_Desc, Menu_Id, Parent_Menu_Id, RecordStatus_ID, Stamp_DateTime, Stamp_UserId, Upload_DateTime 
+FROM Base_Menu 
+WHERE (RecordStatus_ID &lt;&gt; 4 OR RecordStatus_ID IS NUll) 
+ORDER BY Parent_Menu_Id, Display_Order</CommandText>
                     <Parameters>
                     </Parameters>
                   </DbCommand>
@@ -1450,172 +1453,172 @@ FROM         SecLocationCompanyTableAssociation</CommandText>
         <xs:element name="SecurityRole" msprop:Generator_UserTableName="SecurityRole" msprop:Generator_RowDeletedName="SecurityRoleRowDeleted" msprop:Generator_RowChangedName="SecurityRoleRowChanged" msprop:Generator_RowClassName="SecurityRoleRow" msprop:Generator_RowChangingName="SecurityRoleRowChanging" msprop:Generator_RowEvArgName="SecurityRoleRowChangeEvent" msprop:Generator_RowEvHandlerName="SecurityRoleRowChangeEventHandler" msprop:Generator_TableClassName="SecurityRoleDataTable" msprop:Generator_TableVarName="tableSecurityRole" msprop:Generator_RowDeletingName="SecurityRoleRowDeleting" msprop:Generator_TablePropName="SecurityRole">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
-              <xs:element name="Role_Desc" msprop:Generator_UserColumnName="Role_Desc" msprop:Generator_ColumnPropNameInRow="Role_Desc" msprop:Generator_ColumnVarNameInTable="columnRole_Desc" msprop:Generator_ColumnPropNameInTable="Role_DescColumn">
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
+              <xs:element name="Role_Desc" msprop:Generator_UserColumnName="Role_Desc" msprop:Generator_ColumnVarNameInTable="columnRole_Desc" msprop:Generator_ColumnPropNameInRow="Role_Desc" msprop:Generator_ColumnPropNameInTable="Role_DescColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Inactive_From" msprop:Generator_UserColumnName="Inactive_From" msprop:Generator_ColumnVarNameInTable="columnInactive_From" msprop:Generator_ColumnPropNameInRow="Inactive_From" msprop:Generator_ColumnPropNameInTable="Inactive_FromColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Inactive_To" msprop:Generator_UserColumnName="Inactive_To" msprop:Generator_ColumnVarNameInTable="columnInactive_To" msprop:Generator_ColumnPropNameInRow="Inactive_To" msprop:Generator_ColumnPropNameInTable="Inactive_ToColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Inactive_From" msprop:Generator_UserColumnName="Inactive_From" msprop:Generator_ColumnPropNameInRow="Inactive_From" msprop:Generator_ColumnVarNameInTable="columnInactive_From" msprop:Generator_ColumnPropNameInTable="Inactive_FromColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Inactive_To" msprop:Generator_UserColumnName="Inactive_To" msprop:Generator_ColumnPropNameInRow="Inactive_To" msprop:Generator_ColumnVarNameInTable="columnInactive_To" msprop:Generator_ColumnPropNameInTable="Inactive_ToColumn" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="MenuRoleAssociation" msprop:Generator_UserTableName="MenuRoleAssociation" msprop:Generator_RowDeletedName="MenuRoleAssociationRowDeleted" msprop:Generator_RowChangedName="MenuRoleAssociationRowChanged" msprop:Generator_RowClassName="MenuRoleAssociationRow" msprop:Generator_RowChangingName="MenuRoleAssociationRowChanging" msprop:Generator_RowEvArgName="MenuRoleAssociationRowChangeEvent" msprop:Generator_RowEvHandlerName="MenuRoleAssociationRowChangeEventHandler" msprop:Generator_TableClassName="MenuRoleAssociationDataTable" msprop:Generator_TableVarName="tableMenuRoleAssociation" msprop:Generator_RowDeletingName="MenuRoleAssociationRowDeleting" msprop:Generator_TablePropName="MenuRoleAssociation">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="Menu_ID" msprop:Generator_UserColumnName="Menu_ID" msprop:Generator_ColumnPropNameInRow="Menu_ID" msprop:Generator_ColumnVarNameInTable="columnMenu_ID" msprop:Generator_ColumnPropNameInTable="Menu_IDColumn" type="xs:int" />
-              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="Menu_ID" msprop:Generator_UserColumnName="Menu_ID" msprop:Generator_ColumnVarNameInTable="columnMenu_ID" msprop:Generator_ColumnPropNameInRow="Menu_ID" msprop:Generator_ColumnPropNameInTable="Menu_IDColumn" type="xs:int" />
+              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="Menu" msprop:Generator_UserTableName="Menu" msprop:Generator_RowDeletedName="MenuRowDeleted" msprop:Generator_RowChangedName="MenuRowChanged" msprop:Generator_RowClassName="MenuRow" msprop:Generator_RowChangingName="MenuRowChanging" msprop:Generator_RowEvArgName="MenuRowChangeEvent" msprop:Generator_RowEvHandlerName="MenuRowChangeEventHandler" msprop:Generator_TableClassName="MenuDataTable" msprop:Generator_TableVarName="tableMenu" msprop:Generator_RowDeletingName="MenuRowDeleting" msprop:Generator_TablePropName="Menu">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Menu_Id" msprop:Generator_UserColumnName="Menu_Id" msprop:Generator_ColumnPropNameInRow="Menu_Id" msprop:Generator_ColumnVarNameInTable="columnMenu_Id" msprop:Generator_ColumnPropNameInTable="Menu_IdColumn" type="xs:int" />
-              <xs:element name="Menu_Desc" msprop:Generator_UserColumnName="Menu_Desc" msprop:Generator_ColumnPropNameInRow="Menu_Desc" msprop:Generator_ColumnVarNameInTable="columnMenu_Desc" msprop:Generator_ColumnPropNameInTable="Menu_DescColumn">
+              <xs:element name="Menu_Id" msprop:Generator_UserColumnName="Menu_Id" msprop:Generator_ColumnVarNameInTable="columnMenu_Id" msprop:Generator_ColumnPropNameInRow="Menu_Id" msprop:Generator_ColumnPropNameInTable="Menu_IdColumn" type="xs:int" />
+              <xs:element name="Menu_Desc" msprop:Generator_UserColumnName="Menu_Desc" msprop:Generator_ColumnVarNameInTable="columnMenu_Desc" msprop:Generator_ColumnPropNameInRow="Menu_Desc" msprop:Generator_ColumnPropNameInTable="Menu_DescColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Display_Order" msprop:Generator_UserColumnName="Display_Order" msprop:Generator_ColumnPropNameInRow="Display_Order" msprop:Generator_ColumnVarNameInTable="columnDisplay_Order" msprop:Generator_ColumnPropNameInTable="Display_OrderColumn" type="xs:short" />
-              <xs:element name="Parent_Menu_Id" msprop:Generator_UserColumnName="Parent_Menu_Id" msprop:Generator_ColumnPropNameInRow="Parent_Menu_Id" msprop:Generator_ColumnVarNameInTable="columnParent_Menu_Id" msprop:Generator_ColumnPropNameInTable="Parent_Menu_IdColumn" type="xs:int" />
-              <xs:element name="Stamp_UserId" msprop:Generator_UserColumnName="Stamp_UserId" msprop:Generator_ColumnPropNameInRow="Stamp_UserId" msprop:Generator_ColumnVarNameInTable="columnStamp_UserId" msprop:Generator_ColumnPropNameInTable="Stamp_UserIdColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Form_Code" msprop:Generator_UserColumnName="Form_Code" msprop:Generator_ColumnPropNameInRow="Form_Code" msprop:Generator_ColumnVarNameInTable="columnForm_Code" msprop:Generator_ColumnPropNameInTable="Form_CodeColumn" minOccurs="0">
+              <xs:element name="Display_Order" msprop:Generator_UserColumnName="Display_Order" msprop:Generator_ColumnVarNameInTable="columnDisplay_Order" msprop:Generator_ColumnPropNameInRow="Display_Order" msprop:Generator_ColumnPropNameInTable="Display_OrderColumn" type="xs:short" />
+              <xs:element name="Parent_Menu_Id" msprop:Generator_UserColumnName="Parent_Menu_Id" msprop:Generator_ColumnVarNameInTable="columnParent_Menu_Id" msprop:Generator_ColumnPropNameInRow="Parent_Menu_Id" msprop:Generator_ColumnPropNameInTable="Parent_Menu_IdColumn" type="xs:int" />
+              <xs:element name="Stamp_UserId" msprop:Generator_UserColumnName="Stamp_UserId" msprop:Generator_ColumnVarNameInTable="columnStamp_UserId" msprop:Generator_ColumnPropNameInRow="Stamp_UserId" msprop:Generator_ColumnPropNameInTable="Stamp_UserIdColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Form_Code" msprop:Generator_UserColumnName="Form_Code" msprop:Generator_ColumnVarNameInTable="columnForm_Code" msprop:Generator_ColumnPropNameInRow="Form_Code" msprop:Generator_ColumnPropNameInTable="Form_CodeColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="Form_ID" msprop:Generator_UserColumnName="Form_ID" msprop:Generator_ColumnPropNameInRow="Form_ID" msprop:Generator_ColumnVarNameInTable="columnForm_ID" msprop:Generator_ColumnPropNameInTable="Form_IDColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Form_ID" msprop:Generator_UserColumnName="Form_ID" msprop:Generator_ColumnVarNameInTable="columnForm_ID" msprop:Generator_ColumnPropNameInRow="Form_ID" msprop:Generator_ColumnPropNameInTable="Form_IDColumn" type="xs:short" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="MenuWithSecurity" msprop:Generator_UserTableName="MenuWithSecurity" msprop:Generator_RowDeletedName="MenuWithSecurityRowDeleted" msprop:Generator_RowChangedName="MenuWithSecurityRowChanged" msprop:Generator_RowClassName="MenuWithSecurityRow" msprop:Generator_RowChangingName="MenuWithSecurityRowChanging" msprop:Generator_RowEvArgName="MenuWithSecurityRowChangeEvent" msprop:Generator_RowEvHandlerName="MenuWithSecurityRowChangeEventHandler" msprop:Generator_TableClassName="MenuWithSecurityDataTable" msprop:Generator_TableVarName="tableMenuWithSecurity" msprop:Generator_RowDeletingName="MenuWithSecurityRowDeleting" msprop:Generator_TablePropName="MenuWithSecurity">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Allowed" msprop:Generator_UserColumnName="Allowed" msprop:Generator_ColumnPropNameInRow="Allowed" msprop:Generator_ColumnVarNameInTable="columnAllowed" msprop:Generator_ColumnPropNameInTable="AllowedColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Menu_Id" msprop:Generator_UserColumnName="Menu_Id" msprop:Generator_ColumnPropNameInRow="Menu_Id" msprop:Generator_ColumnVarNameInTable="columnMenu_Id" msprop:Generator_ColumnPropNameInTable="Menu_IdColumn" type="xs:int" />
-              <xs:element name="Menu_Desc" msprop:Generator_UserColumnName="Menu_Desc" msprop:Generator_ColumnPropNameInRow="Menu_Desc" msprop:Generator_ColumnVarNameInTable="columnMenu_Desc" msprop:Generator_ColumnPropNameInTable="Menu_DescColumn">
+              <xs:element name="Allowed" msprop:Generator_UserColumnName="Allowed" msprop:Generator_ColumnVarNameInTable="columnAllowed" msprop:Generator_ColumnPropNameInRow="Allowed" msprop:Generator_ColumnPropNameInTable="AllowedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Menu_Id" msprop:Generator_UserColumnName="Menu_Id" msprop:Generator_ColumnVarNameInTable="columnMenu_Id" msprop:Generator_ColumnPropNameInRow="Menu_Id" msprop:Generator_ColumnPropNameInTable="Menu_IdColumn" type="xs:int" />
+              <xs:element name="Menu_Desc" msprop:Generator_UserColumnName="Menu_Desc" msprop:Generator_ColumnVarNameInTable="columnMenu_Desc" msprop:Generator_ColumnPropNameInRow="Menu_Desc" msprop:Generator_ColumnPropNameInTable="Menu_DescColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Form_Code" msprop:Generator_UserColumnName="Form_Code" msprop:Generator_ColumnPropNameInRow="Form_Code" msprop:Generator_ColumnVarNameInTable="columnForm_Code" msprop:Generator_ColumnPropNameInTable="Form_CodeColumn">
+              <xs:element name="Form_Code" msprop:Generator_UserColumnName="Form_Code" msprop:Generator_ColumnVarNameInTable="columnForm_Code" msprop:Generator_ColumnPropNameInRow="Form_Code" msprop:Generator_ColumnPropNameInTable="Form_CodeColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Display_Order" msprop:Generator_UserColumnName="Display_Order" msprop:Generator_ColumnPropNameInRow="Display_Order" msprop:Generator_ColumnVarNameInTable="columnDisplay_Order" msprop:Generator_ColumnPropNameInTable="Display_OrderColumn" type="xs:short" />
-              <xs:element name="Parent_Menu_Id" msprop:Generator_UserColumnName="Parent_Menu_Id" msprop:Generator_ColumnPropNameInRow="Parent_Menu_Id" msprop:Generator_ColumnVarNameInTable="columnParent_Menu_Id" msprop:Generator_ColumnPropNameInTable="Parent_Menu_IdColumn" type="xs:int" />
-              <xs:element name="Stamp_UserId" msprop:Generator_UserColumnName="Stamp_UserId" msprop:Generator_ColumnPropNameInRow="Stamp_UserId" msprop:Generator_ColumnVarNameInTable="columnStamp_UserId" msprop:Generator_ColumnPropNameInTable="Stamp_UserIdColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Display_Order" msprop:Generator_UserColumnName="Display_Order" msprop:Generator_ColumnVarNameInTable="columnDisplay_Order" msprop:Generator_ColumnPropNameInRow="Display_Order" msprop:Generator_ColumnPropNameInTable="Display_OrderColumn" type="xs:short" />
+              <xs:element name="Parent_Menu_Id" msprop:Generator_UserColumnName="Parent_Menu_Id" msprop:Generator_ColumnVarNameInTable="columnParent_Menu_Id" msprop:Generator_ColumnPropNameInRow="Parent_Menu_Id" msprop:Generator_ColumnPropNameInTable="Parent_Menu_IdColumn" type="xs:int" />
+              <xs:element name="Stamp_UserId" msprop:Generator_UserColumnName="Stamp_UserId" msprop:Generator_ColumnVarNameInTable="columnStamp_UserId" msprop:Generator_ColumnPropNameInRow="Stamp_UserId" msprop:Generator_ColumnPropNameInTable="Stamp_UserIdColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="User" msprop:Generator_UserTableName="User" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_RowClassName="UserRow" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_RowEvArgName="UserRowChangeEvent" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_TablePropName="User">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="User_ID" msprop:Generator_UserColumnName="User_ID" msprop:Generator_ColumnPropNameInRow="User_ID" msprop:Generator_ColumnVarNameInTable="columnUser_ID" msprop:Generator_ColumnPropNameInTable="User_IDColumn" type="xs:int" />
-              <xs:element name="User_Name" msprop:Generator_UserColumnName="User_Name" msprop:Generator_ColumnPropNameInRow="User_Name" msprop:Generator_ColumnVarNameInTable="columnUser_Name" msprop:Generator_ColumnPropNameInTable="User_NameColumn">
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="User_ID" msprop:Generator_UserColumnName="User_ID" msprop:Generator_ColumnVarNameInTable="columnUser_ID" msprop:Generator_ColumnPropNameInRow="User_ID" msprop:Generator_ColumnPropNameInTable="User_IDColumn" type="xs:int" />
+              <xs:element name="User_Name" msprop:Generator_UserColumnName="User_Name" msprop:Generator_ColumnVarNameInTable="columnUser_Name" msprop:Generator_ColumnPropNameInRow="User_Name" msprop:Generator_ColumnPropNameInTable="User_NameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="User_Desc" msprop:Generator_UserColumnName="User_Desc" msprop:Generator_ColumnPropNameInRow="User_Desc" msprop:Generator_ColumnVarNameInTable="columnUser_Desc" msprop:Generator_ColumnPropNameInTable="User_DescColumn" minOccurs="0">
+              <xs:element name="User_Desc" msprop:Generator_UserColumnName="User_Desc" msprop:Generator_ColumnVarNameInTable="columnUser_Desc" msprop:Generator_ColumnPropNameInRow="User_Desc" msprop:Generator_ColumnPropNameInTable="User_DescColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_ColumnPropNameInTable="PasswordColumn" minOccurs="0">
+              <xs:element name="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Inactive_From" msprop:Generator_UserColumnName="Inactive_From" msprop:Generator_ColumnPropNameInRow="Inactive_From" msprop:Generator_ColumnVarNameInTable="columnInactive_From" msprop:Generator_ColumnPropNameInTable="Inactive_FromColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Inactive_To" msprop:Generator_UserColumnName="Inactive_To" msprop:Generator_ColumnPropNameInRow="Inactive_To" msprop:Generator_ColumnVarNameInTable="columnInactive_To" msprop:Generator_ColumnPropNameInTable="Inactive_ToColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Is_Admin" msprop:Generator_UserColumnName="Is_Admin" msprop:Generator_ColumnPropNameInRow="Is_Admin" msprop:Generator_ColumnVarNameInTable="columnIs_Admin" msprop:Generator_ColumnPropNameInTable="Is_AdminColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Inactive_From" msprop:Generator_UserColumnName="Inactive_From" msprop:Generator_ColumnVarNameInTable="columnInactive_From" msprop:Generator_ColumnPropNameInRow="Inactive_From" msprop:Generator_ColumnPropNameInTable="Inactive_FromColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Inactive_To" msprop:Generator_UserColumnName="Inactive_To" msprop:Generator_ColumnVarNameInTable="columnInactive_To" msprop:Generator_ColumnPropNameInRow="Inactive_To" msprop:Generator_ColumnPropNameInTable="Inactive_ToColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Is_Admin" msprop:Generator_UserColumnName="Is_Admin" msprop:Generator_ColumnVarNameInTable="columnIs_Admin" msprop:Generator_ColumnPropNameInRow="Is_Admin" msprop:Generator_ColumnPropNameInTable="Is_AdminColumn" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="UserRoleAssociation" msprop:Generator_UserTableName="UserRoleAssociation" msprop:Generator_RowDeletedName="UserRoleAssociationRowDeleted" msprop:Generator_RowChangedName="UserRoleAssociationRowChanged" msprop:Generator_RowClassName="UserRoleAssociationRow" msprop:Generator_RowChangingName="UserRoleAssociationRowChanging" msprop:Generator_RowEvArgName="UserRoleAssociationRowChangeEvent" msprop:Generator_RowEvHandlerName="UserRoleAssociationRowChangeEventHandler" msprop:Generator_TableClassName="UserRoleAssociationDataTable" msprop:Generator_TableVarName="tableUserRoleAssociation" msprop:Generator_RowDeletingName="UserRoleAssociationRowDeleting" msprop:Generator_TablePropName="UserRoleAssociation">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="User_ID" msprop:Generator_UserColumnName="User_ID" msprop:Generator_ColumnVarNameInTable="columnUser_ID" msprop:Generator_ColumnPropNameInRow="User_ID" msprop:Generator_ColumnPropNameInTable="User_IDColumn" type="xs:short" />
-              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="User_ID" msprop:Generator_UserColumnName="User_ID" msprop:Generator_ColumnPropNameInRow="User_ID" msprop:Generator_ColumnVarNameInTable="columnUser_ID" msprop:Generator_ColumnPropNameInTable="User_IDColumn" type="xs:short" />
+              <xs:element name="Role_ID" msprop:Generator_UserColumnName="Role_ID" msprop:Generator_ColumnPropNameInRow="Role_ID" msprop:Generator_ColumnVarNameInTable="columnRole_ID" msprop:Generator_ColumnPropNameInTable="Role_IDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="FormControlPermission" msprop:Generator_UserTableName="FormControlPermission" msprop:Generator_RowDeletedName="FormControlPermissionRowDeleted" msprop:Generator_RowChangedName="FormControlPermissionRowChanged" msprop:Generator_RowClassName="FormControlPermissionRow" msprop:Generator_RowChangingName="FormControlPermissionRowChanging" msprop:Generator_RowEvArgName="FormControlPermissionRowChangeEvent" msprop:Generator_RowEvHandlerName="FormControlPermissionRowChangeEventHandler" msprop:Generator_TableClassName="FormControlPermissionDataTable" msprop:Generator_TableVarName="tableFormControlPermission" msprop:Generator_RowDeletingName="FormControlPermissionRowDeleting" msprop:Generator_TablePropName="FormControlPermission">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="RoleID" msprop:Generator_UserColumnName="RoleID" msprop:Generator_ColumnVarNameInTable="columnRoleID" msprop:Generator_ColumnPropNameInRow="RoleID" msprop:Generator_ColumnPropNameInTable="RoleIDColumn" type="xs:int" />
-              <xs:element name="FormID" msprop:Generator_UserColumnName="FormID" msprop:Generator_ColumnVarNameInTable="columnFormID" msprop:Generator_ColumnPropNameInRow="FormID" msprop:Generator_ColumnPropNameInTable="FormIDColumn" type="xs:short" />
-              <xs:element name="ControlID" msprop:Generator_UserColumnName="ControlID" msprop:Generator_ColumnVarNameInTable="columnControlID" msprop:Generator_ColumnPropNameInRow="ControlID" msprop:Generator_ColumnPropNameInTable="ControlIDColumn" type="xs:short" />
-              <xs:element name="Control_Name" msprop:Generator_UserColumnName="Control_Name" msprop:Generator_ColumnVarNameInTable="columnControl_Name" msprop:Generator_ColumnPropNameInRow="Control_Name" msprop:Generator_ColumnPropNameInTable="Control_NameColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="Control_Caption" msprop:Generator_UserColumnName="Control_Caption" msprop:Generator_ColumnVarNameInTable="columnControl_Caption" msprop:Generator_ColumnPropNameInRow="Control_Caption" msprop:Generator_ColumnPropNameInTable="Control_CaptionColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="IsVisible" msprop:Generator_UserColumnName="IsVisible" msprop:Generator_ColumnVarNameInTable="columnIsVisible" msprop:Generator_ColumnPropNameInRow="IsVisible" msprop:Generator_ColumnPropNameInTable="IsVisibleColumn" type="xs:boolean" />
-              <xs:element name="IsEnabled" msprop:Generator_UserColumnName="IsEnabled" msprop:Generator_ColumnVarNameInTable="columnIsEnabled" msprop:Generator_ColumnPropNameInRow="IsEnabled" msprop:Generator_ColumnPropNameInTable="IsEnabledColumn" type="xs:boolean" />
-              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
-              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
-              <xs:element name="Uploaded" msprop:Generator_UserColumnName="Uploaded" msprop:Generator_ColumnVarNameInTable="columnUploaded" msprop:Generator_ColumnPropNameInRow="Uploaded" msprop:Generator_ColumnPropNameInTable="UploadedColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="RoleID" msprop:Generator_UserColumnName="RoleID" msprop:Generator_ColumnPropNameInRow="RoleID" msprop:Generator_ColumnVarNameInTable="columnRoleID" msprop:Generator_ColumnPropNameInTable="RoleIDColumn" type="xs:int" />
+              <xs:element name="FormID" msprop:Generator_UserColumnName="FormID" msprop:Generator_ColumnPropNameInRow="FormID" msprop:Generator_ColumnVarNameInTable="columnFormID" msprop:Generator_ColumnPropNameInTable="FormIDColumn" type="xs:short" />
+              <xs:element name="ControlID" msprop:Generator_UserColumnName="ControlID" msprop:Generator_ColumnPropNameInRow="ControlID" msprop:Generator_ColumnVarNameInTable="columnControlID" msprop:Generator_ColumnPropNameInTable="ControlIDColumn" type="xs:short" />
+              <xs:element name="Control_Name" msprop:Generator_UserColumnName="Control_Name" msprop:Generator_ColumnPropNameInRow="Control_Name" msprop:Generator_ColumnVarNameInTable="columnControl_Name" msprop:Generator_ColumnPropNameInTable="Control_NameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Control_Caption" msprop:Generator_UserColumnName="Control_Caption" msprop:Generator_ColumnPropNameInRow="Control_Caption" msprop:Generator_ColumnVarNameInTable="columnControl_Caption" msprop:Generator_ColumnPropNameInTable="Control_CaptionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IsVisible" msprop:Generator_UserColumnName="IsVisible" msprop:Generator_ColumnPropNameInRow="IsVisible" msprop:Generator_ColumnVarNameInTable="columnIsVisible" msprop:Generator_ColumnPropNameInTable="IsVisibleColumn" type="xs:boolean" />
+              <xs:element name="IsEnabled" msprop:Generator_UserColumnName="IsEnabled" msprop:Generator_ColumnPropNameInRow="IsEnabled" msprop:Generator_ColumnVarNameInTable="columnIsEnabled" msprop:Generator_ColumnPropNameInTable="IsEnabledColumn" type="xs:boolean" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" />
+              <xs:element name="Uploaded" msprop:Generator_UserColumnName="Uploaded" msprop:Generator_ColumnPropNameInRow="Uploaded" msprop:Generator_ColumnVarNameInTable="columnUploaded" msprop:Generator_ColumnPropNameInTable="UploadedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="RecordStatus_ID" msprop:Generator_UserColumnName="RecordStatus_ID" msprop:Generator_ColumnPropNameInRow="RecordStatus_ID" msprop:Generator_ColumnVarNameInTable="columnRecordStatus_ID" msprop:Generator_ColumnPropNameInTable="RecordStatus_IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="LocationCompanyTableAssociation" msprop:Generator_UserTableName="LocationCompanyTableAssociation" msprop:Generator_RowDeletedName="LocationCompanyTableAssociationRowDeleted" msprop:Generator_RowChangedName="LocationCompanyTableAssociationRowChanged" msprop:Generator_RowClassName="LocationCompanyTableAssociationRow" msprop:Generator_RowChangingName="LocationCompanyTableAssociationRowChanging" msprop:Generator_RowEvArgName="LocationCompanyTableAssociationRowChangeEvent" msprop:Generator_RowEvHandlerName="LocationCompanyTableAssociationRowChangeEventHandler" msprop:Generator_TableClassName="LocationCompanyTableAssociationDataTable" msprop:Generator_TableVarName="tableLocationCompanyTableAssociation" msprop:Generator_RowDeletingName="LocationCompanyTableAssociationRowDeleting" msprop:Generator_TablePropName="LocationCompanyTableAssociation">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Location_ID" msprop:Generator_UserColumnName="Location_ID" msprop:Generator_ColumnVarNameInTable="columnLocation_ID" msprop:Generator_ColumnPropNameInRow="Location_ID" msprop:Generator_ColumnPropNameInTable="Location_IDColumn" type="xs:int" />
-              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
-              <xs:element name="TableName" msprop:Generator_UserColumnName="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn">
+              <xs:element name="Location_ID" msprop:Generator_UserColumnName="Location_ID" msprop:Generator_ColumnPropNameInRow="Location_ID" msprop:Generator_ColumnVarNameInTable="columnLocation_ID" msprop:Generator_ColumnPropNameInTable="Location_IDColumn" type="xs:int" />
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="TableName" msprop:Generator_UserColumnName="TableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="AllowDownload" msprop:Generator_UserColumnName="AllowDownload" msprop:Generator_ColumnVarNameInTable="columnAllowDownload" msprop:Generator_ColumnPropNameInRow="AllowDownload" msprop:Generator_ColumnPropNameInTable="AllowDownloadColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="AllowUploaded" msprop:Generator_UserColumnName="AllowUploaded" msprop:Generator_ColumnVarNameInTable="columnAllowUploaded" msprop:Generator_ColumnPropNameInRow="AllowUploaded" msprop:Generator_ColumnPropNameInTable="AllowUploadedColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AllowDownload" msprop:Generator_UserColumnName="AllowDownload" msprop:Generator_ColumnPropNameInRow="AllowDownload" msprop:Generator_ColumnVarNameInTable="columnAllowDownload" msprop:Generator_ColumnPropNameInTable="AllowDownloadColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AllowUploaded" msprop:Generator_UserColumnName="AllowUploaded" msprop:Generator_ColumnPropNameInRow="AllowUploaded" msprop:Generator_ColumnVarNameInTable="columnAllowUploaded" msprop:Generator_ColumnPropNameInTable="AllowUploadedColumn" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
