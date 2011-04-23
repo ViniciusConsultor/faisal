@@ -10,10 +10,14 @@
     <RootNamespace>QuickLibrary</RootNamespace>
     <AssemblyName>QuickLibrary</AssemblyName>
     <MyType>Windows</MyType>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>QuickErp.snk</AssemblyOriginatorKeyFile>
     <OptionStrict>On</OptionStrict>
