@@ -447,6 +447,10 @@ Public Class MDIParent1
             Form = New QuickAdministration.ErpConfigurationForm
           Case QuickLibrary.Entities.FORM_ID_EMPTY_DATABASE
             Form = New QuickAdministration.EmptyDatabaseForm
+          Case QuickLibrary.Entities.FORM_ID_MENU_SETTING
+            Form = New QuickAdministration.MenuSetting
+          Case QuickLibrary.Entities.FORM_ID_FORM_SETTING
+            Form = New QuickAdministration.FormSetting
 
             '<<<<<<<<<< Security
           Case QuickLibrary.Entities.FORM_ID_MENU_ROLE_ASSOCIATION
@@ -484,10 +488,12 @@ Public Class MDIParent1
             Form = New QuickProduction.DefineProcessForm
           Case "99-002"
             Form = New QuickProduction.ProcessWorkFlowForm
-          Case "03-008"
-            Form = New QuickAdministration.MenuSetting
-          Case "03-009"
-            Form = New QuickAdministration.FormSetting
+          Case "01-111"
+            Form = New QuickInventory.ItemSizeForm
+          Case "01-112"
+            Form = New QuickInventory.ItemGradeForm
+          Case "01-113"
+            Form = New QuickCommon.ColorForm
           Case Else
             'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
 
