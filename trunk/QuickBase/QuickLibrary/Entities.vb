@@ -22,6 +22,8 @@ Public Class Entities
   '<<<<<<<<<< Administration
   Public Const FORM_ID_IMPORT_FROM_EXCEL As String = "03-001"
   Public Const FORM_ID_COMPANY As String = "03-002"
+  Public Const FORM_ID_MENU_SETTING As String = "03-008"
+  Public Const FORM_ID_FORM_SETTING As String = "03-009"
   'Public Const FORM_ID_USER As String = "03-003"
   Public Const FORM_ID_DB_CONNECTIVITY As String = "03-004"
   Public Const FORM_ID_TRANSFER_DATA As String = "03-005"
