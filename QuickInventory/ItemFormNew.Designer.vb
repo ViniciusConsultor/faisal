@@ -55,78 +55,80 @@ Partial Class ItemFormNew
     Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
-    Me.Quick_TextBox2 = New QuickControls.Quick_TextBox
-    Me.Quick_TextBox1 = New QuickControls.Quick_TextBox
-    Me.Quick_CheckBox1 = New QuickControls.Quick_CheckBox
+    Me.ItemDescTextBox = New QuickControls.Quick_TextBox
+    Me.ItemCodeTextBox = New QuickControls.Quick_TextBox
+    Me.RawMaterialCheckBox = New QuickControls.Quick_CheckBox
     Me.Quick_Label5 = New QuickControls.Quick_Label
     Me.Quick_Label4 = New QuickControls.Quick_Label
-    Me.Quick_UltraComboBox3 = New QuickControls.Quick_UltraComboBox
+    Me.AddressComboBox = New QuickControls.Quick_UltraComboBox
     Me.Quick_Label3 = New QuickControls.Quick_Label
-    Me.Quick_UltraComboBox2 = New QuickControls.Quick_UltraComboBox
-    Me.Quick_UltraComboBox1 = New QuickControls.Quick_UltraComboBox
+    Me.PartyComboBox = New QuickControls.Quick_UltraComboBox
+    Me.ParentItemComboBox = New QuickControls.Quick_UltraComboBox
     Me.Quick_Label2 = New QuickControls.Quick_Label
     Me.Quick_Label1 = New QuickControls.Quick_Label
-    Me.Quick_Spread1 = New QuickControls.Quick_Spread
-    Me.Quick_Spread1_Sheet1 = New FarPoint.Win.Spread.SheetView
+    Me.ColorsDetailSpreadSheet = New QuickControls.Quick_Spread
+    Me.ColorsDetailSpreadSheet_Sheet1 = New FarPoint.Win.Spread.SheetView
     Me.Quick_Label6 = New QuickControls.Quick_Label
     Me.Quick_Label7 = New QuickControls.Quick_Label
-    Me.Quick_Spread2 = New QuickControls.Quick_Spread
-    Me.SheetView1 = New FarPoint.Win.Spread.SheetView
+    Me.GradesDetailSpreadSheet = New QuickControls.Quick_Spread
+    Me.GradesDetailSpreadSheet_Sheet1 = New FarPoint.Win.Spread.SheetView
     Me.Quick_Label8 = New QuickControls.Quick_Label
-    Me.Quick_Spread3 = New QuickControls.Quick_Spread
-    Me.SheetView2 = New FarPoint.Win.Spread.SheetView
+    Me.SizesDetailSpreadSheet = New QuickControls.Quick_Spread
+    Me.SizesDetailSpreadSheet_Sheet1 = New FarPoint.Win.Spread.SheetView
+    Me.ItemIDTextBox = New QuickControls.Quick_TextBox
+    Me.Quick_Label9 = New QuickControls.Quick_Label
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_UltraComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_UltraComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_UltraComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_Spread1, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_Spread1_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_Spread2, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SheetView1, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.Quick_Spread3, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SheetView2, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.AddressComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.PartyComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ParentItemComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ColorsDetailSpreadSheet, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ColorsDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.GradesDetailSpreadSheet, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.GradesDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.SizesDetailSpreadSheet, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.SizesDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
-    'Quick_TextBox2
+    'ItemDescTextBox
     '
-    Me.Quick_TextBox2.DefaultValue = ""
-    Me.Quick_TextBox2.IntegerNumber = 0
-    Me.Quick_TextBox2.IsMandatory = False
-    Me.Quick_TextBox2.IsReadonlyForExistingRecord = False
-    Me.Quick_TextBox2.IsReadonlyForNewRecord = False
-    Me.Quick_TextBox2.Location = New System.Drawing.Point(108, 152)
-    Me.Quick_TextBox2.Name = "Quick_TextBox2"
-    Me.Quick_TextBox2.PercentNumber = 0
-    Me.Quick_TextBox2.Size = New System.Drawing.Size(100, 20)
-    Me.Quick_TextBox2.TabIndex = 11
-    Me.Quick_TextBox2.Text = "0"
-    Me.Quick_TextBox2.TextBoxType = QuickControls.Quick_TextBox.TextBoxTypes.Text
+    Me.ItemDescTextBox.DefaultValue = ""
+    Me.ItemDescTextBox.IntegerNumber = 0
+    Me.ItemDescTextBox.IsMandatory = False
+    Me.ItemDescTextBox.IsReadonlyForExistingRecord = False
+    Me.ItemDescTextBox.IsReadonlyForNewRecord = False
+    Me.ItemDescTextBox.Location = New System.Drawing.Point(108, 152)
+    Me.ItemDescTextBox.Name = "ItemDescTextBox"
+    Me.ItemDescTextBox.PercentNumber = 0
+    Me.ItemDescTextBox.Size = New System.Drawing.Size(100, 20)
+    Me.ItemDescTextBox.TabIndex = 11
+    Me.ItemDescTextBox.Text = "0"
+    Me.ItemDescTextBox.TextBoxType = QuickControls.Quick_TextBox.TextBoxTypes.Text
     '
-    'Quick_TextBox1
+    'ItemCodeTextBox
     '
-    Me.Quick_TextBox1.DefaultValue = ""
-    Me.Quick_TextBox1.IntegerNumber = 0
-    Me.Quick_TextBox1.IsMandatory = False
-    Me.Quick_TextBox1.IsReadonlyForExistingRecord = False
-    Me.Quick_TextBox1.IsReadonlyForNewRecord = False
-    Me.Quick_TextBox1.Location = New System.Drawing.Point(108, 128)
-    Me.Quick_TextBox1.Name = "Quick_TextBox1"
-    Me.Quick_TextBox1.PercentNumber = 0
-    Me.Quick_TextBox1.Size = New System.Drawing.Size(100, 20)
-    Me.Quick_TextBox1.TabIndex = 10
-    Me.Quick_TextBox1.Text = "0"
-    Me.Quick_TextBox1.TextBoxType = QuickControls.Quick_TextBox.TextBoxTypes.Text
+    Me.ItemCodeTextBox.DefaultValue = ""
+    Me.ItemCodeTextBox.IntegerNumber = 0
+    Me.ItemCodeTextBox.IsMandatory = False
+    Me.ItemCodeTextBox.IsReadonlyForExistingRecord = False
+    Me.ItemCodeTextBox.IsReadonlyForNewRecord = False
+    Me.ItemCodeTextBox.Location = New System.Drawing.Point(108, 128)
+    Me.ItemCodeTextBox.Name = "ItemCodeTextBox"
+    Me.ItemCodeTextBox.PercentNumber = 0
+    Me.ItemCodeTextBox.Size = New System.Drawing.Size(100, 20)
+    Me.ItemCodeTextBox.TabIndex = 10
+    Me.ItemCodeTextBox.Text = "0"
+    Me.ItemCodeTextBox.TextBoxType = QuickControls.Quick_TextBox.TextBoxTypes.Text
     '
-    'Quick_CheckBox1
+    'RawMaterialCheckBox
     '
-    Me.Quick_CheckBox1.AutoSize = True
-    Me.Quick_CheckBox1.DefaultValue = False
-    Me.Quick_CheckBox1.Location = New System.Drawing.Point(104, 184)
-    Me.Quick_CheckBox1.Name = "Quick_CheckBox1"
-    Me.Quick_CheckBox1.Size = New System.Drawing.Size(99, 17)
-    Me.Quick_CheckBox1.TabIndex = 9
-    Me.Quick_CheckBox1.Text = "Is Raw Material"
-    Me.Quick_CheckBox1.UseVisualStyleBackColor = True
+    Me.RawMaterialCheckBox.AutoSize = True
+    Me.RawMaterialCheckBox.DefaultValue = False
+    Me.RawMaterialCheckBox.Location = New System.Drawing.Point(104, 184)
+    Me.RawMaterialCheckBox.Name = "RawMaterialCheckBox"
+    Me.RawMaterialCheckBox.Size = New System.Drawing.Size(99, 17)
+    Me.RawMaterialCheckBox.TabIndex = 9
+    Me.RawMaterialCheckBox.Text = "Is Raw Material"
+    Me.RawMaterialCheckBox.UseVisualStyleBackColor = True
     '
     'Quick_Label5
     '
@@ -150,74 +152,74 @@ Partial Class ItemFormNew
     Me.Quick_Label4.TabIndex = 7
     Me.Quick_Label4.Text = "Item Code"
     '
-    'Quick_UltraComboBox3
+    'AddressComboBox
     '
-    Me.Quick_UltraComboBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+    Me.AddressComboBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
     Appearance4.BackColor = System.Drawing.SystemColors.Window
     Appearance4.BorderColor = System.Drawing.SystemColors.InactiveCaption
-    Me.Quick_UltraComboBox3.DisplayLayout.Appearance = Appearance4
-    Me.Quick_UltraComboBox3.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
-    Me.Quick_UltraComboBox3.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
+    Me.AddressComboBox.DisplayLayout.Appearance = Appearance4
+    Me.AddressComboBox.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.AddressComboBox.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
     Appearance1.BackColor = System.Drawing.SystemColors.ActiveBorder
     Appearance1.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
     Appearance1.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox3.DisplayLayout.GroupByBox.Appearance = Appearance1
+    Me.AddressComboBox.DisplayLayout.GroupByBox.Appearance = Appearance1
     Appearance2.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox3.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance2
-    Me.Quick_UltraComboBox3.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.AddressComboBox.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance2
+    Me.AddressComboBox.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
     Appearance3.BackColor = System.Drawing.SystemColors.ControlLightLight
     Appearance3.BackColor2 = System.Drawing.SystemColors.Control
     Appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance3.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox3.DisplayLayout.GroupByBox.PromptAppearance = Appearance3
-    Me.Quick_UltraComboBox3.DisplayLayout.MaxColScrollRegions = 1
-    Me.Quick_UltraComboBox3.DisplayLayout.MaxRowScrollRegions = 1
+    Me.AddressComboBox.DisplayLayout.GroupByBox.PromptAppearance = Appearance3
+    Me.AddressComboBox.DisplayLayout.MaxColScrollRegions = 1
+    Me.AddressComboBox.DisplayLayout.MaxRowScrollRegions = 1
     Appearance12.BackColor = System.Drawing.SystemColors.Window
     Appearance12.ForeColor = System.Drawing.SystemColors.ControlText
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.ActiveCellAppearance = Appearance12
+    Me.AddressComboBox.DisplayLayout.Override.ActiveCellAppearance = Appearance12
     Appearance7.BackColor = System.Drawing.SystemColors.Highlight
     Appearance7.ForeColor = System.Drawing.SystemColors.HighlightText
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.ActiveRowAppearance = Appearance7
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.AddressComboBox.DisplayLayout.Override.ActiveRowAppearance = Appearance7
+    Me.AddressComboBox.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.AddressComboBox.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
     Appearance6.BackColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.CardAreaAppearance = Appearance6
+    Me.AddressComboBox.DisplayLayout.Override.CardAreaAppearance = Appearance6
     Appearance5.BorderColor = System.Drawing.Color.Silver
     Appearance5.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.CellAppearance = Appearance5
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.CellPadding = 0
+    Me.AddressComboBox.DisplayLayout.Override.CellAppearance = Appearance5
+    Me.AddressComboBox.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
+    Me.AddressComboBox.DisplayLayout.Override.CellPadding = 0
     Appearance9.BackColor = System.Drawing.SystemColors.Control
     Appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
     Appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance9.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.GroupByRowAppearance = Appearance9
+    Me.AddressComboBox.DisplayLayout.Override.GroupByRowAppearance = Appearance9
     Appearance11.TextHAlignAsString = "Left"
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.HeaderAppearance = Appearance11
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
+    Me.AddressComboBox.DisplayLayout.Override.HeaderAppearance = Appearance11
+    Me.AddressComboBox.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
+    Me.AddressComboBox.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
     Appearance10.BackColor = System.Drawing.SystemColors.Window
     Appearance10.BorderColor = System.Drawing.Color.Silver
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.RowAppearance = Appearance10
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+    Me.AddressComboBox.DisplayLayout.Override.RowAppearance = Appearance10
+    Me.AddressComboBox.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
     Appearance8.BackColor = System.Drawing.SystemColors.ControlLight
-    Me.Quick_UltraComboBox3.DisplayLayout.Override.TemplateAddRowAppearance = Appearance8
-    Me.Quick_UltraComboBox3.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
-    Me.Quick_UltraComboBox3.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
-    Me.Quick_UltraComboBox3.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-    Me.Quick_UltraComboBox3.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
-    Me.Quick_UltraComboBox3.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
-    Me.Quick_UltraComboBox3.DropDownWidth = 100
-    Me.Quick_UltraComboBox3.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
-    Me.Quick_UltraComboBox3.IsMandatory = False
-    Me.Quick_UltraComboBox3.IsReadonlyForExistingRecord = False
-    Me.Quick_UltraComboBox3.IsReadonlyForNewRecord = False
-    Me.Quick_UltraComboBox3.Location = New System.Drawing.Point(108, 100)
-    Me.Quick_UltraComboBox3.Name = "Quick_UltraComboBox3"
-    Me.Quick_UltraComboBox3.Size = New System.Drawing.Size(100, 22)
-    Me.Quick_UltraComboBox3.TabIndex = 6
+    Me.AddressComboBox.DisplayLayout.Override.TemplateAddRowAppearance = Appearance8
+    Me.AddressComboBox.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
+    Me.AddressComboBox.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
+    Me.AddressComboBox.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
+    Me.AddressComboBox.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
+    Me.AddressComboBox.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
+    Me.AddressComboBox.DropDownWidth = 100
+    Me.AddressComboBox.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
+    Me.AddressComboBox.IsMandatory = False
+    Me.AddressComboBox.IsReadonlyForExistingRecord = False
+    Me.AddressComboBox.IsReadonlyForNewRecord = False
+    Me.AddressComboBox.Location = New System.Drawing.Point(108, 100)
+    Me.AddressComboBox.Name = "AddressComboBox"
+    Me.AddressComboBox.Size = New System.Drawing.Size(100, 22)
+    Me.AddressComboBox.TabIndex = 6
     '
     'Quick_Label3
     '
@@ -230,143 +232,143 @@ Partial Class ItemFormNew
     Me.Quick_Label3.TabIndex = 5
     Me.Quick_Label3.Text = "Address Location"
     '
-    'Quick_UltraComboBox2
+    'PartyComboBox
     '
-    Me.Quick_UltraComboBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+    Me.PartyComboBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
     Appearance25.BackColor = System.Drawing.SystemColors.Window
     Appearance25.BorderColor = System.Drawing.SystemColors.InactiveCaption
-    Me.Quick_UltraComboBox2.DisplayLayout.Appearance = Appearance25
-    Me.Quick_UltraComboBox2.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
-    Me.Quick_UltraComboBox2.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
+    Me.PartyComboBox.DisplayLayout.Appearance = Appearance25
+    Me.PartyComboBox.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.PartyComboBox.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
     Appearance26.BackColor = System.Drawing.SystemColors.ActiveBorder
     Appearance26.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
     Appearance26.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox2.DisplayLayout.GroupByBox.Appearance = Appearance26
+    Me.PartyComboBox.DisplayLayout.GroupByBox.Appearance = Appearance26
     Appearance27.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox2.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance27
-    Me.Quick_UltraComboBox2.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.PartyComboBox.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance27
+    Me.PartyComboBox.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
     Appearance28.BackColor = System.Drawing.SystemColors.ControlLightLight
     Appearance28.BackColor2 = System.Drawing.SystemColors.Control
     Appearance28.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance28.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox2.DisplayLayout.GroupByBox.PromptAppearance = Appearance28
-    Me.Quick_UltraComboBox2.DisplayLayout.MaxColScrollRegions = 1
-    Me.Quick_UltraComboBox2.DisplayLayout.MaxRowScrollRegions = 1
+    Me.PartyComboBox.DisplayLayout.GroupByBox.PromptAppearance = Appearance28
+    Me.PartyComboBox.DisplayLayout.MaxColScrollRegions = 1
+    Me.PartyComboBox.DisplayLayout.MaxRowScrollRegions = 1
     Appearance29.BackColor = System.Drawing.SystemColors.Window
     Appearance29.ForeColor = System.Drawing.SystemColors.ControlText
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.ActiveCellAppearance = Appearance29
+    Me.PartyComboBox.DisplayLayout.Override.ActiveCellAppearance = Appearance29
     Appearance30.BackColor = System.Drawing.SystemColors.Highlight
     Appearance30.ForeColor = System.Drawing.SystemColors.HighlightText
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.ActiveRowAppearance = Appearance30
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.PartyComboBox.DisplayLayout.Override.ActiveRowAppearance = Appearance30
+    Me.PartyComboBox.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.PartyComboBox.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
     Appearance31.BackColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.CardAreaAppearance = Appearance31
+    Me.PartyComboBox.DisplayLayout.Override.CardAreaAppearance = Appearance31
     Appearance32.BorderColor = System.Drawing.Color.Silver
     Appearance32.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.CellAppearance = Appearance32
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.CellPadding = 0
+    Me.PartyComboBox.DisplayLayout.Override.CellAppearance = Appearance32
+    Me.PartyComboBox.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
+    Me.PartyComboBox.DisplayLayout.Override.CellPadding = 0
     Appearance33.BackColor = System.Drawing.SystemColors.Control
     Appearance33.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance33.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
     Appearance33.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance33.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.GroupByRowAppearance = Appearance33
+    Me.PartyComboBox.DisplayLayout.Override.GroupByRowAppearance = Appearance33
     Appearance34.TextHAlignAsString = "Left"
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.HeaderAppearance = Appearance34
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
+    Me.PartyComboBox.DisplayLayout.Override.HeaderAppearance = Appearance34
+    Me.PartyComboBox.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
+    Me.PartyComboBox.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
     Appearance35.BackColor = System.Drawing.SystemColors.Window
     Appearance35.BorderColor = System.Drawing.Color.Silver
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.RowAppearance = Appearance35
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+    Me.PartyComboBox.DisplayLayout.Override.RowAppearance = Appearance35
+    Me.PartyComboBox.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
     Appearance36.BackColor = System.Drawing.SystemColors.ControlLight
-    Me.Quick_UltraComboBox2.DisplayLayout.Override.TemplateAddRowAppearance = Appearance36
-    Me.Quick_UltraComboBox2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
-    Me.Quick_UltraComboBox2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
-    Me.Quick_UltraComboBox2.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-    Me.Quick_UltraComboBox2.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
-    Me.Quick_UltraComboBox2.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
-    Me.Quick_UltraComboBox2.DropDownWidth = 100
-    Me.Quick_UltraComboBox2.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
-    Me.Quick_UltraComboBox2.IsMandatory = False
-    Me.Quick_UltraComboBox2.IsReadonlyForExistingRecord = False
-    Me.Quick_UltraComboBox2.IsReadonlyForNewRecord = False
-    Me.Quick_UltraComboBox2.Location = New System.Drawing.Point(108, 72)
-    Me.Quick_UltraComboBox2.Name = "Quick_UltraComboBox2"
-    Me.Quick_UltraComboBox2.Size = New System.Drawing.Size(100, 22)
-    Me.Quick_UltraComboBox2.TabIndex = 4
+    Me.PartyComboBox.DisplayLayout.Override.TemplateAddRowAppearance = Appearance36
+    Me.PartyComboBox.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
+    Me.PartyComboBox.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
+    Me.PartyComboBox.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
+    Me.PartyComboBox.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
+    Me.PartyComboBox.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
+    Me.PartyComboBox.DropDownWidth = 100
+    Me.PartyComboBox.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
+    Me.PartyComboBox.IsMandatory = False
+    Me.PartyComboBox.IsReadonlyForExistingRecord = False
+    Me.PartyComboBox.IsReadonlyForNewRecord = False
+    Me.PartyComboBox.Location = New System.Drawing.Point(108, 72)
+    Me.PartyComboBox.Name = "PartyComboBox"
+    Me.PartyComboBox.Size = New System.Drawing.Size(100, 22)
+    Me.PartyComboBox.TabIndex = 4
     '
-    'Quick_UltraComboBox1
+    'ParentItemComboBox
     '
-    Me.Quick_UltraComboBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+    Me.ParentItemComboBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
     Appearance13.BackColor = System.Drawing.SystemColors.Window
     Appearance13.BorderColor = System.Drawing.SystemColors.InactiveCaption
-    Me.Quick_UltraComboBox1.DisplayLayout.Appearance = Appearance13
-    Me.Quick_UltraComboBox1.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
-    Me.Quick_UltraComboBox1.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
+    Me.ParentItemComboBox.DisplayLayout.Appearance = Appearance13
+    Me.ParentItemComboBox.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.ParentItemComboBox.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
     Appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder
     Appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
     Appearance14.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox1.DisplayLayout.GroupByBox.Appearance = Appearance14
+    Me.ParentItemComboBox.DisplayLayout.GroupByBox.Appearance = Appearance14
     Appearance15.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox1.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance15
-    Me.Quick_UltraComboBox1.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+    Me.ParentItemComboBox.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance15
+    Me.ParentItemComboBox.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
     Appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight
     Appearance16.BackColor2 = System.Drawing.SystemColors.Control
     Appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance16.ForeColor = System.Drawing.SystemColors.GrayText
-    Me.Quick_UltraComboBox1.DisplayLayout.GroupByBox.PromptAppearance = Appearance16
-    Me.Quick_UltraComboBox1.DisplayLayout.MaxColScrollRegions = 1
-    Me.Quick_UltraComboBox1.DisplayLayout.MaxRowScrollRegions = 1
+    Me.ParentItemComboBox.DisplayLayout.GroupByBox.PromptAppearance = Appearance16
+    Me.ParentItemComboBox.DisplayLayout.MaxColScrollRegions = 1
+    Me.ParentItemComboBox.DisplayLayout.MaxRowScrollRegions = 1
     Appearance17.BackColor = System.Drawing.SystemColors.Window
     Appearance17.ForeColor = System.Drawing.SystemColors.ControlText
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.ActiveCellAppearance = Appearance17
+    Me.ParentItemComboBox.DisplayLayout.Override.ActiveCellAppearance = Appearance17
     Appearance18.BackColor = System.Drawing.SystemColors.Highlight
     Appearance18.ForeColor = System.Drawing.SystemColors.HighlightText
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.ActiveRowAppearance = Appearance18
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.ParentItemComboBox.DisplayLayout.Override.ActiveRowAppearance = Appearance18
+    Me.ParentItemComboBox.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
+    Me.ParentItemComboBox.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
     Appearance19.BackColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.CardAreaAppearance = Appearance19
+    Me.ParentItemComboBox.DisplayLayout.Override.CardAreaAppearance = Appearance19
     Appearance20.BorderColor = System.Drawing.Color.Silver
     Appearance20.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.CellAppearance = Appearance20
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.CellPadding = 0
+    Me.ParentItemComboBox.DisplayLayout.Override.CellAppearance = Appearance20
+    Me.ParentItemComboBox.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
+    Me.ParentItemComboBox.DisplayLayout.Override.CellPadding = 0
     Appearance21.BackColor = System.Drawing.SystemColors.Control
     Appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark
     Appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
     Appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
     Appearance21.BorderColor = System.Drawing.SystemColors.Window
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.GroupByRowAppearance = Appearance21
+    Me.ParentItemComboBox.DisplayLayout.Override.GroupByRowAppearance = Appearance21
     Appearance22.TextHAlignAsString = "Left"
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.HeaderAppearance = Appearance22
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
+    Me.ParentItemComboBox.DisplayLayout.Override.HeaderAppearance = Appearance22
+    Me.ParentItemComboBox.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
+    Me.ParentItemComboBox.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
     Appearance23.BackColor = System.Drawing.SystemColors.Window
     Appearance23.BorderColor = System.Drawing.Color.Silver
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.RowAppearance = Appearance23
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+    Me.ParentItemComboBox.DisplayLayout.Override.RowAppearance = Appearance23
+    Me.ParentItemComboBox.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
     Appearance24.BackColor = System.Drawing.SystemColors.ControlLight
-    Me.Quick_UltraComboBox1.DisplayLayout.Override.TemplateAddRowAppearance = Appearance24
-    Me.Quick_UltraComboBox1.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
-    Me.Quick_UltraComboBox1.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
-    Me.Quick_UltraComboBox1.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-    Me.Quick_UltraComboBox1.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
-    Me.Quick_UltraComboBox1.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
-    Me.Quick_UltraComboBox1.DropDownWidth = 100
-    Me.Quick_UltraComboBox1.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
-    Me.Quick_UltraComboBox1.IsMandatory = False
-    Me.Quick_UltraComboBox1.IsReadonlyForExistingRecord = False
-    Me.Quick_UltraComboBox1.IsReadonlyForNewRecord = False
-    Me.Quick_UltraComboBox1.Location = New System.Drawing.Point(108, 44)
-    Me.Quick_UltraComboBox1.Name = "Quick_UltraComboBox1"
-    Me.Quick_UltraComboBox1.Size = New System.Drawing.Size(100, 22)
-    Me.Quick_UltraComboBox1.TabIndex = 3
+    Me.ParentItemComboBox.DisplayLayout.Override.TemplateAddRowAppearance = Appearance24
+    Me.ParentItemComboBox.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
+    Me.ParentItemComboBox.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
+    Me.ParentItemComboBox.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
+    Me.ParentItemComboBox.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.[Default]
+    Me.ParentItemComboBox.DropDownStyle = Infragistics.Win.UltraWinGrid.UltraComboStyle.DropDownList
+    Me.ParentItemComboBox.DropDownWidth = 100
+    Me.ParentItemComboBox.EntryMode = QuickControls.Quick_UltraComboBox.EntryModes.SelectionFromList
+    Me.ParentItemComboBox.IsMandatory = False
+    Me.ParentItemComboBox.IsReadonlyForExistingRecord = False
+    Me.ParentItemComboBox.IsReadonlyForNewRecord = False
+    Me.ParentItemComboBox.Location = New System.Drawing.Point(108, 44)
+    Me.ParentItemComboBox.Name = "ParentItemComboBox"
+    Me.ParentItemComboBox.Size = New System.Drawing.Size(100, 22)
+    Me.ParentItemComboBox.TabIndex = 3
     '
     'Quick_Label2
     '
@@ -390,22 +392,22 @@ Partial Class ItemFormNew
     Me.Quick_Label1.TabIndex = 0
     Me.Quick_Label1.Text = "Party"
     '
-    'Quick_Spread1
+    'ColorsDetailSpreadSheet
     '
-    Me.Quick_Spread1.AccessibleDescription = "Quick_Spread"
-    Me.Quick_Spread1.AutoNewRow = True
-    Me.Quick_Spread1.EditModePermanent = True
-    Me.Quick_Spread1.EditModeReplace = True
-    Me.Quick_Spread1.Location = New System.Drawing.Point(280, 68)
-    Me.Quick_Spread1.Name = "Quick_Spread1"
-    Me.Quick_Spread1.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.Quick_Spread1_Sheet1})
-    Me.Quick_Spread1.Size = New System.Drawing.Size(268, 132)
-    Me.Quick_Spread1.TabIndex = 12
+    Me.ColorsDetailSpreadSheet.AccessibleDescription = "Quick_Spread"
+    Me.ColorsDetailSpreadSheet.AutoNewRow = True
+    Me.ColorsDetailSpreadSheet.EditModePermanent = True
+    Me.ColorsDetailSpreadSheet.EditModeReplace = True
+    Me.ColorsDetailSpreadSheet.Location = New System.Drawing.Point(280, 68)
+    Me.ColorsDetailSpreadSheet.Name = "ColorsDetailSpreadSheet"
+    Me.ColorsDetailSpreadSheet.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ColorsDetailSpreadSheet_Sheet1})
+    Me.ColorsDetailSpreadSheet.Size = New System.Drawing.Size(268, 132)
+    Me.ColorsDetailSpreadSheet.TabIndex = 12
     '
-    'Quick_Spread1_Sheet1
+    'ColorsDetailSpreadSheet_Sheet1
     '
-    Me.Quick_Spread1_Sheet1.Reset()
-    Me.Quick_Spread1_Sheet1.SheetName = "Sheet1"
+    Me.ColorsDetailSpreadSheet_Sheet1.Reset()
+    Me.ColorsDetailSpreadSheet_Sheet1.SheetName = "Sheet1"
     '
     'Quick_Label6
     '
@@ -429,22 +431,22 @@ Partial Class ItemFormNew
     Me.Quick_Label7.TabIndex = 15
     Me.Quick_Label7.Text = "Grades"
     '
-    'Quick_Spread2
+    'GradesDetailSpreadSheet
     '
-    Me.Quick_Spread2.AccessibleDescription = "Quick_Spread"
-    Me.Quick_Spread2.AutoNewRow = True
-    Me.Quick_Spread2.EditModePermanent = True
-    Me.Quick_Spread2.EditModeReplace = True
-    Me.Quick_Spread2.Location = New System.Drawing.Point(284, 228)
-    Me.Quick_Spread2.Name = "Quick_Spread2"
-    Me.Quick_Spread2.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SheetView1})
-    Me.Quick_Spread2.Size = New System.Drawing.Size(268, 132)
-    Me.Quick_Spread2.TabIndex = 14
+    Me.GradesDetailSpreadSheet.AccessibleDescription = "Quick_Spread"
+    Me.GradesDetailSpreadSheet.AutoNewRow = True
+    Me.GradesDetailSpreadSheet.EditModePermanent = True
+    Me.GradesDetailSpreadSheet.EditModeReplace = True
+    Me.GradesDetailSpreadSheet.Location = New System.Drawing.Point(284, 228)
+    Me.GradesDetailSpreadSheet.Name = "GradesDetailSpreadSheet"
+    Me.GradesDetailSpreadSheet.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.GradesDetailSpreadSheet_Sheet1})
+    Me.GradesDetailSpreadSheet.Size = New System.Drawing.Size(268, 132)
+    Me.GradesDetailSpreadSheet.TabIndex = 14
     '
-    'SheetView1
+    'GradesDetailSpreadSheet_Sheet1
     '
-    Me.SheetView1.Reset()
-    Me.SheetView1.SheetName = "Sheet1"
+    Me.GradesDetailSpreadSheet_Sheet1.Reset()
+    Me.GradesDetailSpreadSheet_Sheet1.SheetName = "Sheet1"
     '
     'Quick_Label8
     '
@@ -457,96 +459,128 @@ Partial Class ItemFormNew
     Me.Quick_Label8.TabIndex = 17
     Me.Quick_Label8.Text = "Sizes"
     '
-    'Quick_Spread3
+    'SizesDetailSpreadSheet
     '
-    Me.Quick_Spread3.AccessibleDescription = "Quick_Spread"
-    Me.Quick_Spread3.AutoNewRow = True
-    Me.Quick_Spread3.EditModePermanent = True
-    Me.Quick_Spread3.EditModeReplace = True
-    Me.Quick_Spread3.Location = New System.Drawing.Point(8, 232)
-    Me.Quick_Spread3.Name = "Quick_Spread3"
-    Me.Quick_Spread3.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SheetView2})
-    Me.Quick_Spread3.Size = New System.Drawing.Size(268, 132)
-    Me.Quick_Spread3.TabIndex = 16
+    Me.SizesDetailSpreadSheet.AccessibleDescription = "Quick_Spread"
+    Me.SizesDetailSpreadSheet.AutoNewRow = True
+    Me.SizesDetailSpreadSheet.EditModePermanent = True
+    Me.SizesDetailSpreadSheet.EditModeReplace = True
+    Me.SizesDetailSpreadSheet.Location = New System.Drawing.Point(8, 232)
+    Me.SizesDetailSpreadSheet.Name = "SizesDetailSpreadSheet"
+    Me.SizesDetailSpreadSheet.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SizesDetailSpreadSheet_Sheet1})
+    Me.SizesDetailSpreadSheet.Size = New System.Drawing.Size(268, 132)
+    Me.SizesDetailSpreadSheet.TabIndex = 16
     '
-    'SheetView2
+    'SizesDetailSpreadSheet_Sheet1
     '
-    Me.SheetView2.Reset()
-    Me.SheetView2.SheetName = "Sheet1"
+    Me.SizesDetailSpreadSheet_Sheet1.Reset()
+    Me.SizesDetailSpreadSheet_Sheet1.SheetName = "Sheet1"
+    '
+    'ItemIDTextBox
+    '
+    Me.ItemIDTextBox.DefaultValue = ""
+    Me.ItemIDTextBox.IntegerNumber = 0
+    Me.ItemIDTextBox.IsMandatory = False
+    Me.ItemIDTextBox.IsReadonlyForExistingRecord = False
+    Me.ItemIDTextBox.IsReadonlyForNewRecord = False
+    Me.ItemIDTextBox.Location = New System.Drawing.Point(216, 97)
+    Me.ItemIDTextBox.Name = "ItemIDTextBox"
+    Me.ItemIDTextBox.PercentNumber = 0
+    Me.ItemIDTextBox.Size = New System.Drawing.Size(58, 20)
+    Me.ItemIDTextBox.TabIndex = 19
+    Me.ItemIDTextBox.Text = "0"
+    Me.ItemIDTextBox.TextBoxType = QuickControls.Quick_TextBox.TextBoxTypes.Text
+    '
+    'Quick_Label9
+    '
+    Me.Quick_Label9.AllowClearValue = False
+    Me.Quick_Label9.AutoSize = True
+    Me.Quick_Label9.DefaultValue = ""
+    Me.Quick_Label9.Location = New System.Drawing.Point(216, 61)
+    Me.Quick_Label9.Name = "Quick_Label9"
+    Me.Quick_Label9.Size = New System.Drawing.Size(41, 13)
+    Me.Quick_Label9.TabIndex = 18
+    Me.Quick_Label9.Text = "Item ID"
     '
     'ItemFormNew
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.ClientSize = New System.Drawing.Size(562, 423)
+    Me.Controls.Add(Me.ItemIDTextBox)
+    Me.Controls.Add(Me.Quick_Label9)
     Me.Controls.Add(Me.Quick_Label8)
-    Me.Controls.Add(Me.Quick_Spread3)
+    Me.Controls.Add(Me.SizesDetailSpreadSheet)
     Me.Controls.Add(Me.Quick_Label7)
-    Me.Controls.Add(Me.Quick_Spread2)
+    Me.Controls.Add(Me.GradesDetailSpreadSheet)
     Me.Controls.Add(Me.Quick_Label6)
-    Me.Controls.Add(Me.Quick_Spread1)
-    Me.Controls.Add(Me.Quick_TextBox2)
-    Me.Controls.Add(Me.Quick_TextBox1)
-    Me.Controls.Add(Me.Quick_CheckBox1)
+    Me.Controls.Add(Me.ColorsDetailSpreadSheet)
+    Me.Controls.Add(Me.ItemDescTextBox)
+    Me.Controls.Add(Me.ItemCodeTextBox)
+    Me.Controls.Add(Me.RawMaterialCheckBox)
     Me.Controls.Add(Me.Quick_Label5)
     Me.Controls.Add(Me.Quick_Label4)
-    Me.Controls.Add(Me.Quick_UltraComboBox3)
+    Me.Controls.Add(Me.AddressComboBox)
     Me.Controls.Add(Me.Quick_Label3)
-    Me.Controls.Add(Me.Quick_UltraComboBox2)
-    Me.Controls.Add(Me.Quick_UltraComboBox1)
+    Me.Controls.Add(Me.PartyComboBox)
+    Me.Controls.Add(Me.ParentItemComboBox)
     Me.Controls.Add(Me.Quick_Label2)
     Me.Controls.Add(Me.Quick_Label1)
     Me.Name = "ItemFormNew"
     Me.Text = "ItemFormNew"
     Me.Controls.SetChildIndex(Me.Quick_Label1, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label2, 0)
-    Me.Controls.SetChildIndex(Me.Quick_UltraComboBox1, 0)
-    Me.Controls.SetChildIndex(Me.Quick_UltraComboBox2, 0)
+    Me.Controls.SetChildIndex(Me.ParentItemComboBox, 0)
+    Me.Controls.SetChildIndex(Me.PartyComboBox, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label3, 0)
-    Me.Controls.SetChildIndex(Me.Quick_UltraComboBox3, 0)
+    Me.Controls.SetChildIndex(Me.AddressComboBox, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label4, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label5, 0)
-    Me.Controls.SetChildIndex(Me.Quick_CheckBox1, 0)
-    Me.Controls.SetChildIndex(Me.Quick_TextBox1, 0)
-    Me.Controls.SetChildIndex(Me.Quick_TextBox2, 0)
-    Me.Controls.SetChildIndex(Me.Quick_Spread1, 0)
+    Me.Controls.SetChildIndex(Me.RawMaterialCheckBox, 0)
+    Me.Controls.SetChildIndex(Me.ItemCodeTextBox, 0)
+    Me.Controls.SetChildIndex(Me.ItemDescTextBox, 0)
+    Me.Controls.SetChildIndex(Me.ColorsDetailSpreadSheet, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label6, 0)
-    Me.Controls.SetChildIndex(Me.Quick_Spread2, 0)
+    Me.Controls.SetChildIndex(Me.GradesDetailSpreadSheet, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label7, 0)
-    Me.Controls.SetChildIndex(Me.Quick_Spread3, 0)
+    Me.Controls.SetChildIndex(Me.SizesDetailSpreadSheet, 0)
     Me.Controls.SetChildIndex(Me.Quick_Label8, 0)
+    Me.Controls.SetChildIndex(Me.Quick_Label9, 0)
+    Me.Controls.SetChildIndex(Me.ItemIDTextBox, 0)
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_UltraComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_UltraComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_UltraComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_Spread1, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_Spread1_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_Spread2, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SheetView1, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.Quick_Spread3, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SheetView2, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.AddressComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.PartyComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ParentItemComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ColorsDetailSpreadSheet, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ColorsDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.GradesDetailSpreadSheet, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.GradesDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.SizesDetailSpreadSheet, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.SizesDetailSpreadSheet_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
   End Sub
   Friend WithEvents Quick_Label1 As QuickControls.Quick_Label
   Friend WithEvents Quick_Label2 As QuickControls.Quick_Label
-  Friend WithEvents Quick_UltraComboBox1 As QuickControls.Quick_UltraComboBox
-  Friend WithEvents Quick_UltraComboBox2 As QuickControls.Quick_UltraComboBox
-  Friend WithEvents Quick_UltraComboBox3 As QuickControls.Quick_UltraComboBox
+  Friend WithEvents ParentItemComboBox As QuickControls.Quick_UltraComboBox
+  Friend WithEvents PartyComboBox As QuickControls.Quick_UltraComboBox
+  Friend WithEvents AddressComboBox As QuickControls.Quick_UltraComboBox
   Friend WithEvents Quick_Label3 As QuickControls.Quick_Label
   Friend WithEvents Quick_Label4 As QuickControls.Quick_Label
   Friend WithEvents Quick_Label5 As QuickControls.Quick_Label
-  Friend WithEvents Quick_CheckBox1 As QuickControls.Quick_CheckBox
-  Friend WithEvents Quick_TextBox1 As QuickControls.Quick_TextBox
-  Friend WithEvents Quick_TextBox2 As QuickControls.Quick_TextBox
-  Friend WithEvents Quick_Spread1 As QuickControls.Quick_Spread
-  Friend WithEvents Quick_Spread1_Sheet1 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents RawMaterialCheckBox As QuickControls.Quick_CheckBox
+  Friend WithEvents ItemCodeTextBox As QuickControls.Quick_TextBox
+  Friend WithEvents ItemDescTextBox As QuickControls.Quick_TextBox
+  Friend WithEvents ColorsDetailSpreadSheet As QuickControls.Quick_Spread
+  Friend WithEvents ColorsDetailSpreadSheet_Sheet1 As FarPoint.Win.Spread.SheetView
   Friend WithEvents Quick_Label6 As QuickControls.Quick_Label
   Friend WithEvents Quick_Label7 As QuickControls.Quick_Label
-  Friend WithEvents Quick_Spread2 As QuickControls.Quick_Spread
-  Friend WithEvents SheetView1 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents GradesDetailSpreadSheet As QuickControls.Quick_Spread
+  Friend WithEvents GradesDetailSpreadSheet_Sheet1 As FarPoint.Win.Spread.SheetView
   Friend WithEvents Quick_Label8 As QuickControls.Quick_Label
-  Friend WithEvents Quick_Spread3 As QuickControls.Quick_Spread
-  Friend WithEvents SheetView2 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents SizesDetailSpreadSheet As QuickControls.Quick_Spread
+  Friend WithEvents SizesDetailSpreadSheet_Sheet1 As FarPoint.Win.Spread.SheetView
+  Friend WithEvents ItemIDTextBox As QuickControls.Quick_TextBox
+  Friend WithEvents Quick_Label9 As QuickControls.Quick_Label
 End Class
