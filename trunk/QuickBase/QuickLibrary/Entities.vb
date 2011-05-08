@@ -16,9 +16,13 @@ Public Class Entities
   Public Const FORM_ID_SALES_RETURN As String = "01-008"
   Public Const FORM_ID_PURCHASE_WAREHOUSE As String = "01-009"
   Public Const FORM_ID_STOCK_INQUIRY As String = "01-010"
+  Public Const FORM_ID_ITEM_SIZE As String = "01-111"
+  Public Const FORM_ID_ITEM_GRADE As String = "01-112"
+
   '<<<<<<<<<< Common
   Public Const FORM_ID_PARTY_GRID_ENTRY As String = "02-"
   Public Const FORM_ID_PARTY As String = "02-001"
+  Public Const FORM_ID_COLOR As String = "03-002"
   '<<<<<<<<<< Administration
   Public Const FORM_ID_IMPORT_FROM_EXCEL As String = "03-001"
   Public Const FORM_ID_COMPANY As String = "03-002"

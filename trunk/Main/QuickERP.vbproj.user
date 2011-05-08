@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>D:\Publish\Uniformers\QuickErp_02_03_03_42\|D:\Publish\Uniformers\QuickErp_02_03_03_40\|D:\Publish\QuickTijarat\QuickErp_02_03_03_41\|D:\Publish\QuickTijarat\QuickErp_02_03_03_40\|D:\Publish\Uniformers\QuickErp_02_03_02_39\</PublishUrlHistory>
+    <PublishUrlHistory>D:\Publish\QuickTijarat\QuickErp_02_03_03_43\|D:\Publish\QuickTijarat\QuickErp_02_03_03_41\|D:\Publish\Uniformers\QuickErp_02_03_03_42\|D:\Publish\Uniformers\QuickErp_02_03_03_40\|D:\Publish\QuickTijarat\QuickErp_02_03_03_40\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
     </SupportUrlHistory>
-    <UpdateUrlHistory>http://www.quicktijarat.com/quickerp/|http://www.quicktijarat.com/quickerpbeta/|http://www.uniformers.net/quickerp/</UpdateUrlHistory>
+    <UpdateUrlHistory>http://www.quicktijarat.com/quickerpbeta/|http://www.quicktijarat.com/quickerp/|http://www.uniformers.net/quickerp/</UpdateUrlHistory>
     <BootstrapperUrlHistory>
     </BootstrapperUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
@@ -14,6 +14,6 @@
     <ProjectView>ProjectFiles</ProjectView>
     <ErrorReportUrlHistory />
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>43</ApplicationRevision>
   </PropertyGroup>
 </Project>

@@ -16,7 +16,7 @@ Public Class frmTransferData
 #Region "Declaration"
 #If CONFIG = "Debug" Then
   'Private WebServerConnectionString As String = "Data Source=faisalxp\sqlexpress;Initial Catalog=Quick_ERP_GS;User ID=sa;Password=123"
-  Private WebServerConnectionString As String = "Data Source=sql401.worldispnetwork.com;Initial Catalog="
+  Private WebServerConnectionString As String = "Data Source=sql401.worldispnetwork.com;Initial Catalog=khurram_uniformers;User ID=khurram_uniformers;Password=headoffice"
 #ElseIf CONFIG = "Release" Then
   Private WebServerConnectionString As String = "Data Source=sql401.worldispnetwork.com;Initial Catalog=khurram_uniformers;User ID=khurram_uniformers;Password=headoffice"
 #End If
@@ -57,7 +57,7 @@ Public Class frmTransferData
 
       Me.Quick_Button1.Visible = False
 
-      WebServerConnectionString = Configuration.ConfigurationManager.ConnectionStrings("WebServer").ConnectionString
+      'WebServerConnectionString = Configuration.ConfigurationManager.ConnectionStrings("WebServer").ConnectionString
 
       '_CollectionDisplayName.Add("Companies") : _CollectionTableName.Add("Base_Company")
       '_CollectionDisplayName.Add("Document Types") : _CollectionTableName.Add("Common_DocumentType")
@@ -460,6 +460,7 @@ Public Class frmTransferData
 
               'Try
               _QuickErpWebServiceObject.Timeout = 9900000
+              '_QuickErpWebServiceObject.Url = "http://localhost:1367/QuickWebService/QuickErp.asmx"
               _WebServiceCompleted = _QuickErpWebServiceObject.ImportXmlFileToDatabase(Me.LoginInfoObject.CompanyID, Me.LoginInfoObject.UserID, _FileName, False, WebServerConnectionString)
               If _WebServiceCompleted Then
                 _TransferData.SetUploadedIndicatorFromXmlFileData(_UserTableAdapterSource.GetConnection.ConnectionString, TransferData.LOCAL_PATH_FOR_FTP_FILES & _FileName.Substring(0, _FileName.LastIndexOf("."c)) & ".qerp")
@@ -476,7 +477,7 @@ Public Class frmTransferData
             End If 'Check of no records to upload
           Loop While _FileName <> TransferData.NO_RECORDS_FILE_NAME
 
-          QuickAlert.SendEmailAlerts()
+          'QuickAlert.SendEmailAlerts()
           If ShutdownCheckBox.Checked Then
             Shell("shutdown -s -f")
           Else
