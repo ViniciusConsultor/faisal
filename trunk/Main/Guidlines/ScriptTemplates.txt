@@ -102,3 +102,11 @@ IF NOT EXISTS (SELECT * FROM Base_SettingForm WHERE Form_ID = #)
 	VALUES
 		(#, '##-###', '', 1
 		,0, 'yyyy/mm/dd', NULL)
+
+-- Rename Table
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o WHERE o.[Name] ='OldTableName')
+	exec sp_rename 'OldTableName', 'NewTableName'
+
+-- Rename Column
+IF NOT EXISTS (SELECT o.[NAME] FROM sysobjects o INNER JOIN syscolumns c ON o.id = c.id WHERE o.[Name] ='OldTableName' AND c.[Name] = 'OldColumnName')
+	exec sp_rename 'OldTableName.OldColumnName', 'NewColumnName'
