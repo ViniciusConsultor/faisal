@@ -52,7 +52,7 @@ Public Class SmsWebBrowser
             clickelement(Me.Document.Forms(0).GetElementsByTagName("Input"), "Send Message", ElementSearchOptions.ValueAttribute)
           End If
           'Remove first item
-          _AlertDataTable(0).DocumentStatus_ID = documentstatuses.Alert_Send
+          _AlertDataTable(0).DocumentStatus_ID = documentstatuses.Message_Send
         End If
       Else
         If My.Computer.Network.Ping("google.com") Then

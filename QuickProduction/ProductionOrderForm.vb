@@ -656,18 +656,21 @@ Public Class ProductionOrderForm
       Dim _Quantity As Decimal
       Dim _TotalQuantity As Decimal
 
-      For I As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
-        _Quantity = 0
-        If Decimal.TryParse(ProductionOrderSheetView.Cells(0, I).Text, _Quantity) Then
-          _TotalQuantity += _Quantity
-        End If
-      Next
+      'This condition is required because it will throw exception when cancel button is clicked.
+      If ProductionOrderSheetView.Rows.Count > 0 Then
+        For I As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
+          _Quantity = 0
+          If Decimal.TryParse(ProductionOrderSheetView.Cells(0, I).Text, _Quantity) Then
+            _TotalQuantity += _Quantity
+          End If
+        Next
 
-      ProductionOrderSheetView.SetText(0, _ItemSizeTable.Rows.Count, _TotalQuantity.ToString)
+        ProductionOrderSheetView.SetText(0, _ItemSizeTable.Rows.Count, _TotalQuantity.ToString)
 
-      For I As Int32 = 0 To _FormulaDetailToDisplay.Rows.Count - 1
-        _FormulaDetailToDisplay(I).Quantity = Convert.ToDecimal(_FormulaDetailToDisplay(I).Item(_FormulaDetailToDisplay.QuantityColumn.ColumnName, DataRowVersion.Original)) * _TotalQuantity    'Use original quantity so that it does not keep on adding on user change.
-      Next
+        For I As Int32 = 0 To _FormulaDetailToDisplay.Rows.Count - 1
+          _FormulaDetailToDisplay(I).Quantity = Convert.ToDecimal(_FormulaDetailToDisplay(I).Item(_FormulaDetailToDisplay.QuantityColumn.ColumnName, DataRowVersion.Original)) * _TotalQuantity    'Use original quantity so that it does not keep on adding on user change.
+        Next
+      End If
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in CalculateTotalUpdateFromulaDetail of ProductionOrderForm.", ex)

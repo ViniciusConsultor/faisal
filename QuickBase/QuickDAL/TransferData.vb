@@ -210,7 +210,7 @@ Public Class TransferData
       _SqlDataAdapterSource.UpdateCommand = GetUpdateCommand(_TableNamepara, _SqlConnectionSource)
       _SqlDataAdapterSource.InsertCommand = GetInsertCommand(_TableNamepara, _SqlConnectionSource)
 
-      LogTransferActivity(CompanyID, UserID, True, _TableNamepara)
+      'LogTransferActivity(CompanyID, UserID, True, _TableNamepara)
       _CompanyDataTableSource = New CompanyDataTable
       If _DataSet.Tables.Contains(_TableNamepara) Then _DataTableSource = _DataSet.Tables(_TableNamepara)
 
@@ -578,13 +578,15 @@ Public Class TransferData
     End Try
   End Function
 
-  Private Function LogTransferActivity(ByVal CompanyID As Int16, ByVal UserID As Int32, ByVal StartOfActivity As Boolean, ByVal TableName As String) As Boolean
+  Public Function LogTransferActivity(ByVal CompanyID As Int16, ByVal UserID As Int32, ByVal StartOfActivity As Boolean, ByVal TableName As String) As Boolean
     Try
       Dim StartDateTime As DateTime
       Dim EndDateTime As DateTime
 
+      AppendTextToLogFile("Adding Transfer Log")
+
       If StartOfActivity Then
-        StartDateTime = Now
+        StartDateTime = Date.UtcNow
         _TransferDataRow = _TransferDataTableSource.NewTransferRow
         With _TransferDataRow
           .Co_ID = CompanyID
@@ -599,9 +601,9 @@ Public Class TransferData
         _TransferDataTableSource.Rows.Add(_TransferDataRow)
         _TransferTableAdapterSource.Update(_TransferDataTableSource)
       Else
-        EndDateTime = Now
+        EndDateTime = Date.UtcNow
         With _TransferDataRow
-          .Stamp_DateTime = Now
+          .Stamp_DateTime = Date.UtcNow
           .Transfer_EndDateTime = EndDateTime
           .Transfer_Status = 1    'Transfer Completed.
         End With

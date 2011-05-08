@@ -417,6 +417,10 @@ Public Class MDIParent1
             Form = New QuickInventory.PurchaseWarehouseForm
           Case QuickLibrary.Entities.FORM_ID_STOCK_INQUIRY
             Form = New QuickInventory.StockInquiryForm
+          Case QuickLibrary.Entities.FORM_ID_ITEM_SIZE
+            Form = New QuickInventory.ItemSizeForm
+          Case QuickLibrary.Entities.FORM_ID_ITEM_GRADE
+            Form = New QuickInventory.ItemGradeForm
 
             '>>>>>>>>>> Accounts
           Case QuickLibrary.Entities.FORM_ID_RECEIPT
@@ -435,6 +439,8 @@ Public Class MDIParent1
             Form = New QuickCommon.PartyRegularForm
           Case QuickLibrary.Entities.FORM_ID_PARTY_GRID_ENTRY
             Form = New QuickCommon.PartyGridEntryForm
+          Case QuickLibrary.Entities.FORM_ID_COLOR
+            Form = New QuickCommon.ColorForm
 
             '<<<<<<<<<< Administration
           Case QuickLibrary.Entities.FORM_ID_COMPANY
@@ -488,12 +494,7 @@ Public Class MDIParent1
             Form = New QuickProduction.DefineProcessForm
           Case "99-002"
             Form = New QuickProduction.ProcessWorkFlowForm
-          Case "01-111"
-            Form = New QuickInventory.ItemSizeForm
-          Case "01-112"
-            Form = New QuickInventory.ItemGradeForm
-          Case "01-113"
-            Form = New QuickCommon.ColorForm
+
           Case Else
             'MessageBox.Show("Please write code for: " & ListView.SelectedItems(0).Name)
 

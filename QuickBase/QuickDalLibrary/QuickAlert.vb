@@ -90,7 +90,7 @@ Public Class QuickAlert
         .Alert_Type = Convert.ToInt16(_AlertType)
         .Stamp_DateTime = Common.systemDateTime
         .Stamp_UserID = _LoginInfo.UserID
-        .DocumentStatus_ID = DocumentStatuses.Alert_NotSent
+        .DocumentStatus_ID = DocumentStatuses.Message_Added
         .NoOfTries = 0
       End With
 
@@ -136,7 +136,7 @@ Public Class QuickAlert
                   & _AlertDataTable(I).Alert_DateTime.ToString & vbCrLf & vbCrLf & _AlertDataTable(I).Alert_Body
               _smtp.EnableSsl = True
             _smtp.Send(_Message)
-              _AlertDataTable(I).DocumentStatus_ID = DocumentStatuses.Alert_Send
+            _AlertDataTable(I).DocumentStatus_ID = DocumentStatuses.Message_Send
             Catch exEmail As Exception
               'Try
               'Dim _QuickException As New QuickExceptionAdvanced("Exception is SendAlert method", exEmail)

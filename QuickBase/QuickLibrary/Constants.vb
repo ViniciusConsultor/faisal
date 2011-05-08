@@ -114,8 +114,10 @@ Public Class Constants
     General_Inserted = 5
     General_Unposted = 6
     General_Posted = 7
-    Alert_NotSent = 8
-    Alert_Send = 9
+    Message_Added = 8
+    Message_Send = 9
+    Message_Failed = 11
+    Message_Fetched = 12
   End Enum
 
   Public Enum AlertTypes
