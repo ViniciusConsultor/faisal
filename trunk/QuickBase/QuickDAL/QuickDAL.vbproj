@@ -119,14 +119,6 @@
       <DependentUpon>QuickCommonDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="QuickCommonDataSetExtension.vb" />
-    <Compile Include="QuickDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuickDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="QuickDataSet.vb">
-      <DependentUpon>QuickDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="QuickDataSetTableAdapter.vb" />
     <Compile Include="QuickInventoryDataSet.Designer.vb">
       <DesignTime>True</DesignTime>
@@ -137,6 +129,11 @@
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="QuickInventoryDataSetExtension.vb" />
+    <Compile Include="QuickMessagingDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuickMessagingDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QuickProductionDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,17 +206,6 @@
     <None Include="QuickCommonDataSet.xss">
       <DependentUpon>QuickCommonDataSet.xsd</DependentUpon>
     </None>
-    <None Include="QuickDataSet.xsc">
-      <DependentUpon>QuickDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QuickDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QuickDataSet.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="QuickDataSet.xss">
-      <DependentUpon>QuickDataSet.xsd</DependentUpon>
-    </None>
     <None Include="QuickErp.snk" />
     <None Include="QuickInventoryDataSet.xsc">
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
@@ -231,6 +217,17 @@
     </None>
     <None Include="QuickInventoryDataSet.xss">
       <DependentUpon>QuickInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuickMessagingDataSet.xsc">
+      <DependentUpon>QuickMessagingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuickMessagingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuickMessagingDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="QuickMessagingDataSet.xss">
+      <DependentUpon>QuickMessagingDataSet.xsd</DependentUpon>
     </None>
     <None Include="QuickProductionDataSet.xsc">
       <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
