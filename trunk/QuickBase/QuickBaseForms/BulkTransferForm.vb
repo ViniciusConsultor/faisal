@@ -480,10 +480,11 @@ Public Class BulkTransferForm
                 _FormulaDetailRow.RecordStatus_ID = Constants.RecordStatuses.Updated
               End If
 
+              'Set common properties for insert, update
               With _FormulaDetailRow
                 '.Item_Desc = spread_Sheet1.GetText(r, General.ItemCodeColumnsCount + c)
                 .Quantity = 0
-                Decimal.TryParse(spread_Sheet1.GetText(r, General.ItemCodeColumnsCount + c + 1), .Quantity)
+                Decimal.TryParse(spread_Sheet1.GetText(r, c + 1), .Quantity)
                 .Remarks = spread_Sheet1.GetText(r, General.ItemCodeColumnsCount + c)
                 .Stamp_DateTime = Common.SystemDateTime
                 .Stamp_UserID = Me.LoginInfoObject.UserID

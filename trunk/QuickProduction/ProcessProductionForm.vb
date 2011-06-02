@@ -20,8 +20,8 @@ Public Class ProcessProduction
   Dim _ItemSizeTA As New QuickInventoryDataSetTableAdapters.ItemSizeTableAdapter
   Dim _ProcessWorkflowTA As New QuickProductionDataSetTableAdapters.ProductionProcessWorkFlowTableAdapter
   Dim _ProcessBalanceTA As New QuickProductionDataSetTableAdapters.ProcessBalanceTableAdapter
-  Dim _ProductionTA As New QuickProductionDataSetTableAdapters.ProcessProductionTableAdapter
-  Dim _ProductionDetailTA As New QuickProductionDataSetTableAdapters.ProcessProductionDetailTableAdapter
+  Dim _ProcessProductionTA As New QuickProductionDataSetTableAdapters.ProcessProductionTableAdapter
+  Dim _ProcessProductionDetailTA As New QuickProductionDataSetTableAdapters.ProcessProductionDetailTableAdapter
   Dim _OrderBatchTA As New QuickProductionDataSetTableAdapters.OrderBatchTableAdapter
   Dim _OrderBatchDetailTA As New QuickProductionDataSetTableAdapters.OrderBatchDetailTableAdapter
   Dim _ItemDetailTA As New QuickInventoryDataSetTableAdapters.ItemDetailTableAdapter
@@ -83,7 +83,7 @@ Public Class ProcessProduction
   ''' </summary>
   Private Sub LoadProductionIDs()
     Try
-      _ProductionTable = _ProductionTA.GetByCoID(Me.LoginInfoObject.CompanyID)
+      _ProductionTable = _ProcessProductionTA.GetByCoID(Me.LoginInfoObject.CompanyID)
       Me.ProductionIDComboBox.DataSource = _ProductionTable
       Me.ProductionIDComboBox.DisplayMember = _ProductionTable.Production_IDColumn.ColumnName
       Me.ProductionIDComboBox.ValueMember = _ProductionTable.Production_IDColumn.ColumnName
@@ -154,8 +154,8 @@ Public Class ProcessProduction
               .OrderBatch_ID = _OrderBatchRow.OrderBatch_ID
             End If
           End If
-          .Production_No = _ProductionTA.GetNewProductionNoByCoID(Me.LoginInfoObject.CompanyID)
-          .Production_ID = _ProductionTA.GetNewProductionIDByCoID(Me.LoginInfoObject.CompanyID).Value
+          .Production_No = _ProcessProductionTA.GetNewProductionNoByCoID(Me.LoginInfoObject.CompanyID)
+          .Production_ID = _ProcessProductionTA.GetNewProductionIDByCoID(Me.LoginInfoObject.CompanyID).Value
           .RecordStatus_ID = Constants.RecordStatuses.Inserted
         End With
 
@@ -214,12 +214,12 @@ Public Class ProcessProduction
       Next c
 
       If _OrderBatchTable IsNot Nothing Then _OrderBatchTA.Update(_OrderBatchTable)
-      _ProductionTA.Update(_ProductionTable)
+      _ProcessProductionTA.Update(_ProductionTable)
       For I As Int32 = 0 To _ProductionDetailTable.Rows.Count - 1
         If _ProductionDetailTable(I).RowState = DataRowState.Added Then
-          _ProductionDetailTable(I).Production_Detail_ID = _ProductionDetailTA.GetNewProductionDetailID(Me.LoginInfoObject.CompanyID, _ProductionRow.Production_ID).Value
+          _ProductionDetailTable(I).Production_Detail_ID = _ProcessProductionDetailTA.GetNewProductionDetailID(Me.LoginInfoObject.CompanyID, _ProductionRow.Production_ID).Value
         End If
-        _ProductionDetailTA.Update(_ProductionDetailTable(I))
+        _ProcessProductionDetailTA.Update(_ProductionDetailTable(I))
       Next
 
       LoadProductionIDs()
@@ -498,14 +498,14 @@ Public Class ProcessProduction
   Private Sub ProductionIDComboBox_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ProductionIDComboBox.ValueChanged
     Try
       If Me.ProductionIDComboBox.SelectedRow IsNot Nothing Then
-        _ProductionTable = _ProductionTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
+        _ProductionTable = _ProcessProductionTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
         If _ProductionTable.Rows.Count = 0 Then
           QuickMessageBox.Show(Me.LoginInfoObject, "Production ID not found", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
         Else
           _ProductionRow = _ProductionTable(0)
           Me.ProductionDateCalendarCombo.Value = _ProductionRow.Production_Date
 
-          _ProductionDetailTable = _ProductionDetailTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
+          _ProductionDetailTable = _ProcessProductionDetailTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
           For I As Int32 = 0 To _ProductionDetailTable.Rows.Count - 1
             For c As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
               If _ProductionDetailTable(I).ItemSize_ID = _ItemSizeTable(c).ItemSize_ID Then

@@ -28,6 +28,10 @@ Partial Public Class QuickMessagingDataSet
     
     Private tableMessageGroup As MessageGroupDataTable
     
+    Private tableMessageGroupUserAssociation As MessageGroupUserAssociationDataTable
+    
+    Private relationFK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup As Global.System.Data.DataRelation
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -58,6 +62,9 @@ Partial Public Class QuickMessagingDataSet
             If (Not (ds.Tables("MessageGroup")) Is Nothing) Then
                 MyBase.Tables.Add(New MessageGroupDataTable(ds.Tables("MessageGroup")))
             End If
+            If (Not (ds.Tables("MessageGroupUserAssociation")) Is Nothing) Then
+                MyBase.Tables.Add(New MessageGroupUserAssociationDataTable(ds.Tables("MessageGroupUserAssociation")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -81,6 +88,15 @@ Partial Public Class QuickMessagingDataSet
     Public ReadOnly Property MessageGroup() As MessageGroupDataTable
         Get
             Return Me.tableMessageGroup
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property MessageGroupUserAssociation() As MessageGroupUserAssociationDataTable
+        Get
+            Return Me.tableMessageGroupUserAssociation
         End Get
     End Property
     
@@ -146,6 +162,9 @@ Partial Public Class QuickMessagingDataSet
             If (Not (ds.Tables("MessageGroup")) Is Nothing) Then
                 MyBase.Tables.Add(New MessageGroupDataTable(ds.Tables("MessageGroup")))
             End If
+            If (Not (ds.Tables("MessageGroupUserAssociation")) Is Nothing) Then
+                MyBase.Tables.Add(New MessageGroupUserAssociationDataTable(ds.Tables("MessageGroupUserAssociation")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -181,6 +200,13 @@ Partial Public Class QuickMessagingDataSet
                 Me.tableMessageGroup.InitVars
             End If
         End If
+        Me.tableMessageGroupUserAssociation = CType(MyBase.Tables("MessageGroupUserAssociation"),MessageGroupUserAssociationDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableMessageGroupUserAssociation) Is Nothing) Then
+                Me.tableMessageGroupUserAssociation.InitVars
+            End If
+        End If
+        Me.relationFK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup = Me.Relations("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -192,10 +218,19 @@ Partial Public Class QuickMessagingDataSet
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableMessageGroup = New MessageGroupDataTable
         MyBase.Tables.Add(Me.tableMessageGroup)
+        Me.tableMessageGroupUserAssociation = New MessageGroupUserAssociationDataTable
+        MyBase.Tables.Add(Me.tableMessageGroupUserAssociation)
+        Me.relationFK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup = New Global.System.Data.DataRelation("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup", New Global.System.Data.DataColumn() {Me.tableMessageGroup.Co_IDColumn, Me.tableMessageGroup.MessageGroupIDColumn}, New Global.System.Data.DataColumn() {Me.tableMessageGroupUserAssociation.Co_IDColumn, Me.tableMessageGroupUserAssociation.MessageGroupIDColumn}, false)
+        Me.Relations.Add(Me.relationFK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Private Function ShouldSerializeMessageGroup() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+    Private Function ShouldSerializeMessageGroupUserAssociation() As Boolean
         Return false
     End Function
     
@@ -257,6 +292,8 @@ Partial Public Class QuickMessagingDataSet
     
     Public Delegate Sub MessageGroupRowChangeEventHandler(ByVal sender As Object, ByVal e As MessageGroupRowChangeEvent)
     
+    Public Delegate Sub MessageGroupUserAssociationRowChangeEventHandler(ByVal sender As Object, ByVal e As MessageGroupUserAssociationRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -288,6 +325,10 @@ Partial Public Class QuickMessagingDataSet
         Private columnStamp_UserID As Global.System.Data.DataColumn
         
         Private columnUpload_DateTime As Global.System.Data.DataColumn
+        
+        Private columnMembersCount As Global.System.Data.DataColumn
+        
+        Private columnIsMember As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
@@ -398,6 +439,20 @@ Partial Public Class QuickMessagingDataSet
             End Get
         End Property
         
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property MembersCountColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMembersCount
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property IsMemberColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsMember
+            End Get
+        End Property
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -427,9 +482,9 @@ Partial Public Class QuickMessagingDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddMessageGroupRow(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal MessageGroupName As String, ByVal MessageGroupDesc As String, ByVal DailyMessageLimit As Integer, ByVal RecordStatusID As Integer, ByVal InactiveFrom As Date, ByVal InactiveTo As Date, ByVal Stamp_DateTime As Date, ByVal Stamp_UserID As Integer, ByVal Upload_DateTime As Date) As MessageGroupRow
+        Public Overloads Function AddMessageGroupRow(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal MessageGroupName As String, ByVal MessageGroupDesc As String, ByVal DailyMessageLimit As Integer, ByVal RecordStatusID As Integer, ByVal InactiveFrom As Date, ByVal InactiveTo As Date, ByVal Stamp_DateTime As Date, ByVal Stamp_UserID As Integer, ByVal Upload_DateTime As Date, ByVal MembersCount As Integer, ByVal IsMember As Integer) As MessageGroupRow
             Dim rowMessageGroupRow As MessageGroupRow = CType(Me.NewRow,MessageGroupRow)
-            Dim columnValuesArray() As Object = New Object() {Co_ID, MessageGroupID, MessageGroupName, MessageGroupDesc, DailyMessageLimit, RecordStatusID, InactiveFrom, InactiveTo, Stamp_DateTime, Stamp_UserID, Upload_DateTime}
+            Dim columnValuesArray() As Object = New Object() {Co_ID, MessageGroupID, MessageGroupName, MessageGroupDesc, DailyMessageLimit, RecordStatusID, InactiveFrom, InactiveTo, Stamp_DateTime, Stamp_UserID, Upload_DateTime, MembersCount, IsMember}
             rowMessageGroupRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMessageGroupRow)
             Return rowMessageGroupRow
@@ -470,6 +525,8 @@ Partial Public Class QuickMessagingDataSet
             Me.columnStamp_DateTime = MyBase.Columns("Stamp_DateTime")
             Me.columnStamp_UserID = MyBase.Columns("Stamp_UserID")
             Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
+            Me.columnMembersCount = MyBase.Columns("MembersCount")
+            Me.columnIsMember = MyBase.Columns("IsMember")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -496,6 +553,10 @@ Partial Public Class QuickMessagingDataSet
             MyBase.Columns.Add(Me.columnStamp_UserID)
             Me.columnUpload_DateTime = New Global.System.Data.DataColumn("Upload_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUpload_DateTime)
+            Me.columnMembersCount = New Global.System.Data.DataColumn("MembersCount", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMembersCount)
+            Me.columnIsMember = New Global.System.Data.DataColumn("IsMember", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsMember)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCo_ID, Me.columnMessageGroupID}, true))
             Me.columnCo_ID.AllowDBNull = false
             Me.columnMessageGroupID.AllowDBNull = false
@@ -578,6 +639,333 @@ Partial Public Class QuickMessagingDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "MessageGroupDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class MessageGroupUserAssociationDataTable
+        Inherits Global.System.Data.DataTable
+        Implements Global.System.Collections.IEnumerable
+        
+        Private columnCo_ID As Global.System.Data.DataColumn
+        
+        Private columnMessageGroupID As Global.System.Data.DataColumn
+        
+        Private columnUserID As Global.System.Data.DataColumn
+        
+        Private columnRecordStatusID As Global.System.Data.DataColumn
+        
+        Private columnStamp_DateTime As Global.System.Data.DataColumn
+        
+        Private columnStamp_UserID As Global.System.Data.DataColumn
+        
+        Private columnUpload_DateTime As Global.System.Data.DataColumn
+        
+        Private columnUserDesc As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "MessageGroupUserAssociation"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Co_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCo_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property MessageGroupIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMessageGroupID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property UserIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUserID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property RecordStatusIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRecordStatusID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Stamp_DateTimeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStamp_DateTime
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Stamp_UserIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStamp_UserID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Upload_DateTimeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUpload_DateTime
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property UserDescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUserDesc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As MessageGroupUserAssociationRow
+            Get
+                Return CType(Me.Rows(index),MessageGroupUserAssociationRow)
+            End Get
+        End Property
+        
+        Public Event MessageGroupUserAssociationRowChanging As MessageGroupUserAssociationRowChangeEventHandler
+        
+        Public Event MessageGroupUserAssociationRowChanged As MessageGroupUserAssociationRowChangeEventHandler
+        
+        Public Event MessageGroupUserAssociationRowDeleting As MessageGroupUserAssociationRowChangeEventHandler
+        
+        Public Event MessageGroupUserAssociationRowDeleted As MessageGroupUserAssociationRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Sub AddMessageGroupUserAssociationRow(ByVal row As MessageGroupUserAssociationRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overloads Function AddMessageGroupUserAssociationRow(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal UserID As Integer, ByVal RecordStatusID As Integer, ByVal Stamp_DateTime As Date, ByVal Stamp_UserID As Integer, ByVal Upload_DateTime As Date, ByVal UserDesc As String) As MessageGroupUserAssociationRow
+            Dim rowMessageGroupUserAssociationRow As MessageGroupUserAssociationRow = CType(Me.NewRow,MessageGroupUserAssociationRow)
+            Dim columnValuesArray() As Object = New Object() {Co_ID, MessageGroupID, UserID, RecordStatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime, UserDesc}
+            rowMessageGroupUserAssociationRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowMessageGroupUserAssociationRow)
+            Return rowMessageGroupUserAssociationRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function FindByCo_IDMessageGroupIDUserID(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal UserID As Integer) As MessageGroupUserAssociationRow
+            Return CType(Me.Rows.Find(New Object() {Co_ID, MessageGroupID, UserID}),MessageGroupUserAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
+            Return Me.Rows.GetEnumerator
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As MessageGroupUserAssociationDataTable = CType(MyBase.Clone,MessageGroupUserAssociationDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New MessageGroupUserAssociationDataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub InitVars()
+            Me.columnCo_ID = MyBase.Columns("Co_ID")
+            Me.columnMessageGroupID = MyBase.Columns("MessageGroupID")
+            Me.columnUserID = MyBase.Columns("UserID")
+            Me.columnRecordStatusID = MyBase.Columns("RecordStatusID")
+            Me.columnStamp_DateTime = MyBase.Columns("Stamp_DateTime")
+            Me.columnStamp_UserID = MyBase.Columns("Stamp_UserID")
+            Me.columnUpload_DateTime = MyBase.Columns("Upload_DateTime")
+            Me.columnUserDesc = MyBase.Columns("UserDesc")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitClass()
+            Me.columnCo_ID = New Global.System.Data.DataColumn("Co_ID", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCo_ID)
+            Me.columnMessageGroupID = New Global.System.Data.DataColumn("MessageGroupID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMessageGroupID)
+            Me.columnUserID = New Global.System.Data.DataColumn("UserID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUserID)
+            Me.columnRecordStatusID = New Global.System.Data.DataColumn("RecordStatusID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRecordStatusID)
+            Me.columnStamp_DateTime = New Global.System.Data.DataColumn("Stamp_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStamp_DateTime)
+            Me.columnStamp_UserID = New Global.System.Data.DataColumn("Stamp_UserID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStamp_UserID)
+            Me.columnUpload_DateTime = New Global.System.Data.DataColumn("Upload_DateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUpload_DateTime)
+            Me.columnUserDesc = New Global.System.Data.DataColumn("UserDesc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUserDesc)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCo_ID, Me.columnMessageGroupID, Me.columnUserID}, true))
+            Me.columnCo_ID.AllowDBNull = false
+            Me.columnMessageGroupID.AllowDBNull = false
+            Me.columnUserID.AllowDBNull = false
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function NewMessageGroupUserAssociationRow() As MessageGroupUserAssociationRow
+            Return CType(Me.NewRow,MessageGroupUserAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New MessageGroupUserAssociationRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(MessageGroupUserAssociationRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.MessageGroupUserAssociationRowChangedEvent) Is Nothing) Then
+                RaiseEvent MessageGroupUserAssociationRowChanged(Me, New MessageGroupUserAssociationRowChangeEvent(CType(e.Row,MessageGroupUserAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.MessageGroupUserAssociationRowChangingEvent) Is Nothing) Then
+                RaiseEvent MessageGroupUserAssociationRowChanging(Me, New MessageGroupUserAssociationRowChangeEvent(CType(e.Row,MessageGroupUserAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.MessageGroupUserAssociationRowDeletedEvent) Is Nothing) Then
+                RaiseEvent MessageGroupUserAssociationRowDeleted(Me, New MessageGroupUserAssociationRowChangeEvent(CType(e.Row,MessageGroupUserAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.MessageGroupUserAssociationRowDeletingEvent) Is Nothing) Then
+                RaiseEvent MessageGroupUserAssociationRowDeleting(Me, New MessageGroupUserAssociationRowChangeEvent(CType(e.Row,MessageGroupUserAssociationRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub RemoveMessageGroupUserAssociationRow(ByVal row As MessageGroupUserAssociationRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence
+            Dim ds As QuickMessagingDataSet = New QuickMessagingDataSet
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "MessageGroupUserAssociationDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -783,6 +1171,34 @@ Partial Public Class QuickMessagingDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property MembersCount() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroup.MembersCountColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MembersCount' in table 'MessageGroup' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroup.MembersCountColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property IsMember() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroup.IsMemberColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IsMember' in table 'MessageGroup' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroup.IsMemberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsMessageGroupNameNull() As Boolean
             Return Me.IsNull(Me.tableMessageGroup.MessageGroupNameColumn)
         End Function
@@ -871,6 +1287,216 @@ Partial Public Class QuickMessagingDataSet
         Public Sub SetUpload_DateTimeNull()
             Me(Me.tableMessageGroup.Upload_DateTimeColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsMembersCountNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroup.MembersCountColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetMembersCountNull()
+            Me(Me.tableMessageGroup.MembersCountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsIsMemberNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroup.IsMemberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetIsMemberNull()
+            Me(Me.tableMessageGroup.IsMemberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function GetMessageGroupUserAssociationRows() As MessageGroupUserAssociationRow()
+            If (Me.Table.ChildRelations("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup") Is Nothing) Then
+                Return New MessageGroupUserAssociationRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup")),MessageGroupUserAssociationRow())
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Partial Public Class MessageGroupUserAssociationRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableMessageGroupUserAssociation As MessageGroupUserAssociationDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableMessageGroupUserAssociation = CType(Me.Table,MessageGroupUserAssociationDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Co_ID() As Short
+            Get
+                Return CType(Me(Me.tableMessageGroupUserAssociation.Co_IDColumn),Short)
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.Co_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property MessageGroupID() As Integer
+            Get
+                Return CType(Me(Me.tableMessageGroupUserAssociation.MessageGroupIDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.MessageGroupIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property UserID() As Integer
+            Get
+                Return CType(Me(Me.tableMessageGroupUserAssociation.UserIDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.UserIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property RecordStatusID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroupUserAssociation.RecordStatusIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RecordStatusID' in table 'MessageGroupUserAssociation' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.RecordStatusIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Stamp_DateTime() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroupUserAssociation.Stamp_DateTimeColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Stamp_DateTime' in table 'MessageGroupUserAssociation' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.Stamp_DateTimeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Stamp_UserID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroupUserAssociation.Stamp_UserIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Stamp_UserID' in table 'MessageGroupUserAssociation' is DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.Stamp_UserIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Upload_DateTime() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroupUserAssociation.Upload_DateTimeColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Upload_DateTime' in table 'MessageGroupUserAssociation' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.Upload_DateTimeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property UserDesc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMessageGroupUserAssociation.UserDescColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UserDesc' in table 'MessageGroupUserAssociation' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMessageGroupUserAssociation.UserDescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property MessageGroupRowParent() As MessageGroupRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup")),MessageGroupRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsRecordStatusIDNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroupUserAssociation.RecordStatusIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetRecordStatusIDNull()
+            Me(Me.tableMessageGroupUserAssociation.RecordStatusIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsStamp_DateTimeNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroupUserAssociation.Stamp_DateTimeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetStamp_DateTimeNull()
+            Me(Me.tableMessageGroupUserAssociation.Stamp_DateTimeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsStamp_UserIDNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroupUserAssociation.Stamp_UserIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetStamp_UserIDNull()
+            Me(Me.tableMessageGroupUserAssociation.Stamp_UserIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsUpload_DateTimeNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroupUserAssociation.Upload_DateTimeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetUpload_DateTimeNull()
+            Me(Me.tableMessageGroupUserAssociation.Upload_DateTimeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsUserDescNull() As Boolean
+            Return Me.IsNull(Me.tableMessageGroupUserAssociation.UserDescColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetUserDescNull()
+            Me(Me.tableMessageGroupUserAssociation.UserDescColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -893,6 +1519,39 @@ Partial Public Class QuickMessagingDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Row() As MessageGroupRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")>  _
+    Public Class MessageGroupUserAssociationRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As MessageGroupUserAssociationRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New(ByVal row As MessageGroupUserAssociationRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property Row() As MessageGroupUserAssociationRow
             Get
                 Return Me.eventRow
             End Get
@@ -1141,7 +1800,7 @@ Namespace QuickMessagingDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Co_ID, MessageGroupID, MessageGroupName, MessageGroupDesc, DailyMessag"& _ 
@@ -1150,10 +1809,80 @@ Namespace QuickMessagingDataSetTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ISNULL( MAX(MessageGroupID), 0) + 1  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Messaging_MessageGroup"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
-                "Co_ID = @CoID"
+            Me._commandCollection(1).CommandText = "SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, M"& _ 
+                "essaging_MessageGroup.MessageGroupName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_Messag"& _ 
+                "eGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_Mes"& _ 
+                "sageGroup.RecordStatusID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.Inactiv"& _ 
+                "eFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime,"& _ 
+                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageG"& _ 
+                "roup.Upload_DateTime, COUNT(mgua.Co_ID) AS MembersCount, CONVERT(BIT, COUNT(usta"& _ 
+                "tus.Co_ID)) AS IsMember"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Messaging_MessageGroup "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"LEFT OUTER JOI"& _ 
+                "N"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroupUserAssociation AS ustatus ON Mes"& _ 
+                "saging_MessageGroup.Co_ID = ustatus.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_"& _ 
+                "MessageGroup.MessageGroupID = ustatus.MessageGroupID AND ustatus.UserID = @UserI"& _ 
+                "D "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroupUserAssociatio"& _ 
+                "n AS mgua ON Messaging_MessageGroup.Co_ID = mgua.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "   Messaging_MessageGroup.MessageGroupID = mgua.MessageGroupID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Messagin"& _ 
+                "g_MessageGroup.Co_ID = @CoID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Messaging_MessageGroup.Co_ID, Messaging"& _ 
+                "_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "               Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.D"& _ 
+                "ailyMessageLimit, Messaging_MessageGroup.RecordStatusID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                " Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messagi"& _ 
+                "ng_MessageGroup.Stamp_DateTime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.S"& _ 
+                "tamp_UserID, Messaging_MessageGroup.Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY IsMember DESC, M"& _ 
+                "embersCount DESC, Messaging_MessageGroup.MessageGroupName ASC"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, M"& _ 
+                "essaging_MessageGroup.MessageGroupName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_Messag"& _ 
+                "eGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_Mes"& _ 
+                "sageGroup.RecordStatusID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.Inactiv"& _ 
+                "eFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime,"& _ 
+                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageG"& _ 
+                "roup.Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Messaging_MessageGroup "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                 Messaging_MessageGroupUserAssociation AS ustatus ON Messaging_M"& _ 
+                "essageGroup.Co_ID = ustatus.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageG"& _ 
+                "roup.MessageGroupID = ustatus.MessageGroupID AND ustatus.UserID = @UserID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
+                "ERE Messaging_MessageGroup.Co_ID = @CoID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Messaging_MessageGroup.Mess"& _ 
+                "ageGroupName"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT ISNULL( MAX(MessageGroupID), 0) + 1  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Messaging_MessageGroup"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "Co_ID = @CoID"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, M"& _ 
+                "essaging_MessageGroup.MessageGroupName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&", Messaging_MessageGroup.MessageGroupDe"& _ 
+                "sc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatu"& _ 
+                "sID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&", Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, "& _ 
+                "Messaging_MessageGroup.Stamp_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&", Messaging_MessageGroup.Stamp_UserID, M"& _ 
+                "essaging_MessageGroup.Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&", COUNT(mgua.Co_ID) AS MembersCount, CON"& _ 
+                "VERT(BIT, COUNT(ustatus.Co_ID)) AS IsMember"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Messaging_MessageGro"& _ 
+                "up "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroupUserAssociati"& _ 
+                "on AS ustatus ON Messaging_MessageGroup.Co_ID = ustatus.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "          Messaging_MessageGroup.MessageGroupID = ustatus.MessageGroupID AND ust"& _ 
+                "atus.UserID = @UserID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_Messag"& _ 
+                "eGroupUserAssociation AS mgua ON Messaging_MessageGroup.Co_ID = mgua.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.MessageGroupID = mgua.MessageGroup"& _ 
+                "ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Messaging_MessageGroup.Co_ID = @CoID AND Messaging_MessageGroup.Mess"& _ 
+                "ageGroupID = @MessageGroupID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Messaging_MessageGroup.Co_ID, Messaging"& _ 
+                "_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "               Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.D"& _ 
+                "ailyMessageLimit, Messaging_MessageGroup.RecordStatusID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                " Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messagi"& _ 
+                "ng_MessageGroup.Stamp_DateTime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroup.S"& _ 
+                "tamp_UserID, Messaging_MessageGroup.Upload_DateTime"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1161,6 +1890,43 @@ Namespace QuickMessagingDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetAll() As QuickMessagingDataSet.MessageGroupDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickMessagingDataSet.MessageGroupDataTable = New QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetAllWithStatus(ByVal UserID As Integer, ByVal CoID As Integer) As QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(UserID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(CoID,Integer)
+            Dim dataTable As QuickMessagingDataSet.MessageGroupDataTable = New QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetJoinedGroupsByCoIDUserID(ByVal UserID As Integer, ByVal CoID As Integer) As QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(UserID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(CoID,Integer)
+            Dim dataTable As QuickMessagingDataSet.MessageGroupDataTable = New QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetWithStatusByMessageGroupID(ByVal UserID As Integer, ByVal CoID As Integer, ByVal MessageGroupID As Integer) As QuickMessagingDataSet.MessageGroupDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(UserID,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(CoID,Integer)
+            Me.Adapter.SelectCommand.Parameters(2).Value = CType(MessageGroupID,Integer)
             Dim dataTable As QuickMessagingDataSet.MessageGroupDataTable = New QuickMessagingDataSet.MessageGroupDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -1523,7 +2289,7 @@ Namespace QuickMessagingDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function GetNewMessageGroupID(ByVal CoID As Integer) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
             command.Parameters(0).Value = CType(CoID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1544,6 +2310,499 @@ Namespace QuickMessagingDataSetTableAdapters
             Else
                 Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
             End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
+     Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class MessageGroupUserAssociationTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "MessageGroupUserAssociation"
+            tableMapping.ColumnMappings.Add("Co_ID", "Co_ID")
+            tableMapping.ColumnMappings.Add("MessageGroupID", "MessageGroupID")
+            tableMapping.ColumnMappings.Add("UserID", "UserID")
+            tableMapping.ColumnMappings.Add("RecordStatusID", "RecordStatusID")
+            tableMapping.ColumnMappings.Add("Stamp_DateTime", "Stamp_DateTime")
+            tableMapping.ColumnMappings.Add("Stamp_UserID", "Stamp_UserID")
+            tableMapping.ColumnMappings.Add("Upload_DateTime", "Upload_DateTime")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Messaging_MessageGroupUserAssociation] WHERE (([Co_ID] = @Original_C"& _ 
+                "o_ID) AND ([MessageGroupID] = @Original_MessageGroupID) AND ([UserID] = @Origina"& _ 
+                "l_UserID) AND ((@IsNull_RecordStatusID = 1 AND [RecordStatusID] IS NULL) OR ([Re"& _ 
+                "cordStatusID] = @Original_RecordStatusID)) AND ((@IsNull_Stamp_DateTime = 1 AND "& _ 
+                "[Stamp_DateTime] IS NULL) OR ([Stamp_DateTime] = @Original_Stamp_DateTime)) AND "& _ 
+                "((@IsNull_Stamp_UserID = 1 AND [Stamp_UserID] IS NULL) OR ([Stamp_UserID] = @Ori"& _ 
+                "ginal_Stamp_UserID)) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS "& _ 
+                "NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MessageGroupID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Stamp_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Messaging_MessageGroupUserAssociation] ([Co_ID], [MessageGroupID], ["& _ 
+                "UserID], [RecordStatusID], [Stamp_DateTime], [Stamp_UserID], [Upload_DateTime]) "& _ 
+                "VALUES (@Co_ID, @MessageGroupID, @UserID, @RecordStatusID, @Stamp_DateTime, @Sta"& _ 
+                "mp_UserID, @Upload_DateTime);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, MessageGroupID, UserID, RecordStatu"& _ 
+                "sID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Messaging_MessageGroupUs"& _ 
+                "erAssociation WHERE (Co_ID = @Co_ID) AND (MessageGroupID = @MessageGroupID) AND "& _ 
+                "(UserID = @UserID)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Messaging_MessageGroupUserAssociation] SET [Co_ID] = @Co_ID, [MessageGrou"& _ 
+                "pID] = @MessageGroupID, [UserID] = @UserID, [RecordStatusID] = @RecordStatusID, "& _ 
+                "[Stamp_DateTime] = @Stamp_DateTime, [Stamp_UserID] = @Stamp_UserID, [Upload_Date"& _ 
+                "Time] = @Upload_DateTime WHERE (([Co_ID] = @Original_Co_ID) AND ([MessageGroupID"& _ 
+                "] = @Original_MessageGroupID) AND ([UserID] = @Original_UserID) AND ((@IsNull_Re"& _ 
+                "cordStatusID = 1 AND [RecordStatusID] IS NULL) OR ([RecordStatusID] = @Original_"& _ 
+                "RecordStatusID)) AND ((@IsNull_Stamp_DateTime = 1 AND [Stamp_DateTime] IS NULL) "& _ 
+                "OR ([Stamp_DateTime] = @Original_Stamp_DateTime)) AND ((@IsNull_Stamp_UserID = 1"& _ 
+                " AND [Stamp_UserID] IS NULL) OR ([Stamp_UserID] = @Original_Stamp_UserID)) AND ("& _ 
+                "(@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime"& _ 
+                "] = @Original_Upload_DateTime)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Co_ID, MessageGroupID, UserID, RecordS"& _ 
+                "tatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Messaging_MessageGro"& _ 
+                "upUserAssociation WHERE (Co_ID = @Co_ID) AND (MessageGroupID = @MessageGroupID) "& _ 
+                "AND (UserID = @UserID)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Co_ID", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MessageGroupID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RecordStatusID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RecordStatusID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Stamp_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Stamp_UserID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stamp_UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Upload_DateTime", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection
+            Me._connection.ConnectionString = Global.QuickDAL.My.MySettings.Default.Quick_ERPConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT     Co_ID, MessageGroupID, UserID, RecordStatusID, Stamp_DateTime, Stamp_U"& _ 
+                "serID, Upload_DateTime"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Messaging_MessageGroupUserAssociation"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT     Messaging_MessageGroupUserAssociation.Co_ID, Messaging_MessageGroupUse"& _ 
+                "rAssociation.MessageGroupID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_MessageGroupUserA"& _ 
+                "ssociation.UserID, Messaging_MessageGroupUserAssociation.RecordStatusID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                 Messaging_MessageGroupUserAssociation.Stamp_DateTime, Messaging"& _ 
+                "_MessageGroupUserAssociation.Stamp_UserID, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      Messaging_Mes"& _ 
+                "sageGroupUserAssociation.Upload_DateTime, Sec_User.User_Desc AS UserDesc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
+                "       Messaging_MessageGroupUserAssociation INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      S"& _ 
+                "ec_User ON Messaging_MessageGroupUserAssociation.Co_ID = Sec_User.Co_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                    Messaging_MessageGroupUserAssociation.UserID = Sec_User.User"& _ 
+                "_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Messaging_MessageGroupUserAssociation.MessageGroupID = @MessageG"& _ 
+                "roupID)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT COUNT(*) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM Messaging_MessageGroupUserAssociation"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE Co_ID = @CoID"& _ 
+                " AND MessageGroupID = @MessageGroupID AND UserID = @UserID"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "DELETE FROM [Messaging_MessageGroupUserAssociation] WHERE [Co_ID] = @Co_ID AND [M"& _ 
+                "essageGroupID] = @MessageGroupID AND [UserID] = @UserID"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Co_ID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MessageGroupID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "MessageGroupID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "UserID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetAll() As QuickMessagingDataSet.MessageGroupUserAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As QuickMessagingDataSet.MessageGroupUserAssociationDataTable = New QuickMessagingDataSet.MessageGroupUserAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetMemebersByMessageGroupID(ByVal MessageGroupID As Integer) As QuickMessagingDataSet.MessageGroupUserAssociationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(MessageGroupID,Integer)
+            Dim dataTable As QuickMessagingDataSet.MessageGroupUserAssociationDataTable = New QuickMessagingDataSet.MessageGroupUserAssociationDataTable
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As QuickMessagingDataSet.MessageGroupUserAssociationDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As QuickMessagingDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "MessageGroupUserAssociation")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Co_ID As Short, ByVal Original_MessageGroupID As Integer, ByVal Original_UserID As Integer, ByVal Original_RecordStatusID As Global.System.Nullable(Of Integer), ByVal Original_Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Original_Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_MessageGroupID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_UserID,Integer)
+            If (Original_RecordStatusID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_RecordStatusID.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Stamp_DateTime.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Stamp_DateTime.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Stamp_UserID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Stamp_UserID.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Upload_DateTime.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal UserID As Integer, ByVal RecordStatusID As Global.System.Nullable(Of Integer), ByVal Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Co_ID,Short)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(MessageGroupID,Integer)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(UserID,Integer)
+            If (RecordStatusID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(RecordStatusID.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Stamp_DateTime.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Stamp_DateTime.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Stamp_UserID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Stamp_UserID.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Upload_DateTime.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal Co_ID As Short, ByVal MessageGroupID As Integer, ByVal UserID As Integer, ByVal RecordStatusID As Global.System.Nullable(Of Integer), ByVal Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_Co_ID As Short, ByVal Original_MessageGroupID As Integer, ByVal Original_UserID As Integer, ByVal Original_RecordStatusID As Global.System.Nullable(Of Integer), ByVal Original_Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Original_Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(MessageGroupID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(UserID,Integer)
+            If (RecordStatusID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(RecordStatusID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Stamp_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Stamp_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Stamp_UserID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Stamp_UserID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Upload_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Co_ID,Short)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_MessageGroupID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_UserID,Integer)
+            If (Original_RecordStatusID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_RecordStatusID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Stamp_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Stamp_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Stamp_UserID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_Stamp_UserID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Upload_DateTime.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Upload_DateTime.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal RecordStatusID As Global.System.Nullable(Of Integer), ByVal Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Upload_DateTime As Global.System.Nullable(Of Date), ByVal Original_Co_ID As Short, ByVal Original_MessageGroupID As Integer, ByVal Original_UserID As Integer, ByVal Original_RecordStatusID As Global.System.Nullable(Of Integer), ByVal Original_Stamp_DateTime As Global.System.Nullable(Of Date), ByVal Original_Stamp_UserID As Global.System.Nullable(Of Integer), ByVal Original_Upload_DateTime As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Original_Co_ID, Original_MessageGroupID, Original_UserID, RecordStatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime, Original_Co_ID, Original_MessageGroupID, Original_UserID, Original_RecordStatusID, Original_Stamp_DateTime, Original_Stamp_UserID, Original_Upload_DateTime)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function GetCountByCoIDMessageGroupIDUserID(ByVal CoID As Integer, ByVal MessageGroupID As Integer, ByVal UserID As Integer) As Object
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            command.Parameters(0).Value = CType(CoID,Integer)
+            command.Parameters(1).Value = CType(MessageGroupID,Integer)
+            command.Parameters(2).Value = CType(UserID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function RemoveUserFromGroup(ByVal Co_ID As Integer, ByVal MessageGroupID As Integer, ByVal UserID As Integer) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            command.Parameters(0).Value = CType(Co_ID,Integer)
+            command.Parameters(1).Value = CType(MessageGroupID,Integer)
+            command.Parameters(2).Value = CType(UserID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
 End Namespace

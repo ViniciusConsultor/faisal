@@ -196,7 +196,7 @@ Public Class Service
         ElseIf SendSmsIDs.Substring(I, 1) = "," OrElse I = SendSmsIDs.Length - 1 Then
           _IsCoID = True
           _ReturnString &= "updating sent sms co_id, alertid: " & _CoID & "," & _AlertID
-          _ReturnString &= _AlertTA.UpdateStatus(QuickLibrary.Constants.DocumentStatuses.Alert_Send, Convert.ToInt32(_CoID), Convert.ToInt32(_AlertID)).ToString & " rows effected"
+          _ReturnString &= _AlertTA.UpdateStatus(QuickLibrary.Constants.DocumentStatuses.Message_Send, Convert.ToInt32(_CoID), Convert.ToInt32(_AlertID)).ToString & " rows effected"
           _CoID = String.Empty
           _AlertID = String.Empty
         End If

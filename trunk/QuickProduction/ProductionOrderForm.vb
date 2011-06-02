@@ -479,17 +479,14 @@ Public Class ProductionOrderForm
       Me.ProductionOrderSpread.ActiveSheet.Rows.Count = 1
       Me.ProductionOrderSpread.ActiveSheet.Columns(_ItemSizeTable.Count).Locked = True
       Me.ProductionOrderSpread.AutoNewRow = False
-      Me.SummarySpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count + 1
-      Me.SummarySpread.ActiveSheet.RowCount = 3
-
       'Me.FormulaDetailSpread.ActiveSheet.Columns.Count = _ItemSizeTable.Count
 
       For I As Int32 = 0 To _ItemSizeTable.Count - 1
         Me.ProductionOrderSpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
-        Me.SummarySpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
+        'Me.SummarySpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
         'Me.FormulaDetailSpread.ActiveSheet.Columns(I).Label = _ItemSizeTable(I).ItemSize_Desc
       Next
-      Me.SummarySpread.ActiveSheet.Columns(_ItemSizeTable.Count).Label = "Total"
+      'Me.SummarySpread.ActiveSheet.Columns(_ItemSizeTable.Count).Label = "Total"
       Me.FormulaDetailSpread.ActiveSheet.ColumnCount = 0
       Me.FormulaDetailSpread.ActiveSheet.RowCount = 0
       Me.ItemMultiComboBox.qSetComboBoxesOnDataTable(_ItemTable, DatabaseCache.GetSettingValue(Constants.SETTING_ID_Mask_ItemCode), Constants.ITEM_LEVELING_SEPERATOR, _ItemTable.Item_CodeColumn.ColumnName, _ItemTable.Item_IDColumn.ColumnName)
@@ -519,6 +516,17 @@ Public Class ProductionOrderForm
       _FormulaDetailToDisplay = New FormulaDetailDataTable
 
       _ItemDetailTable = _ItemDetailTA.GetByCoIDItemCode(Me.LoginInfoObject.CompanyID, Me.ItemMultiComboBox.Text)
+
+
+      '<<<<<<<<<< Start Load Item Summary
+      Dim _ItemOldTA As New QuickDAL.QuickInventoryDataSetTableAdapters.ItemTableAdapter
+      Dim _ItemOldTable As QuickInventoryDataSet.ItemDataTable = _ItemOldTA.GetByItemCodeAndCoID(Me.ItemMultiComboBox.Text, Me.LoginInfoObject.CompanyID)
+      If _ItemOldTable.Rows.Count > 0 Then
+        Me.ItemSummaryBar1.ShowSummary(Me.LoginInfoObject.CompanyID, _ItemOldTable(0).Item_ID, 0, 0)
+      End If
+      '>>>>>>>>>> End Load Item Summary
+
+
       For id As Int32 = 0 To _ItemDetailTable.Rows.Count - 1
         _FormulaTable = _FormulaTA.GetByCoIDOutputItemID(Me.LoginInfoObject.CompanyID, _ItemDetailTable(id).Item_Detail_ID)
         For f As Int32 = 0 To _FormulaTable.Rows.Count - 1
