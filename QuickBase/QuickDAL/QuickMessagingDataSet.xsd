@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MessageGroupTableAdapter" GeneratorDataComponentClassName="MessageGroupTableAdapter" Name="MessageGroup" UserDataComponentName="MessageGroupTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroup" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="Fill">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroup" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Messaging_MessageGroup] WHERE (([Co_ID] = @Original_Co_ID) AND ([MessageGroupID] = @Original_MessageGroupID) AND ((@IsNull_MessageGroupName = 1 AND [MessageGroupName] IS NULL) OR ([MessageGroupName] = @Original_MessageGroupName)) AND ((@IsNull_MessageGroupDesc = 1 AND [MessageGroupDesc] IS NULL) OR ([MessageGroupDesc] = @Original_MessageGroupDesc)) AND ((@IsNull_DailyMessageLimit = 1 AND [DailyMessageLimit] IS NULL) OR ([DailyMessageLimit] = @Original_DailyMessageLimit)) AND ((@IsNull_RecordStatusID = 1 AND [RecordStatusID] IS NULL) OR ([RecordStatusID] = @Original_RecordStatusID)) AND ((@IsNull_InactiveFrom = 1 AND [InactiveFrom] IS NULL) OR ([InactiveFrom] = @Original_InactiveFrom)) AND ((@IsNull_InactiveTo = 1 AND [InactiveTo] IS NULL) OR ([InactiveTo] = @Original_InactiveTo)) AND ((@IsNull_Stamp_DateTime = 1 AND [Stamp_DateTime] IS NULL) OR ([Stamp_DateTime] = @Original_Stamp_DateTime)) AND ((@IsNull_Stamp_UserID = 1 AND [Stamp_UserID] IS NULL) OR ([Stamp_UserID] = @Original_Stamp_UserID)) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)))</CommandText>
@@ -183,6 +183,64 @@ SELECT Co_ID, MessageGroupID, MessageGroupName, MessageGroupDesc, DailyMessageLi
               <Mapping SourceColumn="Upload_DateTime" DataSetColumn="Upload_DateTime" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroup" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAllWithStatus" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetAllWithStatus" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAllWithStatus" UserSourceName="GetAllWithStatus1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, 
+                      Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatusID, 
+                      Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime, 
+                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageGroup.Upload_DateTime, COUNT(mgua.Co_ID) AS MembersCount, CONVERT(BIT, COUNT(ustatus.Co_ID)) AS IsMember
+
+FROM         Messaging_MessageGroup 
+	LEFT OUTER JOIN
+                      Messaging_MessageGroupUserAssociation AS ustatus ON Messaging_MessageGroup.Co_ID = ustatus.Co_ID AND 
+                      Messaging_MessageGroup.MessageGroupID = ustatus.MessageGroupID AND ustatus.UserID = @UserID 
+	LEFT OUTER JOIN
+                      Messaging_MessageGroupUserAssociation AS mgua ON Messaging_MessageGroup.Co_ID = mgua.Co_ID AND 
+                      Messaging_MessageGroup.MessageGroupID = mgua.MessageGroupID
+
+WHERE Messaging_MessageGroup.Co_ID = @CoID
+
+GROUP BY Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, 
+                      Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatusID, 
+                      Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime, 
+                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageGroup.Upload_DateTime
+
+ORDER BY IsMember DESC, MembersCount DESC, Messaging_MessageGroup.MessageGroupName ASC</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroup" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroup" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetJoinedGroupsByCoIDUserID" GetMethodModifier="Public" GetMethodName="GetJoinedGroupsByCoIDUserID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetJoinedGroupsByCoIDUserID" UserSourceName="GetJoinedGroupsByCoIDUserID1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, 
+                      Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatusID, 
+                      Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime, 
+                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageGroup.Upload_DateTime
+
+FROM         Messaging_MessageGroup 
+	INNER JOIN
+                      Messaging_MessageGroupUserAssociation AS ustatus ON Messaging_MessageGroup.Co_ID = ustatus.Co_ID AND 
+                      Messaging_MessageGroup.MessageGroupID = ustatus.MessageGroupID AND ustatus.UserID = @UserID 
+
+WHERE Messaging_MessageGroup.Co_ID = @CoID
+
+ORDER BY Messaging_MessageGroup.MessageGroupName</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroup" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewMessageGroupID" Modifier="Public" Name="GetNewMessageGroupID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewMessageGroupID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
@@ -196,6 +254,210 @@ WHERE Co_ID = @CoID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroup" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetWithStatusByMessageGroupID" GetMethodModifier="Public" GetMethodName="GetWithStatusByMessageGroupID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetWithStatusByMessageGroupID" UserSourceName="GetWithStatusByMessageGroupID1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName
+	, Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatusID
+	, Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime
+	, Messaging_MessageGroup.Stamp_UserID, Messaging_MessageGroup.Upload_DateTime
+	, COUNT(mgua.Co_ID) AS MembersCount, CONVERT(BIT, COUNT(ustatus.Co_ID)) AS IsMember
+
+FROM         Messaging_MessageGroup 
+	LEFT OUTER JOIN
+                      Messaging_MessageGroupUserAssociation AS ustatus ON Messaging_MessageGroup.Co_ID = ustatus.Co_ID AND 
+                      Messaging_MessageGroup.MessageGroupID = ustatus.MessageGroupID AND ustatus.UserID = @UserID 
+	LEFT OUTER JOIN
+                      Messaging_MessageGroupUserAssociation AS mgua ON Messaging_MessageGroup.Co_ID = mgua.Co_ID AND 
+                      Messaging_MessageGroup.MessageGroupID = mgua.MessageGroupID
+
+WHERE Messaging_MessageGroup.Co_ID = @CoID AND Messaging_MessageGroup.MessageGroupID = @MessageGroupID
+
+GROUP BY Messaging_MessageGroup.Co_ID, Messaging_MessageGroup.MessageGroupID, Messaging_MessageGroup.MessageGroupName, 
+                      Messaging_MessageGroup.MessageGroupDesc, Messaging_MessageGroup.DailyMessageLimit, Messaging_MessageGroup.RecordStatusID, 
+                      Messaging_MessageGroup.InactiveFrom, Messaging_MessageGroup.InactiveTo, Messaging_MessageGroup.Stamp_DateTime, 
+                      Messaging_MessageGroup.Stamp_UserID, Messaging_MessageGroup.Upload_DateTime</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroup" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="MessageGroupID" ColumnName="MessageGroupID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroup" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MessageGroupUserAssociationTableAdapter" GeneratorDataComponentClassName="MessageGroupUserAssociationTableAdapter" Name="MessageGroupUserAssociation" UserDataComponentName="MessageGroupUserAssociationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM [Messaging_MessageGroupUserAssociation] WHERE (([Co_ID] = @Original_Co_ID) AND ([MessageGroupID] = @Original_MessageGroupID) AND ([UserID] = @Original_UserID) AND ((@IsNull_RecordStatusID = 1 AND [RecordStatusID] IS NULL) OR ([RecordStatusID] = @Original_RecordStatusID)) AND ((@IsNull_Stamp_DateTime = 1 AND [Stamp_DateTime] IS NULL) OR ([Stamp_DateTime] = @Original_Stamp_DateTime)) AND ((@IsNull_Stamp_UserID = 1 AND [Stamp_UserID] IS NULL) OR ([Stamp_UserID] = @Original_Stamp_UserID)) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_Co_ID" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Stamp_DateTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Stamp_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Upload_DateTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Upload_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO [Messaging_MessageGroupUserAssociation] ([Co_ID], [MessageGroupID], [UserID], [RecordStatusID], [Stamp_DateTime], [Stamp_UserID], [Upload_DateTime]) VALUES (@Co_ID, @MessageGroupID, @UserID, @RecordStatusID, @Stamp_DateTime, @Stamp_UserID, @Upload_DateTime);
+SELECT Co_ID, MessageGroupID, UserID, RecordStatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Messaging_MessageGroupUserAssociation WHERE (Co_ID = @Co_ID) AND (MessageGroupID = @MessageGroupID) AND (UserID = @UserID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Co_ID" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Stamp_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Upload_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Co_ID, MessageGroupID, UserID, RecordStatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime
+FROM         Messaging_MessageGroupUserAssociation</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE [Messaging_MessageGroupUserAssociation] SET [Co_ID] = @Co_ID, [MessageGroupID] = @MessageGroupID, [UserID] = @UserID, [RecordStatusID] = @RecordStatusID, [Stamp_DateTime] = @Stamp_DateTime, [Stamp_UserID] = @Stamp_UserID, [Upload_DateTime] = @Upload_DateTime WHERE (([Co_ID] = @Original_Co_ID) AND ([MessageGroupID] = @Original_MessageGroupID) AND ([UserID] = @Original_UserID) AND ((@IsNull_RecordStatusID = 1 AND [RecordStatusID] IS NULL) OR ([RecordStatusID] = @Original_RecordStatusID)) AND ((@IsNull_Stamp_DateTime = 1 AND [Stamp_DateTime] IS NULL) OR ([Stamp_DateTime] = @Original_Stamp_DateTime)) AND ((@IsNull_Stamp_UserID = 1 AND [Stamp_UserID] IS NULL) OR ([Stamp_UserID] = @Original_Stamp_UserID)) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)));
+SELECT Co_ID, MessageGroupID, UserID, RecordStatusID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Messaging_MessageGroupUserAssociation WHERE (Co_ID = @Co_ID) AND (MessageGroupID = @MessageGroupID) AND (UserID = @UserID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Co_ID" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Stamp_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Upload_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="@Original_Co_ID" Precision="0" ProviderType="SmallInt" Scale="0" Size="0" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecordStatusID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecordStatusID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Stamp_DateTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Stamp_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Stamp_DateTime" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Stamp_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Stamp_UserID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Upload_DateTime" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_Upload_DateTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Upload_DateTime" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Co_ID" DataSetColumn="Co_ID" />
+              <Mapping SourceColumn="MessageGroupID" DataSetColumn="MessageGroupID" />
+              <Mapping SourceColumn="UserID" DataSetColumn="UserID" />
+              <Mapping SourceColumn="RecordStatusID" DataSetColumn="RecordStatusID" />
+              <Mapping SourceColumn="Stamp_DateTime" DataSetColumn="Stamp_DateTime" />
+              <Mapping SourceColumn="Stamp_UserID" DataSetColumn="Stamp_UserID" />
+              <Mapping SourceColumn="Upload_DateTime" DataSetColumn="Upload_DateTime" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetMemebersByMessageGroupID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetMemebersByMessageGroupID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetMemebersByMessageGroupID" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Messaging_MessageGroupUserAssociation.Co_ID, Messaging_MessageGroupUserAssociation.MessageGroupID, 
+                      Messaging_MessageGroupUserAssociation.UserID, Messaging_MessageGroupUserAssociation.RecordStatusID, 
+                      Messaging_MessageGroupUserAssociation.Stamp_DateTime, Messaging_MessageGroupUserAssociation.Stamp_UserID, 
+                      Messaging_MessageGroupUserAssociation.Upload_DateTime, Sec_User.User_Desc AS UserDesc
+FROM         Messaging_MessageGroupUserAssociation INNER JOIN
+                      Sec_User ON Messaging_MessageGroupUserAssociation.Co_ID = Sec_User.Co_ID AND 
+                      Messaging_MessageGroupUserAssociation.UserID = Sec_User.User_ID
+WHERE     (Messaging_MessageGroupUserAssociation.MessageGroupID = @MessageGroupID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="MessageGroupID" ColumnName="MessageGroupID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetCountByCoIDMessageGroupIDUserID" Modifier="Public" Name="GetCountByCoIDMessageGroupIDUserID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetCountByCoIDMessageGroupIDUserID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT COUNT(*) 
+FROM Messaging_MessageGroupUserAssociation
+WHERE Co_ID = @CoID AND MessageGroupID = @MessageGroupID AND UserID = @UserID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="MessageGroupID" ColumnName="MessageGroupID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="RemoveUserFromGroup" Modifier="Public" Name="RemoveUserFromGroup" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy1" UserSourceName="RemoveUserFromGroup">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>DELETE FROM [Messaging_MessageGroupUserAssociation] WHERE [Co_ID] = @Co_ID AND [MessageGroupID] = @MessageGroupID AND [UserID] = @UserID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="Co_ID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@Co_ID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="MessageGroupID" ColumnName="MessageGroupID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MessageGroupID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MessageGroupID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="Quick_ERP.dbo.Messaging_MessageGroupUserAssociation" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
         </Tables>
@@ -207,7 +469,7 @@ WHERE Co_ID = @CoID</CommandText>
   <xs:element name="QuickMessagingDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="QuickMessagingDataSet" msprop:Generator_DataSetName="QuickMessagingDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MessageGroup" msprop:Generator_UserTableName="MessageGroup" msprop:Generator_RowDeletedName="MessageGroupRowDeleted" msprop:Generator_TableClassName="MessageGroupDataTable" msprop:Generator_RowChangedName="MessageGroupRowChanged" msprop:Generator_RowClassName="MessageGroupRow" msprop:Generator_RowChangingName="MessageGroupRowChanging" msprop:Generator_RowEvArgName="MessageGroupRowChangeEvent" msprop:Generator_RowEvHandlerName="MessageGroupRowChangeEventHandler" msprop:Generator_TablePropName="MessageGroup" msprop:Generator_TableVarName="tableMessageGroup" msprop:Generator_RowDeletingName="MessageGroupRowDeleting">
+        <xs:element name="MessageGroup" msprop:Generator_UserTableName="MessageGroup" msprop:Generator_RowDeletedName="MessageGroupRowDeleted" msprop:Generator_RowChangedName="MessageGroupRowChanged" msprop:Generator_RowClassName="MessageGroupRow" msprop:Generator_RowChangingName="MessageGroupRowChanging" msprop:Generator_RowEvArgName="MessageGroupRowChangeEvent" msprop:Generator_RowEvHandlerName="MessageGroupRowChangeEventHandler" msprop:Generator_TableClassName="MessageGroupDataTable" msprop:Generator_TableVarName="tableMessageGroup" msprop:Generator_RowDeletingName="MessageGroupRowDeleting" msprop:Generator_TablePropName="MessageGroup">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
@@ -233,6 +495,22 @@ WHERE Co_ID = @CoID</CommandText>
               <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" minOccurs="0" />
               <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MembersCount" msprop:Generator_UserColumnName="MembersCount" msprop:Generator_ColumnVarNameInTable="columnMembersCount" msprop:Generator_ColumnPropNameInRow="MembersCount" msprop:Generator_ColumnPropNameInTable="MembersCountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IsMember" msprop:Generator_UserColumnName="IsMember" msprop:Generator_ColumnPropNameInRow="IsMember" msprop:Generator_ColumnVarNameInTable="columnIsMember" msprop:Generator_ColumnPropNameInTable="IsMemberColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MessageGroupUserAssociation" msprop:Generator_UserTableName="MessageGroupUserAssociation" msprop:Generator_RowDeletedName="MessageGroupUserAssociationRowDeleted" msprop:Generator_RowChangedName="MessageGroupUserAssociationRowChanged" msprop:Generator_RowClassName="MessageGroupUserAssociationRow" msprop:Generator_RowChangingName="MessageGroupUserAssociationRowChanging" msprop:Generator_RowEvArgName="MessageGroupUserAssociationRowChangeEvent" msprop:Generator_RowEvHandlerName="MessageGroupUserAssociationRowChangeEventHandler" msprop:Generator_TableClassName="MessageGroupUserAssociationDataTable" msprop:Generator_TableVarName="tableMessageGroupUserAssociation" msprop:Generator_RowDeletingName="MessageGroupUserAssociationRowDeleting" msprop:Generator_TablePropName="MessageGroupUserAssociation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Co_ID" msprop:Generator_UserColumnName="Co_ID" msprop:Generator_ColumnPropNameInRow="Co_ID" msprop:Generator_ColumnVarNameInTable="columnCo_ID" msprop:Generator_ColumnPropNameInTable="Co_IDColumn" type="xs:short" />
+              <xs:element name="MessageGroupID" msprop:Generator_UserColumnName="MessageGroupID" msprop:Generator_ColumnPropNameInRow="MessageGroupID" msprop:Generator_ColumnVarNameInTable="columnMessageGroupID" msprop:Generator_ColumnPropNameInTable="MessageGroupIDColumn" type="xs:int" />
+              <xs:element name="UserID" msprop:Generator_UserColumnName="UserID" msprop:Generator_ColumnPropNameInRow="UserID" msprop:Generator_ColumnVarNameInTable="columnUserID" msprop:Generator_ColumnPropNameInTable="UserIDColumn" type="xs:int" />
+              <xs:element name="RecordStatusID" msprop:Generator_UserColumnName="RecordStatusID" msprop:Generator_ColumnPropNameInRow="RecordStatusID" msprop:Generator_ColumnVarNameInTable="columnRecordStatusID" msprop:Generator_ColumnPropNameInTable="RecordStatusIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Stamp_DateTime" msprop:Generator_UserColumnName="Stamp_DateTime" msprop:Generator_ColumnPropNameInRow="Stamp_DateTime" msprop:Generator_ColumnVarNameInTable="columnStamp_DateTime" msprop:Generator_ColumnPropNameInTable="Stamp_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Stamp_UserID" msprop:Generator_UserColumnName="Stamp_UserID" msprop:Generator_ColumnPropNameInRow="Stamp_UserID" msprop:Generator_ColumnVarNameInTable="columnStamp_UserID" msprop:Generator_ColumnPropNameInTable="Stamp_UserIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Upload_DateTime" msprop:Generator_UserColumnName="Upload_DateTime" msprop:Generator_ColumnPropNameInRow="Upload_DateTime" msprop:Generator_ColumnVarNameInTable="columnUpload_DateTime" msprop:Generator_ColumnPropNameInTable="Upload_DateTimeColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UserDesc" msprop:Generator_UserColumnName="UserDesc" msprop:Generator_ColumnPropNameInRow="UserDesc" msprop:Generator_ColumnVarNameInTable="columnUserDesc" msprop:Generator_ColumnPropNameInTable="UserDescColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -243,5 +521,16 @@ WHERE Co_ID = @CoID</CommandText>
       <xs:field xpath="mstns:Co_ID" />
       <xs:field xpath="mstns:MessageGroupID" />
     </xs:unique>
+    <xs:unique name="MessageGroupUserAssociation_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MessageGroupUserAssociation" />
+      <xs:field xpath="mstns:Co_ID" />
+      <xs:field xpath="mstns:MessageGroupID" />
+      <xs:field xpath="mstns:UserID" />
+    </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup" msdata:parent="MessageGroup" msdata:child="MessageGroupUserAssociation" msdata:parentkey="Co_ID MessageGroupID" msdata:childkey="Co_ID MessageGroupID" msprop:Generator_UserRelationName="FK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup" msprop:Generator_RelationVarName="relationFK_Messaging_MessageGroupUserAssociation_Messaging_MessageGroup" msprop:Generator_UserChildTable="MessageGroupUserAssociation" msprop:Generator_UserParentTable="MessageGroup" msprop:Generator_ParentPropName="MessageGroupRowParent" msprop:Generator_ChildPropName="GetMessageGroupUserAssociationRows" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

@@ -6,7 +6,7 @@
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString" Provider="System.Data.SqlClient">
           </Connection>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString1" Provider="System.Data.SqlClient">
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Quick_ERPConnectionString1" IsAppSettingsProperty="True" Modifier="Assembly" Name="Quick_ERPConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuickDAL.My.MySettings.GlobalReference.Default.Quick_ERPConnectionString1" Provider="System.Data.SqlClient">
           </Connection>
         </Connections>
         <Tables>
@@ -239,7 +239,7 @@ WHERE    Co_ID=@Co_ID AND Process_Desc=@Process_Desc AND RecordStatus_ID &lt;&gt
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductionProcessWorkFlowTableAdapter" GeneratorDataComponentClassName="ProductionProcessWorkFlowTableAdapter" Name="ProductionProcessWorkFlow" UserDataComponentName="ProductionProcessWorkFlowTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessWorkFlow" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessWorkFlow" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_ProcessWorkFlow] WHERE (([Co_ID] = @Original_Co_ID) AND ([ProcessWorkFlow_ID] = @Original_ProcessWorkFlow_ID))</CommandText>
@@ -328,7 +328,7 @@ FROM         Production_ProcessWorkFlow</CommandText>
               <Mapping SourceColumn="RecordStatus_ID" DataSetColumn="RecordStatus_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAllByCoID" GetMethodModifier="Public" GetMethodName="GetAllByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAllByCoID" UserSourceName="GetAllByCoID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAllByCoID" GetMethodModifier="Public" GetMethodName="GetAllByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAllByCoID" UserSourceName="GetAllByCoID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     pwf.Co_ID, ProcessWorkFlow_ID, Source_Process_ID, pp.Process_Desc as                   Source_Process_Desc, Destination_Process_ID, pp1.Process_Desc as                 Destination_Process_Desc, ProcessWorkFlow_Desc, pwf.Stamp_UserID, pwf.Stamp_DateTime,                 pwf.Upload_DateTime,  pwf.RecordStatus_ID
@@ -343,7 +343,7 @@ WHERE    (pwf.Co_ID=@Co_ID) AND (pwf.RecordStatus_ID &lt;&gt; 4)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="IsMaxByProcessWorkFlowID" Modifier="Public" Name="IsMaxByProcessWorkFlowID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="IsMaxByProcessWorkFlowID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="IsMaxByProcessWorkFlowID" Modifier="Public" Name="IsMaxByProcessWorkFlowID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="IsMaxByProcessWorkFlowID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT IsNull(MAX(ProcessWorkFlow_ID),0) 
@@ -361,7 +361,7 @@ WHERE Co_ID=@Co_ID
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FormulaTableAdapter" GeneratorDataComponentClassName="FormulaTableAdapter" Name="Formula" UserDataComponentName="FormulaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_Formula] WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula_ID] = @Original_Formula_ID) AND ([Formula_Code] = @Original_Formula_Code) AND ([Formula_Description] = @Original_Formula_Description) AND ([Output_Item_Detail_ID] = @Original_Output_Item_Detail_ID) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -484,7 +484,7 @@ SELECT Co_ID, Formula_ID, Formula_Code, Formula_Description, Output_Item_Detail_
               <Mapping SourceColumn="RecordStatus_ID" DataSetColumn="RecordStatus_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDItemCodeItemSizeID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetByCoIDItemCodeItemSizeID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDItemCodeItemSizeID" UserSourceName="GetByCoIDItemCodeItemSizeID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDItemCodeItemSizeID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetByCoIDItemCodeItemSizeID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDItemCodeItemSizeID" UserSourceName="GetByCoIDItemCodeItemSizeID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Production_Formula.Co_ID, Production_Formula.Formula_Code, Production_Formula.Formula_Description, Production_Formula.Formula_ID, 
@@ -506,7 +506,7 @@ WHERE     (Production_Formula.Co_ID = @CoID) AND (Invs_Item.Item_Code = @ItemCod
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOutputItemID" GetMethodModifier="Public" GetMethodName="GetByCoIDOutputItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOutputItemID" UserSourceName="GetByCoIDOutputItemID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOutputItemID" GetMethodModifier="Public" GetMethodName="GetByCoIDOutputItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOutputItemID" UserSourceName="GetByCoIDOutputItemID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT Co_ID, Formula_Code, Formula_Description, Formula_ID, Output_Item_Detail_ID, RecordStatus_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Production_Formula WHERE (Co_ID = @CoID) AND (Output_Item_Detail_ID = @OutputItemDetailID)</CommandText>
@@ -519,7 +519,7 @@ WHERE     (Production_Formula.Co_ID = @CoID) AND (Invs_Item.Item_Code = @ItemCod
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewFormulaID" Modifier="Public" Name="GetNewFormulaID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewFormulaID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewFormulaID" Modifier="Public" Name="GetNewFormulaID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewFormulaID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL(MAX(Formula_ID), 0) + 1)
@@ -536,7 +536,7 @@ WHERE Co_ID = @CoID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FormulaDetailTableAdapter" GeneratorDataComponentClassName="FormulaDetailTableAdapter" Name="FormulaDetail" UserDataComponentName="FormulaDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Formula_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_Formula_Detail] WHERE (([Co_ID] = @Original_Co_ID) AND ([Formula_ID] = @Original_Formula_ID) AND ([Formula_Detail_ID] = @Original_Formula_Detail_ID) AND ([Remarks] = @Original_Remarks) AND ([Input_Item_Detail_ID] = @Original_Input_Item_Detail_ID) AND ([Quantity] = @Original_Quantity) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -667,7 +667,7 @@ SELECT Co_ID, Formula_ID, Formula_Detail_ID, Remarks, Input_Item_Detail_ID, '' A
               <Mapping SourceColumn="Item_Desc" DataSetColumn="Item_Desc" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDFormulaID" GetMethodModifier="Public" GetMethodName="GetByCoIDFormulaID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDFormulaID" UserSourceName="GetByCoIDFormulaID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDFormulaID" GetMethodModifier="Public" GetMethodName="GetByCoIDFormulaID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDFormulaID" UserSourceName="GetByCoIDFormulaID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Production_Formula_Detail.Co_ID, Production_Formula_Detail.Formula_Detail_ID, Production_Formula_Detail.Formula_ID, 
@@ -688,7 +688,7 @@ WHERE     (Production_Formula_Detail.Co_ID = @CoID) AND (Production_Formula_Deta
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDFormulaIDInputItemDetailID" GetMethodModifier="Public" GetMethodName="GetByCoIDFormulaIDInputItemDetailID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDFormulaIDInputItemDetailID" UserSourceName="GetByCoIDFormulaIDInputItemDetailID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDFormulaIDInputItemDetailID" GetMethodModifier="Public" GetMethodName="GetByCoIDFormulaIDInputItemDetailID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDFormulaIDInputItemDetailID" UserSourceName="GetByCoIDFormulaIDInputItemDetailID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Production_Formula_Detail.Co_ID, Production_Formula_Detail.Formula_Detail_ID, Production_Formula_Detail.Formula_ID, 
@@ -713,7 +713,7 @@ WHERE     (Production_Formula_Detail.Co_ID = @CoID)
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewFormulaDetailID" Modifier="Public" Name="GetNewFormulaDetailID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewFormulaDetailID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewFormulaDetailID" Modifier="Public" Name="GetNewFormulaDetailID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewFormulaDetailID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL( MAX(Formula_Detail_ID), 0) + 1) 
@@ -732,7 +732,7 @@ WHERE Co_ID = @CoID AND Formula_ID = @FormulaID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrderTableAdapter" GeneratorDataComponentClassName="OrderTableAdapter" Name="Order" UserDataComponentName="OrderTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_Order] WHERE (([Co_ID] = @Original_Co_ID) AND ([Order_ID] = @Original_Order_ID) AND ([Order_No] = @Original_Order_No) AND ([Order_Date] = @Original_Order_Date) AND ((@IsNull_Remarks = 1 AND [Remarks] IS NULL) OR ([Remarks] = @Original_Remarks)) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -858,7 +858,7 @@ SELECT Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateT
               <Mapping SourceColumn="RecordStatus_ID" DataSetColumn="RecordStatus_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.spGetProductionByCoIDItemCode" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDItemCode" GetMethodModifier="Public" GetMethodName="GetByCoIDItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDItemCode" UserSourceName="GetByCoIDItemCode1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.spGetProductionByCoIDItemCode" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDItemCode" GetMethodModifier="Public" GetMethodName="GetByCoIDItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDItemCode" UserSourceName="GetByCoIDItemCode1">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
                     <CommandText>dbo.spGetProductionByCoIDItemCode</CommandText>
@@ -873,7 +873,7 @@ SELECT Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateT
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetFirstByCoID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetFirstByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetFirstByCoID" UserSourceName="GetFirstByCoID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetFirstByCoID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetFirstByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetFirstByCoID" UserSourceName="GetFirstByCoID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     TOP 1 Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -887,7 +887,7 @@ ORDER BY Co_ID, Order_ID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetLastByCoID" GetMethodModifier="Public" GetMethodName="GetLastByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetLastByCoID" UserSourceName="GetLastByCoID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetLastByCoID" GetMethodModifier="Public" GetMethodName="GetLastByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetLastByCoID" UserSourceName="GetLastByCoID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     top 1 Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -901,7 +901,7 @@ ORDER BY Co_ID, Order_ID DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetMaxOrderNoByCoID" Modifier="Public" Name="GetMaxOrderNoByCoID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetMaxOrderNoByCoID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetMaxOrderNoByCoID" Modifier="Public" Name="GetMaxOrderNoByCoID" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetMaxOrderNoByCoID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT MAX(Order_No) 
@@ -916,7 +916,7 @@ WHERE Co_ID = @CoID AND Order_No LIKE @OrderNo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="GetNewOrderIDByCoID" Modifier="Public" Name="GetNewOrderIDByCoID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy1" UserSourceName="GetNewOrderIDByCoID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="GetNewOrderIDByCoID" Modifier="Public" Name="GetNewOrderIDByCoID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy1" UserSourceName="GetNewOrderIDByCoID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL(MAX(Order_ID), 0) + 1) 
@@ -929,7 +929,7 @@ WHERE Co_ID = @CoID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetNextByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetNextByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetNextByCoIDOrderID" UserSourceName="GetNextByCoIDOrderID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetNextByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetNextByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetNextByCoIDOrderID" UserSourceName="GetNextByCoIDOrderID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     top 1 Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -945,7 +945,7 @@ ORDER BY Co_ID, Order_ID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetPreviousByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetPreviousByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetPreviousByCoIDOrderID" UserSourceName="GetPreviousByCoIDOrderID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetPreviousByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetPreviousByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetPreviousByCoIDOrderID" UserSourceName="GetPreviousByCoIDOrderID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     top 1 Co_ID, Order_ID, Order_No, Order_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -965,7 +965,7 @@ ORDER BY Co_ID, Order_ID DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrderDetailTableAdapter" GeneratorDataComponentClassName="OrderDetailTableAdapter" Name="OrderDetail" UserDataComponentName="OrderDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_Order_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_Order_Detail] WHERE (([Co_ID] = @Original_Co_ID) AND ([Order_ID] = @Original_Order_ID) AND ([Order_Detail_ID] = @Original_Order_Detail_ID) AND ([Item_Detail_ID] = @Original_Item_Detail_ID) AND ([Formula_ID] = @Original_Formula_ID) AND ([Quantity] = @Original_Quantity) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -1099,7 +1099,7 @@ SELECT Co_ID, Order_ID, Order_Detail_ID, Item_Detail_ID, Formula_ID, Quantity, S
               <Mapping SourceColumn="ItemSize_ID" DataSetColumn="ItemSize_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderID" UserSourceName="GetByCoIDOrderID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderID" UserSourceName="GetByCoIDOrderID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Production_Order_Detail.Co_ID, Production_Order_Detail.Formula_ID, Production_Order_Detail.Item_Detail_ID, 
@@ -1120,7 +1120,7 @@ WHERE     (Production_Order_Detail.Co_ID = @CoID) AND (Production_Order_Detail.O
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewOrderDetailIDByCoIDOrderID" Modifier="Public" Name="GetNewOrderDetailIDByCoIDOrderID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderDetailIDByCoIDOrderID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewOrderDetailIDByCoIDOrderID" Modifier="Public" Name="GetNewOrderDetailIDByCoIDOrderID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderDetailIDByCoIDOrderID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL(MAX(Order_Detail_ID), 0) + 1) 
@@ -1139,7 +1139,7 @@ WHERE Co_ID = @CoID AND Order_ID = @OrderID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrderBatchTableAdapter" GeneratorDataComponentClassName="OrderBatchTableAdapter" Name="OrderBatch" UserDataComponentName="OrderBatchTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_OrderBatch] WHERE (([Co_ID] = @Original_Co_ID) AND ([Order_ID] = @Original_Order_ID) AND ([OrderBatch_ID] = @Original_OrderBatch_ID) AND ([OrderBatch_No] = @Original_OrderBatch_No) AND ([OrderBatch_Date] = @Original_OrderBatch_Date) AND ((@IsNull_Remarks = 1 AND [Remarks] IS NULL) OR ([Remarks] = @Original_Remarks)) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -1275,23 +1275,7 @@ SELECT Co_ID, Order_ID, OrderBatch_ID, OrderBatch_No, OrderBatch_Date, Remarks, 
               <Mapping SourceColumn="RecordStatus_ID" DataSetColumn="RecordStatus_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderID" UserSourceName="FillBy">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="True">
-                    <CommandText>SELECT     Co_ID, Order_ID, OrderBatch_ID, OrderBatch_No, OrderBatch_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, 
-                      RecordStatus_ID
-FROM         Production_OrderBatch
-WHERE Co_ID = @CoID AND Order_ID = @OrderID</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Production_OrderBatch" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
-                      </Parameter>
-                      <Parameter AllowDbNull="False" AutogeneratedName="OrderID" ColumnName="Order_ID" DataSourceName="Quick_ERP.dbo.Production_OrderBatch" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@OrderID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Order_ID" SourceColumnNullMapping="False" SourceVersion="Current">
-                      </Parameter>
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderBatchNo" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderBatchNo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderBatchNo" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderBatchNo" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderBatchNo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderBatchNo" UserSourceName="GetByCoIDOrderBatchNo1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Co_ID, Order_ID, OrderBatch_ID, OrderBatch_No, OrderBatch_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, 
@@ -1307,7 +1291,23 @@ WHERE Co_ID = @CoID AND OrderBatch_No = @OrderBatchNo</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetNewOrderBatchID" Modifier="Public" Name="GetNewOrderBatchID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderBatchID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderID" UserSourceName="GetByCoIDOrderID1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     Co_ID, Order_ID, OrderBatch_ID, OrderBatch_No, OrderBatch_Date, Remarks, Stamp_UserID, Stamp_DateTime, Upload_DateTime, 
+                      RecordStatus_ID
+FROM         Production_OrderBatch
+WHERE Co_ID = @CoID AND Order_ID = @OrderID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Production_OrderBatch" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="OrderID" ColumnName="Order_ID" DataSourceName="Quick_ERP.dbo.Production_OrderBatch" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@OrderID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Order_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="GetNewOrderBatchID" Modifier="Public" Name="GetNewOrderBatchID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderBatchID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL( MAX(OrderBatch_ID), 0) + 1) 
@@ -1326,7 +1326,7 @@ WHERE Co_ID = @CoID AND Order_ID = @OrderID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrderBatchDetailTableAdapter" GeneratorDataComponentClassName="OrderBatchDetailTableAdapter" Name="OrderBatchDetail" UserDataComponentName="OrderBatchDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_OrderBatch_Detail] WHERE (([Co_ID] = @Original_Co_ID) AND ([OrderBatch_ID] = @Original_OrderBatch_ID) AND ([OrderBatch_Detail_ID] = @Original_OrderBatch_Detail_ID) AND ([Item_Detail_ID] = @Original_Item_Detail_ID) AND ([Quantity] = @Original_Quantity) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -1448,7 +1448,7 @@ SELECT Co_ID, OrderBatch_ID, OrderBatch_Detail_ID, Item_Detail_ID, Quantity, Sta
               <Mapping SourceColumn="RecordStatus_ID" DataSetColumn="RecordStatus_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderBatchID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderBatchID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderBatchID" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_OrderBatch_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDOrderBatchID" GetMethodModifier="Public" GetMethodName="GetByCoIDOrderBatchID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDOrderBatchID" UserSourceName="GetByCoIDOrderBatchID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Co_ID, OrderBatch_ID, OrderBatch_Detail_ID, Item_Detail_ID, Quantity, Stamp_UserID, Stamp_DateTime, Upload_DateTime, RecordStatus_ID
@@ -1463,7 +1463,7 @@ where Co_ID = @CoID AND OrderBatch_ID = @OrderBatchID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewOrderBatchDetailIDByCoIDOrderBatchID" Modifier="Public" Name="GetNewOrderBatchDetailIDByCoIDOrderBatchID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderBatchDetailIDByCoIDOrderBatchID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewOrderBatchDetailIDByCoIDOrderBatchID" Modifier="Public" Name="GetNewOrderBatchDetailIDByCoIDOrderBatchID" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewOrderBatchDetailIDByCoIDOrderBatchID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL( MAX(OrderBatch_Detail_ID), 0) + 1) 
@@ -1482,7 +1482,7 @@ WHERE Co_ID = @CoID AND OrderBatch_ID = @OrderBatchID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProcessProductionTableAdapter" GeneratorDataComponentClassName="ProcessProductionTableAdapter" Name="ProcessProduction" UserDataComponentName="ProcessProductionTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_ProcessProduction] WHERE (([Co_ID] = @Original_Co_ID) AND ([Production_ID] = @Original_Production_ID) AND ([Production_No] = @Original_Production_No) AND ([Production_Date] = @Original_Production_Date) AND ((@IsNull_Order_ID = 1 AND [Order_ID] IS NULL) OR ([Order_ID] = @Original_Order_ID)) AND ((@IsNull_OrderBatch_ID = 1 AND [OrderBatch_ID] IS NULL) OR ([OrderBatch_ID] = @Original_OrderBatch_ID)) AND ((@IsNull_Source_Document_ID = 1 AND [Source_Document_ID] IS NULL) OR ([Source_Document_ID] = @Original_Source_Document_ID)) AND ((@IsNull_Source_DocumentType_ID = 1 AND [Source_DocumentType_ID] IS NULL) OR ([Source_DocumentType_ID] = @Original_Source_DocumentType_ID)) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID) AND ((@IsNull_Vender_Party_ID = 1 AND [Vender_Party_ID] IS NULL) OR ([Vender_Party_ID] = @Original_Vender_Party_ID)))</CommandText>
@@ -1661,7 +1661,7 @@ SELECT Co_ID, Production_ID, Production_No, Production_Date, Order_ID, OrderBatc
               <Mapping SourceColumn="Vender_Party_ID" DataSetColumn="Vender_Party_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoID" GetMethodModifier="Public" GetMethodName="GetByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoID" UserSourceName="FillBy">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoID" GetMethodModifier="Public" GetMethodName="GetByCoID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoID" UserSourceName="GetByCoID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Co_ID, Production_ID, Production_No, Production_Date, Order_ID, OrderBatch_ID, Source_Document_ID, Source_DocumentType_ID, Stamp_UserID, 
@@ -1676,7 +1676,22 @@ ORDER BY Production_ID DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDProductionID" GetMethodModifier="Public" GetMethodName="GetByCoIDProductionID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDProductionID" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDDocumentTypeIDDocumentID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetByCoIDDocumentTypeIDDocumentID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDDocumentTypeIDDocumentID" UserSourceName="GetByCoIDDocumentTypeIDDocumentID1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT Co_ID, OrderBatch_ID, Order_ID, Production_Date, Production_ID, Production_No, RecordStatus_ID, Source_DocumentType_ID, Source_Document_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime, Vender_Party_ID FROM Production_ProcessProduction WHERE (Co_ID = @CoID) AND (Source_DocumentType_ID = @SourceDocumentTypeID) AND (Source_Document_ID = @SourceDocumentID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="SourceDocumentTypeID" ColumnName="Source_DocumentType_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@SourceDocumentTypeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Source_DocumentType_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="SourceDocumentID" ColumnName="Source_Document_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@SourceDocumentID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Source_Document_ID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDProductionID" GetMethodModifier="Public" GetMethodName="GetByCoIDProductionID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDProductionID" UserSourceName="GetByCoIDProductionID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Co_ID, Production_ID, Production_No, Production_Date, Order_ID, OrderBatch_ID, Source_Document_ID, Source_DocumentType_ID, Stamp_UserID, 
@@ -1692,22 +1707,7 @@ WHERE Co_ID = @CoID AND Production_ID = @ProductionID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDDocumentTypeIDDocumentID" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetByCoIDDocumentTypeIDDocumentID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDDocumentTypeIDDocumentID" UserSourceName="GetByCoIDDocumentTypeIDDocumentID1">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="True">
-                    <CommandText>SELECT Co_ID, OrderBatch_ID, Order_ID, Production_Date, Production_ID, Production_No, RecordStatus_ID, Source_DocumentType_ID, Source_Document_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime, Vender_Party_ID FROM Production_ProcessProduction WHERE (Co_ID = @CoID) AND (Source_DocumentType_ID = @SourceDocumentTypeID) AND (Source_Document_ID = @SourceDocumentID)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="False" AutogeneratedName="CoID" ColumnName="Co_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@CoID" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="Co_ID" SourceColumnNullMapping="False" SourceVersion="Current">
-                      </Parameter>
-                      <Parameter AllowDbNull="True" AutogeneratedName="SourceDocumentTypeID" ColumnName="Source_DocumentType_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@SourceDocumentTypeID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Source_DocumentType_ID" SourceColumnNullMapping="False" SourceVersion="Current">
-                      </Parameter>
-                      <Parameter AllowDbNull="True" AutogeneratedName="SourceDocumentID" ColumnName="Source_Document_ID" DataSourceName="Quick_ERP.dbo.Production_ProcessProduction" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@SourceDocumentID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Source_Document_ID" SourceColumnNullMapping="False" SourceVersion="Current">
-                      </Parameter>
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionIDByCoID" Modifier="Public" Name="GetNewProductionIDByCoID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewProductionIDByCoID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionIDByCoID" Modifier="Public" Name="GetNewProductionIDByCoID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewProductionIDByCoID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL( MAX(Production_ID), 0) + 1) 
@@ -1720,7 +1720,7 @@ WHERE Co_ID = @CoID</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionNoByCoID" Modifier="Public" Name="GetNewProductionNoByCoID" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy1" UserSourceName="GetNewProductionNoByCoID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionNoByCoID" Modifier="Public" Name="GetNewProductionNoByCoID" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy1" UserSourceName="GetNewProductionNoByCoID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(VARCHAR, ISNULL( MAX(Production_No), '0') ) 
@@ -1737,7 +1737,7 @@ WHERE Co_ID = @CoID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProcessProductionDetailTableAdapter" GeneratorDataComponentClassName="ProcessProductionDetailTableAdapter" Name="ProcessProductionDetail" UserDataComponentName="ProcessProductionDetailTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.Production_ProcessProduction_Detail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetAll" GetMethodModifier="Public" GetMethodName="GetAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetAll" UserSourceName="GetAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="False">
                     <CommandText>DELETE FROM [Production_ProcessProduction_Detail] WHERE (([Co_ID] = @Original_Co_ID) AND ([Production_ID] = @Original_Production_ID) AND ([Production_Detail_ID] = @Original_Production_Detail_ID) AND ((@IsNull_Consumption_Process_ID = 1 AND [Consumption_Process_ID] IS NULL) OR ([Consumption_Process_ID] = @Original_Consumption_Process_ID)) AND ([Production_Process_ID] = @Original_Production_Process_ID) AND ([Item_Detail_ID] = @Original_Item_Detail_ID) AND ([Quantity] = @Original_Quantity) AND ([Stamp_UserID] = @Original_Stamp_UserID) AND ([Stamp_DateTime] = @Original_Stamp_DateTime) AND ((@IsNull_Upload_DateTime = 1 AND [Upload_DateTime] IS NULL) OR ([Upload_DateTime] = @Original_Upload_DateTime)) AND ([RecordStatus_ID] = @Original_RecordStatus_ID))</CommandText>
@@ -1884,7 +1884,7 @@ SELECT Co_ID, Production_ID, Production_Detail_ID, Consumption_Process_ID, Produ
               <Mapping SourceColumn="ItemSize_ID" DataSetColumn="ItemSize_ID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDProductionID" GetMethodModifier="Public" GetMethodName="GetByCoIDProductionID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDProductionID" UserSourceName="GetByCoIDProductionID1">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="True" GeneratorGetMethodName="GetByCoIDProductionID" GetMethodModifier="Public" GetMethodName="GetByCoIDProductionID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetByCoIDProductionID" UserSourceName="GetByCoIDProductionID1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT     Production_ProcessProduction_Detail.Co_ID, Production_ProcessProduction_Detail.Production_ID, 
@@ -1906,7 +1906,7 @@ WHERE     (Production_ProcessProduction_Detail.Co_ID = @CoID) AND (Production_Pr
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionDetailID" Modifier="Public" Name="GetNewProductionDetailID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewProductionDetailID">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="True" GeneratorSourceName="GetNewProductionDetailID" Modifier="Public" Name="GetNewProductionDetailID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="GetNewProductionDetailID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="True">
                     <CommandText>SELECT CONVERT(INT, ISNULL( MAX(Production_Detail_ID), 0) + 1)
@@ -1925,7 +1925,7 @@ WHERE Co_ID = @CoID AND Production_ID = @ProductionID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProcessBalanceTableAdapter" GeneratorDataComponentClassName="ProcessBalanceTableAdapter" Name="ProcessBalance" UserDataComponentName="ProcessBalanceTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Quick_ERPConnectionString1 (MySettings)" DbObjectName="Quick_ERP.dbo.spGetProcessBalanceByCoIDProcessID" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="False" GeneratorGetMethodName="GetByCoIDProcessIDItemCode" GetMethodModifier="Public" GetMethodName="GetByCoIDProcessIDItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetByCoIDProcessIDItemCode" UserSourceName="Fill">
+              <DbSource ConnectionRef="Quick_ERPConnectionString (MySettings)" DbObjectName="Quick_ERP.dbo.spGetProcessBalanceSizeWiseByCoIDProcessIDItemCode" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="False" GeneratorGetMethodName="GetByCoIDProcessIDItemCode" GetMethodModifier="Public" GetMethodName="GetByCoIDProcessIDItemCode" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetByCoIDProcessIDItemCode" UserSourceName="GetByCoIDProcessIDItemCode">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="False">
                     <CommandText>dbo.spGetProcessBalanceSizeWiseByCoIDProcessIDItemCode</CommandText>
@@ -2215,7 +2215,7 @@ WHERE Co_ID = @CoID AND Production_ID = @ProductionID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ProcessBalance" msprop:Generator_UserTableName="ProcessBalance" msprop:Generator_RowDeletedName="ProcessBalanceRowDeleted" msprop:Generator_TableClassName="ProcessBalanceDataTable" msprop:Generator_RowChangedName="ProcessBalanceRowChanged" msprop:Generator_RowClassName="ProcessBalanceRow" msprop:Generator_RowChangingName="ProcessBalanceRowChanging" msprop:Generator_RowEvArgName="ProcessBalanceRowChangeEvent" msprop:Generator_RowEvHandlerName="ProcessBalanceRowChangeEventHandler" msprop:Generator_TablePropName="ProcessBalance" msprop:Generator_TableVarName="tableProcessBalance" msprop:Generator_RowDeletingName="ProcessBalanceRowDeleting">
+        <xs:element name="ProcessBalance" msprop:Generator_UserTableName="ProcessBalance" msprop:Generator_RowDeletedName="ProcessBalanceRowDeleted" msprop:Generator_RowChangedName="ProcessBalanceRowChanged" msprop:Generator_RowClassName="ProcessBalanceRow" msprop:Generator_RowChangingName="ProcessBalanceRowChanging" msprop:Generator_RowEvArgName="ProcessBalanceRowChangeEvent" msprop:Generator_RowEvHandlerName="ProcessBalanceRowChangeEventHandler" msprop:Generator_TableClassName="ProcessBalanceDataTable" msprop:Generator_TableVarName="tableProcessBalance" msprop:Generator_RowDeletingName="ProcessBalanceRowDeleting" msprop:Generator_TablePropName="ProcessBalance">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Process_ID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Process_ID" msprop:Generator_ColumnPropNameInRow="Process_ID" msprop:Generator_ColumnVarNameInTable="columnProcess_ID" msprop:Generator_ColumnPropNameInTable="Process_IDColumn" type="xs:short" minOccurs="0" />

@@ -19,13 +19,14 @@ Partial Class ProductionOrderForm
   'Do not modify it using the code editor.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Dim DateButton1 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton2 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
-    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton9 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton10 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton11 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton12 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton13 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton14 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton15 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton16 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Me.OrderNoLabel = New QuickControls.Quick_Label
     Me.OrderNoTextBox = New QuickControls.Quick_TextBox
     Me.OrderDateCalendarCombo = New QuickControls.Quick_UltraCalendarCombo
@@ -36,20 +37,20 @@ Partial Class ProductionOrderForm
     Me.FormulaDescriptionTextBox = New QuickControls.Quick_TextBox
     Me.RemarksTextBox = New QuickControls.Quick_TextBox
     Me.RemarksLabel = New QuickControls.Quick_Label
-    Me.SummarySpread = New QuickControls.Quick_Spread
-    Me.SummarySheetView = New FarPoint.Win.Spread.SheetView
     Me.FormulaDetailSpread = New QuickControls.Quick_Spread
     Me.FormulaDetailSheetView = New FarPoint.Win.Spread.SheetView
     Me.ProductionOrderSpread = New QuickControls.Quick_Spread
     Me.ProductionOrderSheetView = New FarPoint.Win.Spread.SheetView
+    Me.ItemSummaryBar1 = New QuickBusinessControls.ItemSummaryBar
+    Me.ItemSummaryBar1_Sheet1 = New FarPoint.Win.Spread.SheetView
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.OrderDateCalendarCombo, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SummarySpread, System.ComponentModel.ISupportInitialize).BeginInit()
-    CType(Me.SummarySheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.FormulaDetailSpread, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.FormulaDetailSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.ProductionOrderSpread, System.ComponentModel.ISupportInitialize).BeginInit()
     CType(Me.ProductionOrderSheetView, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ItemSummaryBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.ItemSummaryBar1_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
     'OrderNoLabel
@@ -82,13 +83,14 @@ Partial Class ProductionOrderForm
     'OrderDateCalendarCombo
     '
     Me.OrderDateCalendarCombo.BackColor = System.Drawing.SystemColors.Window
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton1)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton2)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton3)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton4)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton5)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton6)
-    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton7)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton9)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton10)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton11)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton12)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton13)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton14)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton15)
+    Me.OrderDateCalendarCombo.DateButtons.Add(DateButton16)
     Me.OrderDateCalendarCombo.DefaultValue = New Date(2010, 11, 13, 17, 1, 2, 484)
     Me.OrderDateCalendarCombo.Format = "dd-MM-yy"
     Me.OrderDateCalendarCombo.Location = New System.Drawing.Point(248, 48)
@@ -183,32 +185,6 @@ Partial Class ProductionOrderForm
     Me.RemarksLabel.TabIndex = 8
     Me.RemarksLabel.Text = "Remarks:"
     '
-    'SummarySpread
-    '
-    Me.SummarySpread.AccessibleDescription = "Quick_Spread"
-    Me.SummarySpread.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-    Me.SummarySpread.AutoNewRow = True
-    Me.SummarySpread.EditModePermanent = True
-    Me.SummarySpread.EditModeReplace = True
-    Me.SummarySpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.SummarySpread.Location = New System.Drawing.Point(4, 144)
-    Me.SummarySpread.Name = "SummarySpread"
-    Me.SummarySpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SummarySheetView})
-    Me.SummarySpread.Size = New System.Drawing.Size(584, 64)
-    Me.SummarySpread.TabIndex = 10
-    Me.SummarySpread.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    '
-    'SummarySheetView
-    '
-    Me.SummarySheetView.Reset()
-    Me.SummarySheetView.SheetName = "Sheet1"
-    'Formulas and custom names must be loaded with R1C1 reference style
-    Me.SummarySheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.R1C1
-    Me.SummarySheetView.ColumnHeader.Visible = False
-    Me.SummarySheetView.RowHeader.Visible = False
-    Me.SummarySheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
-    '
     'FormulaDetailSpread
     '
     Me.FormulaDetailSpread.AccessibleDescription = "Quick_Spread"
@@ -254,14 +230,32 @@ Partial Class ProductionOrderForm
     Me.ProductionOrderSheetView.RowHeader.Visible = False
     Me.ProductionOrderSheetView.ReferenceStyle = FarPoint.Win.Spread.Model.ReferenceStyle.A1
     '
+    'ItemSummaryBar1
+    '
+    Me.ItemSummaryBar1.AccessibleDescription = ""
+    Me.ItemSummaryBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+    Me.ItemSummaryBar1.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
+    Me.ItemSummaryBar1.Location = New System.Drawing.Point(4, 144)
+    Me.ItemSummaryBar1.Name = "ItemSummaryBar1"
+    Me.ItemSummaryBar1.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ItemSummaryBar1_Sheet1})
+    Me.ItemSummaryBar1.Size = New System.Drawing.Size(584, 64)
+    Me.ItemSummaryBar1.TabIndex = 13
+    Me.ItemSummaryBar1.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
+    '
+    'ItemSummaryBar1_Sheet1
+    '
+    Me.ItemSummaryBar1_Sheet1.Reset()
+    Me.ItemSummaryBar1_Sheet1.SheetName = "Sheet1"
+    '
     'ProductionOrderForm
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.ClientSize = New System.Drawing.Size(590, 398)
+    Me.Controls.Add(Me.ItemSummaryBar1)
     Me.Controls.Add(Me.ProductionOrderSpread)
     Me.Controls.Add(Me.FormulaDetailSpread)
-    Me.Controls.Add(Me.SummarySpread)
     Me.Controls.Add(Me.RemarksTextBox)
     Me.Controls.Add(Me.RemarksLabel)
     Me.Controls.Add(Me.FormulaDescriptionTextBox)
@@ -284,17 +278,17 @@ Partial Class ProductionOrderForm
     Me.Controls.SetChildIndex(Me.FormulaDescriptionTextBox, 0)
     Me.Controls.SetChildIndex(Me.RemarksLabel, 0)
     Me.Controls.SetChildIndex(Me.RemarksTextBox, 0)
-    Me.Controls.SetChildIndex(Me.SummarySpread, 0)
     Me.Controls.SetChildIndex(Me.FormulaDetailSpread, 0)
     Me.Controls.SetChildIndex(Me.ProductionOrderSpread, 0)
+    Me.Controls.SetChildIndex(Me.ItemSummaryBar1, 0)
     CType(Me.FormDataSet, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.OrderDateCalendarCombo, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SummarySpread, System.ComponentModel.ISupportInitialize).EndInit()
-    CType(Me.SummarySheetView, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.FormulaDetailSpread, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.FormulaDetailSheetView, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.ProductionOrderSpread, System.ComponentModel.ISupportInitialize).EndInit()
     CType(Me.ProductionOrderSheetView, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ItemSummaryBar1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.ItemSummaryBar1_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
     Me.PerformLayout()
 
@@ -309,10 +303,10 @@ Partial Class ProductionOrderForm
   Friend WithEvents FormulaDescriptionTextBox As QuickControls.Quick_TextBox
   Friend WithEvents RemarksTextBox As QuickControls.Quick_TextBox
   Friend WithEvents RemarksLabel As QuickControls.Quick_Label
-  Friend WithEvents SummarySpread As QuickControls.Quick_Spread
-  Friend WithEvents SummarySheetView As FarPoint.Win.Spread.SheetView
   Friend WithEvents FormulaDetailSpread As QuickControls.Quick_Spread
   Friend WithEvents FormulaDetailSheetView As FarPoint.Win.Spread.SheetView
   Friend WithEvents ProductionOrderSpread As QuickControls.Quick_Spread
   Friend WithEvents ProductionOrderSheetView As FarPoint.Win.Spread.SheetView
+  Friend WithEvents ItemSummaryBar1 As QuickBusinessControls.ItemSummaryBar
+  Friend WithEvents ItemSummaryBar1_Sheet1 As FarPoint.Win.Spread.SheetView
 End Class
