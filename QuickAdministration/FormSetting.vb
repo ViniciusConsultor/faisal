@@ -1,7 +1,5 @@
 Imports System.Windows.Forms
 Imports QuickDAL
-Imports QuickDAL.QuickERP
-Imports QuickDAL.QuickERPTableAdapters
 Imports QuickDAL.QuickCommonDataSet
 Imports QuickDAL.QuickCommonDataSetTableAdapters
 'Imports QuickDAL.QuickAccountingDataSet

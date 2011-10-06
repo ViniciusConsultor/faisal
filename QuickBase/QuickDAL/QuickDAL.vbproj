@@ -139,6 +139,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuickProductionDataSet.vb">
+      <DependentUpon>QuickProductionDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QuickSecurityDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

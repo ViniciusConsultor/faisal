@@ -18450,13 +18450,11 @@ Namespace QuickCommonDataSetTableAdapters
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Upload_DateTime", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Upload_DateTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(7).Connection = Me.Connection
-            Me._commandCollection(7).CommandText = "SELECT TOP (50) Alert_Body, Alert_DateTime, Alert_Destination, Alert_ID, Alert_So"& _ 
-                "urce, Alert_Subject, Alert_Type, Co_ID, DocumentStatus_ID, NoOfTries, RecordStat"& _ 
-                "us_ID, Stamp_DateTime, Stamp_UserID, Upload_DateTime FROM Base_Alert WHERE (Co_I"& _ 
-                "D = @CoID) AND (Alert_Destination = @UserName) ORDER BY Alert_ID DESC"
-            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Co_ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserName", Global.System.Data.SqlDbType.VarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, "Alert_Destination", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).CommandText = "dbo.spMessaging_Get50ForInboxByCoIDDestination"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoID", Global.System.Data.SqlDbType.SmallInt, 2, Global.System.Data.ParameterDirection.Input, 5, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UserName", Global.System.Data.SqlDbType.VarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand
             Me._commandCollection(8).Connection = Me.Connection
             Me._commandCollection(8).CommandText = "SELECT     CONVERT(INT, ISNULL(MAX(Alert_ID),0) + 1) AS NewID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Base_"& _ 
@@ -18575,13 +18573,17 @@ Namespace QuickCommonDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetLast50ByCoIDDestination(ByVal CoID As Integer, ByVal UserName As String) As QuickCommonDataSet.AlertDataTable
+        Public Overloads Overridable Function GetLast50ByCoIDDestination(ByVal CoID As Global.System.Nullable(Of Short), ByVal UserName As String) As QuickCommonDataSet.AlertDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(7)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CoID,Integer)
-            If (UserName Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("UserName")
+            If (CoID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(CoID.Value,Short)
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(UserName,String)
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (UserName Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(UserName,String)
             End If
             Dim dataTable As QuickCommonDataSet.AlertDataTable = New QuickCommonDataSet.AlertDataTable
             Me.Adapter.Fill(dataTable)

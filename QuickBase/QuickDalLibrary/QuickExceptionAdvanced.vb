@@ -23,7 +23,7 @@ Public Class QuickExceptionAdvanced
   Public Sub Save(ByVal _LoginInfo As LoginInfo)
     Try
 
-      QuickAlert.SaveAlert(_LoginInfo, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Exception Alert", GetFullMessage, AlertTypes.Email)
+      QuickAlert.SaveAlert(_LoginInfo, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Exception Alert", GetFullMessage, MessageTypes.Email)
 
     Catch ex As Exception
       'Throw ex

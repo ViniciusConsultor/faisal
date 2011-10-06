@@ -17,7 +17,7 @@ Public Class QuickAlert
     EveryOne
   End Enum
 
-  Shared Function SaveAlert(ByVal _LoginInfo As LoginInfo, ByVal _EmailReceipient As AlertReceipients, ByVal _Subject As String, ByVal _Body As String, ByVal _AlertType As AlertTypes) As Boolean
+  Shared Function SaveAlert(ByVal _LoginInfo As LoginInfo, ByVal _EmailReceipient As AlertReceipients, ByVal _Subject As String, ByVal _Body As String, ByVal _AlertType As MessageTypes) As Boolean
     Try
       Dim _AlertTA As New AlertTableAdapter
       Dim _AlertDataTable As New AlertDataTable
@@ -30,7 +30,7 @@ Public Class QuickAlert
       'Prepare login information to be sent in email.
       If _LoginInfo IsNot Nothing Then
         _LoginInfoString = "Above is body of the email generated, following is the user information" & vbCrLf
-        _LoginInfoString &= vbCrLf & "Email created on " & Common.systemDateTime.DayOfWeek.ToString & " " & Common.systemDateTime.ToLongDateString & " " & Common.systemDateTime.ToLongTimeString
+        _LoginInfoString &= vbCrLf & "Email created on " & Common.SystemDateTime.DayOfWeek.ToString & " " & Common.SystemDateTime.ToLongDateString & " " & Common.SystemDateTime.ToLongTimeString
         _LoginInfoString &= vbCrLf & "User Name is " & _LoginInfo.UserName
         _LoginInfoString &= vbCrLf & "Company user logged in is " & _LoginInfo.CompanyDesc & vbCrLf
         _LoginInfoString &= vbCrLf & "Following is the computer information" & vbCrLf
@@ -50,7 +50,7 @@ Public Class QuickAlert
       With _AlertRow
         .Co_ID = _LoginInfo.CompanyID
         .Alert_ID = Convert.ToInt32(_AlertTA.GetNewAlertIDByCoID(_LoginInfo.CompanyID).ToString)
-        If _AlertType = AlertTypes.Email Then
+        If _AlertType = MessageTypes.Email Then
           .Alert_Body = _Body & vbCrLf & _LoginInfoString
         Else
           .Alert_Body = _Body
@@ -58,9 +58,9 @@ Public Class QuickAlert
         If .Alert_Body.Length > _AlertDataTable.Alert_BodyColumn.MaxLength Then
           .Alert_Body = .Alert_Body.Substring(0, _AlertDataTable.Alert_BodyColumn.MaxLength - 1)
         End If
-        .Alert_DateTime = Common.systemDateTime
+        .Alert_DateTime = Common.SystemDateTime
         Select Case _AlertType
-          Case AlertTypes.Email
+          Case MessageTypes.Email
             Select Case _EmailReceipient
               Case AlertReceipients.VenderInfo
                 .Alert_Destination = VENDER_EMAIL_ADDRESS
@@ -76,7 +76,7 @@ Public Class QuickAlert
               Case Else
                 .Alert_Destination = VENDER_EMAIL_ADDRESS
             End Select
-          Case AlertTypes.SMS
+          Case MessageTypes.SMS
             Select Case _EmailReceipient
               Case AlertReceipients.VenderInfo
                 .Alert_Destination = VENDER_MOBILE_NUMBER
@@ -88,7 +88,7 @@ Public Class QuickAlert
         .Alert_Source = _LoginInfo.UserName & "(" & _LoginInfo.CompanyDesc & ")"
         .Alert_Subject = _Subject
         .Alert_Type = Convert.ToInt16(_AlertType)
-        .Stamp_DateTime = Common.systemDateTime
+        .Stamp_DateTime = Common.SystemDateTime
         .Stamp_UserID = _LoginInfo.UserID
         .DocumentStatus_ID = DocumentStatuses.Message_Added
         .NoOfTries = 0
@@ -123,33 +123,33 @@ Public Class QuickAlert
         _smtp.Credentials = New Net.NetworkCredential(VENDER_EMAIL_ADDRESS, "qwer1234!@#$")
 
         For I As Int32 = 0 To _AlertDataTable.Rows.Count - 1
-          If _AlertDataTable(I).Alert_Type = AlertTypes.Email Then
-            Try
-              _AlertDataTable(I).NoOfTries += 1S
-            _AlertDataTable(I).Stamp_DateTime = Common.systemDateTime
+        If _AlertDataTable(I).Alert_Type = MessageTypes.Email Then
+          Try
+            _AlertDataTable(I).NoOfTries += 1S
+            _AlertDataTable(I).Stamp_DateTime = Common.SystemDateTime
 
-              _Message = New System.Net.Mail.MailMessage
-              _Message.From = New System.Net.Mail.MailAddress(VENDER_EMAIL_ADDRESS, _AlertDataTable(I).Alert_Source)
-              _Message.To.Add(_AlertDataTable(I).Alert_Destination)
-              _Message.Subject = _AlertDataTable(I).Alert_Subject
-              _Message.Body = "Following email was generated on " _
-                  & _AlertDataTable(I).Alert_DateTime.ToString & vbCrLf & vbCrLf & _AlertDataTable(I).Alert_Body
-              _smtp.EnableSsl = True
+            _Message = New System.Net.Mail.MailMessage
+            _Message.From = New System.Net.Mail.MailAddress(VENDER_EMAIL_ADDRESS, _AlertDataTable(I).Alert_Source)
+            _Message.To.Add(_AlertDataTable(I).Alert_Destination)
+            _Message.Subject = _AlertDataTable(I).Alert_Subject
+            _Message.Body = "Following email was generated on " _
+                & _AlertDataTable(I).Alert_DateTime.ToString & vbCrLf & vbCrLf & _AlertDataTable(I).Alert_Body
+            _smtp.EnableSsl = True
             _smtp.Send(_Message)
             _AlertDataTable(I).DocumentStatus_ID = DocumentStatuses.Message_Send
-            Catch exEmail As Exception
-              'Try
-              'Dim _QuickException As New QuickExceptionAdvanced("Exception is SendAlert method", exEmail)
-              '_QuickException.Send(_LoginInfo)
-              'Catch ex As Exception
-              'We can not do anything here.
-              'End Try
-            End Try
+          Catch exEmail As Exception
+            'Try
+            'Dim _QuickException As New QuickExceptionAdvanced("Exception is SendAlert method", exEmail)
+            '_QuickException.Send(_LoginInfo)
+            'Catch ex As Exception
+            'We can not do anything here.
+            'End Try
+          End Try
 
-            RaiseEvent AlertSent(I + 1, _AlertDataTable.Rows.Count)
-            System.Windows.Forms.Application.DoEvents()
-            _AlertTA.Update(_AlertDataTable)
-          End If
+          RaiseEvent AlertSent(I + 1, _AlertDataTable.Rows.Count)
+          System.Windows.Forms.Application.DoEvents()
+          _AlertTA.Update(_AlertDataTable)
+        End If
         Next
 
         Return True
@@ -161,7 +161,7 @@ Public Class QuickAlert
   Shared Function SendAlert(ByVal _LoginInfo As LoginInfo, ByVal _EmailReceipient As AlertReceipients, ByVal _Subject As String, ByVal _Body As String) As Boolean
     Try
 
-      SaveAlert(_LoginInfo, _EmailReceipient, _Subject, _Body, AlertTypes.Email)
+      SaveAlert(_LoginInfo, _EmailReceipient, _Subject, _Body, MessageTypes.Email)
 
       Return SendEmailAlerts()
 

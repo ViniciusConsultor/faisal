@@ -158,16 +158,16 @@ Partial Class MDIParent1
     'StatusStrip
     '
     Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.DatabaseNameStatusBarLabel, Me.DatabaseServerStatusBarLabel, Me.UserNameStatusBarLabel, Me.VersionStatusBarLabel, Me.CompanyNameStatusBarLabel})
-    Me.StatusStrip.Location = New System.Drawing.Point(0, 431)
+    Me.StatusStrip.Location = New System.Drawing.Point(0, 503)
     Me.StatusStrip.Name = "StatusStrip"
-    Me.StatusStrip.Size = New System.Drawing.Size(632, 22)
+    Me.StatusStrip.Size = New System.Drawing.Size(908, 22)
     Me.StatusStrip.TabIndex = 7
     Me.StatusStrip.Text = "StatusStrip"
     '
     'ToolStripStatusLabel
     '
     Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-    Me.ToolStripStatusLabel.Size = New System.Drawing.Size(308, 17)
+    Me.ToolStripStatusLabel.Size = New System.Drawing.Size(584, 17)
     Me.ToolStripStatusLabel.Spring = True
     Me.ToolStripStatusLabel.Text = "Status"
     Me.ToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -236,40 +236,40 @@ Partial Class MDIParent1
     '
     Me._MDIParent1UnpinnedTabAreaLeft.Dock = System.Windows.Forms.DockStyle.Left
     Me._MDIParent1UnpinnedTabAreaLeft.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    Me._MDIParent1UnpinnedTabAreaLeft.Location = New System.Drawing.Point(0, 48)
+    Me._MDIParent1UnpinnedTabAreaLeft.Location = New System.Drawing.Point(0, 46)
     Me._MDIParent1UnpinnedTabAreaLeft.Name = "_MDIParent1UnpinnedTabAreaLeft"
     Me._MDIParent1UnpinnedTabAreaLeft.Owner = Me.UltraDockManager1
-    Me._MDIParent1UnpinnedTabAreaLeft.Size = New System.Drawing.Size(21, 383)
+    Me._MDIParent1UnpinnedTabAreaLeft.Size = New System.Drawing.Size(21, 457)
     Me._MDIParent1UnpinnedTabAreaLeft.TabIndex = 9
     '
     '_MDIParent1UnpinnedTabAreaRight
     '
     Me._MDIParent1UnpinnedTabAreaRight.Dock = System.Windows.Forms.DockStyle.Right
     Me._MDIParent1UnpinnedTabAreaRight.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    Me._MDIParent1UnpinnedTabAreaRight.Location = New System.Drawing.Point(632, 48)
+    Me._MDIParent1UnpinnedTabAreaRight.Location = New System.Drawing.Point(908, 46)
     Me._MDIParent1UnpinnedTabAreaRight.Name = "_MDIParent1UnpinnedTabAreaRight"
     Me._MDIParent1UnpinnedTabAreaRight.Owner = Me.UltraDockManager1
-    Me._MDIParent1UnpinnedTabAreaRight.Size = New System.Drawing.Size(0, 383)
+    Me._MDIParent1UnpinnedTabAreaRight.Size = New System.Drawing.Size(0, 457)
     Me._MDIParent1UnpinnedTabAreaRight.TabIndex = 10
     '
     '_MDIParent1UnpinnedTabAreaTop
     '
     Me._MDIParent1UnpinnedTabAreaTop.Dock = System.Windows.Forms.DockStyle.Top
     Me._MDIParent1UnpinnedTabAreaTop.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    Me._MDIParent1UnpinnedTabAreaTop.Location = New System.Drawing.Point(21, 48)
+    Me._MDIParent1UnpinnedTabAreaTop.Location = New System.Drawing.Point(21, 46)
     Me._MDIParent1UnpinnedTabAreaTop.Name = "_MDIParent1UnpinnedTabAreaTop"
     Me._MDIParent1UnpinnedTabAreaTop.Owner = Me.UltraDockManager1
-    Me._MDIParent1UnpinnedTabAreaTop.Size = New System.Drawing.Size(611, 0)
+    Me._MDIParent1UnpinnedTabAreaTop.Size = New System.Drawing.Size(887, 0)
     Me._MDIParent1UnpinnedTabAreaTop.TabIndex = 11
     '
     '_MDIParent1UnpinnedTabAreaBottom
     '
     Me._MDIParent1UnpinnedTabAreaBottom.Dock = System.Windows.Forms.DockStyle.Bottom
     Me._MDIParent1UnpinnedTabAreaBottom.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-    Me._MDIParent1UnpinnedTabAreaBottom.Location = New System.Drawing.Point(21, 431)
+    Me._MDIParent1UnpinnedTabAreaBottom.Location = New System.Drawing.Point(21, 503)
     Me._MDIParent1UnpinnedTabAreaBottom.Name = "_MDIParent1UnpinnedTabAreaBottom"
     Me._MDIParent1UnpinnedTabAreaBottom.Owner = Me.UltraDockManager1
-    Me._MDIParent1UnpinnedTabAreaBottom.Size = New System.Drawing.Size(611, 0)
+    Me._MDIParent1UnpinnedTabAreaBottom.Size = New System.Drawing.Size(887, 0)
     Me._MDIParent1UnpinnedTabAreaBottom.TabIndex = 12
     '
     '_MDIParent1AutoHideControl
@@ -289,7 +289,7 @@ Partial Class MDIParent1
     Me.DockableWindow1.Name = "DockableWindow1"
     Me.DockableWindow1.Owner = Me.UltraDockManager1
     Me.DockableWindow1.Size = New System.Drawing.Size(133, 383)
-    Me.DockableWindow1.TabIndex = 0
+    Me.DockableWindow1.TabIndex = 22
     '
     'WindowDockingArea1
     '
@@ -307,15 +307,16 @@ Partial Class MDIParent1
     Me._frmExplorer_Toolbars_Dock_Area_Top.BackColor = System.Drawing.SystemColors.Control
     Me._frmExplorer_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
     Me._frmExplorer_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
-    Me._frmExplorer_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 24)
+    Me._frmExplorer_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 23)
     Me._frmExplorer_Toolbars_Dock_Area_Top.Name = "_frmExplorer_Toolbars_Dock_Area_Top"
-    Me._frmExplorer_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(632, 24)
+    Me._frmExplorer_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(908, 23)
     Me._frmExplorer_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UltraToolbarsManager1
     '
     'UltraToolbarsManager1
     '
     Me.UltraToolbarsManager1.DesignerFlags = 1
     Me.UltraToolbarsManager1.DockWithinContainer = Me
+    Me.UltraToolbarsManager1.DockWithinContainerBaseType = GetType(System.Windows.Forms.Form)
     Me.UltraToolbarsManager1.MdiMergeable = False
     UltraToolbar1.DockedColumn = 0
     UltraToolbar1.DockedRow = 0
@@ -328,9 +329,9 @@ Partial Class MDIParent1
     Me._MDIParent1_Toolbars_Dock_Area_Left.BackColor = System.Drawing.SystemColors.Control
     Me._MDIParent1_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
     Me._MDIParent1_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-    Me._MDIParent1_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 48)
+    Me._MDIParent1_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 46)
     Me._MDIParent1_Toolbars_Dock_Area_Left.Name = "_MDIParent1_Toolbars_Dock_Area_Left"
-    Me._MDIParent1_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 383)
+    Me._MDIParent1_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 457)
     Me._MDIParent1_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UltraToolbarsManager1
     '
     '_MDIParent1_Toolbars_Dock_Area_Right
@@ -339,9 +340,9 @@ Partial Class MDIParent1
     Me._MDIParent1_Toolbars_Dock_Area_Right.BackColor = System.Drawing.SystemColors.Control
     Me._MDIParent1_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
     Me._MDIParent1_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-    Me._MDIParent1_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(632, 48)
+    Me._MDIParent1_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(908, 46)
     Me._MDIParent1_Toolbars_Dock_Area_Right.Name = "_MDIParent1_Toolbars_Dock_Area_Right"
-    Me._MDIParent1_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 383)
+    Me._MDIParent1_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 457)
     Me._MDIParent1_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UltraToolbarsManager1
     '
     '_MDIParent1_Toolbars_Dock_Area_Top
@@ -352,7 +353,7 @@ Partial Class MDIParent1
     Me._MDIParent1_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
     Me._MDIParent1_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
     Me._MDIParent1_Toolbars_Dock_Area_Top.Name = "_MDIParent1_Toolbars_Dock_Area_Top"
-    Me._MDIParent1_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(632, 24)
+    Me._MDIParent1_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(908, 23)
     Me._MDIParent1_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UltraToolbarsManager1
     '
     '_MDIParent1_Toolbars_Dock_Area_Bottom
@@ -361,9 +362,9 @@ Partial Class MDIParent1
     Me._MDIParent1_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.SystemColors.Control
     Me._MDIParent1_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom
     Me._MDIParent1_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText
-    Me._MDIParent1_Toolbars_Dock_Area_Bottom.Location = New System.Drawing.Point(0, 431)
+    Me._MDIParent1_Toolbars_Dock_Area_Bottom.Location = New System.Drawing.Point(0, 503)
     Me._MDIParent1_Toolbars_Dock_Area_Bottom.Name = "_MDIParent1_Toolbars_Dock_Area_Bottom"
-    Me._MDIParent1_Toolbars_Dock_Area_Bottom.Size = New System.Drawing.Size(632, 0)
+    Me._MDIParent1_Toolbars_Dock_Area_Bottom.Size = New System.Drawing.Size(908, 0)
     Me._MDIParent1_Toolbars_Dock_Area_Bottom.ToolbarsManager = Me.UltraToolbarsManager1
     '
     'UltraTabbedMdiManager1
@@ -376,10 +377,10 @@ Partial Class MDIParent1
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(632, 453)
+    Me.ClientSize = New System.Drawing.Size(908, 525)
     Me.Controls.Add(Me._MDIParent1AutoHideControl)
-    Me.Controls.Add(Me.WindowDockingArea1)
     Me.Controls.Add(Me.ToolStrip)
+    Me.Controls.Add(Me.WindowDockingArea1)
     Me.Controls.Add(Me._MDIParent1UnpinnedTabAreaTop)
     Me.Controls.Add(Me._MDIParent1UnpinnedTabAreaBottom)
     Me.Controls.Add(Me._MDIParent1UnpinnedTabAreaRight)

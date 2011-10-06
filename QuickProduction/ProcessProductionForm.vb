@@ -53,6 +53,27 @@ Public Class ProcessProduction
 
 #Region "Methods"
   'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 19-Sep-11
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Initialize Controls
+  ''' </summary>
+  Private Function SetControlsStatus() As Boolean
+    Try
+      Me.SourceProcessStockSpread.Enabled = False
+      Me.DestinationProcessStockSpread.Enabled = False
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in SetControlsStatus of ProcessProduction.", ex)
+      Throw _qex
+    End Try
+  End Function
+
+  'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 28-Nov-10
   '***** Modification History *****
   '                 Date      Description
@@ -102,6 +123,29 @@ Public Class ProcessProduction
     End Try
   End Sub
 
+  'Author: Faisal Saleem
+  'Date Created(DD-MMM-YY): 28-Nov-10
+  '***** Modification History *****
+  '                 Date      Description
+  'Name          (DD-MMM-YY) 
+  '--------------------------------------------------------------------------------
+  '
+  ''' <summary>
+  ''' Save record
+  ''' </summary>
+  Protected Overrides Sub CancelButtonClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Try
+      MyBase.CancelButtonClick(sender, e)
+      SetControlsStatus()
+      Me.SourceProcessStockSheetView.FrozenColumnCount = 0
+      Me.DestinationProcessStockSheetView.FrozenColumnCount = 0
+      Me.ProcessProductionSheetView.RowCount = 1
+
+    Catch ex As Exception
+      Dim _qex As New QuickExceptionAdvanced("Exception in LoadProductionIDs of ProcessProduction.", ex)
+      _qex.Show(Me.LoginInfoObject)
+    End Try
+  End Sub
 
   'Author: Faisal Saleem
   'Date Created(DD-MMM-YY): 28-Nov-10
@@ -260,12 +304,10 @@ Public Class ProcessProduction
       Me.SourceProcessStockSheetView.ColumnHeaderVisible = False
       Me.SourceProcessStockSheetView.Columns.Count = _ItemSizeTable.Count + 1
       Me.SourceProcessStockSheetView.Rows.Count = 1
-      Me.SourceProcessStockSpread.Enabled = False
 
       Me.DestinationProcessStockSheetView.ColumnHeaderVisible = False
       Me.DestinationProcessStockSheetView.Columns.Count = _ItemSizeTable.Count + 1
       Me.DestinationProcessStockSheetView.Rows.Count = 1
-      Me.DestinationProcessStockSpread.Enabled = False
 
       ProcessStockSpread.Enabled = False
       For I As Int32 = 0 To _ItemSizeTable.Count - 1
@@ -307,9 +349,10 @@ Public Class ProcessProduction
             Me.DestinationProcessComboBox.Rows.Band.Columns(I).Hidden = True
         End Select
       Next
+      SetControlsStatus()
 
     Catch ex As Exception
-      Dim _qex As New QuickExceptionAdvanced("Exception in ProcessProduction_Load of ClassName/FormName.", ex)
+      Dim _qex As New QuickExceptionAdvanced("Exception in ProcessProduction_Load of ProcessProduction.", ex)
       _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
@@ -448,7 +491,7 @@ Public Class ProcessProduction
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in DestinationProcessComboBox_ValueChanged of ProcessProduction.", ex)
-      Throw _qex
+      _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
 
@@ -465,7 +508,7 @@ Public Class ProcessProduction
   Private Sub ProductionOrderCombBox_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ProductionOrderCombBox.ValueChanged
     Try
       If Me.ProductionOrderCombBox.SelectedRow IsNot Nothing Then
-        _OrderBatchTable = _OrderBatchTA.GetByCoIDOrderID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionOrderCombBox.SelectedRow.Cells(_OrderTable.Order_IDColumn.ColumnName)))
+        _OrderBatchTable = _OrderBatchTA.GetByCoIDOrderID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionOrderCombBox.SelectedRow.Cells(_OrderTable.Order_IDColumn.ColumnName).Value))
 
         Me.ProductionOrderBatchComboBox.DataSource = _OrderBatchTable
         For I As Int32 = 0 To _OrderBatchTable.Columns.Count - 1
@@ -480,7 +523,7 @@ Public Class ProcessProduction
 
     Catch ex As Exception
       Dim _qex As New QuickExceptionAdvanced("Exception in ProductionOrderCombBox_ValueChanged of ProcessProduction.", ex)
-      Throw _qex
+      _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
 
@@ -499,21 +542,49 @@ Public Class ProcessProduction
     Try
       If Me.ProductionIDComboBox.SelectedRow IsNot Nothing Then
         _ProductionTable = _ProcessProductionTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
+
         If _ProductionTable.Rows.Count = 0 Then
           QuickMessageBox.Show(Me.LoginInfoObject, "Production ID not found", MessageBoxButtons.OK, QuickMessageBox.MessageBoxTypes.ShortMessage, MessageBoxIcon.Exclamation)
+
         Else
           _ProductionRow = _ProductionTable(0)
           Me.ProductionDateCalendarCombo.Value = _ProductionRow.Production_Date
+          If _ProductionRow.IsOrder_IDNull Then
+            Me.ProductionOrderCombBox.Value = Nothing
+          Else
+            Me.ProductionOrderCombBox.Value = _ProductionRow.Order_ID
+          End If
+          If _ProductionRow.IsOrderBatch_IDNull Then
+            Me.ProductionOrderBatchComboBox.Value = Nothing
+          Else
+            Me.ProductionOrderBatchComboBox.Value = _ProductionRow.OrderBatch_ID
+          End If
 
           _ProductionDetailTable = _ProcessProductionDetailTA.GetByCoIDProductionID(Me.LoginInfoObject.CompanyID, Convert.ToInt32(Me.ProductionIDComboBox.Text))
+
+          Dim _ItemDetailTA As New QuickInventoryDataSetTableAdapters.ItemDetailTableAdapter
+          Me.ItemMultiComboBox.Text = _ItemDetailTA.GetItemCodeByCoIDItemDetailID(Me.LoginInfoObject.CompanyID, _ProductionDetailTable(0).Item_Detail_ID)
+
+          Dim _ProcessWorkFlowTA As New QuickProductionDataSetTableAdapters.ProductionProcessWorkFlowTableAdapter
+          Dim _ProcessWorkFlowID As Int32
+          _ProcessWorkFlowID = Convert.ToInt32(_ProcessWorkFlowTA.GetProcessWorkFlowIDByCoIDSourceAndDestinationProcessID(Me.LoginInfoObject.CompanyID, Convert.ToInt16(_ProductionDetailTable(0).Consumption_Process_ID), Convert.ToInt16(_ProductionDetailTable(0).Production_Process_ID)))
+          Me.SourceProcessComboBox.Value = _ProcessWorkFlowID
+
           For I As Int32 = 0 To _ProductionDetailTable.Rows.Count - 1
+
             For c As Int32 = 0 To _ItemSizeTable.Rows.Count - 1
+
               If _ProductionDetailTable(I).ItemSize_ID = _ItemSizeTable(c).ItemSize_ID Then
+
                 Me.ProcessProductionSheetView.SetValue(0, c, _ProductionDetailTable(I).Quantity)
+
               End If
-            Next
-          Next
-        End If
+
+            Next c
+
+          Next I
+
+          End If
 
       End If
 
@@ -522,4 +593,5 @@ Public Class ProcessProduction
       _qex.Show(Me.LoginInfoObject)
     End Try
   End Sub
+
 End Class

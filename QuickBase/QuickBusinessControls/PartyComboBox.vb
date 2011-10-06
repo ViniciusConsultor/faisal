@@ -2,8 +2,6 @@ Imports QuickLibrary
 Imports QuickLibrary.Constants
 Imports QuickDAL
 Imports QuickDALLibrary
-Imports QuickDAL.QuickERPTableAdapters
-Imports QuickDAL.QuickERP
 Imports QuickDAL.QuickCommonDataSet
 Imports QuickDAL.QuickCommonDataSetTableAdapters
 

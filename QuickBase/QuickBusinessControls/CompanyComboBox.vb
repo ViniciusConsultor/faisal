@@ -4,8 +4,6 @@ Imports QuickDAL
 Imports QuickDALLibrary
 Imports QuickDAL.QuickCommonDataSetTableAdapters
 Imports QuickDAL.QuickCommonDataSet
-Imports QuickDAL.QuickERPTableAdapters
-Imports QuickDAL.QuickERP
 
 Public Class CompanyComboBox
   Private _CompanyTA As New CompanyTableAdapter

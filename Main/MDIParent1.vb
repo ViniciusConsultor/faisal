@@ -142,18 +142,18 @@ Public Class MDIParent1
           QuickMessageBox.Show(Me.LoginInfoObject, "Database version is corrupt", QuickMessageBox.MessageBoxTypes.LongMessage)
         ElseIf _NeedsUpgradationResult = DatabaseVersion.NeedsUpgradationResult.SoftwareIsOlderThanDB Then
           QuickMessageBox.Show(Me.LoginInfoObject, "Your database is newer than the software, use the appropriate software version", QuickMessageBox.MessageBoxTypes.LongMessage)
-          QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "Database was newer than the software", Constants.AlertTypes.Email)
-          QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "Database was newer than the software", Constants.AlertTypes.SMS)
+          QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "Database was newer than the software", Constants.MessageTypes.Email)
+          QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "Database was newer than the software", Constants.MessageTypes.SMS)
         ElseIf _NeedsUpgradationResult = DatabaseVersion.NeedsUpgradationResult.Yes Then
           If MessageBox.Show("Your database needs to be upgraded (you can not use software unless you upgrade database), do you want to do this now?", "DB needs to be upgraded", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             DatabaseVersion.UpgradeDatabase()
             MessageBox.Show("Your database is upgraded successfully, Please start the application again...")
-            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database Upgraded", "Database is upgraded", Constants.AlertTypes.Email)
-            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgraded", "Database is upgraded", Constants.AlertTypes.SMS)
+            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database Upgraded", "Database is upgraded", Constants.MessageTypes.Email)
+            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgraded", "Database is upgraded", Constants.MessageTypes.SMS)
           Else
             MessageBox.Show("You did not choose to upgrade your database. You can only use the software after the database is upgraded. Start the software again to upgrade the database.", "Application is closing...", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database Upgradation", "User choosed not to upgrade database", Constants.AlertTypes.Email)
-            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "User choosed not to upgrade database", Constants.AlertTypes.SMS)
+            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database Upgradation", "User choosed not to upgrade database", Constants.MessageTypes.Email)
+            QuickAlert.SaveAlert(Me.LoginInfoObject, QuickAlert.AlertReceipients.VenderInfo, "Quick Erp Alert - Database upgradation", "User choosed not to upgrade database", Constants.MessageTypes.SMS)
           End If
           'End the application
           End
