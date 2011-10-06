@@ -245,11 +245,17 @@ Public Class Common
     Try
       Dim _TotalOccurences As Int32 = 0
 
-      For I As Int32 = 0 To _Text.Length - _StringToCount.Length
-        If _Text.Substring(I, _StringToCount.Length) = _StringToCount Then
-          _TotalOccurences += 1
-        End If
-      Next
+      If _StringToCount Is Nothing OrElse _Text Is Nothing Then
+        _TotalOccurences = 0
+
+      Else
+        For I As Int32 = 0 To _Text.Length - _StringToCount.Length
+          If _Text.Substring(I, _StringToCount.Length) = _StringToCount Then
+            _TotalOccurences += 1
+          End If
+        Next
+
+      End If
 
       Return _TotalOccurences
 

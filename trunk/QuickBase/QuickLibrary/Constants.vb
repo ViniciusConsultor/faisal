@@ -118,9 +118,12 @@ Public Class Constants
     Message_Send = 9
     Message_Failed = 11
     Message_Fetched = 12
+    Message_WatingForApproval = 13
+    Message_Approved = 14
+    Message_Rejected = 15
   End Enum
 
-  Public Enum AlertTypes
+  Public Enum MessageTypes
     Email
     SMS
   End Enum

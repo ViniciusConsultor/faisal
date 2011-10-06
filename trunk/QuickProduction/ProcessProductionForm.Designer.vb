@@ -60,6 +60,8 @@ Partial Class ProcessProduction
     Dim DateButton3 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton4 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim DateButton5 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton6 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
+    Dim DateButton7 As Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton = New Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton
     Dim Appearance49 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance50 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
     Dim Appearance51 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance
@@ -143,7 +145,7 @@ Partial Class ProcessProduction
     '
     'ItemMultiComboBox
     '
-    Me.ItemMultiComboBox.Location = New System.Drawing.Point(88, 63)
+    Me.ItemMultiComboBox.Location = New System.Drawing.Point(88, 71)
     Me.ItemMultiComboBox.Name = "ItemMultiComboBox"
     Me.ItemMultiComboBox.Size = New System.Drawing.Size(152, 20)
     Me.ItemMultiComboBox.TabIndex = 0
@@ -152,7 +154,7 @@ Partial Class ProcessProduction
     '
     Me.ItemLabel.AllowClearValue = False
     Me.ItemLabel.DefaultValue = ""
-    Me.ItemLabel.Location = New System.Drawing.Point(6, 63)
+    Me.ItemLabel.Location = New System.Drawing.Point(6, 71)
     Me.ItemLabel.Name = "ItemLabel"
     Me.ItemLabel.Size = New System.Drawing.Size(78, 20)
     Me.ItemLabel.TabIndex = 1
@@ -223,7 +225,7 @@ Partial Class ProcessProduction
     Me.ProductionOrderCombBox.IsMandatory = False
     Me.ProductionOrderCombBox.IsReadonlyForExistingRecord = False
     Me.ProductionOrderCombBox.IsReadonlyForNewRecord = False
-    Me.ProductionOrderCombBox.Location = New System.Drawing.Point(324, 62)
+    Me.ProductionOrderCombBox.Location = New System.Drawing.Point(324, 70)
     Me.ProductionOrderCombBox.Name = "ProductionOrderCombBox"
     Me.ProductionOrderCombBox.Size = New System.Drawing.Size(152, 22)
     Me.ProductionOrderCombBox.TabIndex = 2
@@ -232,7 +234,7 @@ Partial Class ProcessProduction
     '
     Me.ProductionOrder.AllowClearValue = False
     Me.ProductionOrder.DefaultValue = ""
-    Me.ProductionOrder.Location = New System.Drawing.Point(242, 63)
+    Me.ProductionOrder.Location = New System.Drawing.Point(242, 71)
     Me.ProductionOrder.Name = "ProductionOrder"
     Me.ProductionOrder.Size = New System.Drawing.Size(78, 20)
     Me.ProductionOrder.TabIndex = 3
@@ -243,7 +245,7 @@ Partial Class ProcessProduction
     '
     Me.ProductionOrderBatch.AllowClearValue = False
     Me.ProductionOrderBatch.DefaultValue = ""
-    Me.ProductionOrderBatch.Location = New System.Drawing.Point(480, 63)
+    Me.ProductionOrderBatch.Location = New System.Drawing.Point(480, 71)
     Me.ProductionOrderBatch.Name = "ProductionOrderBatch"
     Me.ProductionOrderBatch.Size = New System.Drawing.Size(68, 20)
     Me.ProductionOrderBatch.TabIndex = 5
@@ -313,7 +315,7 @@ Partial Class ProcessProduction
     Me.ProductionOrderBatchComboBox.IsMandatory = False
     Me.ProductionOrderBatchComboBox.IsReadonlyForExistingRecord = False
     Me.ProductionOrderBatchComboBox.IsReadonlyForNewRecord = False
-    Me.ProductionOrderBatchComboBox.Location = New System.Drawing.Point(552, 62)
+    Me.ProductionOrderBatchComboBox.Location = New System.Drawing.Point(552, 70)
     Me.ProductionOrderBatchComboBox.Name = "ProductionOrderBatchComboBox"
     Me.ProductionOrderBatchComboBox.Size = New System.Drawing.Size(140, 22)
     Me.ProductionOrderBatchComboBox.TabIndex = 4
@@ -322,7 +324,7 @@ Partial Class ProcessProduction
     '
     Me.ProductionIDLabel.AllowClearValue = False
     Me.ProductionIDLabel.DefaultValue = ""
-    Me.ProductionIDLabel.Location = New System.Drawing.Point(6, 37)
+    Me.ProductionIDLabel.Location = New System.Drawing.Point(6, 45)
     Me.ProductionIDLabel.Name = "ProductionIDLabel"
     Me.ProductionIDLabel.Size = New System.Drawing.Size(78, 20)
     Me.ProductionIDLabel.TabIndex = 7
@@ -393,7 +395,7 @@ Partial Class ProcessProduction
     Me.ProductionIDComboBox.IsMandatory = False
     Me.ProductionIDComboBox.IsReadonlyForExistingRecord = False
     Me.ProductionIDComboBox.IsReadonlyForNewRecord = False
-    Me.ProductionIDComboBox.Location = New System.Drawing.Point(88, 36)
+    Me.ProductionIDComboBox.Location = New System.Drawing.Point(88, 44)
     Me.ProductionIDComboBox.Name = "ProductionIDComboBox"
     Me.ProductionIDComboBox.Size = New System.Drawing.Size(152, 22)
     Me.ProductionIDComboBox.TabIndex = 6
@@ -406,9 +408,11 @@ Partial Class ProcessProduction
     Me.ProductionDateCalendarCombo.DateButtons.Add(DateButton3)
     Me.ProductionDateCalendarCombo.DateButtons.Add(DateButton4)
     Me.ProductionDateCalendarCombo.DateButtons.Add(DateButton5)
+    Me.ProductionDateCalendarCombo.DateButtons.Add(DateButton6)
+    Me.ProductionDateCalendarCombo.DateButtons.Add(DateButton7)
     Me.ProductionDateCalendarCombo.DefaultValue = New Date(2010, 11, 13, 15, 14, 27, 93)
     Me.ProductionDateCalendarCombo.Format = "dd-MM-yy"
-    Me.ProductionDateCalendarCombo.Location = New System.Drawing.Point(324, 36)
+    Me.ProductionDateCalendarCombo.Location = New System.Drawing.Point(324, 44)
     Me.ProductionDateCalendarCombo.Name = "ProductionDateCalendarCombo"
     Me.ProductionDateCalendarCombo.NonAutoSizeHeight = 21
     Me.ProductionDateCalendarCombo.Size = New System.Drawing.Size(112, 21)
@@ -419,7 +423,7 @@ Partial Class ProcessProduction
     '
     Me.ProductionDateLabel.AllowClearValue = False
     Me.ProductionDateLabel.DefaultValue = ""
-    Me.ProductionDateLabel.Location = New System.Drawing.Point(244, 36)
+    Me.ProductionDateLabel.Location = New System.Drawing.Point(244, 44)
     Me.ProductionDateLabel.Name = "ProductionDateLabel"
     Me.ProductionDateLabel.Size = New System.Drawing.Size(68, 21)
     Me.ProductionDateLabel.TabIndex = 9
@@ -430,7 +434,7 @@ Partial Class ProcessProduction
     '
     Me.SourceProcessLabel.AllowClearValue = False
     Me.SourceProcessLabel.DefaultValue = ""
-    Me.SourceProcessLabel.Location = New System.Drawing.Point(6, 89)
+    Me.SourceProcessLabel.Location = New System.Drawing.Point(6, 97)
     Me.SourceProcessLabel.Name = "SourceProcessLabel"
     Me.SourceProcessLabel.Size = New System.Drawing.Size(40, 20)
     Me.SourceProcessLabel.TabIndex = 11
@@ -501,7 +505,7 @@ Partial Class ProcessProduction
     Me.SourceProcessComboBox.IsMandatory = False
     Me.SourceProcessComboBox.IsReadonlyForExistingRecord = False
     Me.SourceProcessComboBox.IsReadonlyForNewRecord = False
-    Me.SourceProcessComboBox.Location = New System.Drawing.Point(52, 88)
+    Me.SourceProcessComboBox.Location = New System.Drawing.Point(52, 96)
     Me.SourceProcessComboBox.Name = "SourceProcessComboBox"
     Me.SourceProcessComboBox.Size = New System.Drawing.Size(112, 22)
     Me.SourceProcessComboBox.TabIndex = 10
@@ -510,7 +514,7 @@ Partial Class ProcessProduction
     '
     Me.DestinationProcessLabel.AllowClearValue = False
     Me.DestinationProcessLabel.DefaultValue = ""
-    Me.DestinationProcessLabel.Location = New System.Drawing.Point(6, 117)
+    Me.DestinationProcessLabel.Location = New System.Drawing.Point(6, 125)
     Me.DestinationProcessLabel.Name = "DestinationProcessLabel"
     Me.DestinationProcessLabel.Size = New System.Drawing.Size(40, 20)
     Me.DestinationProcessLabel.TabIndex = 13
@@ -581,7 +585,7 @@ Partial Class ProcessProduction
     Me.DestinationProcessComboBox.IsMandatory = False
     Me.DestinationProcessComboBox.IsReadonlyForExistingRecord = False
     Me.DestinationProcessComboBox.IsReadonlyForNewRecord = False
-    Me.DestinationProcessComboBox.Location = New System.Drawing.Point(52, 116)
+    Me.DestinationProcessComboBox.Location = New System.Drawing.Point(52, 124)
     Me.DestinationProcessComboBox.Name = "DestinationProcessComboBox"
     Me.DestinationProcessComboBox.Size = New System.Drawing.Size(112, 22)
     Me.DestinationProcessComboBox.TabIndex = 12
@@ -595,7 +599,7 @@ Partial Class ProcessProduction
     Me.SourceProcessStockSpread.EditModePermanent = True
     Me.SourceProcessStockSpread.EditModeReplace = True
     Me.SourceProcessStockSpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.SourceProcessStockSpread.Location = New System.Drawing.Point(168, 88)
+    Me.SourceProcessStockSpread.Location = New System.Drawing.Point(168, 96)
     Me.SourceProcessStockSpread.Name = "SourceProcessStockSpread"
     Me.SourceProcessStockSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.SourceProcessStockSheetView})
     Me.SourceProcessStockSpread.Size = New System.Drawing.Size(584, 24)
@@ -620,7 +624,7 @@ Partial Class ProcessProduction
     Me.DestinationProcessStockSpread.EditModePermanent = True
     Me.DestinationProcessStockSpread.EditModeReplace = True
     Me.DestinationProcessStockSpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.DestinationProcessStockSpread.Location = New System.Drawing.Point(168, 116)
+    Me.DestinationProcessStockSpread.Location = New System.Drawing.Point(168, 124)
     Me.DestinationProcessStockSpread.Name = "DestinationProcessStockSpread"
     Me.DestinationProcessStockSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.DestinationProcessStockSheetView})
     Me.DestinationProcessStockSpread.Size = New System.Drawing.Size(584, 24)
@@ -640,7 +644,7 @@ Partial Class ProcessProduction
     '
     Me.RemarksLabel.AllowClearValue = False
     Me.RemarksLabel.DefaultValue = ""
-    Me.RemarksLabel.Location = New System.Drawing.Point(6, 144)
+    Me.RemarksLabel.Location = New System.Drawing.Point(6, 152)
     Me.RemarksLabel.Name = "RemarksLabel"
     Me.RemarksLabel.Size = New System.Drawing.Size(40, 20)
     Me.RemarksLabel.TabIndex = 16
@@ -654,7 +658,7 @@ Partial Class ProcessProduction
     Me.RemarksTextBox.IsMandatory = False
     Me.RemarksTextBox.IsReadonlyForExistingRecord = False
     Me.RemarksTextBox.IsReadonlyForNewRecord = False
-    Me.RemarksTextBox.Location = New System.Drawing.Point(52, 144)
+    Me.RemarksTextBox.Location = New System.Drawing.Point(52, 152)
     Me.RemarksTextBox.Name = "RemarksTextBox"
     Me.RemarksTextBox.PercentNumber = 0
     Me.RemarksTextBox.Size = New System.Drawing.Size(372, 20)
@@ -666,7 +670,7 @@ Partial Class ProcessProduction
     '
     Me.OutsourcingPartyLabel.AllowClearValue = False
     Me.OutsourcingPartyLabel.DefaultValue = ""
-    Me.OutsourcingPartyLabel.Location = New System.Drawing.Point(430, 144)
+    Me.OutsourcingPartyLabel.Location = New System.Drawing.Point(430, 152)
     Me.OutsourcingPartyLabel.Name = "OutsourcingPartyLabel"
     Me.OutsourcingPartyLabel.Size = New System.Drawing.Size(78, 20)
     Me.OutsourcingPartyLabel.TabIndex = 19
@@ -739,7 +743,7 @@ Partial Class ProcessProduction
     Me.OutsourcingPartyComboBox.IsMandatory = False
     Me.OutsourcingPartyComboBox.IsReadonlyForExistingRecord = False
     Me.OutsourcingPartyComboBox.IsReadonlyForNewRecord = False
-    Me.OutsourcingPartyComboBox.Location = New System.Drawing.Point(512, 144)
+    Me.OutsourcingPartyComboBox.Location = New System.Drawing.Point(512, 152)
     Me.OutsourcingPartyComboBox.Name = "OutsourcingPartyComboBox"
     Me.OutsourcingPartyComboBox.PartyCode = ""
     Me.OutsourcingPartyComboBox.PartyID = 0
@@ -755,10 +759,10 @@ Partial Class ProcessProduction
     Me.ProcessStockSpread.AutoNewRow = True
     Me.ProcessStockSpread.EditModePermanent = True
     Me.ProcessStockSpread.EditModeReplace = True
-    Me.ProcessStockSpread.Location = New System.Drawing.Point(4, 216)
+    Me.ProcessStockSpread.Location = New System.Drawing.Point(4, 224)
     Me.ProcessStockSpread.Name = "ProcessStockSpread"
     Me.ProcessStockSpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ProcessStockSheetView})
-    Me.ProcessStockSpread.Size = New System.Drawing.Size(748, 104)
+    Me.ProcessStockSpread.Size = New System.Drawing.Size(748, 148)
     Me.ProcessStockSpread.TabIndex = 21
     '
     'ProcessStockSheetView
@@ -775,11 +779,11 @@ Partial Class ProcessProduction
     Me.ProcessProductionQuantitySpread.AccessibleDescription = "Quick_Spread"
     Me.ProcessProductionQuantitySpread.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                 Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-    Me.ProcessProductionQuantitySpread.AutoNewRow = True
+    Me.ProcessProductionQuantitySpread.AutoNewRow = False
     Me.ProcessProductionQuantitySpread.EditModePermanent = True
     Me.ProcessProductionQuantitySpread.EditModeReplace = True
     Me.ProcessProductionQuantitySpread.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
-    Me.ProcessProductionQuantitySpread.Location = New System.Drawing.Point(168, 168)
+    Me.ProcessProductionQuantitySpread.Location = New System.Drawing.Point(168, 176)
     Me.ProcessProductionQuantitySpread.Name = "ProcessProductionQuantitySpread"
     Me.ProcessProductionQuantitySpread.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.ProcessProductionSheetView})
     Me.ProcessProductionQuantitySpread.Size = New System.Drawing.Size(584, 44)
@@ -799,7 +803,7 @@ Partial Class ProcessProduction
     '
     Me.Quick_Label1.AllowClearValue = False
     Me.Quick_Label1.DefaultValue = ""
-    Me.Quick_Label1.Location = New System.Drawing.Point(8, 172)
+    Me.Quick_Label1.Location = New System.Drawing.Point(8, 180)
     Me.Quick_Label1.Name = "Quick_Label1"
     Me.Quick_Label1.Size = New System.Drawing.Size(144, 20)
     Me.Quick_Label1.TabIndex = 23
@@ -810,7 +814,7 @@ Partial Class ProcessProduction
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(756, 344)
+    Me.ClientSize = New System.Drawing.Size(756, 395)
     Me.Controls.Add(Me.Quick_Label1)
     Me.Controls.Add(Me.ProcessProductionQuantitySpread)
     Me.Controls.Add(Me.ProcessStockSpread)
